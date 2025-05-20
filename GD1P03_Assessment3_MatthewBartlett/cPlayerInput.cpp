@@ -60,3 +60,8 @@ bool cPlayerInput::IsDebugButtonPressed() const
 {
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Grave);
 }
+
+sf::Vector2i cPlayerInput::GetMousePosition(sf::RenderWindow& window) const
+{
+    return sf::Mouse::getPosition(window);
+}

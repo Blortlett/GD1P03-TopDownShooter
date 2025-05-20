@@ -50,6 +50,31 @@ void cPlayerCharacter::HandleInput()
 	}
 }
 
+void cPlayerCharacter::Rotate(sf::RenderWindow& _window)
+{
+	// Get mouse position relative to the window
+	sf::Vector2i mousePixelPos = mPlayerInput.GetMousePosition(_window);
+	sf::Vector2f mouseWorldPos = _window.mapPixelToCoords(mousePixelPos);
+
+	// Calculate direction vector from player to mouse
+	sf::Vector2f direction = mouseWorldPos - mPosition;
+
+	// Calculate angle in radians and convert to degrees
+	float angleRadians = std::atan2(direction.y, direction.x);
+	float angleDegrees = angleRadians * 180.f / 3.14159265359f;
+
+	// Adjust angle if necessary (e.g., if sprite's default facing direction is not right)
+	// For example, if sprite faces up by default, add 90 degrees
+	angleDegrees += 0.f; // Adjust based on your sprite's default orientation
+	sf::Angle angle = sf::degrees(angleDegrees);
+
+	// Apply rotation to animator (assumes cPlayerAnimator has a SetRotation method)
+	mPlayerUpperBodyAnimator.SetRotation(angle);
+
+	// Apply rotation to debug rectangle for testing
+	mDebugRect.setRotation(angle);
+}
+
 void cPlayerCharacter::Move(float _DeltaSeconds)
 {
 	// Apply input to move velocity
@@ -61,10 +86,11 @@ void cPlayerCharacter::Move(float _DeltaSeconds)
 	mPosition += mVelocity;
 }
 
-void cPlayerCharacter::Update(float _DeltaSeconds)
+void cPlayerCharacter::Update(sf::RenderWindow& _window, float _DeltaSeconds)
 {
 	HandleInput();
 	Move(_DeltaSeconds);
+	Rotate(_window);
 	mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
 	//mDebugRect.setPosition(mPosition);
 }

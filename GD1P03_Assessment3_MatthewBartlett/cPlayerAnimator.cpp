@@ -29,3 +29,8 @@ void cPlayerAnimator::Draw(sf::RenderWindow& renderWindow)
 {
     mCurrentAnimation->Draw(renderWindow);
 }
+
+void cPlayerAnimator::SetRotation(sf::Angle _AngleToRotate)
+{
+    mCurrentAnimation->RotateAnimation(_AngleToRotate);
+}

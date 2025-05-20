@@ -5,10 +5,6 @@ cAnimationBase::cAnimationBase(sf::Sprite _SpriteSheet)
 {
 }
 
-void cAnimationBase::LoadSpriteSheet(std::string filePath)
-{
-}
-
 void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
 {
     // Accumulate time
@@ -31,7 +27,12 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
     }
 }
 
-void cAnimationBase::Draw(sf::RenderWindow& renderWindow)
+void cAnimationBase::Draw(sf::RenderWindow& _RenderWindow)
 {
-    renderWindow.draw(mSprite);
+    _RenderWindow.draw(mSprite);
+}
+
+void cAnimationBase::RotateAnimation(sf::Angle _Rotation)
+{
+    mSprite.setRotation(_Rotation);
 }

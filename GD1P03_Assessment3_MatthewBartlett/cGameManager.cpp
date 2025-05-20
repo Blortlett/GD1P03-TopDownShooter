@@ -22,7 +22,7 @@ void cGameManager::GameTick()
 	RefreshDeltaTime();
 
 	// Update Player
-	mPlayerCharacter.Update(mDeltaSeconds);
+	mPlayerCharacter.Update(mGameWindow, mDeltaSeconds);
 	mPlayerCharacter.Draw(mGameWindow);
 }
 

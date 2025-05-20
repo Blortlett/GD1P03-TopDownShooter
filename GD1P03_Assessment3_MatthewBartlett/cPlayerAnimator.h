@@ -17,10 +17,14 @@ Mail : [matthewbartlett@mds.ac.nz]
 class cPlayerAnimator
 {
 public:
+	 // Constructors
 	cPlayerAnimator();
 	~cPlayerAnimator();
+	// Animate & Draw
 	void Animate(sf::Vector2f PlayerPosition, float DeltaSeconds);
 	void Draw(sf::RenderWindow& renderWindow);
+	//Rotate Animation
+	void SetRotation(sf::Angle _AngleToRotate);
 	// Animation Swap Functions
 
 private:

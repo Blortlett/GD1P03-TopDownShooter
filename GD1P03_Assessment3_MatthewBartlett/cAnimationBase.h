@@ -16,10 +16,14 @@ Mail : [matthewbartlett@mds.ac.nz]
 class cAnimationBase
 {
 public:
+	// Constructor
 	cAnimationBase(sf::Sprite _SpriteSheet);
-	void LoadSpriteSheet(std::string filePath);
+	// Draw & Animate
 	virtual void Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds) = 0;
-	void Draw(sf::RenderWindow& renderWindow);
+	void Draw(sf::RenderWindow& _RenderWindow);
+	// Rotate Animation
+	void RotateAnimation(sf::Angle _Rotation);
+
 protected:
 	// Time Variables
 	float mAnimationTime = 0.f;

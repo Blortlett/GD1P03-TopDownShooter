@@ -25,4 +25,5 @@ public:
     bool IsRightClickPressed() const;
     bool IsPauseButtonPressed() const;
     bool IsDebugButtonPressed() const;
+    sf::Vector2i GetMousePosition(sf::RenderWindow& window) const;
 };

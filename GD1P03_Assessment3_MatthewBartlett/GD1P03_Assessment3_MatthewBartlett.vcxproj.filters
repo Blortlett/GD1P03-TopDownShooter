@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{4a890446-d6b6-4ae8-8030-f6659d7839ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{9110e869-7b57-4602-b906-7c6aef1fb65d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator">
+      <UniqueIdentifier>{06edc32c-f700-41e9-938b-50a453e6a2f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations">
+      <UniqueIdentifier>{75acab2a-7e44-4c43-ba7b-f12e78217ad3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations">
+      <UniqueIdentifier>{0f10ac65-1c72-4382-b4e6-67b92d8f7cee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations\UpperBody">
+      <UniqueIdentifier>{a416bb27-9b2c-49f7-b384-d121a64ac78b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations\LowerBody">
+      <UniqueIdentifier>{237e6d0d-49b9-4ce2-bf27-e02eee2b1681}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerInput.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerCharacter.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerAnimator.cpp">
+      <Filter>Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimationBase.cpp">
+      <Filter>Animator\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimationPistolIdle.cpp">
+      <Filter>Animator\Animations\PlayerAnimations\UpperBody</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cPlayerInput.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerCharacter.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerAnimator.h">
+      <Filter>Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationBase.h">
+      <Filter>Animator\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationPistolIdle.h">
+      <Filter>Animator\Animations\PlayerAnimations\UpperBody</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerAnimationBase.h">
+      <Filter>Animator\Animations\PlayerAnimations</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

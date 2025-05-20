@@ -13,7 +13,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 cPlayerAnimator::cPlayerAnimator()
 {
-    mCurrentAnimation = nullptr;
+    mCurrentAnimation = &mUpperPistolIdle;
 }
 
 cPlayerAnimator::~cPlayerAnimator()

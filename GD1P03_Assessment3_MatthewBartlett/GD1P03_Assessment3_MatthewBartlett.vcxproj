@@ -145,6 +145,8 @@
   <ItemGroup>
     <ClCompile Include="cAnimationBase.cpp" />
     <ClCompile Include="cAnimationPistolIdle.cpp" />
+    <ClCompile Include="cApplicationManager.cpp" />
+    <ClCompile Include="cGameManager.cpp" />
     <ClCompile Include="cPlayerAnimator.cpp" />
     <ClCompile Include="cPlayerCharacter.cpp" />
     <ClCompile Include="cPlayerInput.cpp" />
@@ -154,6 +156,8 @@
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h" />
     <ClInclude Include="cAnimationPistolIdle.h" />
+    <ClInclude Include="cApplicationManager.h" />
+    <ClInclude Include="cGameManager.h" />
     <ClInclude Include="cPlayerAnimator.h" />
     <ClInclude Include="cPlayerAnimationBase.h" />
     <ClInclude Include="cPlayerCharacter.h" />

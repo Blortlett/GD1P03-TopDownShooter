@@ -10,8 +10,8 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
-#include "cAnimationBase.h"
 #include <SFML/Graphics.hpp>
+#include "cAnimationPistolIdle.h"
 
 
 class cPlayerAnimator
@@ -26,6 +26,8 @@ public:
 private:
 	// Animation variables
 	
-	// Animations
+	// Animation state holder
 	cAnimationBase* mCurrentAnimation;
+	// Animations
+	cAnimationPistolIdle mUpperPistolIdle;
 };

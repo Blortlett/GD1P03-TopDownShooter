@@ -30,6 +30,18 @@
     <Filter Include="Animator\Animations\PlayerAnimations\LowerBody">
       <UniqueIdentifier>{237e6d0d-49b9-4ce2-bf27-e02eee2b1681}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animator\Animators">
+      <UniqueIdentifier>{9401a41b-0642-4570-a88f-41f500facf67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManagers">
+      <UniqueIdentifier>{4693c725-e2c4-411f-90bb-7c3583893976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManagers\ApplicationManager">
+      <UniqueIdentifier>{e3e695a5-eef9-45a7-8a8e-eb62aa3af98b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManagers\GameManager">
+      <UniqueIdentifier>{31e8143a-82b8-41cb-84c7-2dfdd955e158}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -44,14 +56,20 @@
     <ClCompile Include="cPlayerUtils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="cPlayerAnimator.cpp">
-      <Filter>Animator</Filter>
-    </ClCompile>
     <ClCompile Include="cAnimationBase.cpp">
       <Filter>Animator\Animations</Filter>
     </ClCompile>
     <ClCompile Include="cAnimationPistolIdle.cpp">
       <Filter>Animator\Animations\PlayerAnimations\UpperBody</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerAnimator.cpp">
+      <Filter>Animator\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameManager.cpp">
+      <Filter>GameManagers\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cApplicationManager.cpp">
+      <Filter>GameManagers\ApplicationManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -64,9 +82,6 @@
     <ClInclude Include="cPlayerUtils.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayerAnimator.h">
-      <Filter>Animator</Filter>
-    </ClInclude>
     <ClInclude Include="cAnimationBase.h">
       <Filter>Animator\Animations</Filter>
     </ClInclude>
@@ -75,6 +90,15 @@
     </ClInclude>
     <ClInclude Include="cPlayerAnimationBase.h">
       <Filter>Animator\Animations\PlayerAnimations</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerAnimator.h">
+      <Filter>Animator\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameManager.h">
+      <Filter>GameManagers\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cApplicationManager.h">
+      <Filter>GameManagers\ApplicationManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

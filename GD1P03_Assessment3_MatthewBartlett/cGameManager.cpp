@@ -13,7 +13,8 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
-	, mPlayerCharacter(mProjectileManager, _GameWindow)
+	, mPlayerCharacter(mProjectileManager, _GameWindow, mCameraManager.GetCameraView())
+	, mCameraManager(mPlayerCharacter, _GameWindow)
 	, mProjectileManager(_GameWindow)
 {
 }
@@ -23,12 +24,19 @@ void cGameManager::GameTick()
 	// Get Delta seconds each while loop
 	RefreshDeltaTime();
 
+	// Update Camera // Must happen before drawing anything
+	mCameraManager.Update(mDeltaSeconds);
+
+	// Draw Level
+	mLevel1.Draw(mGameWindow);
+
 	// Update Player
 	mPlayerCharacter.Update(mDeltaSeconds);
 	mPlayerCharacter.Draw();
 
 	// Update ProjectileManager
 	mProjectileManager.Update(mDeltaSeconds);
+
 }
 
 void cGameManager::RefreshDeltaTime()

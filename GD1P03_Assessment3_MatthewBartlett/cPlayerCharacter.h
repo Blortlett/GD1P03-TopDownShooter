@@ -40,33 +40,34 @@ private:
 	void Move(float _DeltaSeconds);
 	sf::Vector2f mPosition;
 	sf::Vector2f mVelocity;
-
-	// Shooting
-	void UpdateWeapon();
-	cPistol mPistol;
-	bool mIsShooting = false;
-	
-
-
 	// Constant Movement Values
 	const float PLAYER_ACCELERATION = 300.f;
 	const float PLAYER_MAX_VELOCITY = 200.f;
 	const float PLAYER_FRICTION = .005f;
 
+	// Shooting
+	void UpdateWeapon();
+	cPistol mPistol;
+	bool mIsShooting = false;
+
 	// Animators
 	cPlayerAnimator mPlayerUpperBodyAnimator;
+
+	// App/Gamemanager Stuff
+	sf::RenderWindow& mRenderWindow;
+	// Camera Reference
+	sf::View& mCameraView;
 
 	// Debug Stuff
 	sf::RectangleShape mDebugRect;
 
-	// App/Gamemanager Stuff
-	sf::RenderWindow& mRenderWindow;
-
 public:
-	cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow);
+	cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera);
 	~cPlayerCharacter() {}
 	// Draw / Update
 	void Update(float _DeltaSeconds);
 	void Draw();
 
+	// Getters
+	sf::Vector2f GetPosition() { return mPosition; }
 };

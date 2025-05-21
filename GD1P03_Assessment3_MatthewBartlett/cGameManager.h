@@ -12,7 +12,9 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 #pragma once
 #include "cPlayerCharacter.h"
+#include "cCameraManager.h"
 #include "cProjectileManager.h"
+#include "cLevel1.h" // TEST LEVEL CAN REMOVE!!
 
 class cGameManager
 {
@@ -28,9 +30,11 @@ private:
 
 	// Player Character
 	cPlayerCharacter mPlayerCharacter;
+	cCameraManager mCameraManager;
 
 	// Other managers
 	cProjectileManager mProjectileManager;
+	cLevel1 mLevel1;
 
 public:
 	// Constructors

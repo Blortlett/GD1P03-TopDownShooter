@@ -13,12 +13,13 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerCharacter.h"
 
 
-cPlayerCharacter::cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow)
+cPlayerCharacter::cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera)
 	: mRenderWindow(_GameWindow)
 	, mPistol(_ProjectileManager)
+	, mCameraView(_PlayerCamera)
 {
 	// Init player not at position 0,0
-	mPosition = { 300, 300 };
+	//mPosition = { 300, 300 };
 
 	// Debug stuff
 	mDebugRect.setPosition(mPosition);
@@ -97,7 +98,8 @@ void cPlayerCharacter::UpdateWeapon()
 	if (mPlayerInput.IsLeftClickPressed() && !mIsShooting)
 	{
 		// Cast mouse position
-		sf::Vector2f worldMousePosition = sf::Vector2f(mPlayerInput.GetMousePosition(mRenderWindow));
+		sf::Vector2i mouseScreenPosition = mPlayerInput.GetMousePosition(mRenderWindow);
+		sf::Vector2f worldMousePosition = mRenderWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);
 		mPistol.FireWeapon(mPosition, worldMousePosition); // fire weapon at mouse position
 		mIsShooting = true;
 	}

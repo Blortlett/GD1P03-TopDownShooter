@@ -63,16 +63,22 @@
     <Filter Include="GameManagers\ProjectileManager">
       <UniqueIdentifier>{c4b9782d-adbd-410d-ae75-b9d934b4774b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player\PlayerController">
+      <UniqueIdentifier>{369d9df5-1e67-46d7-a04b-0d57670c7682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\PlayerInput">
+      <UniqueIdentifier>{ff937a56-f1d1-4811-a198-b58a5d68a1b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManagers\CameraManager">
+      <UniqueIdentifier>{c7523b9b-18ae-4c42-a3b8-a3ab3472ec04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{c617be96-cca9-4b91-be8f-a81f2a6825b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cPlayerInput.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="cPlayerCharacter.cpp">
-      <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="cAnimationBase.cpp">
       <Filter>Animator\Animations</Filter>
@@ -104,14 +110,20 @@
     <ClCompile Include="cProjectileManager.cpp">
       <Filter>GameManagers\ProjectileManager</Filter>
     </ClCompile>
+    <ClCompile Include="cPlayerCharacter.cpp">
+      <Filter>Player\PlayerController</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerInput.cpp">
+      <Filter>Player\PlayerInput</Filter>
+    </ClCompile>
+    <ClCompile Include="cCameraManager.cpp">
+      <Filter>GameManagers\CameraManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cLevel1.cpp">
+      <Filter>Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cPlayerInput.h">
-      <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="cPlayerCharacter.h">
-      <Filter>Player</Filter>
-    </ClInclude>
     <ClInclude Include="cAnimationBase.h">
       <Filter>Animator\Animations</Filter>
     </ClInclude>
@@ -144,6 +156,18 @@
     </ClInclude>
     <ClInclude Include="cProjectileManager.h">
       <Filter>GameManagers\ProjectileManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerCharacter.h">
+      <Filter>Player\PlayerController</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerInput.h">
+      <Filter>Player\PlayerInput</Filter>
+    </ClInclude>
+    <ClInclude Include="cCameraManager.h">
+      <Filter>GameManagers\CameraManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cLevel1.h">
+      <Filter>Levels</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

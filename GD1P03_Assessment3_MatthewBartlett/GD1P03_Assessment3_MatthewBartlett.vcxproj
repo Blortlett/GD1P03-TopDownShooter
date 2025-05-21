@@ -147,7 +147,9 @@
     <ClCompile Include="cAnimationPistolIdle.cpp" />
     <ClCompile Include="cApplicationManager.cpp" />
     <ClCompile Include="cBullet.cpp" />
+    <ClCompile Include="cCameraManager.cpp" />
     <ClCompile Include="cGameManager.cpp" />
+    <ClCompile Include="cLevel1.cpp" />
     <ClCompile Include="cPistol.cpp" />
     <ClCompile Include="cPlayerAnimator.cpp" />
     <ClCompile Include="cPlayerCharacter.cpp" />
@@ -162,7 +164,9 @@
     <ClInclude Include="cAnimationPistolIdle.h" />
     <ClInclude Include="cApplicationManager.h" />
     <ClInclude Include="cBullet.h" />
+    <ClInclude Include="cCameraManager.h" />
     <ClInclude Include="cGameManager.h" />
+    <ClInclude Include="cLevel1.h" />
     <ClInclude Include="cPistol.h" />
     <ClInclude Include="cPlayerAnimator.h" />
     <ClInclude Include="cPlayerAnimationBase.h" />

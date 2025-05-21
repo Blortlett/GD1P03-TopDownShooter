@@ -8,11 +8,9 @@ private:
 	cSharedUtils();
 	~cSharedUtils() {}
 
+public:
 	// Textures
 	sf::Texture mBulletTex;
-public:
-	// Sprites
-	sf::Sprite mBulletSprite;
 
 
 

@@ -8,12 +8,9 @@ private:
 	cPlayerUtils();
 	~cPlayerUtils();
 
-	// Textures
-	sf::Texture mPlayerIdleSheetTex;
-
 public:
-	// Sprites
-	sf::Sprite mPlayerIdleSheet;
+	// Textures
+	sf::Texture* mPlayerIdleSheetTex;
 
 
 

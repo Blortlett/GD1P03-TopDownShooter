@@ -1,7 +1,7 @@
 #include "cAnimationPistolIdle.h"
 
 cAnimationPistolIdle::cAnimationPistolIdle()
-	: cPlayerAnimationBase(cPlayerUtils::GetInstance().mPlayerIdleSheet)
+	: cPlayerAnimationBase(cPlayerUtils::GetInstance().mPlayerIdleSheetTex)
 {
 	mTotalFrames = sf::Vector2u(3, 1);
 	mFrameSize = sf::Vector2i(48, 48);

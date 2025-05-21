@@ -7,13 +7,11 @@ class cPistol
 private:
 	// Ammo Variables
 	int mAmmoMax = 12;
-	int mAmmoRemaining = mAmmoMax;
-	std::array<cBullet, 12> mBulletList;
-	int mCurrentBulletIndex = 11;
+	int mCurrentBulletIndex = mAmmoMax - 1;
 
 	// Shooting & cooldown variables
 	bool mCanShoot = true;
-	float const mShootCooldownMax = .2f;
+	float const mShootCooldownMax = .09f;
 	float mCooldownTimer = mShootCooldownMax;
 
 	// Manager References
@@ -26,4 +24,5 @@ public:
 
 	// Fire weapon function
 	void FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
+	sf::Vector2f GetShootTrajectory(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
 };

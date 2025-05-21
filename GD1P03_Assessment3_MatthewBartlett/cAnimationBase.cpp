@@ -1,7 +1,7 @@
 #include "cAnimationBase.h"
 
-cAnimationBase::cAnimationBase(sf::Sprite _SpriteSheet)
-	: mSprite(_SpriteSheet)
+cAnimationBase::cAnimationBase(sf::Texture* _SpriteSheetTex)
+	: mSprite(*_SpriteSheetTex)
 {
 }
 

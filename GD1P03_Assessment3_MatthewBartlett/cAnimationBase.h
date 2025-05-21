@@ -17,7 +17,7 @@ class cAnimationBase
 {
 public:
 	// Constructor
-	cAnimationBase(sf::Sprite _SpriteSheet);
+	cAnimationBase(sf::Texture* _SpriteSheetTex);
 	// Draw & Animate
 	virtual void Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds) = 0;
 	void Draw(sf::RenderWindow& _RenderWindow);

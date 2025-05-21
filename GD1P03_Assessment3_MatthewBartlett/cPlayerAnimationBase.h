@@ -5,8 +5,8 @@
 class cPlayerAnimationBase : public cAnimationBase
 {
 public:
-	cPlayerAnimationBase(sf::Sprite _SpriteSheet)
-		: cAnimationBase(_SpriteSheet)
+	cPlayerAnimationBase(sf::Texture* _SpriteSheetTex)
+		: cAnimationBase(_SpriteSheetTex)
 	{
 	}
 };

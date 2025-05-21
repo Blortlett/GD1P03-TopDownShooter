@@ -4,16 +4,28 @@
 class cBullet
 {
 private:
+	// Sprite
 	sf::Sprite mBulletSprite;
+
+	// Move variables
 	sf::Vector2f mPosition;
 	sf::Vector2f mMoveDirection;
-	float const BULLET_MOVESPEED = 50.f;
+	float const BULLET_MOVESPEED = 250.f;
+
+	// Active Timer
+	float const mBulletActiveMaxTime = 3.f;
+	float mBulletActiveTimer = mBulletActiveMaxTime;
+
+	// Debug
+	
 public:
 	cBullet();
 	~cBullet() {}
 
-	void Fire(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
+	bool mIsActive = false;
+
+	void Fire(sf::Vector2f _StartPosition, sf::Vector2f _ShootTrajectory);
 	void Move(float _DeltaTime);
 	void Update(sf::RenderWindow& _Window, float _DeltaTime);
-	void Draw(sf::RenderWindow& _Window) { _Window.draw(mBulletSprite); }
+	void Draw(sf::RenderWindow& _Window);
 };

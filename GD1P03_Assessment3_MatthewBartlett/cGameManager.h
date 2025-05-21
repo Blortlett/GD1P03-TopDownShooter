@@ -12,6 +12,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 #pragma once
 #include "cPlayerCharacter.h"
+#include "cProjectileManager.h"
 
 class cGameManager
 {
@@ -27,6 +28,9 @@ private:
 
 	// Player Character
 	cPlayerCharacter mPlayerCharacter;
+
+	// Other managers
+	cProjectileManager mProjectileManager;
 
 public:
 	// Constructors

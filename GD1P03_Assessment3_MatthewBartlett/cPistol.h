@@ -1,5 +1,6 @@
 #pragma once
 #include "cBullet.h"
+#include "cProjectileManager.h"
 
 class cPistol
 {
@@ -15,8 +16,10 @@ private:
 	float const mShootCooldownMax = .2f;
 	float mCooldownTimer = mShootCooldownMax;
 
+	// Manager References
+	cProjectileManager& mProjectileManager;
 public:
-	cPistol();
+	cPistol(cProjectileManager& _ProjectileManager);
 	~cPistol() {}
 
 	void Update(float _DeltaTime);

@@ -13,7 +13,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
-	, mPlayerCharacter(_GameWindow)
+	, mPlayerCharacter(mProjectileManager, _GameWindow)
 {
 }
 

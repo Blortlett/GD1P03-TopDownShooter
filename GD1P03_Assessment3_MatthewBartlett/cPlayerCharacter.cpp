@@ -13,8 +13,9 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerCharacter.h"
 
 
-cPlayerCharacter::cPlayerCharacter(sf::RenderWindow& _GameWindow)
+cPlayerCharacter::cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow)
 	: mRenderWindow(_GameWindow)
+	, mPistol(cProjectileManager& _ProjectileManager)
 {
 	// Init player not at position 0,0
 	mPosition = { 300, 300 };

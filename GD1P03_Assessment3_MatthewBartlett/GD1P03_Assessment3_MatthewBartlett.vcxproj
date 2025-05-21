@@ -153,6 +153,7 @@
     <ClCompile Include="cPlayerCharacter.cpp" />
     <ClCompile Include="cPlayerInput.cpp" />
     <ClCompile Include="cPlayerUtils.cpp" />
+    <ClCompile Include="cProjectileManager.cpp" />
     <ClCompile Include="cSharedUtils.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -168,6 +169,7 @@
     <ClInclude Include="cPlayerCharacter.h" />
     <ClInclude Include="cPlayerInput.h" />
     <ClInclude Include="cPlayerUtils.h" />
+    <ClInclude Include="cProjectileManager.h" />
     <ClInclude Include="cSharedUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -17,6 +17,8 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerAnimator.h"
 #include "cPistol.h"
 
+#include "cProjectileManager.h"
+
 #include "cPlayerUtils.h"
 #include "cSharedUtils.h"
 
@@ -61,7 +63,7 @@ private:
 	sf::RenderWindow& mRenderWindow;
 
 public:
-	cPlayerCharacter(sf::RenderWindow& _GameWindow);
+	cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow);
 	~cPlayerCharacter() {}
 	// Draw / Update
 	void Update(float _DeltaSeconds);

@@ -1,6 +1,7 @@
 #include "cPistol.h"
 
-cPistol::cPistol()
+cPistol::cPistol(cProjectileManager& _ProjectileManager)
+	: mProjectileManager(_ProjectileManager)
 {
 }
 

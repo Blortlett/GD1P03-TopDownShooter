@@ -60,6 +60,9 @@
     <Filter Include="GameObjects\Weaponry\Pistol">
       <UniqueIdentifier>{275ec719-2e4c-46d9-b20e-bb0042962753}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameManagers\ProjectileManager">
+      <UniqueIdentifier>{c4b9782d-adbd-410d-ae75-b9d934b4774b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +101,9 @@
     <ClCompile Include="cBullet.cpp">
       <Filter>GameObjects\Weaponry\Projectiles</Filter>
     </ClCompile>
+    <ClCompile Include="cProjectileManager.cpp">
+      <Filter>GameManagers\ProjectileManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cPlayerInput.h">
@@ -135,6 +141,9 @@
     </ClInclude>
     <ClInclude Include="cBullet.h">
       <Filter>GameObjects\Weaponry\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="cProjectileManager.h">
+      <Filter>GameManagers\ProjectileManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

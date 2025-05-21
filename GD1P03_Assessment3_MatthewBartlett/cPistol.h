@@ -8,7 +8,7 @@ private:
 	int mAmmoMax = 12;
 	int mAmmoRemaining = mAmmoMax;
 	std::array<cBullet, 12> mBulletList;
-	int mCurrentBulletIndex = 0;
+	int mCurrentBulletIndex = 11;
 
 	// Shooting & cooldown variables
 	bool mCanShoot = true;

@@ -13,8 +13,10 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerCharacter.h"
 
 
-cPlayerCharacter::cPlayerCharacter()
+cPlayerCharacter::cPlayerCharacter(sf::RenderWindow& _GameWindow)
+	: mRenderWindow(_GameWindow)
 {
+	// Init player not at position 0,0
 	mPosition = { 300, 300 };
 
 	// Debug stuff
@@ -30,7 +32,6 @@ void cPlayerCharacter::HandleInput()
 	mPlayerInputNormalized = { 0, 0 };
 
 	// -= Keyboard Input =-
-	//  - Movement Input -
 	// Interperate up/down input
 	if (mPlayerInput.IsMoveUpInputPressed())
 		mPlayerInputNormalized.y -= 1.f;
@@ -51,11 +52,11 @@ void cPlayerCharacter::HandleInput()
 	}
 }
 
-void cPlayerCharacter::Rotate(sf::RenderWindow& _window)
+void cPlayerCharacter::Rotate()
 {
 	// Get mouse position relative to the window
-	sf::Vector2i mousePixelPos = mPlayerInput.GetMousePosition(_window);
-	sf::Vector2f mouseWorldPos = _window.mapPixelToCoords(mousePixelPos);
+	sf::Vector2i mousePixelPos = mPlayerInput.GetMousePosition(mRenderWindow);
+	sf::Vector2f mouseWorldPos = mRenderWindow.mapPixelToCoords(mousePixelPos);
 
 	// Calculate direction vector from player to mouse
 	sf::Vector2f direction = mouseWorldPos - mPosition;
@@ -90,25 +91,37 @@ void cPlayerCharacter::Move(float _DeltaSeconds)
 	mPosition += mVelocity * _DeltaSeconds;
 }
 
-void cPlayerCharacter::Shoot()
+void cPlayerCharacter::UpdateWeapon()
 {
-	if (mPlayerInput.IsLeftClickPressed())
+	if (mPlayerInput.IsLeftClickPressed() && !mIsShooting)
 	{
-
+		// Cast mouse position
+		sf::Vector2f worldMousePosition = sf::Vector2f(mPlayerInput.GetMousePosition(mRenderWindow));
+		mPistol.FireWeapon(mPosition, worldMousePosition); // fire weapon at mouse position
+		mIsShooting = true;
 	}
+	if (!mPlayerInput.IsLeftClickPressed())
+		mIsShooting = false;
 }
 
-void cPlayerCharacter::Update(sf::RenderWindow& _window, float _DeltaSeconds)
+void cPlayerCharacter::Update(float _DeltaSeconds)
 {
+	// Input
 	HandleInput();
+	// Player Movement
 	Move(_DeltaSeconds);
-	Rotate(_window);
+	Rotate();
+	// Player Weapons
+	UpdateWeapon();
+	mPistol.Update(_DeltaSeconds);
+	// Player animations
 	mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
+	// Debug Update
 	//mDebugRect.setPosition(mPosition);
 }
 
-void cPlayerCharacter::Draw(sf::RenderWindow& _window)
+void cPlayerCharacter::Draw()
 {
-	//_window.draw(mDebugRect);
-	mPlayerUpperBodyAnimator.Draw(_window);
+	//mRenderWindow.draw(mDebugRect);
+	mPlayerUpperBodyAnimator.Draw(mRenderWindow);
 }

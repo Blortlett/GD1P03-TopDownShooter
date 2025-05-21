@@ -24,4 +24,3 @@ void cBullet::Update(sf::RenderWindow& _Window, float _DeltaTime)
 	Move(_DeltaTime);
 	Draw(_Window);
 }
-

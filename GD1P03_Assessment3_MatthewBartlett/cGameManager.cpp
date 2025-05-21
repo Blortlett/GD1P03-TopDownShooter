@@ -13,6 +13,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
+	, mPlayerCharacter(_GameWindow)
 {
 }
 
@@ -22,8 +23,8 @@ void cGameManager::GameTick()
 	RefreshDeltaTime();
 
 	// Update Player
-	mPlayerCharacter.Update(mGameWindow, mDeltaSeconds);
-	mPlayerCharacter.Draw(mGameWindow);
+	mPlayerCharacter.Update(mDeltaSeconds);
+	mPlayerCharacter.Draw();
 }
 
 void cGameManager::RefreshDeltaTime()

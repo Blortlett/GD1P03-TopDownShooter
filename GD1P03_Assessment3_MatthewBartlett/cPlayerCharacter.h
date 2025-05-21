@@ -12,10 +12,14 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 #pragma once
 #include <SFML/Graphics.hpp>
+
 #include "cPlayerInput.h"
 #include "cPlayerAnimator.h"
+#include "cPistol.h"
+
 #include "cPlayerUtils.h"
 #include "cSharedUtils.h"
+
 #include <algorithm>
 #include <cmath>
 
@@ -29,14 +33,17 @@ private:
 	sf::Vector2f mPlayerInputNormalized;
 
 	// Rotation Stuff
-	void Rotate(sf::RenderWindow& _window);
+	void Rotate();
 	// Movement stuff
 	void Move(float _DeltaSeconds);
 	sf::Vector2f mPosition;
 	sf::Vector2f mVelocity;
 
 	// Shooting
-	void Shoot();
+	void UpdateWeapon();
+	cPistol mPistol;
+	bool mIsShooting = false;
+	
 
 
 	// Constant Movement Values
@@ -50,11 +57,14 @@ private:
 	// Debug Stuff
 	sf::RectangleShape mDebugRect;
 
+	// App/Gamemanager Stuff
+	sf::RenderWindow& mRenderWindow;
+
 public:
-	cPlayerCharacter();
+	cPlayerCharacter(sf::RenderWindow& _GameWindow);
 	~cPlayerCharacter() {}
 	// Draw / Update
-	void Update(sf::RenderWindow& _window, float _DeltaSeconds);
-	void Draw(sf::RenderWindow& _window);
+	void Update(float _DeltaSeconds);
+	void Draw();
 
 };

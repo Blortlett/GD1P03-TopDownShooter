@@ -15,7 +15,9 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerInput.h"
 #include "cPlayerAnimator.h"
 #include "cPlayerUtils.h"
+#include "cSharedUtils.h"
 #include <algorithm>
+#include <cmath>
 
 
 class cPlayerCharacter
@@ -32,9 +34,15 @@ private:
 	void Move(float _DeltaSeconds);
 	sf::Vector2f mPosition;
 	sf::Vector2f mVelocity;
+
+	// Shooting
+	void Shoot();
+
+
 	// Constant Movement Values
-	const float PLAYER_ACCELERATION = .1f;
-	const float PLAYER_MAX_VELOCITY = .05f;
+	const float PLAYER_ACCELERATION = 300.f;
+	const float PLAYER_MAX_VELOCITY = 200.f;
+	const float PLAYER_FRICTION = .005f;
 
 	// Animators
 	cPlayerAnimator mPlayerUpperBodyAnimator;

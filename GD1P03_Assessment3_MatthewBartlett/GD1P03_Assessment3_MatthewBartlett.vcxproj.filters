@@ -42,6 +42,24 @@
     <Filter Include="GameManagers\GameManager">
       <UniqueIdentifier>{31e8143a-82b8-41cb-84c7-2dfdd955e158}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{21801c90-4932-48c2-a832-bbee37f82777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\PlayerUtils">
+      <UniqueIdentifier>{f37d5356-c327-499f-96e2-e46a8a67c38e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\SharedUtils">
+      <UniqueIdentifier>{6e044f83-fcbb-4830-884d-574e073371d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Weaponry">
+      <UniqueIdentifier>{ebd61dd6-25df-4f6a-875c-a48fc8a0ab09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Weaponry\Projectiles">
+      <UniqueIdentifier>{26404816-368c-42d0-8f8f-bf843587c6a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Weaponry\Pistol">
+      <UniqueIdentifier>{275ec719-2e4c-46d9-b20e-bb0042962753}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -52,9 +70,6 @@
     </ClCompile>
     <ClCompile Include="cPlayerCharacter.cpp">
       <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="cPlayerUtils.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="cAnimationBase.cpp">
       <Filter>Animator\Animations</Filter>
@@ -71,6 +86,18 @@
     <ClCompile Include="cApplicationManager.cpp">
       <Filter>GameManagers\ApplicationManager</Filter>
     </ClCompile>
+    <ClCompile Include="cPlayerUtils.cpp">
+      <Filter>Utils\PlayerUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="cSharedUtils.cpp">
+      <Filter>Utils\SharedUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="cPistol.cpp">
+      <Filter>GameObjects\Weaponry\Pistol</Filter>
+    </ClCompile>
+    <ClCompile Include="cBullet.cpp">
+      <Filter>GameObjects\Weaponry\Projectiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cPlayerInput.h">
@@ -78,9 +105,6 @@
     </ClInclude>
     <ClInclude Include="cPlayerCharacter.h">
       <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="cPlayerUtils.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="cAnimationBase.h">
       <Filter>Animator\Animations</Filter>
@@ -99,6 +123,18 @@
     </ClInclude>
     <ClInclude Include="cApplicationManager.h">
       <Filter>GameManagers\ApplicationManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerUtils.h">
+      <Filter>Utils\PlayerUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="cSharedUtils.h">
+      <Filter>Utils\SharedUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="cPistol.h">
+      <Filter>GameObjects\Weaponry\Pistol</Filter>
+    </ClInclude>
+    <ClInclude Include="cBullet.h">
+      <Filter>GameObjects\Weaponry\Projectiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

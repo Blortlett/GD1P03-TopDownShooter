@@ -30,6 +30,7 @@ void cPlayerCharacter::HandleInput()
 	mPlayerInputNormalized = { 0, 0 };
 
 	// -= Keyboard Input =-
+	//  - Movement Input -
 	// Interperate up/down input
 	if (mPlayerInput.IsMoveUpInputPressed())
 		mPlayerInputNormalized.y -= 1.f;
@@ -79,11 +80,22 @@ void cPlayerCharacter::Move(float _DeltaSeconds)
 {
 	// Apply input to move velocity
 	mVelocity += mPlayerInputNormalized * PLAYER_ACCELERATION * _DeltaSeconds;
+	// Apply Friction to velocity when no input
+	if (mPlayerInputNormalized == sf::Vector2f(0,0))
+		mVelocity = mVelocity * std::pow(PLAYER_FRICTION, _DeltaSeconds);
 	// Clamp Move velocity
 	mVelocity.x = std::min(std::max(mVelocity.x, -1 * PLAYER_MAX_VELOCITY), PLAYER_MAX_VELOCITY);
 	mVelocity.y = std::min(std::max(mVelocity.y, -1 * PLAYER_MAX_VELOCITY), PLAYER_MAX_VELOCITY);
 	// Apply Velocity to position
-	mPosition += mVelocity;
+	mPosition += mVelocity * _DeltaSeconds;
+}
+
+void cPlayerCharacter::Shoot()
+{
+	if (mPlayerInput.IsLeftClickPressed())
+	{
+
+	}
 }
 
 void cPlayerCharacter::Update(sf::RenderWindow& _window, float _DeltaSeconds)

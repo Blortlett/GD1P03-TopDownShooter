@@ -30,8 +30,8 @@ private:
 	sf::RenderWindow& mGameWindow;
 
 	// Player Character
-	cPlayerCharacter mPlayerCharacter;
 	cCameraManager mCameraManager;
+	cPlayerCharacter mPlayerCharacter;
 
 	// Other managers
 	cProjectileManager mProjectileManager;
@@ -47,7 +47,7 @@ public:
 	void GameTick();
 
 
-
+	bool mIsDebugModeActive = true;
 
 
 

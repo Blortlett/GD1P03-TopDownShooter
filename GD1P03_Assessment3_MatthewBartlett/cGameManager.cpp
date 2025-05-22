@@ -13,11 +13,11 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
-	, mPlayerCharacter(mProjectileManager, _GameWindow, mCameraManager.GetCameraView())
 	, mCameraManager(mPlayerCharacter, _GameWindow)
+	, mPlayerCharacter(mProjectileManager, _GameWindow, mCameraManager.GetCameraView())
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
-	, mEditorManager(_GameWindow, mLevelManager)
+	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
 {
 }
 
@@ -39,6 +39,12 @@ void cGameManager::GameTick()
 	// Update ProjectileManager
 	mProjectileManager.Update(mDeltaSeconds);
 
+	// Debug Mode
+	if (mIsDebugModeActive)
+	{
+		mEditorManager.UpdateCursor();
+		mEditorManager.DrawCursorToScreen(mGameWindow);
+	}
 }
 
 void cGameManager::RefreshDeltaTime()

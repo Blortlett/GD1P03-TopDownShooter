@@ -19,7 +19,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 class cEditorManager {
 public:
     // Constructor
-    cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _LevelManager);
+    cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _LevelManager, sf::View _PlayerCameraView);
     // Tool Types
     enum class ToolType {
         ToolMode_FullWall,
@@ -32,12 +32,14 @@ public:
     void CompleteUseTool();
 
     // Updateables
-    void UpdateCursor(sf::RenderWindow& window, sf::Vector2f mousePos);
+    void UpdateCursor();
     void DrawCursorToScreen(sf::RenderWindow& window);
 
 private:
+    // Player stuff
     cPlayerInput mPlayerInput;
     sf::RenderWindow& mGameWindow;
+    sf::View& mCameraView;
 
     // Current Tool Holder
     cBaseDrawTool* mCurrentTool;

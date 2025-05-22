@@ -19,7 +19,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 class cEditorManager {
 public:
     // Constructor
-    cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _LevelManager, sf::View _PlayerCameraView);
+    cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _LevelManager, sf::View& _PlayerCameraView);
     // Tool Types
     enum class ToolType {
         ToolMode_FullWall,

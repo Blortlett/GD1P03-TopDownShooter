@@ -17,7 +17,7 @@ cFullWallDrawTool::cFullWallDrawTool(cLevelManager& _LevelManager)
 {
 	mRectShape.setFillColor(sf::Color::Transparent);
 	mRectShape.setOutlineColor(sf::Color::Red);
-	mRectShape.setOutlineThickness(3.f);
+	mRectShape.setOutlineThickness(1.f);
 }
 
 // Mouse Clicked Function

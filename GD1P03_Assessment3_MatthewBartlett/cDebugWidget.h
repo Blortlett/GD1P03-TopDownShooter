@@ -29,6 +29,7 @@ private:
 	void UpdateWidget();
 public:
 	cDebugWidget(cBoxCollider& boxCollider);
+	cDebugWidget(cBoxCollider& boxCollider, sf::Color _Color); // allows user to set the color
 	~cDebugWidget();
 
 	void DrawWidget(sf::RenderWindow& window);

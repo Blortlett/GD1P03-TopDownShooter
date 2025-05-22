@@ -11,7 +11,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cEditorManager.h"
 
-cEditorManager::cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _LevelManager, sf::View _PlayerCameraView)
+cEditorManager::cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _LevelManager, sf::View& _PlayerCameraView)
 	: mGameWindow(_GameWindow)
 	, mFullWallTool(_LevelManager)
 	, mCameraView(_PlayerCameraView)
@@ -37,14 +37,13 @@ void cEditorManager::SetTool(ToolType type)
 void cEditorManager::UpdateCursor()
 {
 	sf::Vector2i mouseScreenPosition = sf::Mouse::getPosition(mGameWindow);
-	//sf::Vector2f worldMousePosition = mGameWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);
-	std::cout << "MousePosi: " << mouseScreenPosition.x << "X" << mouseScreenPosition.y << std::endl;
-	//std::cout << "MousePosf: " << worldMousePosition.x << "X" << worldMousePosition.y << std::endl;
+	sf::Vector2f worldMousePosition = mGameWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);
+
 
 	// Left Click
 	if (mPlayerInput.IsLeftClickPressed() && mGameWindow.hasFocus())
 	{
-		//UseTool(worldMousePosition);
+		UseTool(worldMousePosition);
 		mIsDrawing = true;
 	}
 	else
@@ -56,15 +55,15 @@ void cEditorManager::UpdateCursor()
 		}
 		else
 		{
-			//mCurrentTool->UpdateCursor(worldMousePosition);
+			mCurrentTool->UpdateCursor(worldMousePosition);
 		}
 	}
 }
 
 void cEditorManager::UseTool(sf::Vector2f& toolPosition)
 {
-	toolPosition.x += mGridSize;
-	toolPosition.y += mGridSize;
+	//toolPosition.x += mGridSize;
+	//toolPosition.y += mGridSize;
 	mCurrentTool->UseTool(toolPosition);
 }
 

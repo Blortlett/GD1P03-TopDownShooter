@@ -22,6 +22,17 @@ cDebugWidget::cDebugWidget(cBoxCollider& boxCollider)
 	mColliderGraphic.setOutlineThickness(2);
 }
 
+cDebugWidget::cDebugWidget(cBoxCollider& boxCollider, sf::Color _Color)
+	: mBoxCollider(boxCollider)
+{
+	mColliderGraphic.setSize(boxCollider.GetBounds().size);
+	mColliderGraphic.setPosition(boxCollider.GetPosition());
+	mColliderGraphic.setOrigin(boxCollider.GetBounds().size / 2.0f);
+	mColliderGraphic.setFillColor(sf::Color::Transparent);
+	mColliderGraphic.setOutlineColor(_Color);
+	mColliderGraphic.setOutlineThickness(2);
+}
+
 cDebugWidget::~cDebugWidget()
 {
 }

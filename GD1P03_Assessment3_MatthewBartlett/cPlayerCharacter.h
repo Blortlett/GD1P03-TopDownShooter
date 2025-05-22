@@ -41,7 +41,7 @@ private:
 	sf::Vector2f mPosition;
 	sf::Vector2f mVelocity;
 	// Constant Movement Values
-	const float PLAYER_ACCELERATION = 300.f;
+	const float PLAYER_ACCELERATION = 700.f;
 	const float PLAYER_MAX_VELOCITY = 200.f;
 	const float PLAYER_FRICTION = .005f;
 

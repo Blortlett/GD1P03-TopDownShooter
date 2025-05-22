@@ -16,7 +16,6 @@ void cCameraManager::Update(float _DeltaSeconds)
     sf::Vector2f currentCenter = mView.getCenter();
     sf::Vector2f targetCenter = mPlayerCharacter.GetPosition();
     sf::Vector2f newCenter = currentCenter + (targetCenter - currentCenter) * mFollowSpeed * _DeltaSeconds;
-    std::cout << "Player pos x: " << targetCenter.x << "  pos y: " << targetCenter.y << std::endl;
 
     // Update view position
     mView.setCenter(newCenter);

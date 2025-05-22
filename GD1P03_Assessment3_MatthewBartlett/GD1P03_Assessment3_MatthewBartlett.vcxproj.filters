@@ -72,8 +72,38 @@
     <Filter Include="GameManagers\CameraManager">
       <UniqueIdentifier>{c7523b9b-18ae-4c42-a3b8-a3ab3472ec04}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Levels">
+    <Filter Include="GameObjects\Components">
+      <UniqueIdentifier>{7bd67768-e6ff-45ed-b419-ed3c8f8f9354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Components\BoxCollider">
+      <UniqueIdentifier>{0aec314a-eea5-4586-b748-c3ea949bfbe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Components\DebugWidget">
+      <UniqueIdentifier>{c3614be9-caf0-450c-b92c-1c1a16964d06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level">
       <UniqueIdentifier>{c617be96-cca9-4b91-be8f-a81f2a6825b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelEditor">
+      <UniqueIdentifier>{7ec36a21-ab1d-499b-b228-48146f0b5b46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Levels">
+      <UniqueIdentifier>{07f4373d-509e-452b-b8b3-9345074720a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Levels\Level1">
+      <UniqueIdentifier>{3bf406f1-6ce5-4b0a-97f8-fd330d7ae531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManagers\LevelManager">
+      <UniqueIdentifier>{a7e685b9-9e9f-4a01-9b90-6da3506e79fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelEditor\Tools">
+      <UniqueIdentifier>{13d96aa4-4ccc-44f9-a2ea-921401fa78b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelEditor\Tools\cFullWallDrawTool">
+      <UniqueIdentifier>{9b8ab1da-7633-4643-8637-b0167447fdfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelEditor\Tools\cHalfWallDrawTool">
+      <UniqueIdentifier>{30c8e70d-ac38-41fe-b183-6c1124c1a437}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -119,8 +149,29 @@
     <ClCompile Include="cCameraManager.cpp">
       <Filter>GameManagers\CameraManager</Filter>
     </ClCompile>
+    <ClCompile Include="cBoxCollider.cpp">
+      <Filter>GameObjects\Components\BoxCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="cDebugWidget.cpp">
+      <Filter>GameObjects\Components\DebugWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="cFullWallDrawTool.cpp">
+      <Filter>Level\LevelEditor\Tools\cFullWallDrawTool</Filter>
+    </ClCompile>
+    <ClCompile Include="cBaseLevel.cpp">
+      <Filter>Level\Levels</Filter>
+    </ClCompile>
     <ClCompile Include="cLevel1.cpp">
-      <Filter>Levels</Filter>
+      <Filter>Level\Levels\Level1</Filter>
+    </ClCompile>
+    <ClCompile Include="cLevelManager.cpp">
+      <Filter>GameManagers\LevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cBaseDrawTool.cpp">
+      <Filter>Level\LevelEditor\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="cEditorManager.cpp">
+      <Filter>Level\LevelEditor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,8 +217,29 @@
     <ClInclude Include="cCameraManager.h">
       <Filter>GameManagers\CameraManager</Filter>
     </ClInclude>
+    <ClInclude Include="cBoxCollider.h">
+      <Filter>GameObjects\Components\BoxCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="cDebugWidget.h">
+      <Filter>GameObjects\Components\DebugWidget</Filter>
+    </ClInclude>
+    <ClInclude Include="cFullWallDrawTool.h">
+      <Filter>Level\LevelEditor\Tools\cFullWallDrawTool</Filter>
+    </ClInclude>
+    <ClInclude Include="cBaseLevel.h">
+      <Filter>Level\Levels</Filter>
+    </ClInclude>
     <ClInclude Include="cLevel1.h">
-      <Filter>Levels</Filter>
+      <Filter>Level\Levels\Level1</Filter>
+    </ClInclude>
+    <ClInclude Include="cLevelManager.h">
+      <Filter>GameManagers\LevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cBaseDrawTool.h">
+      <Filter>Level\LevelEditor\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="cEditorManager.h">
+      <Filter>Level\LevelEditor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

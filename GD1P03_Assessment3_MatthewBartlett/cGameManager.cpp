@@ -16,6 +16,8 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mPlayerCharacter(mProjectileManager, _GameWindow, mCameraManager.GetCameraView())
 	, mCameraManager(mPlayerCharacter, _GameWindow)
 	, mProjectileManager(_GameWindow)
+	, mLevelManager(_GameWindow)
+	, mEditorManager(_GameWindow, mLevelManager)
 {
 }
 
@@ -28,7 +30,7 @@ void cGameManager::GameTick()
 	mCameraManager.Update(mDeltaSeconds);
 
 	// Draw Level
-	mLevel1.Draw(mGameWindow);
+	mLevelManager.Draw();
 
 	// Update Player
 	mPlayerCharacter.Update(mDeltaSeconds);

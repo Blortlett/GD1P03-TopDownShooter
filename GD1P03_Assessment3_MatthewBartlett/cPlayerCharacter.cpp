@@ -81,14 +81,16 @@ void cPlayerCharacter::Rotate()
 
 void cPlayerCharacter::Move(float _DeltaSeconds)
 {
+	// Apply Friction to velocity when no input
+	mVelocity = mVelocity * std::pow(PLAYER_FRICTION, _DeltaSeconds);
+
 	// Apply input to move velocity
 	mVelocity += mPlayerInputNormalized * PLAYER_ACCELERATION * _DeltaSeconds;
-	// Apply Friction to velocity when no input
-	if (mPlayerInputNormalized == sf::Vector2f(0,0))
-		mVelocity = mVelocity * std::pow(PLAYER_FRICTION, _DeltaSeconds);
+
 	// Clamp Move velocity
 	mVelocity.x = std::min(std::max(mVelocity.x, -1 * PLAYER_MAX_VELOCITY), PLAYER_MAX_VELOCITY);
 	mVelocity.y = std::min(std::max(mVelocity.y, -1 * PLAYER_MAX_VELOCITY), PLAYER_MAX_VELOCITY);
+
 	// Apply Velocity to position
 	mPosition += mVelocity * _DeltaSeconds;
 }

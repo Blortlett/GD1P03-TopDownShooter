@@ -1,16 +1,15 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "cBaseLevel.h"
 
-class cLevel1
+class cLevel1 : public cBaseLevel
 {
 private:
 	sf::Texture mBackgroundTex;
 	sf::Sprite* mBackgroundSprite;
 
 public:
-	cLevel1();
-	~cLevel1() {}
+	cLevel1(sf::RenderWindow& _Window);
+	~cLevel1();
 
-	void Draw(sf::RenderWindow& _Window);
+	void Draw() override;
 };

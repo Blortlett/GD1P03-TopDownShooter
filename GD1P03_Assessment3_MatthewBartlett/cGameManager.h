@@ -14,7 +14,8 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerCharacter.h"
 #include "cCameraManager.h"
 #include "cProjectileManager.h"
-#include "cLevel1.h" // TEST LEVEL CAN REMOVE!!
+#include "cLevelManager.h"
+#include "cEditorManager.h"
 
 class cGameManager
 {
@@ -34,7 +35,8 @@ private:
 
 	// Other managers
 	cProjectileManager mProjectileManager;
-	cLevel1 mLevel1;
+	cLevelManager mLevelManager;
+	cEditorManager mEditorManager;
 
 public:
 	// Constructors

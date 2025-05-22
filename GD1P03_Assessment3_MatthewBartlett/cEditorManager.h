@@ -11,10 +11,13 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 
 #pragma once
-#include "cLevelManager.h"
+//#include "cLevelManager.h"
 #include "cPlayerInput.h"
+
 // Draw Tool Includes
 #include "cFullWallDrawTool.h"
+
+class cLevelManager;
 
 class cEditorManager {
 public:

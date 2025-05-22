@@ -1,8 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "cBoxCollider.h"
-#include "cDebugWidget.h"
+//#include "cBoxCollider.h"
+//#include "cDebugWidget.h"
+
+class cBoxCollider;
+class cDebugWidget;
 
 class cBaseLevel
 {

@@ -1,4 +1,5 @@
 #include "cCameraManager.h"
+#include "cPlayerCharacter.h"
 
 cCameraManager::cCameraManager(cPlayerCharacter& _PlayerCharacter, sf::RenderWindow& _RenderWindow)
 	: mPlayerCharacter(_PlayerCharacter)

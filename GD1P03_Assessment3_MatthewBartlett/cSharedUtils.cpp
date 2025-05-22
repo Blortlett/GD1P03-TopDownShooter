@@ -1,4 +1,5 @@
 #include "cSharedUtils.h"
+#include <iostream>
 
 cSharedUtils::cSharedUtils()
 {

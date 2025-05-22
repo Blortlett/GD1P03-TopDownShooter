@@ -10,7 +10,9 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
-#include "cPlayerCharacter.h"
+#include <SFML/Graphics.hpp>
+//#include "cPlayerCharacter.h"
+class cPlayerCharacter;
 
 class cCameraManager
 {

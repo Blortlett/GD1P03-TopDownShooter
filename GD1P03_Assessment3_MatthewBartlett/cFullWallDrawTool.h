@@ -10,9 +10,9 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
-#include "cBoxCollider.h"
 #include "cBaseDrawTool.h"
-#include "cLevelManager.h"
+
+class cLevelManager;
 
 class cFullWallDrawTool : public cBaseDrawTool
 {

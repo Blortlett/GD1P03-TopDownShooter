@@ -17,14 +17,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerAnimator.h"
 #include "cPistol.h"
 
-#include "cProjectileManager.h"
-
-#include "cPlayerUtils.h"
-#include "cSharedUtils.h"
-
-#include <algorithm>
-#include <cmath>
-
+class cProjectileManager;
 
 class cPlayerCharacter
 {

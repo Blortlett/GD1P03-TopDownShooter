@@ -10,6 +10,7 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cDebugWidget.h"
+#include "cBoxCollider.h"
 
 cDebugWidget::cDebugWidget(cBoxCollider& boxCollider)
 	: mBoxCollider(boxCollider)
@@ -19,7 +20,7 @@ cDebugWidget::cDebugWidget(cBoxCollider& boxCollider)
 	mColliderGraphic.setOrigin(boxCollider.GetBounds().size / 2.0f);
 	mColliderGraphic.setFillColor(sf::Color::Transparent);
 	mColliderGraphic.setOutlineColor(sf::Color::Red);
-	mColliderGraphic.setOutlineThickness(2);
+	mColliderGraphic.setOutlineThickness(.5f);
 }
 
 cDebugWidget::cDebugWidget(cBoxCollider& boxCollider, sf::Color _Color)
@@ -30,7 +31,7 @@ cDebugWidget::cDebugWidget(cBoxCollider& boxCollider, sf::Color _Color)
 	mColliderGraphic.setOrigin(boxCollider.GetBounds().size / 2.0f);
 	mColliderGraphic.setFillColor(sf::Color::Transparent);
 	mColliderGraphic.setOutlineColor(_Color);
-	mColliderGraphic.setOutlineThickness(2);
+	mColliderGraphic.setOutlineThickness(.5f);
 }
 
 cDebugWidget::~cDebugWidget()

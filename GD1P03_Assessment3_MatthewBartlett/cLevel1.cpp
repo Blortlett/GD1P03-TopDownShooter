@@ -20,4 +20,5 @@ cLevel1::~cLevel1()
 void cLevel1::Draw()
 {
 	mRenderWindow.draw(*mBackgroundSprite);
+	DebugDraw();
 }

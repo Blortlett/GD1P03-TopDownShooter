@@ -10,6 +10,8 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cFullWallDrawTool.h"
+#include "cBoxCollider.h"
+#include "cLevelManager.h"
 
 
 cFullWallDrawTool::cFullWallDrawTool(cLevelManager& _LevelManager)
@@ -17,7 +19,7 @@ cFullWallDrawTool::cFullWallDrawTool(cLevelManager& _LevelManager)
 {
 	mRectShape.setFillColor(sf::Color::Transparent);
 	mRectShape.setOutlineColor(sf::Color::Red);
-	mRectShape.setOutlineThickness(1.f);
+	mRectShape.setOutlineThickness(.5f);
 }
 
 // Mouse Clicked Function

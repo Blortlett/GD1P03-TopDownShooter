@@ -11,8 +11,9 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "cBoxCollider.h"
-#include "cLevelManager.h"
+//#include "cLevelManager.h"
+class cLevelManager;
+
 
 class cBaseDrawTool
 {

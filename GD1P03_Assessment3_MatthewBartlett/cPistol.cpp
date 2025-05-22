@@ -1,4 +1,5 @@
 #include "cPistol.h"
+#include "cProjectileManager.h"
 
 cPistol::cPistol(cProjectileManager& _ProjectileManager)
 	: mProjectileManager(_ProjectileManager)
@@ -21,9 +22,6 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 	// Returns for if gun is not in fire state
 	if (!mCanShoot) return; // Don't bother if weapon is on cooldown 
 	if (mCurrentBulletIndex < 0) return; // return for now, add empty clip sound here later tho
-
-	// Debug
-	std::cout << "Gun says: Bang Bang!" << std::endl;
 
 	// Fire Bullet here
 	sf::Vector2f ShootTrajectory = GetShootTrajectory(_FirePosition, _AimPosition);

@@ -1,4 +1,5 @@
 #include "cBaseLevel.h"
+#include "cDebugWidget.h"
 
 cBaseLevel::cBaseLevel(sf::RenderWindow& _Window)
 	: mRenderWindow(_Window)

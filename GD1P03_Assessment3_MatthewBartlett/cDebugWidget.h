@@ -10,9 +10,10 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
-#include "cBoxCollider.h"
+//#include "cBoxCollider.h"
 #include <SFML/Graphics.hpp>
-#include "cApplicationManager.h"
+
+class cBoxCollider;
 
 class cDebugWidget
 {

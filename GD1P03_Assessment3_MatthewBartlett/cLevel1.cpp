@@ -5,7 +5,7 @@ cLevel1::cLevel1(sf::RenderWindow& _Window)
 {
 	if (!mBackgroundTex.loadFromFile("assets/Levels/Level1.png"))
 	{
-		std::cout << "Failed to load Level1.png";
+		std::cout << "Failed to load background : Level1.png";
 	}
 
 	mBackgroundSprite = new sf::Sprite(mBackgroundTex);

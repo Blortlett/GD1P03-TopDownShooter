@@ -30,6 +30,7 @@ private:
 	sf::RenderWindow& mGameWindow;
 
 	// Player Character
+	cPlayerInput mPlayerInput;
 	cCameraManager mCameraManager;
 	cPlayerCharacter mPlayerCharacter;
 
@@ -37,6 +38,9 @@ private:
 	cProjectileManager mProjectileManager;
 	cLevelManager mLevelManager;
 	cEditorManager mEditorManager;
+
+	void OnSaveLevel();
+	void OnLoadLevel();
 
 public:
 	// Constructors

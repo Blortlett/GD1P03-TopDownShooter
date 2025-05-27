@@ -62,8 +62,6 @@ void cEditorManager::UpdateCursor()
 
 void cEditorManager::UseTool(sf::Vector2f& toolPosition)
 {
-	//toolPosition.x += mGridSize;
-	//toolPosition.y += mGridSize;
 	mCurrentTool->UseTool(toolPosition);
 }
 

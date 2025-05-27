@@ -65,3 +65,13 @@ sf::Vector2i cPlayerInput::GetMousePosition(sf::RenderWindow& window) const
 {
     return sf::Mouse::getPosition(window);
 }
+
+bool cPlayerInput::IsSaveButtonPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Home);
+}
+
+bool cPlayerInput::IsLoadButtonPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::End);
+}

@@ -16,6 +16,7 @@ class cPlayerInput
 {
 public:
     cPlayerInput();
+    // Gameplay inputs
     bool IsSpacebarInputPressed() const;
     bool IsMoveUpInputPressed() const;
     bool IsMoveDownInputPressed() const;
@@ -24,6 +25,11 @@ public:
     bool IsLeftClickPressed() const;
     bool IsRightClickPressed() const;
     bool IsPauseButtonPressed() const;
-    bool IsDebugButtonPressed() const;
     sf::Vector2i GetMousePosition(sf::RenderWindow& window) const;
+
+
+    // Meta Inputs
+    bool IsDebugButtonPressed() const;
+    bool IsSaveButtonPressed() const;
+    bool IsLoadButtonPressed() const;
 };

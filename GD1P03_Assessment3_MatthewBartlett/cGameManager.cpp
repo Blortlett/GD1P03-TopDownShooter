@@ -14,7 +14,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
 	, mCameraManager(mPlayerCharacter, _GameWindow)
-	, mPlayerCharacter(mProjectileManager, _GameWindow, mCameraManager.GetCameraView())
+	, mPlayerCharacter(mProjectileManager, _GameWindow, mCameraManager.GetCameraView(), mPlayerInput)
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
@@ -45,6 +45,10 @@ void cGameManager::GameTick()
 		mEditorManager.UpdateCursor();
 		mEditorManager.DrawCursorToScreen(mGameWindow);
 	}
+
+	// Save/Load Level Detection
+	OnSaveLevel();
+	OnLoadLevel();
 }
 
 void cGameManager::RefreshDeltaTime()
@@ -52,4 +56,20 @@ void cGameManager::RefreshDeltaTime()
 	// Get & store Delta Seconds
 	mDeltaTime = mClock.restart();
 	mDeltaSeconds = mDeltaTime.asSeconds();
+}
+
+void cGameManager::OnSaveLevel()
+{
+	if (mPlayerInput.IsSaveButtonPressed())
+	{
+		mLevelManager.SaveLevel();
+	}
+}
+
+void cGameManager::OnLoadLevel()
+{
+	if (mPlayerInput.IsLoadButtonPressed())
+	{
+		mLevelManager.LoadLevel();
+	}
 }

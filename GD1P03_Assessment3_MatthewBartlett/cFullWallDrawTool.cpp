@@ -33,22 +33,33 @@ void cFullWallDrawTool::UseTool(sf::Vector2f& mousePos)
 	
 	// Reset tool size after use tool complete
 	(mRectShape).setSize(NewShapeSize);
+
+	std::cout << "Rect size x: " << NewShapeSize.x << " |   y: " << NewShapeSize.y << std::endl;
 }
 
 // Mouse released Function
 void cFullWallDrawTool::CompleteUseTool()
 {
-	// bounds to pass in
-	sf::FloatRect bounds;
-	bounds = sf::FloatRect(
-		mRectShape.getPosition() + (mRectShape.getLocalBounds().size / 2.0f),
-		mRectShape.getLocalBounds().size
-	);
+	// calculate new position to pass into collider bounds
+	sf::Vector2f NewColliderPosition = mRectShape.getPosition() + (mRectShape.getLocalBounds().size / 2.0f);
+	// Collider is changing position and I have no idea why... hacky fix for the homies below
+	NewColliderPosition.x -= .5f;
+	NewColliderPosition.y -= .5f;
+	// calculate new size to pass into collider bounds
+	sf::Vector2f NewColliderSize = mRectShape.getGlobalBounds().size;
+	// Collider is changing size and I have no idea why... hacky fix for the homies below
+	NewColliderSize.x -= 1.f;
+	NewColliderSize.y -= 1.f;
+
+	// bounds to pass in to new Collider
+	sf::FloatRect bounds = sf::FloatRect(NewColliderPosition, NewColliderSize);
+
+	std::cout << "Completed tool size x: " << bounds.size.x << " |   y: " << bounds.size.y << std::endl;
 
 	// Create cBoxCollider
 	cBoxCollider* newCollider = new cBoxCollider(bounds);
 
-	// reset size on complete
+	// reset cursor square size on complete
 	mRectShape.setSize(mRectSize);
 
 	// provide mLevelManager with new Collider

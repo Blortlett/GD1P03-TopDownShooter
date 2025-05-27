@@ -12,10 +12,11 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 #pragma once
 #include <SFML/Graphics.hpp>
-
 #include "cPlayerInput.h"
+#include "cBoxCollider.h"
 #include "cPlayerAnimator.h"
 #include "cPistol.h"
+#include "cDebugWidget.h"
 
 class cProjectileManager;
 
@@ -24,7 +25,7 @@ class cPlayerCharacter
 private:
 	// Input stuff
 	void HandleInput();
-	cPlayerInput mPlayerInput;
+	cPlayerInput& mPlayerInput;
 	sf::Vector2f mPlayerInputNormalized;
 
 	// Rotation Stuff
@@ -46,21 +47,27 @@ private:
 	// Animators
 	cPlayerAnimator mPlayerUpperBodyAnimator;
 
+	// Collision
+	sf::FloatRect mColliderBounds;
+	cBoxCollider mBoxCollider;
+
 	// App/Gamemanager Stuff
 	sf::RenderWindow& mRenderWindow;
 	// Camera Reference
 	sf::View& mCameraView;
 
 	// Debug Stuff
-	sf::RectangleShape mDebugRect;
+	cDebugWidget mDebugWidget;
 
 public:
-	cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera);
+	cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput);
 	~cPlayerCharacter() {}
+
 	// Draw / Update
 	void Update(float _DeltaSeconds);
 	void Draw();
 
 	// Getters
 	sf::Vector2f GetPosition() { return mPosition; }
+	cBoxCollider& GetCollider() { return mBoxCollider; }
 };

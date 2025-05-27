@@ -1,5 +1,6 @@
 #include "cBaseLevel.h"
 #include "cDebugWidget.h"
+#include "cFileInterface.h"
 
 cBaseLevel::cBaseLevel(sf::RenderWindow& _Window)
 	: mRenderWindow(_Window)
@@ -33,7 +34,7 @@ void cBaseLevel::AddFullWallToList(cBoxCollider* _FullWall)
 	mFullWallColliders.push_back(_FullWall);
     cDebugWidget* DebugWidget = new cDebugWidget(*_FullWall); // Create Debug Widget
     // Add widget to widget list for drawing later
-    mDebugGFXFullWall.push_back(DebugWidget);
+    mDebugGFXFullWall.push_back(DebugWidget); // this is somewhat stupid, debug widget could be an optional member of the collider class
 }
 
 void cBaseLevel::AddHalfWallToList(cBoxCollider* _HalfWall)
@@ -80,4 +81,21 @@ void cBaseLevel::CleanupDebugWidgets()
         delete widget;
     }
     mDebugGFXHalfWall.clear();
+}
+
+std::vector<cBoxCollider*>& cBaseLevel::GetFullWallColliderList()
+{
+    return mFullWallColliders;
+}
+
+void cBaseLevel::SaveLevel(cFileInterface& _FileInterface)
+{
+    // Get file interface to save level here
+    _FileInterface.SaveLevelDialog();
+}
+
+void cBaseLevel::LoadLevel(cFileInterface& _FileInterface)
+{
+    // Get file interface to load level here
+    _FileInterface.LoadLevelDialog();
 }

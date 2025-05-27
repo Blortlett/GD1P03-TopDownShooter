@@ -1,16 +1,24 @@
 #pragma once
 #include "cLevel1.h"
+#include "cFileInterface.h"
+// forward declarations
+class cPlayerCharacter;
+
 
 class cLevelManager
 {
 private:
+	// Level List
+	cLevel1 mLevel1;
+	
 	//Current Level
 	cBaseLevel* mCurrentLevel;
-	// Level List
-	cLevel1 mLevel;
 
 	// Game window reference
 	sf::RenderWindow& mGameWindow;  // Not sure we will need to save this
+	
+	// Loading/Saving object
+	cFileInterface mFileInterface;
 
 public:
 	// 'Structaz
@@ -21,8 +29,14 @@ public:
 	void Update();
 	void Draw();
 
+	// Collisions
+	void CheckPlayerWallCollisions(cPlayerCharacter& _Player);
 
-	// Level building functions // player probably won't know about these
+	// Level Editing
 	void AddFullWall(cBoxCollider* _FullWallCollider);
 	void AddHalfWall(cBoxCollider* _HalfWallCollider);
+
+	// Save / Load level data
+	void SaveLevel();
+	void LoadLevel();
 };

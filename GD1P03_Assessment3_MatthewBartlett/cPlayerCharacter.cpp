@@ -13,19 +13,16 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerCharacter.h"
 
 
-cPlayerCharacter::cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera)
+cPlayerCharacter::cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput)
 	: mRenderWindow(_GameWindow)
 	, mPistol(_ProjectileManager)
 	, mCameraView(_PlayerCamera)
+	, mPlayerInput(_PlayerInput)
+	  // Collider stuff
+	, mColliderBounds({ 0.f, 0.f }, { 44.f, 44.f })
+	, mBoxCollider(mColliderBounds)
+	, mDebugWidget(mBoxCollider)
 {
-	// Init player not at position 0,0
-	//mPosition = { 300, 300 };
-
-	// Debug stuff
-	mDebugRect.setPosition(mPosition);
-	mDebugRect.setFillColor(sf::Color::Green);
-	mDebugRect.setSize(sf::Vector2f(30, 30));
-	mDebugRect.setOrigin(mDebugRect.getSize() / 2.f);
 }
 
 void cPlayerCharacter::HandleInput()
@@ -74,9 +71,6 @@ void cPlayerCharacter::Rotate()
 
 	// Apply rotation to animator (assumes cPlayerAnimator has a SetRotation method)
 	mPlayerUpperBodyAnimator.SetRotation(angle);
-
-	// Apply rotation to debug rectangle for testing
-	mDebugRect.setRotation(angle);
 }
 
 void cPlayerCharacter::Move(float _DeltaSeconds)
@@ -93,6 +87,9 @@ void cPlayerCharacter::Move(float _DeltaSeconds)
 
 	// Apply Velocity to position
 	mPosition += mVelocity * _DeltaSeconds;
+	
+	// Apply position to BoxCollider
+	mBoxCollider.MoveColliderPosition(mPosition);
 }
 
 void cPlayerCharacter::UpdateWeapon()
@@ -127,6 +124,6 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 
 void cPlayerCharacter::Draw()
 {
-	//mRenderWindow.draw(mDebugRect);
 	mPlayerUpperBodyAnimator.Draw(mRenderWindow);
+	mDebugWidget.DrawWidget(mRenderWindow);
 }

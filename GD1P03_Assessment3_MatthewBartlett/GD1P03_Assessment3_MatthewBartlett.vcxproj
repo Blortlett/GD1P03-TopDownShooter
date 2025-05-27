@@ -153,6 +153,7 @@
     <ClCompile Include="cCameraManager.cpp" />
     <ClCompile Include="cDebugWidget.cpp" />
     <ClCompile Include="cEditorManager.cpp" />
+    <ClCompile Include="cFileInterface.cpp" />
     <ClCompile Include="cFullWallDrawTool.cpp" />
     <ClCompile Include="cGameManager.cpp" />
     <ClCompile Include="cLevel1.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="cCameraManager.h" />
     <ClInclude Include="cDebugWidget.h" />
     <ClInclude Include="cEditorManager.h" />
+    <ClInclude Include="cFileInterface.h" />
     <ClInclude Include="cFullWallDrawTool.h" />
     <ClInclude Include="cGameManager.h" />
     <ClInclude Include="cLevel1.h" />

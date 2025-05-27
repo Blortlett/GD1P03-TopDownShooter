@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-//#include "cBoxCollider.h"
-//#include "cDebugWidget.h"
+#include "cBoxCollider.h"
 
-class cBoxCollider;
+
+class cFileInterface;
 class cDebugWidget;
 
 class cBaseLevel
@@ -40,4 +40,10 @@ public:
 	// Cleanup new objects
 	void CleanupColliders();
 	void CleanupDebugWidgets();
+
+	std::vector<cBoxCollider*>& GetFullWallColliderList();
+
+	// Save/load functions
+	void SaveLevel(cFileInterface& _FileInterface);
+	void LoadLevel(cFileInterface& _FileInterface);
 };

@@ -2,8 +2,7 @@
 #include "cPlayerCharacter.h"
 
 cLevelManager::cLevelManager(sf::RenderWindow& _Window)
-	: mGameWindow(_Window)
-	, mLevel1(_Window)
+	: mLevel1(_Window)
 	, mCurrentLevel(&mLevel1)
 	, mFileInterface(mCurrentLevel)
 {
@@ -18,25 +17,29 @@ void cLevelManager::Draw()
 	mCurrentLevel->Draw();
 }
 
+void cLevelManager::DebugDraw()
+{
+	mCurrentLevel->DebugDraw();
+}
+
 void cLevelManager::CheckPlayerWallCollisions(cPlayerCharacter& _Player)
 {
-	// Check player collision with all FullWalls
-	sf::Vector2f collisionDirection;
-	std::vector<cBoxCollider*>& FullWallColliderList = mCurrentLevel->GetFullWallColliderList();
-	bool isColliding = false;
+	sf::Vector2f CollisionDirection;
+	// Get all fullwalls in level
+	std::vector<cFullWall*>& FullWallColliderList = mCurrentLevel->GetFullWallColliderList();
+
 	// Check collisions
 	for (size_t i = 0; i < FullWallColliderList.size(); ++i) {
-		if (FullWallColliderList[i]->CheckCollision(_Player.GetCollider(), collisionDirection, 1.0f))
-			isColliding = true;
+		FullWallColliderList[i]->CheckCollideWithPlayer(_Player, CollisionDirection);
 	}
 }
 
-void cLevelManager::AddFullWall(cBoxCollider* _FullWallCollider)
+void cLevelManager::AddFullWall(cFullWall* _FullWallCollider)
 {
 	mCurrentLevel->AddFullWallToList(_FullWallCollider);
 }
 
-void cLevelManager::AddHalfWall(cBoxCollider* _HalfWallCollider)
+void cLevelManager::AddHalfWall(cHalfWall* _HalfWallCollider)
 {
 
 }

@@ -10,7 +10,7 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cFullWallDrawTool.h"
-#include "cBoxCollider.h"
+#include "cFullWall.h"
 #include "cLevelManager.h"
 
 
@@ -34,7 +34,7 @@ void cFullWallDrawTool::UseTool(sf::Vector2f& mousePos)
 	// Reset tool size after use tool complete
 	(mRectShape).setSize(NewShapeSize);
 
-	std::cout << "Rect size x: " << NewShapeSize.x << " |   y: " << NewShapeSize.y << std::endl;
+	//std::cout << "Rect size x: " << NewShapeSize.x << " |   y: " << NewShapeSize.y << std::endl;
 }
 
 // Mouse released Function
@@ -57,12 +57,12 @@ void cFullWallDrawTool::CompleteUseTool()
 	std::cout << "Completed tool size x: " << bounds.size.x << " |   y: " << bounds.size.y << std::endl;
 
 	// Create cBoxCollider
-	cBoxCollider* newCollider = new cBoxCollider(bounds);
+	cFullWall* newFullWall = new cFullWall(bounds);
 
 	// reset cursor square size on complete
 	mRectShape.setSize(mRectSize);
 
 	// provide mLevelManager with new Collider
-	mLevelManager.AddFullWall(newCollider);
+	mLevelManager.AddFullWall(newFullWall);
 }
 

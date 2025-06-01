@@ -277,8 +277,8 @@ void cFileInterface::LoadFullWallColidersFromJson(const rapidjson::Document& doc
             sf::Vector2f position(x, y);
             sf::Vector2f size(width, height);
             sf::FloatRect bounds(position, size);
-            cBoxCollider* collider = new cBoxCollider(bounds);
-            mCurrentLevel->AddFullWallToList(collider);
+            cFullWall* fullWall = new cFullWall(bounds);
+            mCurrentLevel->AddFullWallToList(fullWall);
         }
         else {
             std::cerr << "Invalid platform object at index " << i << std::endl;

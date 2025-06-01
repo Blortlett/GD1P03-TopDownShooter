@@ -19,7 +19,7 @@ cPlayerCharacter::cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::R
 	, mCameraView(_PlayerCamera)
 	, mPlayerInput(_PlayerInput)
 	  // Collider stuff
-	, mColliderBounds({ 0.f, 0.f }, { 44.f, 44.f })
+	, mColliderBounds({ 0.f, 0.f }, { 24.f, 24.f })
 	, mBoxCollider(mColliderBounds)
 	, mDebugWidget(mBoxCollider)
 {
@@ -86,10 +86,10 @@ void cPlayerCharacter::Move(float _DeltaSeconds)
 	mVelocity.y = std::min(std::max(mVelocity.y, -1 * PLAYER_MAX_VELOCITY), PLAYER_MAX_VELOCITY);
 
 	// Apply Velocity to position
-	mPosition += mVelocity * _DeltaSeconds;
+	mBoxCollider.MoveColliderPosition(mBoxCollider.GetPosition() + mVelocity * _DeltaSeconds);
 	
 	// Apply position to BoxCollider
-	mBoxCollider.MoveColliderPosition(mPosition);
+	mPosition = mBoxCollider.GetPosition();
 }
 
 void cPlayerCharacter::UpdateWeapon()
@@ -104,6 +104,31 @@ void cPlayerCharacter::UpdateWeapon()
 	}
 	if (!mPlayerInput.IsLeftClickPressed())
 		mIsShooting = false;
+}
+
+void cPlayerCharacter::OnCollision(sf::Vector2f direction)
+{
+	// Handle collision differently depending on direction
+	if (direction.x < 0.0f)
+	{
+		// Collision on the right
+		mVelocity.x = 0.f;
+	}
+	else if (direction.x > 0.0f)
+	{
+		// Collision on the left
+		mVelocity.x = 0.f;
+	}
+	if (direction.y < 0.0f)
+	{
+		// Collision on the bottom
+		mVelocity.y = 0.0f;
+	}
+	if (direction.y > 0.0f)
+	{
+		// Collision on the top
+		mVelocity.y = 0.0f;
+	}
 }
 
 void cPlayerCharacter::Update(float _DeltaSeconds)

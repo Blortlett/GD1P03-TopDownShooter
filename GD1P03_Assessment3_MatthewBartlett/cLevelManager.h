@@ -1,6 +1,8 @@
 #pragma once
 #include "cLevel1.h"
 #include "cFileInterface.h"
+#include "cFullWall.h"
+#include "cHalfWall.h"
 // forward declarations
 class cPlayerCharacter;
 
@@ -13,9 +15,6 @@ private:
 	
 	//Current Level
 	cBaseLevel* mCurrentLevel;
-
-	// Game window reference
-	sf::RenderWindow& mGameWindow;  // Not sure we will need to save this
 	
 	// Loading/Saving object
 	cFileInterface mFileInterface;
@@ -28,13 +27,14 @@ public:
 	// Updateables
 	void Update();
 	void Draw();
+	void DebugDraw();
 
 	// Collisions
 	void CheckPlayerWallCollisions(cPlayerCharacter& _Player);
 
 	// Level Editing
-	void AddFullWall(cBoxCollider* _FullWallCollider);
-	void AddHalfWall(cBoxCollider* _HalfWallCollider);
+	void AddFullWall(cFullWall* _FullWallCollider);
+	void AddHalfWall(cHalfWall* _HalfWallCollider);
 
 	// Save / Load level data
 	void SaveLevel();

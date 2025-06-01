@@ -63,6 +63,9 @@ public:
 	cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput);
 	~cPlayerCharacter() {}
 
+	// Collision
+	void OnCollision(sf::Vector2f direction);
+
 	// Draw / Update
 	void Update(float _DeltaSeconds);
 	void Draw();

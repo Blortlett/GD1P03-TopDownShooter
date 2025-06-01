@@ -165,6 +165,7 @@
     <ClCompile Include="cPlayerUtils.cpp" />
     <ClCompile Include="cProjectileManager.cpp" />
     <ClCompile Include="cSharedUtils.cpp" />
+    <ClCompile Include="cWallBase.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,8 +180,10 @@
     <ClInclude Include="cDebugWidget.h" />
     <ClInclude Include="cEditorManager.h" />
     <ClInclude Include="cFileInterface.h" />
+    <ClInclude Include="cFullWall.h" />
     <ClInclude Include="cFullWallDrawTool.h" />
     <ClInclude Include="cGameManager.h" />
+    <ClInclude Include="cHalfWall.h" />
     <ClInclude Include="cLevel1.h" />
     <ClInclude Include="cLevelManager.h" />
     <ClInclude Include="cPistol.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="cPlayerUtils.h" />
     <ClInclude Include="cProjectileManager.h" />
     <ClInclude Include="cSharedUtils.h" />
+    <ClInclude Include="cWallBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,61 +2,61 @@
 #include "cDebugWidget.h"
 #include "cFileInterface.h"
 
-cBaseLevel::cBaseLevel(sf::RenderWindow& _Window)
+cBaseLevel::cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFilepath)
 	: mRenderWindow(_Window)
 {
+    if (!mBackgroundTex.loadFromFile(_BackgroundPNGFilepath))
+    {
+        std::cout << "Failed to load background @ " << _BackgroundPNGFilepath << std::endl;
+    }
+
+    mBackgroundSprite = new sf::Sprite(mBackgroundTex);
+    mBackgroundSprite->setOrigin(mBackgroundSprite->getLocalBounds().size / 2.f);
 }
 
 cBaseLevel::~cBaseLevel()
 {
     CleanupColliders();
-    CleanupDebugWidgets();
+}
+
+void cBaseLevel::Draw()
+{
+    if (!mBackgroundSprite) return;
+    mRenderWindow.draw(*mBackgroundSprite);
 }
 
 void cBaseLevel::DebugDraw()
 {
     // Draw all widgets for full wall colliders
-    for (cDebugWidget* widget : mDebugGFXFullWall)
+    for (cFullWall* wall : mFullWallColliders)
     {
-        widget->DrawWidget(mRenderWindow);
-    }
-
-    // Draw all widgets for half wall colliders
-    for (cDebugWidget* widget : mDebugGFXHalfWall)
-    {
-        widget->DrawWidget(mRenderWindow);
+        wall->DebugDraw(mRenderWindow);
     }
 }
 
-void cBaseLevel::AddFullWallToList(cBoxCollider* _FullWall)
+void cBaseLevel::AddFullWallToList(cFullWall* _FullWall)
 {
     // Add colider to vector list
 	mFullWallColliders.push_back(_FullWall);
-    cDebugWidget* DebugWidget = new cDebugWidget(*_FullWall); // Create Debug Widget
-    // Add widget to widget list for drawing later
-    mDebugGFXFullWall.push_back(DebugWidget); // this is somewhat stupid, debug widget could be an optional member of the collider class
 }
 
-void cBaseLevel::AddHalfWallToList(cBoxCollider* _HalfWall)
+void cBaseLevel::AddHalfWallToList(cHalfWall* _HalfWall)
 {
     // Add colider to vector list
 	mHalfWallColliders.push_back(_HalfWall);
-    cDebugWidget* DebugWidget = new cDebugWidget(*_HalfWall); // Create Debug Widget
-    // Add widget to widget list for drawing later
-    mDebugGFXHalfWall.push_back(DebugWidget);
 }
 
 void cBaseLevel::CleanupColliders()
 {
     // Delete all full wall colliders
-    for (cBoxCollider* collider : mFullWallColliders)
+    for (cFullWall* collider : mFullWallColliders)
     {
         delete collider;
     }
     mFullWallColliders.clear();
 
     // Delete all half wall colliders
-    for (cBoxCollider* collider : mHalfWallColliders)
+    for (cHalfWall* collider : mHalfWallColliders)
     {
         delete collider;
     }
@@ -66,24 +66,7 @@ void cBaseLevel::CleanupColliders()
     delete mBackgroundSprite;
 }
 
-void cBaseLevel::CleanupDebugWidgets()
-{
-    // Delete all full wall debug widgets
-    for (cDebugWidget* widget : mDebugGFXFullWall)
-    {
-        delete widget;
-    }
-    mDebugGFXFullWall.clear();
-
-    // Delete all half wall debug widgets
-    for (cDebugWidget* widget : mDebugGFXHalfWall)
-    {
-        delete widget;
-    }
-    mDebugGFXHalfWall.clear();
-}
-
-std::vector<cBoxCollider*>& cBaseLevel::GetFullWallColliderList()
+std::vector<cFullWall*>& cBaseLevel::GetFullWallColliderList()
 {
     return mFullWallColliders;
 }

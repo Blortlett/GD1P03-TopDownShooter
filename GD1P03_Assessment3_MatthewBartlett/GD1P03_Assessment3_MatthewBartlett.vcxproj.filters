@@ -108,6 +108,15 @@
     <Filter Include="GameSystems\FileInterface">
       <UniqueIdentifier>{eef23381-47fa-4c5d-90dc-4d06fd94e755}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Walls">
+      <UniqueIdentifier>{36d090d1-a1a0-405a-a43d-e51f7a02cdb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Walls\HalfWall">
+      <UniqueIdentifier>{c19ae9b4-ae63-40de-8ff5-ac784c32d5ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Walls\FullWall">
+      <UniqueIdentifier>{21cf1fe1-8c62-4941-975a-d0e0dc58faca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -179,6 +188,9 @@
     <ClCompile Include="cFileInterface.cpp">
       <Filter>GameSystems\FileInterface</Filter>
     </ClCompile>
+    <ClCompile Include="cWallBase.cpp">
+      <Filter>GameObjects\Walls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h">
@@ -249,6 +261,15 @@
     </ClInclude>
     <ClInclude Include="cFileInterface.h">
       <Filter>GameSystems\FileInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="cWallBase.h">
+      <Filter>GameObjects\Walls</Filter>
+    </ClInclude>
+    <ClInclude Include="cFullWall.h">
+      <Filter>GameObjects\Walls\FullWall</Filter>
+    </ClInclude>
+    <ClInclude Include="cHalfWall.h">
+      <Filter>GameObjects\Walls\HalfWall</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

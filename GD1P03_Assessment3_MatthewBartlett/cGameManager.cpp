@@ -29,8 +29,9 @@ void cGameManager::GameTick()
 	// Update Camera // Must happen before drawing anything
 	mCameraManager.Update(mDeltaSeconds);
 
-	// Draw Level
+	// Update Level
 	mLevelManager.Draw();
+	mLevelManager.CheckPlayerWallCollisions(mPlayerCharacter);
 
 	// Update Player
 	mPlayerCharacter.Update(mDeltaSeconds);
@@ -44,6 +45,7 @@ void cGameManager::GameTick()
 	{
 		mEditorManager.UpdateCursor();
 		mEditorManager.DrawCursorToScreen(mGameWindow);
+		mLevelManager.DebugDraw();
 	}
 
 	// Save/Load Level Detection

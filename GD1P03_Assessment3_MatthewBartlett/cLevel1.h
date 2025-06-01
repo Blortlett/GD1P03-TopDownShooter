@@ -10,6 +10,4 @@ private:
 public:
 	cLevel1(sf::RenderWindow& _Window);
 	~cLevel1();
-
-	void Draw() override;
 };

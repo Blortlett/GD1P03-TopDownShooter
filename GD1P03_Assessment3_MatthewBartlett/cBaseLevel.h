@@ -1,7 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "cBoxCollider.h"
+#include "cFullWall.h"
+#include "cHalfWall.h"
 
 
 class cFileInterface;
@@ -15,33 +16,30 @@ protected:
 	sf::Sprite* mBackgroundSprite;
 
 	// Full wall Collider List - things such as walls player cannot shoot nor walk over
-	std::vector<cBoxCollider*> mFullWallColliders;
-	std::vector<cDebugWidget*> mDebugGFXFullWall;
+	std::vector<cFullWall*> mFullWallColliders;
 
 	// Half wall Collider List - things such as chairs player can shoot over but can't walk over
-	std::vector<cBoxCollider*> mHalfWallColliders;
-	std::vector<cDebugWidget*> mDebugGFXHalfWall;
+	std::vector<cHalfWall*> mHalfWallColliders;
 
 	// GameWindow Reference
 	sf::RenderWindow& mRenderWindow;
 
 public:
-	cBaseLevel(sf::RenderWindow& _Window);
+	cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFilepath);
 	~cBaseLevel();
 
 	// Updateables
-	virtual void Draw() = 0;
+	void Draw();
 	void DebugDraw();
 
 	// Add Walls to level structure
-	void AddFullWallToList(cBoxCollider* _FullWall);
-	void AddHalfWallToList(cBoxCollider* _HalfWall);
+	void AddFullWallToList(cFullWall* _FullWall);
+	void AddHalfWallToList(cHalfWall* _HalfWall);
 
 	// Cleanup new objects
 	void CleanupColliders();
-	void CleanupDebugWidgets();
 
-	std::vector<cBoxCollider*>& GetFullWallColliderList();
+	std::vector<cFullWall*>& GetFullWallColliderList();
 
 	// Save/load functions
 	void SaveLevel(cFileInterface& _FileInterface);

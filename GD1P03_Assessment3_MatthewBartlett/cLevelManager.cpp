@@ -49,8 +49,8 @@ void cLevelManager::CheckBulletToEnemyCollision(cProjectileManager& _ProjectileM
 	// Check each bullet for collision
 	for (cBullet& bullet : PlayerBulletList)
 	{
-		// Save some calculation if bullet is not active
-		if (!bullet.mIsActive) break;
+		// Skip loop iteration if bullet is not active
+		if (!bullet.mIsActive) continue;
 
 		// Check collision with each enemy
 		for (cEnemyCharacter* enemy : EnemyList)

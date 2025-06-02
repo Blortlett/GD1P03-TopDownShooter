@@ -52,9 +52,8 @@ void cBullet::Draw(sf::RenderWindow& _Window)
 
 bool cBullet::CheckCollisionWithEnemy(cEnemyCharacter& _Character, sf::Vector2f& _CollisionDirection)
 {
-	std::cout << "Checking bullet collision!" << std::endl;
 	// Check bullet collision with enemy
-	if (mCollider.CheckCollision(_Character.GetCollider(), _CollisionDirection, 1.0f))
+	if (mCollider.CheckCollision(_Character.GetCollider(), _CollisionDirection, 0.0f))
 	{
 		// If collision, tell enemy object:
 		_Character.OnBulletCollision(_CollisionDirection);

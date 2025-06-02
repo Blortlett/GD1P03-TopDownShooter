@@ -1,14 +1,13 @@
 #include "cLevelManager.h"
 #include "cPlayerCharacter.h"
 #include "cProjectileManager.h"
+#include "cEnemyManager.h"
 
 
-cLevelManager::cLevelManager(sf::RenderWindow& _Window, cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager)
+cLevelManager::cLevelManager(sf::RenderWindow& _Window)
 	: mLevel1(_Window)
 	, mCurrentLevel(&mLevel1)
 	, mFileInterface(mCurrentLevel)
-	, mEnemyManager(_EnemyManager)
-	, mProjectileManager(_ProjectileManager)
 {
 }
 
@@ -39,19 +38,19 @@ void cLevelManager::CheckPlayerWallCollisions(cPlayerCharacter& _Player)
 	}
 }
 
-void cLevelManager::CheckEnemyBulletCollision()
+void cLevelManager::CheckBulletToEnemyCollision(cProjectileManager& _ProjectileManager, cEnemyManager& _EnemyManager)
 {
 	// Collision function will modify this
 	sf::Vector2f CollisionDirection;
 
 	// Get all playerbullets
-	std::array<cBullet, 15>& PlayerBulletList = mProjectileManager.GetPlayerBulletList();
-	std::vector<cEnemyCharacter*>& EnemyList = mEnemyManager.GetEnemyList();
+	std::array<cBullet, 15>& PlayerBulletList = _ProjectileManager.GetPlayerBulletList();
+	std::vector<cEnemyCharacter*>& EnemyList = _EnemyManager.GetEnemyList();
 	// Check each bullet for collision
 	for (cBullet& bullet : PlayerBulletList)
 	{
 		// Save some calculation if bullet is not active
-		if (bullet.mIsActive) break;
+		if (!bullet.mIsActive) break;
 
 		// Check collision with each enemy
 		for (cEnemyCharacter* enemy : EnemyList)

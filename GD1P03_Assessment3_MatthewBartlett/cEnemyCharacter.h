@@ -32,5 +32,5 @@ public:
 	void Update(float _DeltaSeconds) override;
 
 	// On Bullet Collision
-	void OnBulletCollision();
+	void OnBulletCollision(sf::Vector2f _CollisionDirection);
 };

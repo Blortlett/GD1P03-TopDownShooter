@@ -62,7 +62,7 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 	mAnimator.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
 }
 
-void cEnemyCharacter::OnBulletCollision()
+void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)
 {
 	std::cout << "Enemy hit!! Enemy down!" << std::endl;
 }

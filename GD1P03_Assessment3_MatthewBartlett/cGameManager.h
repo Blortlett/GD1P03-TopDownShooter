@@ -12,12 +12,11 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 #pragma once
 #include "cPlayerCharacter.h"
-#include "cEnemyManager.h"
 #include "cCameraManager.h"
 #include "cProjectileManager.h"
+#include "cEnemyManager.h"
 #include "cEditorManager.h"
-
-class cLevelManager;
+#include "cLevelManager.h"
 
 class cGameManager
 {
@@ -36,14 +35,15 @@ private:
 	cCameraManager mCameraManager;
 	cPlayerCharacter mPlayerCharacter;
 
-
-	// Other managers
+	// Enemy & Projectile managers
 	cProjectileManager mProjectileManager;
+	cEnemyManager mEnemyManager;
+	// Level Manager
 	cLevelManager mLevelManager;
+	// Draw tool
 	cEditorManager mEditorManager;
 
-	// Enemy Manger
-	cEnemyManager mEnemyManager;
+
 	
 	void OnSaveLevel();
 	void OnLoadLevel();
@@ -58,27 +58,4 @@ public:
 
 	// Update Method
 	void GameTick();
-
-
-
-
-
-
-
-
-
-
-
-	// HMMMM singleton won't work if I pass in game window to constructor.... I'll leave that idea alone for now
-
-	// Singleton crap....
-	// Get the single instance of the class
-	//static cPlayerUtils& GetInstance()
-	//{
-	//	static cGameManager instance; // Static instance created on first call
-	//	return instance;
-	//}
-	// Delete copy constructor and assignment operator to prevent copying
-	//cGameManager(const cGameManager&) = delete;
-	//cGameManager& operator=(const cGameManager&) = delete;
 };

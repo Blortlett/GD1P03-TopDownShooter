@@ -11,14 +11,13 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cGameManager.h"
 #include "cGameSettings.h"
-#include "cLevelManager.h"
 
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
 	, mCameraManager(mPlayerCharacter, _GameWindow)
 	, mPlayerCharacter(mProjectileManager, _GameWindow, mCameraManager.GetCameraView(), mPlayerInput)
 	, mProjectileManager(_GameWindow)
-	, mLevelManager(_GameWindow, mEnemyManager, mProjectileManager)
+	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
 	, mEnemyManager(mProjectileManager, mGameWindow, mPlayerCharacter)
 {
@@ -35,6 +34,7 @@ void cGameManager::GameTick()
 	// Update Level
 	mLevelManager.Draw();
 	mLevelManager.CheckPlayerWallCollisions(mPlayerCharacter);
+	mLevelManager.CheckBulletToEnemyCollision(mProjectileManager, mEnemyManager);
 
 	// Update Player
 	mPlayerCharacter.Update(mDeltaSeconds);

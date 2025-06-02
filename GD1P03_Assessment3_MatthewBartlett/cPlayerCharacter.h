@@ -51,7 +51,7 @@ private:
 	sf::FloatRect mColliderBounds;
 	cBoxCollider mBoxCollider;
 
-	// App/Gamemanager Stuff
+	// Game references
 	sf::RenderWindow& mRenderWindow;
 	// Camera Reference
 	sf::View& mCameraView;

@@ -3,8 +3,9 @@
 #include "cFileInterface.h"
 #include "cFullWall.h"
 #include "cHalfWall.h"
-#include "cEnemyManager.h"
+
 // forward declarations
+class cEnemyManager;
 class cPlayerCharacter;
 
 
@@ -20,14 +21,9 @@ private:
 	// Loading/Saving object
 	cFileInterface mFileInterface;
 
-	// Enemy manager reference
-	cEnemyManager& mEnemyManager;
-	// Projectile manager reference
-	cProjectileManager& mProjectileManager;
-
 public:
 	// 'Structaz
-	cLevelManager(sf::RenderWindow& _Window, cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager);
+	cLevelManager(sf::RenderWindow& _Window);
 	~cLevelManager() {}
 
 	// Updateables
@@ -38,7 +34,7 @@ public:
 	// -= Collisions =-
 	void CheckPlayerWallCollisions(cPlayerCharacter& _Player);
 	// Bullet to enemy collision
-	void CheckEnemyBulletCollision();
+	void CheckBulletToEnemyCollision(cProjectileManager& _ProjectileManager, cEnemyManager& _EnemyManager);
 
 	// Level Editing
 	void AddFullWall(cFullWall* _FullWallCollider);

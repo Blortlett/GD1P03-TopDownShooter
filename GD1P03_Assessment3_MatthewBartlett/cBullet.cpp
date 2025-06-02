@@ -1,4 +1,5 @@
 #include "cBullet.h"
+#include "cEnemyCharacter.h"
 
 cBullet::cBullet()
 	: mBulletSprite(cSharedUtils::GetInstance().mBulletTex)
@@ -51,10 +52,12 @@ void cBullet::Draw(sf::RenderWindow& _Window)
 
 bool cBullet::CheckCollisionWithEnemy(cEnemyCharacter& _Character, sf::Vector2f& _CollisionDirection)
 {
+	std::cout << "Checking bullet collision!" << std::endl;
 	// Check bullet collision with enemy
 	if (mCollider.CheckCollision(_Character.GetCollider(), _CollisionDirection, 1.0f))
 	{
 		// If collision, tell enemy object:
-		_Character.OnCollision(_CollisionDirection);
+		_Character.OnBulletCollision(_CollisionDirection);
+		return true;
 	}
 }

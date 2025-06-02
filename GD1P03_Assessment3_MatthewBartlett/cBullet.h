@@ -3,7 +3,9 @@
 #include "cBoxCollider.h"
 #include "cDebugWidget.h"
 #include "cGameSettings.h"
-#include "cEnemyCharacter.h"
+
+class cEnemyCharacter;
+
 
 class cBullet
 {
@@ -23,8 +25,6 @@ private:
 	// Active Timer
 	float const mBulletActiveMaxTime = 3.f;
 	float mBulletActiveTimer = mBulletActiveMaxTime;
-
-	// Debug
 	
 public:
 	cBullet();

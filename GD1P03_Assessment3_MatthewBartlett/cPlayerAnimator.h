@@ -10,28 +10,18 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "cAnimatorBase.h"
 #include "cAnimationPistolIdle.h"
 
 
-class cPlayerAnimator
+class cPlayerAnimator : public cAnimatorBase
 {
 public:
 	 // Constructors
 	cPlayerAnimator();
 	~cPlayerAnimator();
-	// Animate & Draw
-	void Animate(sf::Vector2f PlayerPosition, float DeltaSeconds);
-	void Draw(sf::RenderWindow& renderWindow);
-	//Rotate Animation
-	void SetRotation(sf::Angle _AngleToRotate);
-	// Animation Swap Functions
 
 private:
-	// Animation variables
-	
-	// Animation state holder
-	cAnimationBase* mCurrentAnimation;
 	// Animations
 	cAnimationPistolIdle mUpperPistolIdle;
 };

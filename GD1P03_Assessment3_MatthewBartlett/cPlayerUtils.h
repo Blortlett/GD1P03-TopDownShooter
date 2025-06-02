@@ -11,6 +11,7 @@ private:
 public:
 	// Textures
 	sf::Texture* mPlayerIdleSheetTex;
+	sf::Texture* mEnemyIdleSheetTex;
 
 
 

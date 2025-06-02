@@ -1,0 +1,54 @@
+#pragma once
+#include "cDebugWidget.h"
+#include "cAnimatorBase.h"
+#include "cBoxCollider.h"
+#include "cPistol.h"
+
+class cCharacter
+{
+private:
+	// Constant Movement Values
+	const float PLAYER_ACCELERATION = 700.f;
+	const float PLAYER_MAX_VELOCITY = 200.f;
+	const float PLAYER_FRICTION = .005f;
+
+	// Control Values
+	sf::Vector2f mPosition;
+	sf::Vector2f mVelocity;
+
+	// Movement Functions
+	void Rotate(sf::Vector2f _FaceTowards);
+	void Move(sf::Vector2f _NormalizedDirection, float _DeltaSeconds);
+
+	// Weapon Functions
+	cPistol mPistol;
+	bool mIsShooting = false;
+	virtual void UpdateWeapon(float _DeltaSeconds) = 0;
+
+	// Animator
+	cAnimatorBase* mCharacterAnimator;
+
+	// Collision
+	cBoxCollider mBoxCollider;
+
+	// App/Gamemanager Stuff
+	sf::RenderWindow& mRenderWindow;
+
+	// Debug Stuff
+	cDebugWidget mDebugWidget;
+
+public:
+	cCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow);
+	~cCharacter() {}
+
+	// Collision
+	void OnCollision(sf::Vector2f direction);
+
+	// Draw / Update()
+	virtual void Update(float _DeltaSeconds) = 0;
+	void Draw();
+
+	// Getters
+	sf::Vector2f GetPosition() { return mPosition; }
+	cBoxCollider& GetCollider() { return mBoxCollider; }
+};

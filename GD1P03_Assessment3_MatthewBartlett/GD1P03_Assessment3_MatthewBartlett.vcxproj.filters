@@ -9,9 +9,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{4a890446-d6b6-4ae8-8030-f6659d7839ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utils">
       <UniqueIdentifier>{9110e869-7b57-4602-b906-7c6aef1fb65d}</UniqueIdentifier>
     </Filter>
@@ -50,12 +47,6 @@
     </Filter>
     <Filter Include="GameObjects\Weaponry\Pistol">
       <UniqueIdentifier>{275ec719-2e4c-46d9-b20e-bb0042962753}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player\PlayerController">
-      <UniqueIdentifier>{369d9df5-1e67-46d7-a04b-0d57670c7682}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player\PlayerInput">
-      <UniqueIdentifier>{ff937a56-f1d1-4811-a198-b58a5d68a1b0}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameObjects\Components">
       <UniqueIdentifier>{7bd67768-e6ff-45ed-b419-ed3c8f8f9354}</UniqueIdentifier>
@@ -117,6 +108,33 @@
     <Filter Include="GameObjects\Walls\FullWall">
       <UniqueIdentifier>{21cf1fe1-8c62-4941-975a-d0e0dc58faca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character">
+      <UniqueIdentifier>{cbb0d7ae-38e2-4c1f-a78d-e86c104b65e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Player">
+      <UniqueIdentifier>{4a890446-d6b6-4ae8-8030-f6659d7839ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Player\PlayerController">
+      <UniqueIdentifier>{369d9df5-1e67-46d7-a04b-0d57670c7682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Player\PlayerInput">
+      <UniqueIdentifier>{ff937a56-f1d1-4811-a198-b58a5d68a1b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Enemy">
+      <UniqueIdentifier>{2ce9129d-c616-4f5d-ac03-13998c8c6cef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animators\PlayerAnimator">
+      <UniqueIdentifier>{023a9cb3-19c8-4432-91b9-b3fc6a4c4081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animators\EnemyAnimator">
+      <UniqueIdentifier>{e29ad282-3e08-41c3-9198-7e343c54ab16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations">
+      <UniqueIdentifier>{7b04778a-2755-4032-a068-b6c3c464249c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\Idle">
+      <UniqueIdentifier>{c5ebec79-ca56-47a0-9840-7e65b822fc98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -127,9 +145,6 @@
     </ClCompile>
     <ClCompile Include="cAnimationPistolIdle.cpp">
       <Filter>Animator\Animations\PlayerAnimations\UpperBody</Filter>
-    </ClCompile>
-    <ClCompile Include="cPlayerAnimator.cpp">
-      <Filter>Animator\Animators</Filter>
     </ClCompile>
     <ClCompile Include="cGameManager.cpp">
       <Filter>GameSystems\GameManager</Filter>
@@ -153,10 +168,10 @@
       <Filter>GameSystems\ProjectileManager</Filter>
     </ClCompile>
     <ClCompile Include="cPlayerCharacter.cpp">
-      <Filter>Player\PlayerController</Filter>
+      <Filter>Character\Player\PlayerController</Filter>
     </ClCompile>
     <ClCompile Include="cPlayerInput.cpp">
-      <Filter>Player\PlayerInput</Filter>
+      <Filter>Character\Player\PlayerInput</Filter>
     </ClCompile>
     <ClCompile Include="cCameraManager.cpp">
       <Filter>GameSystems\CameraManager</Filter>
@@ -191,6 +206,24 @@
     <ClCompile Include="cWallBase.cpp">
       <Filter>GameObjects\Walls</Filter>
     </ClCompile>
+    <ClCompile Include="cCharacter.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyCharacter.cpp">
+      <Filter>Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerAnimator.cpp">
+      <Filter>Animator\Animators\PlayerAnimator</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyAnimator.cpp">
+      <Filter>Animator\Animators\EnemyAnimator</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimatorBase.cpp">
+      <Filter>Animator\Animators</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyIdleAnimation.cpp">
+      <Filter>Animator\Animations\EnemyAnimations\Idle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h">
@@ -201,9 +234,6 @@
     </ClInclude>
     <ClInclude Include="cPlayerAnimationBase.h">
       <Filter>Animator\Animations\PlayerAnimations</Filter>
-    </ClInclude>
-    <ClInclude Include="cPlayerAnimator.h">
-      <Filter>Animator\Animators</Filter>
     </ClInclude>
     <ClInclude Include="cGameManager.h">
       <Filter>GameSystems\GameManager</Filter>
@@ -227,10 +257,10 @@
       <Filter>GameSystems\ProjectileManager</Filter>
     </ClInclude>
     <ClInclude Include="cPlayerCharacter.h">
-      <Filter>Player\PlayerController</Filter>
+      <Filter>Character\Player\PlayerController</Filter>
     </ClInclude>
     <ClInclude Include="cPlayerInput.h">
-      <Filter>Player\PlayerInput</Filter>
+      <Filter>Character\Player\PlayerInput</Filter>
     </ClInclude>
     <ClInclude Include="cCameraManager.h">
       <Filter>GameSystems\CameraManager</Filter>
@@ -270,6 +300,24 @@
     </ClInclude>
     <ClInclude Include="cHalfWall.h">
       <Filter>GameObjects\Walls\HalfWall</Filter>
+    </ClInclude>
+    <ClInclude Include="cCharacter.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyCharacter.h">
+      <Filter>Character\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerAnimator.h">
+      <Filter>Animator\Animators\PlayerAnimator</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyAnimator.h">
+      <Filter>Animator\Animators\EnemyAnimator</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimatorBase.h">
+      <Filter>Animator\Animators</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyIdleAnimation.h">
+      <Filter>Animator\Animations\EnemyAnimations\Idle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

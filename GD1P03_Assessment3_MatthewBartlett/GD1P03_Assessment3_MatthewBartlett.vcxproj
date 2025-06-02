@@ -145,14 +145,19 @@
   <ItemGroup>
     <ClCompile Include="cAnimationBase.cpp" />
     <ClCompile Include="cAnimationPistolIdle.cpp" />
+    <ClCompile Include="cAnimatorBase.cpp" />
     <ClCompile Include="cApplicationManager.cpp" />
     <ClCompile Include="cBaseDrawTool.cpp" />
     <ClCompile Include="cBaseLevel.cpp" />
     <ClCompile Include="cBoxCollider.cpp" />
     <ClCompile Include="cBullet.cpp" />
     <ClCompile Include="cCameraManager.cpp" />
+    <ClCompile Include="cCharacter.cpp" />
     <ClCompile Include="cDebugWidget.cpp" />
     <ClCompile Include="cEditorManager.cpp" />
+    <ClCompile Include="cEnemyAnimator.cpp" />
+    <ClCompile Include="cEnemyCharacter.cpp" />
+    <ClCompile Include="cEnemyIdleAnimation.cpp" />
     <ClCompile Include="cFileInterface.cpp" />
     <ClCompile Include="cFullWallDrawTool.cpp" />
     <ClCompile Include="cGameManager.cpp" />
@@ -171,14 +176,19 @@
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h" />
     <ClInclude Include="cAnimationPistolIdle.h" />
+    <ClInclude Include="cAnimatorBase.h" />
     <ClInclude Include="cApplicationManager.h" />
     <ClInclude Include="cBaseDrawTool.h" />
     <ClInclude Include="cBaseLevel.h" />
     <ClInclude Include="cBoxCollider.h" />
     <ClInclude Include="cBullet.h" />
     <ClInclude Include="cCameraManager.h" />
+    <ClInclude Include="cCharacter.h" />
     <ClInclude Include="cDebugWidget.h" />
     <ClInclude Include="cEditorManager.h" />
+    <ClInclude Include="cEnemyAnimator.h" />
+    <ClInclude Include="cEnemyCharacter.h" />
+    <ClInclude Include="cEnemyIdleAnimation.h" />
     <ClInclude Include="cFileInterface.h" />
     <ClInclude Include="cFullWall.h" />
     <ClInclude Include="cFullWallDrawTool.h" />

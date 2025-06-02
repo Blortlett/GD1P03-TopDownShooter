@@ -12,25 +12,10 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerAnimator.h"
 
 cPlayerAnimator::cPlayerAnimator()
+    : cAnimatorBase(mUpperPistolIdle)
 {
-    mCurrentAnimation = &mUpperPistolIdle;
 }
 
 cPlayerAnimator::~cPlayerAnimator()
 {
-}
-
-void cPlayerAnimator::Animate(sf::Vector2f PlayerPosition, float DeltaSeconds)
-{
-    mCurrentAnimation->Animate(PlayerPosition, DeltaSeconds);
-}
-
-void cPlayerAnimator::Draw(sf::RenderWindow& renderWindow)
-{
-    mCurrentAnimation->Draw(renderWindow);
-}
-
-void cPlayerAnimator::SetRotation(sf::Angle _AngleToRotate)
-{
-    mCurrentAnimation->RotateAnimation(_AngleToRotate);
 }

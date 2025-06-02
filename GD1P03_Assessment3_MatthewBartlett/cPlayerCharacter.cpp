@@ -143,8 +143,6 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 	mPistol.Update(_DeltaSeconds);
 	// Player animations
 	mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
-	// Debug Update
-	//mDebugRect.setPosition(mPosition);
 }
 
 void cPlayerCharacter::Draw()

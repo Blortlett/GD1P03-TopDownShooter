@@ -6,7 +6,7 @@
 
 class cCharacter
 {
-private:
+protected:
 	// Constant Movement Values
 	const float PLAYER_ACCELERATION = 700.f;
 	const float PLAYER_MAX_VELOCITY = 200.f;
@@ -38,7 +38,7 @@ private:
 	cDebugWidget mDebugWidget;
 
 public:
-	cCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow);
+	cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow);
 	~cCharacter() {}
 
 	// Collision

@@ -1,8 +1,11 @@
 #include "cCharacter.h"
-cCharacter::cCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow)
+#include "cGameSettings.h"
+
+cCharacter::cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow)
 	: mRenderWindow(_GameWindow)
 	, mPistol(_ProjectileManager)
-	, mBoxCollider(sf::FloatRect({ 0.f, 0.f }, { 24.f, 24.f }))
+	, mPosition(_Position)
+	, mBoxCollider(sf::FloatRect(_Position, { 24.f, 24.f }))
 	, mDebugWidget(mBoxCollider)
 {
 }
@@ -71,6 +74,9 @@ void cCharacter::OnCollision(sf::Vector2f direction)
 
 void cCharacter::Draw()
 {
+	// Draw character graphics
 	mCharacterAnimator->Draw(mRenderWindow);
-	mDebugWidget.DrawWidget(mRenderWindow);
+	// Draw debug objects if debug is active
+	if (cGameSettings::GetInstance().IsDebugActive())
+		mDebugWidget.DrawWidget(mRenderWindow);
 }

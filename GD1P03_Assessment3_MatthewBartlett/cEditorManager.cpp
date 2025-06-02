@@ -10,6 +10,7 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cEditorManager.h"
+#include "cGameSettings.h"
 
 cEditorManager::cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _LevelManager, sf::View& _PlayerCameraView)
 	: mGameWindow(_GameWindow)
@@ -36,6 +37,11 @@ void cEditorManager::SetTool(ToolType type)
 
 void cEditorManager::UpdateCursor()
 {
+	// Return if debug mode is not active - do not draw diddly squat
+	if (cGameSettings::GetInstance().IsDebugActive())
+		return;
+
+
 	sf::Vector2i mouseScreenPosition = sf::Mouse::getPosition(mGameWindow);
 	sf::Vector2f worldMousePosition = mGameWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);
 

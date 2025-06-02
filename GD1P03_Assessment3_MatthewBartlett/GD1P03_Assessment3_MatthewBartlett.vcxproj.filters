@@ -135,6 +135,12 @@
     <Filter Include="Animator\Animations\EnemyAnimations\Idle">
       <UniqueIdentifier>{c5ebec79-ca56-47a0-9840-7e65b822fc98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameSystems\GameSettings">
+      <UniqueIdentifier>{02799ec2-7d74-458a-b04c-7379078ad322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameSystems\EnemyManager">
+      <UniqueIdentifier>{9e49c580-2c09-4ba5-8290-e98da921c1de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -223,6 +229,12 @@
     </ClCompile>
     <ClCompile Include="cEnemyIdleAnimation.cpp">
       <Filter>Animator\Animations\EnemyAnimations\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameSettings.cpp">
+      <Filter>GameSystems\GameSettings</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyManager.cpp">
+      <Filter>GameSystems\EnemyManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -318,6 +330,12 @@
     </ClInclude>
     <ClInclude Include="cEnemyIdleAnimation.h">
       <Filter>Animator\Animations\EnemyAnimations\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameSettings.h">
+      <Filter>GameSystems\GameSettings</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyManager.h">
+      <Filter>GameSystems\EnemyManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

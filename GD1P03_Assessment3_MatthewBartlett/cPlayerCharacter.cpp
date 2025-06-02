@@ -11,6 +11,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 
 #include "cPlayerCharacter.h"
+#include "cGameSettings.h"
 
 
 cPlayerCharacter::cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput)
@@ -147,6 +148,10 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 
 void cPlayerCharacter::Draw()
 {
+	// Draw Player graphics
 	mPlayerUpperBodyAnimator.Draw(mRenderWindow);
-	mDebugWidget.DrawWidget(mRenderWindow);
+
+	// Draw debug objects if debug is active
+	if (cGameSettings::GetInstance().IsDebugActive())
+		mDebugWidget.DrawWidget(mRenderWindow);
 }

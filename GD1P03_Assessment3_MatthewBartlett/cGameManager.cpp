@@ -10,6 +10,7 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cGameManager.h"
+#include "cGameSettings.h"
 
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
@@ -18,6 +19,7 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
+	, mEnemyManager(mProjectileManager, mGameWindow, mPlayerCharacter)
 {
 }
 
@@ -37,11 +39,15 @@ void cGameManager::GameTick()
 	mPlayerCharacter.Update(mDeltaSeconds);
 	mPlayerCharacter.Draw();
 
+	// Update Enemies
+	mEnemyManager.Update(mDeltaSeconds);
+
 	// Update ProjectileManager
 	mProjectileManager.Update(mDeltaSeconds);
 
 	// Debug Mode
-	if (mIsDebugModeActive)
+	CheckToggleDebugMode();
+	if (cGameSettings::GetInstance().IsDebugActive())
 	{
 		mEditorManager.UpdateCursor();
 		mEditorManager.DrawCursorToScreen(mGameWindow);
@@ -73,5 +79,20 @@ void cGameManager::OnLoadLevel()
 	if (mPlayerInput.IsLoadButtonPressed())
 	{
 		mLevelManager.LoadLevel();
+	}
+}
+
+void cGameManager::CheckToggleDebugMode()
+{
+	if (mPlayerInput.IsDebugButtonPressed())
+	{
+		if (!mIsDebugButtonPressed)
+			cGameSettings::GetInstance().ToggleDebugMode();
+
+		mIsDebugButtonPressed = true;
+	}
+	else
+	{
+		mIsDebugButtonPressed = false;
 	}
 }

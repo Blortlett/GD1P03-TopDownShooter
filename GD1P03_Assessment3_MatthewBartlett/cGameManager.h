@@ -12,6 +12,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 #pragma once
 #include "cPlayerCharacter.h"
+#include "cEnemyManager.h"
 #include "cCameraManager.h"
 #include "cProjectileManager.h"
 #include "cLevelManager.h"
@@ -39,8 +40,14 @@ private:
 	cLevelManager mLevelManager;
 	cEditorManager mEditorManager;
 
+	// Enemy Manger
+	cEnemyManager mEnemyManager;
+	
 	void OnSaveLevel();
 	void OnLoadLevel();
+
+	void CheckToggleDebugMode();
+	bool mIsDebugButtonPressed = false;
 
 public:
 	// Constructors
@@ -49,9 +56,6 @@ public:
 
 	// Update Method
 	void GameTick();
-
-
-	bool mIsDebugModeActive = true;
 
 
 

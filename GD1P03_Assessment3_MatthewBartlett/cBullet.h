@@ -1,11 +1,19 @@
 #pragma once
 #include "cSharedUtils.h"
+#include "cBoxCollider.h"
+#include "cDebugWidget.h"
+#include "cGameSettings.h"
+#include "cEnemyCharacter.h"
 
 class cBullet
 {
 private:
 	// Sprite
 	sf::Sprite mBulletSprite;
+
+	// Collider vars
+	cBoxCollider mCollider;
+	cDebugWidget mDebugWidget;
 
 	// Move variables
 	sf::Vector2f mPosition;
@@ -24,8 +32,15 @@ public:
 
 	bool mIsActive = false;
 
+	// Fire bullet functions
 	void Fire(sf::Vector2f _StartPosition, sf::Vector2f _ShootTrajectory);
 	void Move(float _DeltaTime);
 	void Update(sf::RenderWindow& _Window, float _DeltaTime);
 	void Draw(sf::RenderWindow& _Window);
+
+	// Hit Function
+	bool CheckCollisionWithEnemy(cEnemyCharacter& _Character, sf::Vector2f& _CollisionDirection);
+
+	// Get collider
+	cBoxCollider& GetCollider() { return mCollider; }
 };

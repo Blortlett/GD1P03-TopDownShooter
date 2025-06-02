@@ -15,8 +15,9 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cEnemyManager.h"
 #include "cCameraManager.h"
 #include "cProjectileManager.h"
-#include "cLevelManager.h"
 #include "cEditorManager.h"
+
+class cLevelManager;
 
 class cGameManager
 {
@@ -34,6 +35,7 @@ private:
 	cPlayerInput mPlayerInput;
 	cCameraManager mCameraManager;
 	cPlayerCharacter mPlayerCharacter;
+
 
 	// Other managers
 	cProjectileManager mProjectileManager;

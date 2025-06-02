@@ -10,6 +10,7 @@ private:
 public:
 	// Textures
 	sf::Texture mBulletTex;
+	sf::Texture mPistolTex;
 
 
 

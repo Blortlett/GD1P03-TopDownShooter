@@ -17,4 +17,6 @@ public:
 	~cEnemyManager() {}
 
 	void Update(float _DeltaTime);
+
+	std::vector<cEnemyCharacter*>& GetEnemyList();
 };

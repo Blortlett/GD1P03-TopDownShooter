@@ -45,9 +45,6 @@
     <Filter Include="GameObjects\Weaponry\Projectiles">
       <UniqueIdentifier>{26404816-368c-42d0-8f8f-bf843587c6a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObjects\Weaponry\Pistol">
-      <UniqueIdentifier>{275ec719-2e4c-46d9-b20e-bb0042962753}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObjects\Components">
       <UniqueIdentifier>{7bd67768-e6ff-45ed-b419-ed3c8f8f9354}</UniqueIdentifier>
     </Filter>
@@ -141,6 +138,15 @@
     <Filter Include="GameSystems\EnemyManager">
       <UniqueIdentifier>{9e49c580-2c09-4ba5-8290-e98da921c1de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Weaponry\Weapons">
+      <UniqueIdentifier>{143857a3-8bf5-48c0-9f44-524eb5bdf8fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Weaponry\Weapons\Pistol">
+      <UniqueIdentifier>{275ec719-2e4c-46d9-b20e-bb0042962753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Weaponry\Weapons\Pistol\Droppable">
+      <UniqueIdentifier>{ffe025ad-515e-4181-841b-ae80579a018d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -165,7 +171,7 @@
       <Filter>Utils\SharedUtils</Filter>
     </ClCompile>
     <ClCompile Include="cPistol.cpp">
-      <Filter>GameObjects\Weaponry\Pistol</Filter>
+      <Filter>GameObjects\Weaponry\Weapons\Pistol</Filter>
     </ClCompile>
     <ClCompile Include="cBullet.cpp">
       <Filter>GameObjects\Weaponry\Projectiles</Filter>
@@ -236,6 +242,9 @@
     <ClCompile Include="cEnemyManager.cpp">
       <Filter>GameSystems\EnemyManager</Filter>
     </ClCompile>
+    <ClCompile Include="cPistolDropable.cpp">
+      <Filter>GameObjects\Weaponry\Weapons\Pistol\Droppable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h">
@@ -260,7 +269,7 @@
       <Filter>Utils\SharedUtils</Filter>
     </ClInclude>
     <ClInclude Include="cPistol.h">
-      <Filter>GameObjects\Weaponry\Pistol</Filter>
+      <Filter>GameObjects\Weaponry\Weapons\Pistol</Filter>
     </ClInclude>
     <ClInclude Include="cBullet.h">
       <Filter>GameObjects\Weaponry\Projectiles</Filter>
@@ -336,6 +345,9 @@
     </ClInclude>
     <ClInclude Include="cEnemyManager.h">
       <Filter>GameSystems\EnemyManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cPistolDropable.h">
+      <Filter>GameObjects\Weaponry\Weapons\Pistol\Droppable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ cEnemyManager::cEnemyManager(cProjectileManager& _ProjectileManager, sf::RenderW
 	, mProjectileManager(_ProjectileManager)
 {
 	// Create single enemy to muck around with
-	cEnemyCharacter* newEnemy = new cEnemyCharacter(sf::Vector2f(0.f, 20.f), _ProjectileManager, _GameWindow, _PlayerCharacter);
+	cEnemyCharacter* newEnemy = new cEnemyCharacter(sf::Vector2f(-60.f, -160.f), _ProjectileManager, _GameWindow, _PlayerCharacter);
 	mEnemyList.push_back(newEnemy);
 }
 
@@ -17,4 +17,9 @@ void cEnemyManager::Update(float _DeltaTime)
 		enemy->Update(_DeltaTime);
 		enemy->Draw();
 	}
+}
+
+std::vector<cEnemyCharacter*>& cEnemyManager::GetEnemyList()
+{
+	return mEnemyList;
 }

@@ -20,4 +20,6 @@ public:
 
 	// Updater
 	void Update(float _DeltaTime);
+
+	std::array<cBullet, 15>& GetPlayerBulletList();
 };

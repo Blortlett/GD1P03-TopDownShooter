@@ -166,6 +166,7 @@
     <ClCompile Include="cLevel1.cpp" />
     <ClCompile Include="cLevelManager.cpp" />
     <ClCompile Include="cPistol.cpp" />
+    <ClCompile Include="cPistolDropable.cpp" />
     <ClCompile Include="cPlayerAnimator.cpp" />
     <ClCompile Include="cPlayerCharacter.cpp" />
     <ClCompile Include="cPlayerInput.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="cLevel1.h" />
     <ClInclude Include="cLevelManager.h" />
     <ClInclude Include="cPistol.h" />
+    <ClInclude Include="cPistolDropable.h" />
     <ClInclude Include="cPlayerAnimator.h" />
     <ClInclude Include="cPlayerAnimationBase.h" />
     <ClInclude Include="cPlayerCharacter.h" />

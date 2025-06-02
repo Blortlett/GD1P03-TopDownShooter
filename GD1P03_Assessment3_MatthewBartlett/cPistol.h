@@ -1,6 +1,5 @@
 #pragma once
 #include "cBullet.h"
-//#include "cProjectileManager.h"
 
 class cProjectileManager;
 

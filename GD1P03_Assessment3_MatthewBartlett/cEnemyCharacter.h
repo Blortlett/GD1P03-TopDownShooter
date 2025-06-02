@@ -27,5 +27,10 @@ private:
 public:
 	cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter);
 	~cEnemyCharacter() {}
+
+	// Update
 	void Update(float _DeltaSeconds) override;
+
+	// On Bullet Collision
+	void OnBulletCollision();
 };

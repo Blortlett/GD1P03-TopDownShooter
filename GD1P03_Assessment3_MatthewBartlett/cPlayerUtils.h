@@ -11,6 +11,8 @@ private:
 public:
 	// Player Textures
 	sf::Texture* mPlayerIdleSheetTex;
+	sf::Texture* mPlayerPunchSheetTex;
+	sf::Texture* mPlayerShootSheetTex;
 
 	// Enemy Textures
 	sf::Texture* mEnemyIdleSheetTex;

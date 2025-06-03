@@ -9,6 +9,18 @@ cPlayerUtils::cPlayerUtils()
 	{
 		std::cout << "Failed to load player_idle_pistol_Sheet.png";
 	}
+	// Load Player pistol punch animation sheet
+	mPlayerPunchSheetTex = new sf::Texture();
+	if (!mPlayerPunchSheetTex->loadFromFile("Assets/SpritePack/Player/Punch/player_punch_pistol_Sheet.png"))
+	{
+		std::cout << "Failed to load player_punch_pistol_Sheet.png";
+	}
+	// Load Player pistol shoot animation sheet
+	mPlayerShootSheetTex = new sf::Texture();
+	if (!mPlayerShootSheetTex->loadFromFile("Assets/SpritePack/Player/Idle/player_shoot_pistol_Sheet.png"))
+	{
+		std::cout << "Failed to load player_shoot_pistol_Sheet.png";
+	}
 
 
 	// -= Enemy Sprite Sheets =-
@@ -22,7 +34,7 @@ cPlayerUtils::cPlayerUtils()
 	mEnemyDeathSheetTex = new sf::Texture();
 	if (!mEnemyDeathSheetTex->loadFromFile("Assets/SpritePack/NPCs/NPC_Gunman/NPC_Gunman_death_Sheet.png"))
 	{
-		std::cout << "Failed to load NPC_Gunman_idle_pistol_Sheet.png";
+		std::cout << "Failed to load NPC_Gunman_death_Sheet.png";
 	}
 }
 

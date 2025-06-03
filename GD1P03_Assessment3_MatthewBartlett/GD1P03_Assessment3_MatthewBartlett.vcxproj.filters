@@ -155,6 +155,15 @@
     <Filter Include="Level\LevelEditor\Tools\cExitDoorDrawTool">
       <UniqueIdentifier>{3e6243e9-ecce-46d6-8dd4-b59ba3857e36}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\ExitTriggerCollider">
+      <UniqueIdentifier>{2050d7ca-8e44-47c3-aa1d-eeaa2f2eaf02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelEditor\Tools\cExitZoneDrawTool">
+      <UniqueIdentifier>{7fcc7ab3-f1d7-481b-8176-e7db572b1cab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Levels\Level2">
+      <UniqueIdentifier>{7f9916d9-ada6-47a8-8d2f-a9fab8c4e2c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -267,6 +276,15 @@
     </ClCompile>
     <ClCompile Include="cHalfWallDrawTool.cpp">
       <Filter>Level\LevelEditor\Tools\cHalfWallDrawTool</Filter>
+    </ClCompile>
+    <ClCompile Include="cExitTrigger.cpp">
+      <Filter>GameObjects\ExitTriggerCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="cExitZoneDrawTool.cpp">
+      <Filter>Level\LevelEditor\Tools\cExitZoneDrawTool</Filter>
+    </ClCompile>
+    <ClCompile Include="cLevel2.cpp">
+      <Filter>Level\Levels\Level2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -386,6 +404,15 @@
     </ClInclude>
     <ClInclude Include="cHalfWallDrawTool.h">
       <Filter>Level\LevelEditor\Tools\cHalfWallDrawTool</Filter>
+    </ClInclude>
+    <ClInclude Include="cExitTrigger.h">
+      <Filter>GameObjects\ExitTriggerCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="cExitZoneDrawTool.h">
+      <Filter>Level\LevelEditor\Tools\cExitZoneDrawTool</Filter>
+    </ClInclude>
+    <ClInclude Include="cLevel2.h">
+      <Filter>Level\Levels\Level2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

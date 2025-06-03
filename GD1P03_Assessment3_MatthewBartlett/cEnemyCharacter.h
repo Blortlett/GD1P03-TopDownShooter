@@ -41,4 +41,7 @@ public:
 
 	// On Bullet Collision
 	void OnBulletCollision(sf::Vector2f _CollisionDirection);
+
+	// Getters
+	bool IsAlive() { return mAlive; }
 };

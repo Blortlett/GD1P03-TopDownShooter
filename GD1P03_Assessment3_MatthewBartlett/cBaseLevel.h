@@ -4,6 +4,7 @@
 #include "cFullWall.h"
 #include "cHalfWall.h"
 #include "cExitDoor.h"
+#include "cExitTrigger.h"
 
 
 class cFileInterface;
@@ -23,6 +24,8 @@ protected:
 	std::vector<cHalfWall*> mHalfWallColliders;
 	// Exit Blocking Door
 	cExitDoor* mExitDoor;
+	// Exit Zone behind ExitDoor
+	cExitTrigger* mExitZone;
 
 	// GameWindow Reference
 	sf::RenderWindow& mRenderWindow;
@@ -40,8 +43,10 @@ public:
 	// Walls
 	void AddFullWallToList(cFullWall* _FullWall);
 	void AddHalfWallToList(cHalfWall* _HalfWall);
-	// Exit door
+	// Exit door // Blocks access to exit zone
 	void AddExitDoorToLevel(cExitDoor* _ExitDoor);
+	// Exit zone collider
+	void AddExitZoneToLevel(cExitTrigger* _ExitZone);
 
 	// Cleanup new objects
 	void CleanupColliders();

@@ -17,6 +17,7 @@ cEditorManager::cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _Le
 	, mFullWallTool(_LevelManager)
 	, mHalfWallTool(_LevelManager)
 	, mExitDoorDrawTool(_LevelManager)
+	, mExitZoneDrawTool(_LevelManager)
 	, mCameraView(_PlayerCameraView)
 	, mLevelManager(_LevelManager)
 {
@@ -36,6 +37,9 @@ void cEditorManager::SetTool(ToolType type)
 	case cEditorManager::ToolType::ToolMode_HalfWall:
 		mCurrentTool = &mHalfWallTool;
 		break;
+	case cEditorManager::ToolType::ToolMode_ExitZone:
+		mCurrentTool = &mExitZoneDrawTool;
+		break;
 	}
 }
 
@@ -52,6 +56,10 @@ void cEditorManager::UpdateToolMode()
 	if (mPlayerInput.IsExitDoorKeyPressed())
 	{ // Numpad 3
 		SetTool(cEditorManager::ToolType::ToolMode_ExitDoor);
+	}
+	if (mPlayerInput.IsExitZoneKeyPressed())
+	{ // Numpad 4
+		SetTool(cEditorManager::ToolType::ToolMode_ExitZone);
 	}
 }
 

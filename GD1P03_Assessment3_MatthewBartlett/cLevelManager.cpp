@@ -2,6 +2,8 @@
 #include "cPlayerCharacter.h"
 #include "cProjectileManager.h"
 #include "cEnemyManager.h"
+#include "cExitTrigger.h"
+
 
 
 cLevelManager::cLevelManager(sf::RenderWindow& _Window)
@@ -12,10 +14,6 @@ cLevelManager::cLevelManager(sf::RenderWindow& _Window)
 	mFileInterface.LoadLevelByName("Level1");
 }
 
-void cLevelManager::Update()
-{
-}
-
 void cLevelManager::Draw()
 {
 	mCurrentLevel->Draw();
@@ -24,6 +22,24 @@ void cLevelManager::Draw()
 void cLevelManager::DebugDraw()
 {
 	mCurrentLevel->DebugDraw();
+}
+
+void cLevelManager::TrackLevelComplete(cEnemyManager& _EnemyManager)
+{
+	/// !!! We can probably tick enemies down one by one on kill instead of checking every frame !!!
+	// I am too tired to write new code that is good. Bed time, come back tomorrow
+	// Check will be changed to false if any Enemies remain alive
+	bool AllEnemiesDeadCheck = true;
+	for (cEnemyCharacter* enemy : _EnemyManager.GetEnemyList())
+	{
+		if (enemy->IsAlive())
+			AllEnemiesDeadCheck = false;
+	}
+
+	if (AllEnemiesDeadCheck)
+	{
+		mLevelComplete = true;
+	}
 }
 
 void cLevelManager::CheckPlayerWallCollisions(cPlayerCharacter& _Player)
@@ -87,6 +103,12 @@ void cLevelManager::AddExitDoor(cExitDoor* _ExitDoorObject)
 {
 	if (!mCurrentLevel) return; // Error check
 	mCurrentLevel->AddExitDoorToLevel(_ExitDoorObject);
+}
+
+void cLevelManager::AddExitZone(cExitTrigger* _ExitZoneObject)
+{
+	if (!mCurrentLevel) return; // Error check
+	mCurrentLevel->AddExitZoneToLevel(_ExitZoneObject);
 }
 
 void cLevelManager::TryDeleteWall(sf::Vector2f pointCollision)

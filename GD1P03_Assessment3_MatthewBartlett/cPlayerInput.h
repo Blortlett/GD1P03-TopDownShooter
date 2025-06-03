@@ -31,6 +31,7 @@ public:
     bool IsFullWallKeyPressed() const;
     bool IsHalfWallKeyPressed() const;
     bool IsExitDoorKeyPressed() const;
+    bool IsExitZoneKeyPressed() const;
 
     // Meta Inputs
     bool IsDebugButtonPressed() const;

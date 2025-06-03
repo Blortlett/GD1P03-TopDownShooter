@@ -20,6 +20,7 @@ cBaseLevel::cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFile
 cBaseLevel::~cBaseLevel()
 {
     CleanupColliders();
+    delete mBackgroundSprite;
 }
 
 void cBaseLevel::Update(float _DeltaTime)
@@ -60,6 +61,10 @@ void cBaseLevel::DebugDraw()
     {
         mExitDoor->DebugDraw(mRenderWindow);
     }
+    if (mExitZone != nullptr)
+    {
+        mExitZone->DebugDraw(mRenderWindow);
+    }
 }
 
 void cBaseLevel::AddFullWallToList(cFullWall* _FullWall)
@@ -77,7 +82,14 @@ void cBaseLevel::AddHalfWallToList(cHalfWall* _HalfWall)
 
 void cBaseLevel::AddExitDoorToLevel(cExitDoor* _ExitDoor)
 {
+    delete mExitDoor;
     mExitDoor = _ExitDoor;
+}
+
+void cBaseLevel::AddExitZoneToLevel(cExitTrigger* _ExitZone)
+{
+    delete mExitZone;
+    mExitZone = _ExitZone;
 }
 
 void cBaseLevel::CleanupColliders()

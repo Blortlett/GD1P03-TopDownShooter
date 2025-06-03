@@ -162,12 +162,15 @@
     <ClCompile Include="cEnemyManager.cpp" />
     <ClCompile Include="cExitDoor.cpp" />
     <ClCompile Include="cExitDoorDrawTool.cpp" />
+    <ClCompile Include="cExitTrigger.cpp" />
+    <ClCompile Include="cExitZoneDrawTool.cpp" />
     <ClCompile Include="cFileInterface.cpp" />
     <ClCompile Include="cFullWallDrawTool.cpp" />
     <ClCompile Include="cGameManager.cpp" />
     <ClCompile Include="cGameSettings.cpp" />
     <ClCompile Include="cHalfWallDrawTool.cpp" />
     <ClCompile Include="cLevel1.cpp" />
+    <ClCompile Include="cLevel2.cpp" />
     <ClCompile Include="cLevelManager.cpp" />
     <ClCompile Include="cPickupManager.cpp" />
     <ClCompile Include="cPistol.cpp" />
@@ -201,6 +204,8 @@
     <ClInclude Include="cEnemyManager.h" />
     <ClInclude Include="cExitDoor.h" />
     <ClInclude Include="cExitDoorDrawTool.h" />
+    <ClInclude Include="cExitTrigger.h" />
+    <ClInclude Include="cExitZoneDrawTool.h" />
     <ClInclude Include="cFileInterface.h" />
     <ClInclude Include="cFullWall.h" />
     <ClInclude Include="cFullWallDrawTool.h" />
@@ -209,6 +214,7 @@
     <ClInclude Include="cHalfWall.h" />
     <ClInclude Include="cHalfWallDrawTool.h" />
     <ClInclude Include="cLevel1.h" />
+    <ClInclude Include="cLevel2.h" />
     <ClInclude Include="cLevelManager.h" />
     <ClInclude Include="cPickupManager.h" />
     <ClInclude Include="cPistol.h" />

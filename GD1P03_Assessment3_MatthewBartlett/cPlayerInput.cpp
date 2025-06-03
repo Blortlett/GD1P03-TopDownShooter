@@ -16,7 +16,7 @@ cPlayerInput::cPlayerInput()
 {
 }
 
-// Gameplay Keybinds
+// -= Gameplay Keybinds =-
 
 bool cPlayerInput::IsSpacebarInputPressed() const
 {
@@ -63,7 +63,7 @@ sf::Vector2i cPlayerInput::GetMousePosition(sf::RenderWindow& window) const
     return sf::Mouse::getPosition(window);
 }
 
-// Editor Keybinds
+// -= Editor Keybinds =-
 
 bool cPlayerInput::IsFullWallKeyPressed() const
 {
@@ -80,8 +80,13 @@ bool cPlayerInput::IsExitDoorKeyPressed() const
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad3);
 }
 
-// Meta keybinds
+bool cPlayerInput::IsExitZoneKeyPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad4);
+}
 
+
+// -= Meta keybinds =-
 bool cPlayerInput::IsDebugButtonPressed() const
 {
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Grave);

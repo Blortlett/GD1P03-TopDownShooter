@@ -18,6 +18,8 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cFullWallDrawTool.h"
 #include "cHalfWallDrawTool.h"
 #include "cExitDoorDrawTool.h"
+#include "cExitZoneDrawTool.h"
+
 
 class cLevelManager;
 
@@ -29,7 +31,8 @@ public:
     enum class ToolType {
         ToolMode_FullWall,
         ToolMode_HalfWall,
-        ToolMode_ExitDoor
+        ToolMode_ExitDoor,
+        ToolMode_ExitZone
     };
     void SetTool(ToolType type);
 
@@ -58,6 +61,7 @@ private:
     cFullWallDrawTool mFullWallTool;
     cHalfWallDrawTool mHalfWallTool;
     cExitDoorDrawTool mExitDoorDrawTool;
+    cExitZoneDrawTool mExitZoneDrawTool;
 
     // Draw tool helpers
     bool mIsDrawing = false;

@@ -4,8 +4,6 @@
 class cLevel1 : public cBaseLevel
 {
 private:
-	sf::Texture mBackgroundTex;
-	sf::Sprite* mBackgroundSprite;
 
 public:
 	cLevel1(sf::RenderWindow& _Window);

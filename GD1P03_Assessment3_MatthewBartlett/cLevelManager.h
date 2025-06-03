@@ -7,11 +7,14 @@
 // forward declarations
 class cEnemyManager;
 class cPlayerCharacter;
+class cExitTrigger;
 
 
 class cLevelManager
 {
 private:
+	bool mLevelComplete = false;
+
 	// Level List
 	cLevel1 mLevel1;
 	
@@ -27,7 +30,7 @@ public:
 	~cLevelManager() {}
 
 	// Updateables
-	void Update();
+	void TrackLevelComplete(cEnemyManager& _EnemyManager);
 	void Draw();
 	void DebugDraw();
 
@@ -41,6 +44,7 @@ public:
 	void AddFullWall(cFullWall* _FullWallCollider);
 	void AddHalfWall(cHalfWall* _HalfWallCollider);
 	void AddExitDoor(cExitDoor* _ExitDoorObject);
+	void AddExitZone(cExitTrigger* _ExitZoneObject);
 	// Delete wall
 	void TryDeleteWall(sf::Vector2f pointCollision);
 

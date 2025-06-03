@@ -38,10 +38,11 @@ private:
 
 	// Projectile Manager
 	cProjectileManager mProjectileManager;
-	// Enemy Manager
-	cEnemyManager mEnemyManager;
 	// Pickupable Manager
 	cPickupManager mPickupManager;
+
+	// Enemy Manager
+	cEnemyManager mEnemyManager;
 
 	// Level Manager
 	cLevelManager mLevelManager;

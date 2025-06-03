@@ -24,6 +24,9 @@ public:
 	// Rotate Animation
 	void RotateAnimation(sf::Angle _Rotation);
 
+	// Getters
+	sf::Angle GetRotation();
+
 protected:
 	// Time Variables
 	float mAnimationTime = 0.f;

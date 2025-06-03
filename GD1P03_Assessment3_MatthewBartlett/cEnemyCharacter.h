@@ -4,6 +4,8 @@
 #include "cEnemyAnimator.h"
 #include "cGameSettings.h"
 
+class cPickupManager;
+
 class cEnemyCharacter : public cCharacter
 {
 private:
@@ -24,11 +26,14 @@ private:
 	// Enemy Animator
 	cEnemyAnimator mAnimator;
 
+	// Game Manager References
+	cPickupManager& mPickupManager;
+
 	// Reference to player object
 	cPlayerCharacter& mPlayerReference;
 
 public:
-	cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter);
+	cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, cPickupManager& _PickupManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter);
 	~cEnemyCharacter() {}
 
 	// Update

@@ -36,3 +36,8 @@ void cAnimationBase::RotateAnimation(sf::Angle _Rotation)
 {
     mSprite.setRotation(_Rotation);
 }
+
+sf::Angle cAnimationBase::GetRotation()
+{
+    return mSprite.getRotation();
+}

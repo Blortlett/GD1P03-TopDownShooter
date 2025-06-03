@@ -17,4 +17,7 @@ public:
 	void SetRotation(sf::Angle _AngleToRotate);
 	// Swap animation
 	void SwapAnimation(cAnimationBase* _Animation);
+
+	// Getters
+	sf::Angle GetRotation();
 };

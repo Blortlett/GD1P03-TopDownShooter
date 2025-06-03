@@ -1,15 +1,17 @@
 #include "cEnemyCharacter.h"
+#include "cPickupManager.h"
 
-cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter)
+cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, cPickupManager& _PickupManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter)
 	: cCharacter(_Position, _ProjectileManager, _GameWindow)
 	, mPlayerReference(_PlayerCharacter)
+	, mPickupManager(_PickupManager)
 {
 	mCharacterAnimator = &mAnimator;
 }
 
 void cEnemyCharacter::GetMovementDirection(float _DeltaSeconds)
 {
-	// coutdown
+	// Countdown timer
 	mPatrolTimer -= _DeltaSeconds;
 	// On Timer loop
 	if (mPatrolTimer <= 0.f)
@@ -67,6 +69,13 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 
 void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)
 {
+	// Only run entire function once
+	if (!mAlive) return;
+
+	// Kill enemy
 	mAlive = false;
+	// Drop weapon
+	mPickupManager.CreateNewWeaponDrop(mPosition, mCharacterAnimator->GetRotation(), 12);
+	// Swap current animation to death animation
 	mAnimator.SwapToEnemyDeath();
 }

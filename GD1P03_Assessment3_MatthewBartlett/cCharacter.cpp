@@ -43,7 +43,7 @@ void cCharacter::Move(sf::Vector2f _NormalizedDirection, float _DeltaSeconds)
 	// Apply Velocity to position
 	mBoxCollider.MoveColliderPosition(mBoxCollider.GetPosition() + mVelocity * _DeltaSeconds);
 
-	// Apply position to BoxCollider
+	// Apply Collider position to position // wrong way my dude
 	mPosition = mBoxCollider.GetPosition();
 }
 

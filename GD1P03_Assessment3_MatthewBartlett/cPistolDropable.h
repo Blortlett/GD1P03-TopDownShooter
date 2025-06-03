@@ -10,7 +10,7 @@ private:
 
 	// velocity
 	sf::Vector2f mVelocity;
-	float mThrowSpeed = 10.f;
+	float mThrowSpeed = .1f;
 	float const FRICTION = .005f;
 
 	// Record Ammo count
@@ -20,7 +20,7 @@ private:
 	sf::Sprite mPistolSprite;
 
 public:
-	cPistolDropable(sf::Vector2f _Postion, sf::Vector2f _NormalizedThrowDirection, int _AmmoCount);
+	cPistolDropable(sf::Vector2f _Postion, sf::Angle _ThrowDirection, int _AmmoCount);
 	~cPistolDropable() {}
 
 	void OnCollision();

@@ -19,8 +19,10 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
-	, mEnemyManager(mProjectileManager, mGameWindow, mPlayerCharacter)
+	, mPickupManager(_GameWindow)
+	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
 {
+
 }
 
 void cGameManager::GameTick()
@@ -36,15 +38,21 @@ void cGameManager::GameTick()
 	mLevelManager.CheckPlayerWallCollisions(mPlayerCharacter);
 	mLevelManager.CheckBulletToEnemyCollision(mProjectileManager, mEnemyManager);
 
-	// Update Player
-	mPlayerCharacter.Update(mDeltaSeconds);
-	mPlayerCharacter.Draw();
-
 	// Update Enemies
 	mEnemyManager.Update(mDeltaSeconds);
 
+	// Update Player
+	mPlayerCharacter.Update(mDeltaSeconds);
+
 	// Update ProjectileManager
 	mProjectileManager.Update(mDeltaSeconds);
+
+	// Update Pickupables
+	mPickupManager.Update(mDeltaSeconds);
+
+	// Draw Player last!!
+	mPlayerCharacter.Draw();
+
 
 	// Debug Mode
 	CheckToggleDebugMode();

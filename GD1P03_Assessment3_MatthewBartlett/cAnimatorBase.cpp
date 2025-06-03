@@ -24,3 +24,8 @@ void cAnimatorBase::SwapAnimation(cAnimationBase* _Animation)
 {
 	mCurrentAnimation = _Animation;
 }
+
+sf::Angle cAnimatorBase::GetRotation()
+{
+	return mCurrentAnimation->GetRotation();
+}

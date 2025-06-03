@@ -22,7 +22,7 @@ protected:
 	// Movement Function
 	void Move(sf::Vector2f _NormalizedDirection, float _DeltaSeconds);
 
-	// Weapon Functions
+	// Weapon Stuff
 	cPistol mPistol;
 	bool mIsShooting = false;
 	virtual void UpdateWeapon(float _DeltaSeconds) = 0;

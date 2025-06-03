@@ -11,7 +11,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 
 #pragma once
-//#include "cLevelManager.h"
+#include "cLevelManager.h"
 #include "cPlayerInput.h"
 
 // Draw Tool Includes
@@ -43,6 +43,9 @@ private:
     cPlayerInput mPlayerInput;
     sf::RenderWindow& mGameWindow;
     sf::View& mCameraView;
+
+    // LevelManager Reference
+    cLevelManager& mLevelManager;
 
     // Current Tool Holder
     cBaseDrawTool* mCurrentTool;

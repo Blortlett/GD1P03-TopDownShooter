@@ -36,9 +36,12 @@ public:
 	// Bullet to enemy collision
 	void CheckBulletToEnemyCollision(cProjectileManager& _ProjectileManager, cEnemyManager& _EnemyManager);
 
-	// Level Editing
+	// -= Level Editing =-
+	// Add wall
 	void AddFullWall(cFullWall* _FullWallCollider);
 	void AddHalfWall(cHalfWall* _HalfWallCollider);
+	// Delete wall
+	void TryDeleteWall(sf::Vector2f pointCollision);
 
 	// Save / Load level data
 	void SaveLevel();

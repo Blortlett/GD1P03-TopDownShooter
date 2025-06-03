@@ -15,6 +15,9 @@ public:
 	// Check collision with player
 	void CheckCollideWithPlayer(cPlayerCharacter& character, sf::Vector2f& collisionDirection);
 
+	// Check collide with point (used for delete wall)
+	bool CheckCollideWithPoint(sf::Vector2f point);
+
 	// DebugDraw
 	void DebugDraw(sf::RenderWindow& _Window);
 

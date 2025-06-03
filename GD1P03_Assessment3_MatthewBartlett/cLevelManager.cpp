@@ -9,6 +9,7 @@ cLevelManager::cLevelManager(sf::RenderWindow& _Window)
 	, mCurrentLevel(&mLevel1)
 	, mFileInterface(mCurrentLevel)
 {
+	mFileInterface.LoadLevelByName("Level1");
 }
 
 void cLevelManager::Update()
@@ -72,6 +73,24 @@ void cLevelManager::AddFullWall(cFullWall* _FullWallCollider)
 void cLevelManager::AddHalfWall(cHalfWall* _HalfWallCollider)
 {
 
+}
+
+void cLevelManager::TryDeleteWall(sf::Vector2f pointCollision)
+{
+	// Get FullWall List
+	std::vector<cFullWall*>& FullWallList = mCurrentLevel->GetFullWallColliderList();
+	// Ruffle through it
+	for (size_t i = 0; i < FullWallList.size(); ++i)
+	{
+		// If point collides with the wall
+		if (FullWallList[i]->CheckCollideWithPoint(pointCollision))
+		{
+			// Delete it
+			delete FullWallList[i];
+			// Remove item from list
+			FullWallList.erase(FullWallList.begin() + i);
+		}
+	}
 }
 
 void cLevelManager::SaveLevel()

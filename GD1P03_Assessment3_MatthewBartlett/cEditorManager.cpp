@@ -16,6 +16,7 @@ cEditorManager::cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _Le
 	: mGameWindow(_GameWindow)
 	, mFullWallTool(_LevelManager)
 	, mCameraView(_PlayerCameraView)
+	, mLevelManager(_LevelManager)
 {
 	mCurrentTool = &mFullWallTool;
 }
@@ -37,14 +38,19 @@ void cEditorManager::SetTool(ToolType type)
 
 void cEditorManager::UpdateCursor()
 {
-	// Return if debug mode is not active - do not draw diddly squat
-	if (cGameSettings::GetInstance().IsDebugActive())
+	// Return if debug mode is not active - do not do diddly squat
+	if (!cGameSettings::GetInstance().IsDebugActive())
 		return;
 
-
+	// Get mouse world position
 	sf::Vector2i mouseScreenPosition = sf::Mouse::getPosition(mGameWindow);
 	sf::Vector2f worldMousePosition = mGameWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);
 
+	// Right Click to delete platform
+	if (mPlayerInput.IsRightClickPressed() && mGameWindow.hasFocus())
+	{
+		mLevelManager.TryDeleteWall(worldMousePosition);
+	}
 
 	// Left Click
 	if (mPlayerInput.IsLeftClickPressed() && mGameWindow.hasFocus())

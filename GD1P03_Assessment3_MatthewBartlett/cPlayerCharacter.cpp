@@ -46,8 +46,6 @@ void cPlayerCharacter::HandleInput()
 	{
 		mPlayerInputNormalized /= magnitude;
 	}
-
-	std::cout << "Player Input x: " << mPlayerInputNormalized.x << "  y: " << mPlayerInputNormalized.y << std::endl;
 }
 
 void cPlayerCharacter::GetLookTowardsDirection()

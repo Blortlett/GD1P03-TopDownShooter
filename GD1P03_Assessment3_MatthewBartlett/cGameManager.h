@@ -17,6 +17,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cEnemyManager.h"
 #include "cEditorManager.h"
 #include "cLevelManager.h"
+#include "cPickupManager.h"
 
 class cGameManager
 {
@@ -35,11 +36,16 @@ private:
 	cCameraManager mCameraManager;
 	cPlayerCharacter mPlayerCharacter;
 
-	// Enemy & Projectile managers
+	// Projectile Manager
 	cProjectileManager mProjectileManager;
+	// Enemy Manager
 	cEnemyManager mEnemyManager;
+	// Pickupable Manager
+	cPickupManager mPickupManager;
+
 	// Level Manager
 	cLevelManager mLevelManager;
+
 	// Draw tool
 	cEditorManager mEditorManager;
 

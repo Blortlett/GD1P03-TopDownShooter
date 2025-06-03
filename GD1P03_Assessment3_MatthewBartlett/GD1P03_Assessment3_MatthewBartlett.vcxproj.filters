@@ -147,6 +147,12 @@
     <Filter Include="GameObjects\Weaponry\Weapons\Pistol\Droppable">
       <UniqueIdentifier>{ffe025ad-515e-4181-841b-ae80579a018d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\DeathAnimation">
+      <UniqueIdentifier>{02bbde18-6de9-4f92-90e5-396281a2ae90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameSystems\PickupManager">
+      <UniqueIdentifier>{a9bfbb45-48c1-411b-bdf6-95c2cdc4d081}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -244,6 +250,12 @@
     </ClCompile>
     <ClCompile Include="cPistolDropable.cpp">
       <Filter>GameObjects\Weaponry\Weapons\Pistol\Droppable</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyDeathAnimation.cpp">
+      <Filter>Animator\Animations\EnemyAnimations\DeathAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="cPickupManager.cpp">
+      <Filter>GameSystems\PickupManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +360,12 @@
     </ClInclude>
     <ClInclude Include="cPistolDropable.h">
       <Filter>GameObjects\Weaponry\Weapons\Pistol\Droppable</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyDeathAnimation.h">
+      <Filter>Animator\Animations\EnemyAnimations\DeathAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="cPickupManager.h">
+      <Filter>GameSystems\PickupManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

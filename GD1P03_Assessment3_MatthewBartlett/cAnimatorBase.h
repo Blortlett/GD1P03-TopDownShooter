@@ -4,7 +4,7 @@
 
 class cAnimatorBase
 {
-private:
+protected:
 	cAnimationBase* mCurrentAnimation;
 public:
 	cAnimatorBase(cAnimationBase& _StartAnimation);

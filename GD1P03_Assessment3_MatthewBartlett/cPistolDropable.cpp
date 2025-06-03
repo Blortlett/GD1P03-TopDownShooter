@@ -12,6 +12,11 @@ void cPistolDropable::OnCollision()
 {
 }
 
+void cPistolDropable::OnPickup()
+{
+	
+}
+
 void cPistolDropable::Update(float _DeltaTime)
 {
 	// Apply Friction to velocity when no input

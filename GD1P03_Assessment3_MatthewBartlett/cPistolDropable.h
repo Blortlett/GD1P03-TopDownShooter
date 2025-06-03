@@ -24,6 +24,7 @@ public:
 	~cPistolDropable() {}
 
 	void OnCollision();
+	void OnPickup();
 
 	void Update(float _DeltaTime);
 	void Draw(sf::RenderWindow& _GameWindow);

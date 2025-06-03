@@ -8,6 +8,7 @@ cSharedUtils::cSharedUtils()
 	{
 		std::cout << "Failed to load player_idle_pistol_Sheet.png";
 	}
+
 	// Load Pistol Texture
 	if (!mPistolTex.loadFromFile("Assets/SpritePack/Weapon/Pistol.png"))
 	{

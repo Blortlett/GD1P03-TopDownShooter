@@ -55,7 +55,11 @@ void cLevelManager::CheckBulletToEnemyCollision(cProjectileManager& _ProjectileM
 		// Check collision with each enemy
 		for (cEnemyCharacter* enemy : EnemyList)
 		{
-			bullet.CheckCollisionWithEnemy(*enemy, CollisionDirection);
+			// check collision
+			if (bullet.CheckCollisionWithEnemy(*enemy, CollisionDirection))
+			{ // If bullet hit enemy, deactivate bullet // sorry for such indentation lol
+				bullet.mIsActive = false;
+			}
 		}
 	}
 }

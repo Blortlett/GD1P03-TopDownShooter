@@ -9,9 +9,12 @@ private:
 	~cPlayerUtils();
 
 public:
-	// Textures
+	// Player Textures
 	sf::Texture* mPlayerIdleSheetTex;
+
+	// Enemy Textures
 	sf::Texture* mEnemyIdleSheetTex;
+	sf::Texture* mEnemyDeathSheetTex;
 
 
 

@@ -10,6 +10,15 @@ cEnemyManager::cEnemyManager(cProjectileManager& _ProjectileManager, sf::RenderW
 	mEnemyList.push_back(newEnemy);
 }
 
+cEnemyManager::~cEnemyManager()
+{
+	for (cEnemyCharacter* weapon : mEnemyList)
+	{
+		delete weapon;
+	}
+	mEnemyList.clear();
+}
+
 void cEnemyManager::Update(float _DeltaTime)
 {
 	for (cEnemyCharacter* enemy : mEnemyList)

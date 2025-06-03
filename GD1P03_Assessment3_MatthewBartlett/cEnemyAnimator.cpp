@@ -3,8 +3,10 @@
 cEnemyAnimator::cEnemyAnimator()
     : cAnimatorBase(mEnemyPistolIdle)
 {
+
 }
 
-cEnemyAnimator::~cEnemyAnimator()
+void cEnemyAnimator::SwapToEnemyDeath()
 {
+    mCurrentAnimation = &mEnemyDeath;
 }

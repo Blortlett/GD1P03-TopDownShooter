@@ -7,6 +7,9 @@
 class cEnemyCharacter : public cCharacter
 {
 private:
+
+	bool mAlive = true;
+
 	// Calculate enemy movement direction
 	float const mPatrolTimerMax = 3.f;
 	float const mPatrolWaitTimerMax = 3.f;

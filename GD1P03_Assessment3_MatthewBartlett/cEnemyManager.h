@@ -12,9 +12,10 @@ private:
 	sf::RenderWindow& mRenderWindow; // Game window
 	cPlayerCharacter& mPlayerReference;
 	cProjectileManager& mProjectileManager;
+
 public:
 	cEnemyManager(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter);
-	~cEnemyManager() {}
+	~cEnemyManager();
 
 	void Update(float _DeltaTime);
 

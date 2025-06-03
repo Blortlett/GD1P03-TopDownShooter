@@ -46,6 +46,12 @@ void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 
 void cEnemyCharacter::Update(float _DeltaSeconds)
 {
+	// Animate
+	mAnimator.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
+
+	if (!mAlive) return;
+	// Only perform the rest of the updates if Enemy is alive
+
 	// -= Movement =-
 	// Enemy "Input"
 	GetMovementDirection(_DeltaSeconds);
@@ -57,12 +63,10 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 		// Move Enemy
 		Move(mEnemyMovementNormalized, _DeltaSeconds);
 	}
-
-	// Animate
-	mAnimator.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
 }
 
 void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)
 {
-	std::cout << "Enemy hit!! Enemy down!" << std::endl;
+	mAlive = false;
+	mAnimator.SwapToEnemyDeath();
 }

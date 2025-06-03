@@ -16,8 +16,10 @@ protected:
 	sf::Vector2f mPosition;
 	sf::Vector2f mVelocity;
 
-	// Movement Functions
+	// Rotate Function
 	void Rotate(sf::Vector2f _FaceTowards);
+	void Rotate(sf::Angle _FaceTowards);
+	// Movement Function
 	void Move(sf::Vector2f _NormalizedDirection, float _DeltaSeconds);
 
 	// Weapon Functions

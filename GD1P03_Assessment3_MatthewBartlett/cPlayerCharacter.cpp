@@ -14,16 +14,12 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cGameSettings.h"
 
 
-cPlayerCharacter::cPlayerCharacter(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput)
-	: mRenderWindow(_GameWindow)
-	, mPistol(_ProjectileManager)
+cPlayerCharacter::cPlayerCharacter(sf::Vector2f _StartPosition, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput)
+	: cCharacter(_StartPosition, _ProjectileManager, _GameWindow)
 	, mCameraView(_PlayerCamera)
 	, mPlayerInput(_PlayerInput)
-	  // Collider stuff
-	, mColliderBounds({ 0.f, 0.f }, { 24.f, 24.f })
-	, mBoxCollider(mColliderBounds)
-	, mDebugWidget(mBoxCollider)
 {
+	mCharacterAnimator = &mPlayerUpperBodyAnimator;
 }
 
 void cPlayerCharacter::HandleInput()
@@ -50,9 +46,11 @@ void cPlayerCharacter::HandleInput()
 	{
 		mPlayerInputNormalized /= magnitude;
 	}
+
+	std::cout << "Player Input x: " << mPlayerInputNormalized.x << "  y: " << mPlayerInputNormalized.y << std::endl;
 }
 
-void cPlayerCharacter::Rotate()
+void cPlayerCharacter::GetLookTowardsDirection()
 {
 	// Get mouse position relative to the window
 	sf::Vector2i mousePixelPos = mPlayerInput.GetMousePosition(mRenderWindow);
@@ -71,29 +69,10 @@ void cPlayerCharacter::Rotate()
 	sf::Angle angle = sf::degrees(angleDegrees);
 
 	// Apply rotation to animator (assumes cPlayerAnimator has a SetRotation method)
-	mPlayerUpperBodyAnimator.SetRotation(angle);
+	mPlayerLookDirection = angle;
 }
 
-void cPlayerCharacter::Move(float _DeltaSeconds)
-{
-	// Apply Friction to velocity when no input
-	mVelocity = mVelocity * std::pow(PLAYER_FRICTION, _DeltaSeconds);
-
-	// Apply input to move velocity
-	mVelocity += mPlayerInputNormalized * PLAYER_ACCELERATION * _DeltaSeconds;
-
-	// Clamp Move velocity
-	mVelocity.x = std::min(std::max(mVelocity.x, -1 * PLAYER_MAX_VELOCITY), PLAYER_MAX_VELOCITY);
-	mVelocity.y = std::min(std::max(mVelocity.y, -1 * PLAYER_MAX_VELOCITY), PLAYER_MAX_VELOCITY);
-
-	// Apply Velocity to position
-	mBoxCollider.MoveColliderPosition(mBoxCollider.GetPosition() + mVelocity * _DeltaSeconds);
-	
-	// Apply position to BoxCollider
-	mPosition = mBoxCollider.GetPosition();
-}
-
-void cPlayerCharacter::UpdateWeapon()
+void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 {
 	if (mPlayerInput.IsLeftClickPressed() && !mIsShooting)
 	{
@@ -136,14 +115,20 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 {
 	// Input
 	HandleInput();
+	GetLookTowardsDirection();
+
 	// Player Movement
-	Move(_DeltaSeconds);
-	Rotate();
+	Move(mPlayerInputNormalized, _DeltaSeconds);
+	// Player Rotation
+	Rotate(mPlayerLookDirection);
+
 	// Player Weapons
-	UpdateWeapon();
+	UpdateWeapon(_DeltaSeconds);
 	mPistol.Update(_DeltaSeconds);
+
 	// Player animations
-	mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
+	//mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
+	mCharacterAnimator->Animate(mPosition, _DeltaSeconds);
 }
 
 void cPlayerCharacter::Draw()

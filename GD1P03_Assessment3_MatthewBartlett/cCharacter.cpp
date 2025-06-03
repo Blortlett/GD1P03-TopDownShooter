@@ -28,6 +28,12 @@ void cCharacter::Rotate(sf::Vector2f _FaceTowards)
 	mCharacterAnimator->SetRotation(angle);
 }
 
+void cCharacter::Rotate(sf::Angle _FaceTowards)
+{
+	// Apply rotation to animator (assumes cPlayerAnimator has a SetRotation method)
+	mCharacterAnimator->SetRotation(_FaceTowards);
+}
+
 void cCharacter::Move(sf::Vector2f _NormalizedDirection, float _DeltaSeconds)
 {
 	// Apply Friction to velocity when no input

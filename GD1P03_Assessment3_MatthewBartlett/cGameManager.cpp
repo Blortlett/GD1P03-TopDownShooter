@@ -15,7 +15,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
 	, mCameraManager(mPlayerCharacter, _GameWindow)
-	, mPlayerCharacter(mProjectileManager, _GameWindow, mCameraManager.GetCameraView(), mPlayerInput)
+	, mPlayerCharacter(sf::Vector2f(0.f, 0.f), mProjectileManager, _GameWindow, mCameraManager.GetCameraView(), mPlayerInput)
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())

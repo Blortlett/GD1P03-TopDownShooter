@@ -16,6 +16,8 @@ cPlayerInput::cPlayerInput()
 {
 }
 
+// Gameplay Keybinds
+
 bool cPlayerInput::IsSpacebarInputPressed() const
 {
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W);
@@ -56,14 +58,33 @@ bool cPlayerInput::IsPauseButtonPressed() const
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
 }
 
-bool cPlayerInput::IsDebugButtonPressed() const
-{
-    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Grave);
-}
-
 sf::Vector2i cPlayerInput::GetMousePosition(sf::RenderWindow& window) const
 {
     return sf::Mouse::getPosition(window);
+}
+
+// Editor Keybinds
+
+bool cPlayerInput::IsFullWallKeyPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad1);
+}
+
+bool cPlayerInput::IsHalfWallKeyPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad2);
+}
+
+bool cPlayerInput::IsExitDoorKeyPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad3);
+}
+
+// Meta keybinds
+
+bool cPlayerInput::IsDebugButtonPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Grave);
 }
 
 bool cPlayerInput::IsSaveButtonPressed() const

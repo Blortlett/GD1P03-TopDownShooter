@@ -8,10 +8,12 @@ private:
 	~cSharedUtils() {}
 
 public:
-	// Textures
+	// -= Textures =-
+	// Weapons
 	sf::Texture mBulletTex;
 	sf::Texture mPistolTex;
-
+	// Doors
+	sf::Texture mExitDoorTex;
 
 
 	// Static Functions

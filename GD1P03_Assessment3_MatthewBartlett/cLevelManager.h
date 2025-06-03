@@ -40,6 +40,7 @@ public:
 	// Add wall
 	void AddFullWall(cFullWall* _FullWallCollider);
 	void AddHalfWall(cHalfWall* _HalfWallCollider);
+	void AddExitDoor(cExitDoor* _ExitDoorObject);
 	// Delete wall
 	void TryDeleteWall(sf::Vector2f pointCollision);
 

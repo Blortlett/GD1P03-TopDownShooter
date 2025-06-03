@@ -16,6 +16,8 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 // Draw Tool Includes
 #include "cFullWallDrawTool.h"
+#include "cHalfWallDrawTool.h"
+#include "cExitDoorDrawTool.h"
 
 class cLevelManager;
 
@@ -27,6 +29,7 @@ public:
     enum class ToolType {
         ToolMode_FullWall,
         ToolMode_HalfWall,
+        ToolMode_ExitDoor
     };
     void SetTool(ToolType type);
 
@@ -35,6 +38,7 @@ public:
     void CompleteUseTool();
 
     // Updateables
+    void UpdateToolMode();
     void UpdateCursor();
     void DrawCursorToScreen(sf::RenderWindow& window);
 
@@ -52,9 +56,8 @@ private:
 
     // Editor Tools
     cFullWallDrawTool mFullWallTool;
-
-    // DrawGrid
-    float mGridSize = 16.f;
+    cHalfWallDrawTool mHalfWallTool;
+    cExitDoorDrawTool mExitDoorDrawTool;
 
     // Draw tool helpers
     bool mIsDrawing = false;

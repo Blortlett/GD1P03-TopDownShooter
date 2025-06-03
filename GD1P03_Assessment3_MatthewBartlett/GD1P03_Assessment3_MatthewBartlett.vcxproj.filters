@@ -149,6 +149,12 @@
     <Filter Include="GameSystems\PickupManager">
       <UniqueIdentifier>{a9bfbb45-48c1-411b-bdf6-95c2cdc4d081}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Walls\ExitDoor">
+      <UniqueIdentifier>{1b112865-a3ef-4397-aade-f7eca6fb5f1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelEditor\Tools\cExitDoorDrawTool">
+      <UniqueIdentifier>{3e6243e9-ecce-46d6-8dd4-b59ba3857e36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -252,6 +258,15 @@
     </ClCompile>
     <ClCompile Include="cPickupManager.cpp">
       <Filter>GameSystems\PickupManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cExitDoor.cpp">
+      <Filter>GameObjects\Walls\ExitDoor</Filter>
+    </ClCompile>
+    <ClCompile Include="cExitDoorDrawTool.cpp">
+      <Filter>Level\LevelEditor\Tools\cExitDoorDrawTool</Filter>
+    </ClCompile>
+    <ClCompile Include="cHalfWallDrawTool.cpp">
+      <Filter>Level\LevelEditor\Tools\cHalfWallDrawTool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +377,15 @@
     </ClInclude>
     <ClInclude Include="cPickupManager.h">
       <Filter>GameSystems\PickupManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cExitDoor.h">
+      <Filter>GameObjects\Walls\ExitDoor</Filter>
+    </ClInclude>
+    <ClInclude Include="cExitDoorDrawTool.h">
+      <Filter>Level\LevelEditor\Tools\cExitDoorDrawTool</Filter>
+    </ClInclude>
+    <ClInclude Include="cHalfWallDrawTool.h">
+      <Filter>Level\LevelEditor\Tools\cHalfWallDrawTool</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

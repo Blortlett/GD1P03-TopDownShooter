@@ -12,6 +12,9 @@ cBaseLevel::cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFile
 
     mBackgroundSprite = new sf::Sprite(mBackgroundTex);
     mBackgroundSprite->setOrigin(mBackgroundSprite->getLocalBounds().size / 2.f);
+
+    // Set ExitDoor to null at the start
+    mExitDoor = nullptr;
 }
 
 cBaseLevel::~cBaseLevel()
@@ -19,18 +22,43 @@ cBaseLevel::~cBaseLevel()
     CleanupColliders();
 }
 
+void cBaseLevel::Update(float _DeltaTime)
+{
+    if (mExitDoor != nullptr)
+    {
+        mExitDoor->Update(_DeltaTime);
+    }
+}
+
 void cBaseLevel::Draw()
 {
+    // Draw background sprite if it exists... otherwise exit this function entirely because having no background is messed up
     if (!mBackgroundSprite) return;
     mRenderWindow.draw(*mBackgroundSprite);
+
+    // Only draw door if it exists
+    if (mExitDoor != nullptr)
+    {
+        mExitDoor->Draw(mRenderWindow);
+    }
 }
 
 void cBaseLevel::DebugDraw()
 {
     // Draw all widgets for full wall colliders
-    for (cFullWall* wall : mFullWallColliders)
+    for (cFullWall* fullWall : mFullWallColliders)
     {
-        wall->DebugDraw(mRenderWindow);
+        fullWall->DebugDraw(mRenderWindow);
+    }
+    // Draw all widgets for half wall colliders
+    for (cHalfWall* halfWall : mHalfWallColliders)
+    {
+        halfWall->DebugDraw(mRenderWindow);
+    }
+    // Only draw door if it exists
+    if (mExitDoor != nullptr)
+    {
+        mExitDoor->DebugDraw(mRenderWindow);
     }
 }
 
@@ -42,8 +70,14 @@ void cBaseLevel::AddFullWallToList(cFullWall* _FullWall)
 
 void cBaseLevel::AddHalfWallToList(cHalfWall* _HalfWall)
 {
+    std::cout << "Added half wall to list!" << std::endl;
     // Add colider to vector list
 	mHalfWallColliders.push_back(_HalfWall);
+}
+
+void cBaseLevel::AddExitDoorToLevel(cExitDoor* _ExitDoor)
+{
+    mExitDoor = _ExitDoor;
 }
 
 void cBaseLevel::CleanupColliders()
@@ -69,6 +103,16 @@ void cBaseLevel::CleanupColliders()
 std::vector<cFullWall*>& cBaseLevel::GetFullWallColliderList()
 {
     return mFullWallColliders;
+}
+
+std::vector<cHalfWall*>& cBaseLevel::GetHalfWallColliderList()
+{
+    return mHalfWallColliders;
+}
+
+cExitDoor* cBaseLevel::GetExitDoor()
+{
+    return mExitDoor;
 }
 
 void cBaseLevel::SaveLevel(cFileInterface& _FileInterface)

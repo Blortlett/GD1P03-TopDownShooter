@@ -30,12 +30,18 @@ void cLevelManager::CheckPlayerWallCollisions(cPlayerCharacter& _Player)
 {
 	// Collision function will modify this
 	sf::Vector2f CollisionDirection;
-	// Get all fullwalls in level
+	// Get all full walls in level
 	std::vector<cFullWall*>& FullWallColliderList = mCurrentLevel->GetFullWallColliderList();
 
-	// Check collisions
+	// Check full wall collisions
 	for (size_t i = 0; i < FullWallColliderList.size(); ++i) {
 		FullWallColliderList[i]->CheckCollideWithPlayer(_Player, CollisionDirection);
+	}
+
+	cExitDoor* ExitDoor = mCurrentLevel->GetExitDoor();
+	if (ExitDoor)
+	{
+		ExitDoor->CheckCollideWithPlayer(_Player, CollisionDirection);
 	}
 }
 
@@ -67,12 +73,20 @@ void cLevelManager::CheckBulletToEnemyCollision(cProjectileManager& _ProjectileM
 
 void cLevelManager::AddFullWall(cFullWall* _FullWallCollider)
 {
+	if (!mCurrentLevel) return; // Error check
 	mCurrentLevel->AddFullWallToList(_FullWallCollider);
 }
 
 void cLevelManager::AddHalfWall(cHalfWall* _HalfWallCollider)
 {
+	if (!mCurrentLevel) return; // Error check
+	mCurrentLevel->AddHalfWallToList(_HalfWallCollider);
+}
 
+void cLevelManager::AddExitDoor(cExitDoor* _ExitDoorObject)
+{
+	if (!mCurrentLevel) return; // Error check
+	mCurrentLevel->AddExitDoorToLevel(_ExitDoorObject);
 }
 
 void cLevelManager::TryDeleteWall(sf::Vector2f pointCollision)

@@ -58,6 +58,7 @@ void cGameManager::GameTick()
 	CheckToggleDebugMode();
 	if (cGameSettings::GetInstance().IsDebugActive())
 	{
+		mEditorManager.UpdateToolMode();
 		mEditorManager.UpdateCursor();
 		mEditorManager.DrawCursorToScreen(mGameWindow);
 		mLevelManager.DebugDraw();

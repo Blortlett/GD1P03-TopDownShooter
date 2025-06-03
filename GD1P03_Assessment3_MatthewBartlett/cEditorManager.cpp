@@ -15,6 +15,8 @@ Mail : [matthewbartlett@mds.ac.nz]
 cEditorManager::cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _LevelManager, sf::View& _PlayerCameraView)
 	: mGameWindow(_GameWindow)
 	, mFullWallTool(_LevelManager)
+	, mHalfWallTool(_LevelManager)
+	, mExitDoorDrawTool(_LevelManager)
 	, mCameraView(_PlayerCameraView)
 	, mLevelManager(_LevelManager)
 {
@@ -28,20 +30,33 @@ void cEditorManager::SetTool(ToolType type)
 	case cEditorManager::ToolType::ToolMode_FullWall:
 		mCurrentTool = &mFullWallTool;
 		break;
-	/*
-	case cEditorManager::ToolType::ToolMode_HalfWall:
-		mActiveTool = &mRectangleTool;
+	case cEditorManager::ToolType::ToolMode_ExitDoor:
+		mCurrentTool = &mExitDoorDrawTool;
 		break;
-	*/
+	case cEditorManager::ToolType::ToolMode_HalfWall:
+		mCurrentTool = &mHalfWallTool;
+		break;
+	}
+}
+
+void cEditorManager::UpdateToolMode()
+{
+	if (mPlayerInput.IsFullWallKeyPressed())
+	{ // Numpad 1
+		SetTool(cEditorManager::ToolType::ToolMode_FullWall);
+	}
+	if (mPlayerInput.IsHalfWallKeyPressed())
+	{ // Numpad 2
+		SetTool(cEditorManager::ToolType::ToolMode_HalfWall);
+	}
+	if (mPlayerInput.IsExitDoorKeyPressed())
+	{ // Numpad 3
+		SetTool(cEditorManager::ToolType::ToolMode_ExitDoor);
 	}
 }
 
 void cEditorManager::UpdateCursor()
 {
-	// Return if debug mode is not active - do not do diddly squat
-	if (!cGameSettings::GetInstance().IsDebugActive())
-		return;
-
 	// Get mouse world position
 	sf::Vector2i mouseScreenPosition = sf::Mouse::getPosition(mGameWindow);
 	sf::Vector2f worldMousePosition = mGameWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);

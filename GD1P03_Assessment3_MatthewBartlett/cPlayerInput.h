@@ -27,6 +27,10 @@ public:
     bool IsPauseButtonPressed() const;
     sf::Vector2i GetMousePosition(sf::RenderWindow& window) const;
 
+    // Editor Tool Keybinds (Debug mode must be active to use editor)
+    bool IsFullWallKeyPressed() const;
+    bool IsHalfWallKeyPressed() const;
+    bool IsExitDoorKeyPressed() const;
 
     // Meta Inputs
     bool IsDebugButtonPressed() const;

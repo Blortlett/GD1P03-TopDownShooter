@@ -182,6 +182,9 @@
     <Filter Include="Level\LevelEditor\Tools\EnemySpawnerTool">
       <UniqueIdentifier>{0d6fcfc8-a7be-45a8-8b19-bdb711243508}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameSystems\GameStateManager">
+      <UniqueIdentifier>{e4f720ed-1e68-48a3-974e-1a768ca900c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -321,6 +324,9 @@
     </ClCompile>
     <ClCompile Include="cEnemySpawnerTool.cpp">
       <Filter>Level\LevelEditor\Tools\EnemySpawnerTool</Filter>
+    </ClCompile>
+    <ClCompile Include="cGameStateManager.cpp">
+      <Filter>GameSystems\GameStateManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +473,9 @@
     </ClInclude>
     <ClInclude Include="cEnemySpawnerTool.h">
       <Filter>Level\LevelEditor\Tools\EnemySpawnerTool</Filter>
+    </ClInclude>
+    <ClInclude Include="cGameStateManager.h">
+      <Filter>GameSystems\GameStateManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

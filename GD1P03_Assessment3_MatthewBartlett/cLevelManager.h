@@ -8,7 +8,6 @@
 #include <string>
 
 // forward declarations
-class cEnemyManager;
 class cPlayerCharacter;
 class cExitTrigger;
 class cPlayerSpawner;
@@ -18,7 +17,6 @@ class cEnemySpawner;
 class cLevelManager
 {
 private:
-	bool mLevelComplete = false;
 
 	// Level objects
 	cLevel1 mLevel1;
@@ -39,14 +37,11 @@ public:
 	~cLevelManager() {}
 
 	// Updateables
-	void TrackLevelComplete(cEnemyManager& _EnemyManager);
 	void Draw();
 	void DebugDraw();
 
 	// -= Collisions =-
 	void CheckPlayerWallCollisions(cPlayerCharacter& _Player);
-	// Bullet to enemy collision
-	void CheckBulletToEnemyCollision(cProjectileManager& _ProjectileManager, cEnemyManager& _EnemyManager);
 
 	// -= Level Editing =-
 	// Add wall

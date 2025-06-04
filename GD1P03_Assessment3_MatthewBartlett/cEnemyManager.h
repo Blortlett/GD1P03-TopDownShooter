@@ -3,6 +3,8 @@
 #include "cPickupManager.h"
 #include <vector>
 
+class cEnemySpawner;
+
 class cEnemyManager
 {
 private:

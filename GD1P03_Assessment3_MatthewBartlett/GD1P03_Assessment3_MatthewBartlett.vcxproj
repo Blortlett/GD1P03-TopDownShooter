@@ -170,6 +170,7 @@
     <ClCompile Include="cFullWallDrawTool.cpp" />
     <ClCompile Include="cGameManager.cpp" />
     <ClCompile Include="cGameSettings.cpp" />
+    <ClCompile Include="cGameStateManager.cpp" />
     <ClCompile Include="cHalfWallDrawTool.cpp" />
     <ClCompile Include="cLevel1.cpp" />
     <ClCompile Include="cLevel2.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="cFullWallDrawTool.h" />
     <ClInclude Include="cGameManager.h" />
     <ClInclude Include="cGameSettings.h" />
+    <ClInclude Include="cGameStateManager.h" />
     <ClInclude Include="cHalfWall.h" />
     <ClInclude Include="cHalfWallDrawTool.h" />
     <ClInclude Include="cLevel1.h" />

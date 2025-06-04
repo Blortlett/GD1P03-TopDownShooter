@@ -28,25 +28,6 @@ void cLevelManager::DebugDraw()
 	mCurrentLevel->DebugDraw();
 }
 
-void cLevelManager::TrackLevelComplete(cEnemyManager& _EnemyManager)
-{
-	/// !!! We can probably tick enemies down one by one on kill instead of checking every frame !!!
-	// I am too tired to write new code that is good. Bed time, come back tomorrow
-	// Check will be changed to false if any Enemies remain alive
-	bool AllEnemiesDeadCheck = true;
-	for (cEnemyCharacter* enemy : _EnemyManager.GetEnemyList())
-	{
-		if (enemy->IsAlive())
-			AllEnemiesDeadCheck = false;
-	}
-
-	if (AllEnemiesDeadCheck)
-	{
-		std::cout << "All enemies defeated. You may now exit the level." << std::endl;
-		mLevelComplete = true;
-	}
-}
-
 void cLevelManager::CheckPlayerWallCollisions(cPlayerCharacter& _Player)
 {
 	// Collision function will modify this
@@ -63,32 +44,6 @@ void cLevelManager::CheckPlayerWallCollisions(cPlayerCharacter& _Player)
 	if (ExitDoor)
 	{
 		ExitDoor->CheckCollideWithPlayer(_Player, CollisionDirection);
-	}
-}
-
-void cLevelManager::CheckBulletToEnemyCollision(cProjectileManager& _ProjectileManager, cEnemyManager& _EnemyManager)
-{
-	// Collision function will modify this
-	sf::Vector2f CollisionDirection;
-
-	// Get all playerbullets
-	std::array<cBullet, 15>& PlayerBulletList = _ProjectileManager.GetPlayerBulletList();
-	std::vector<cEnemyCharacter*>& EnemyList = _EnemyManager.GetEnemyList();
-	// Check each bullet for collision
-	for (cBullet& bullet : PlayerBulletList)
-	{
-		// Skip loop iteration if bullet is not active
-		if (!bullet.mIsActive) continue;
-
-		// Check collision with each enemy
-		for (cEnemyCharacter* enemy : EnemyList)
-		{
-			// check collision
-			if (bullet.CheckCollisionWithEnemy(*enemy, CollisionDirection))
-			{ // If bullet hit enemy, deactivate bullet // sorry for such indentation lol
-				bullet.mIsActive = false;
-			}
-		}
 	}
 }
 

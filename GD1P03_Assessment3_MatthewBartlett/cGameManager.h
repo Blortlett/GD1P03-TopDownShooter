@@ -14,10 +14,10 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayerCharacter.h"
 #include "cCameraManager.h"
 #include "cProjectileManager.h"
-#include "cEnemyManager.h"
 #include "cEditorManager.h"
 #include "cLevelManager.h"
 #include "cPickupManager.h"
+#include "cGameStateManager.h"
 
 class cGameManager
 {
@@ -43,6 +43,9 @@ private:
 
 	// Enemy Manager
 	cEnemyManager mEnemyManager;
+
+	// Level Won & Bullet Collision checks
+	cGameStateManager mGameStateManager;
 
 	// Level Manager
 	cLevelManager mLevelManager;

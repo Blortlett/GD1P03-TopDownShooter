@@ -27,6 +27,9 @@ protected:
 	bool mIsShooting = false;
 	virtual void UpdateWeapon(float _DeltaSeconds) = 0;
 
+	// Spawn point
+	sf::Vector2f mSpawnPoint;
+
 	// Animator
 	cAnimatorBase* mCharacterAnimator;
 
@@ -42,6 +45,9 @@ protected:
 public:
 	cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow);
 	~cCharacter() {}
+
+	// Respawn Character
+	void RespawnCharacter();
 
 	// Collision
 	void OnCollision(sf::Vector2f direction);

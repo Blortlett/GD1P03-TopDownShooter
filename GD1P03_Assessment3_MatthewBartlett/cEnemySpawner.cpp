@@ -10,6 +10,11 @@ cEnemySpawner::cEnemySpawner(sf::Vector2f _Position)
 	mSpawnerGraphic.setOrigin(sf::Vector2f(5.f, 5.f));
 }
 
+void cEnemySpawner::SpawnEnemy()
+{
+
+}
+
 void cEnemySpawner::DebugDraw(sf::RenderWindow& _GameWindow)
 {
 	_GameWindow.draw(mSpawnerGraphic);

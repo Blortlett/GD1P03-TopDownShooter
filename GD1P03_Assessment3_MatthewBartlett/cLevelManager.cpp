@@ -10,10 +10,12 @@
 
 cLevelManager::cLevelManager(sf::RenderWindow& _Window)
 	: mLevel1(_Window)
+	, mLevel2(_Window)
+	, mLevel3(_Window)
 	, mCurrentLevel(&mLevel1)
 	, mFileInterface(mCurrentLevel)
 {
-	mFileInterface.LoadLevelByName("Level1");
+	LoadLevelByObject();
 }
 
 void cLevelManager::Draw()
@@ -152,5 +154,15 @@ void cLevelManager::SaveLevel()
 void cLevelManager::LoadLevel()
 {
 	mCurrentLevel->LoadLevel(mFileInterface);
+}
+
+void cLevelManager::LoadLevelByObject()
+{
+	mCurrentLevel->LoadLevelByName(mFileInterface);
+}
+
+std::vector<cEnemySpawner*>& cLevelManager::GetEnemySpawnerList()
+{
+	return mCurrentLevel->GetEnemySpawnerList();
 }
 

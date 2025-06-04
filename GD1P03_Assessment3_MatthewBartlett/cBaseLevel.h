@@ -15,6 +15,8 @@ class cEnemySpawner;
 class cBaseLevel
 {
 protected:
+	std::string LevelName;
+
 	// Background Texture
 	sf::Texture mBackgroundTex;
 	sf::Sprite* mBackgroundSprite;
@@ -73,4 +75,5 @@ public:
 	// Save/load functions
 	void SaveLevel(cFileInterface& _FileInterface);
 	void LoadLevel(cFileInterface& _FileInterface);
+	virtual void LoadLevelByName(cFileInterface& _FileInterface) = 0;
 };

@@ -63,6 +63,9 @@ public:
 	cGameManager(sf::RenderWindow& _GameWindow);
 	~cGameManager() {};
 
+	// Call this on new level load
+	void SpawnEnemies();
+
 	// Update Method
 	void GameTick();
 };

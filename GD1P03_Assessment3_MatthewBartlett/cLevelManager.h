@@ -1,5 +1,7 @@
 #pragma once
 #include "cLevel1.h"
+#include "cLevel2.h"
+#include "cLevel3.h"
 #include "cFileInterface.h"
 #include "cFullWall.h"
 #include "cHalfWall.h"
@@ -18,8 +20,10 @@ class cLevelManager
 private:
 	bool mLevelComplete = false;
 
-	// Level List
+	// Level objects
 	cLevel1 mLevel1;
+	cLevel2 mLevel2;
+	cLevel3 mLevel3;
 
 	//Current Level
 	cBaseLevel* mCurrentLevel;
@@ -60,4 +64,9 @@ public:
 	// Save / Load level data
 	void SaveLevel();
 	void LoadLevel();
+
+	void LoadLevelByObject();
+
+	// Getters
+	std::vector<cEnemySpawner*>& GetEnemySpawnerList();
 };

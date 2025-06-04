@@ -20,6 +20,9 @@ public:
 	cEnemyManager(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, cPickupManager& _PickupManager, cPlayerCharacter& _PlayerCharacter);
 	~cEnemyManager();
 
+	void SetupEnemyList(std::vector<cEnemySpawner*>& _EnemySpawnPositions);
+	void RespawnEnemies();
+
 	void Update(float _DeltaTime);
 
 	std::vector<cEnemyCharacter*>& GetEnemyList();

@@ -1,4 +1,5 @@
 #include "cEnemyManager.h"
+#include "cEnemySpawner.h"
 
 cEnemyManager::cEnemyManager(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, cPickupManager& _PickupManager, cPlayerCharacter& _PlayerCharacter)
 	: mRenderWindow(_GameWindow)
@@ -6,9 +7,6 @@ cEnemyManager::cEnemyManager(cProjectileManager& _ProjectileManager, sf::RenderW
 	, mProjectileManager(_ProjectileManager)
 	, mPickupManager(_PickupManager)
 {
-	// Create single enemy to muck around with
-	cEnemyCharacter* newEnemy = new cEnemyCharacter(sf::Vector2f(-60.f, -160.f), _ProjectileManager, _PickupManager, _GameWindow, _PlayerCharacter);
-	mEnemyList.push_back(newEnemy);
 }
 
 cEnemyManager::~cEnemyManager()
@@ -32,4 +30,21 @@ void cEnemyManager::Update(float _DeltaTime)
 std::vector<cEnemyCharacter*>& cEnemyManager::GetEnemyList()
 {
 	return mEnemyList;
+}
+
+void cEnemyManager::SetupEnemyList(std::vector<cEnemySpawner*>& _EnemySpawnPositions)
+{
+	for (cEnemySpawner* enemySpawner : _EnemySpawnPositions)
+	{
+		cEnemyCharacter* newEnemy = new cEnemyCharacter(enemySpawner->GetPosition(), mProjectileManager, mPickupManager, mRenderWindow, mPlayerReference);
+		mEnemyList.push_back(newEnemy);
+	}
+}
+
+void cEnemyManager::RespawnEnemies()
+{
+	for (cEnemyCharacter* Enemy : mEnemyList)
+	{
+		Enemy->RespawnCharacter();
+	}
 }

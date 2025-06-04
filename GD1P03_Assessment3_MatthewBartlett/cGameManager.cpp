@@ -22,7 +22,8 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mPickupManager(_GameWindow)
 	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
 {
-
+	mLevelManager.LoadLevelByObject();
+	mEnemyManager.SetupEnemyList(mLevelManager.GetEnemySpawnerList());
 }
 
 void cGameManager::GameTick()
@@ -90,6 +91,12 @@ void cGameManager::OnLoadLevel()
 	{
 		mLevelManager.LoadLevel();
 	}
+}
+
+void cGameManager::SpawnEnemies()
+{
+	// Pass enemy spawner list into EnemyManager to set up enemies for a newly loaded level
+	mEnemyManager.SetupEnemyList(mLevelManager.GetEnemySpawnerList());
 }
 
 void cGameManager::CheckToggleDebugMode()

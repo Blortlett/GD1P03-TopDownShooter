@@ -5,6 +5,7 @@ cCharacter::cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileMa
 	: mRenderWindow(_GameWindow)
 	, mPistol(_ProjectileManager)
 	, mPosition(_Position)
+	, mSpawnPoint(_Position)
 	, mBoxCollider(sf::FloatRect(_Position, { 24.f, 24.f }))
 	, mDebugWidget(mBoxCollider)
 {
@@ -51,6 +52,11 @@ void cCharacter::Move(sf::Vector2f _NormalizedDirection, float _DeltaSeconds)
 
 	// Apply Collider position to position // wrong way my dude
 	mPosition = mBoxCollider.GetPosition();
+}
+
+void cCharacter::RespawnCharacter()
+{
+	mBoxCollider.MoveColliderPosition(mSpawnPoint);
 }
 
 void cCharacter::OnCollision(sf::Vector2f direction)

@@ -34,10 +34,12 @@ std::vector<cEnemyCharacter*>& cEnemyManager::GetEnemyList()
 
 void cEnemyManager::SetupEnemyList(std::vector<cEnemySpawner*>& _EnemySpawnPositions)
 {
+	std::cout << "Spawning Enemies! :)" << std::endl;
 	for (cEnemySpawner* enemySpawner : _EnemySpawnPositions)
 	{
 		cEnemyCharacter* newEnemy = new cEnemyCharacter(enemySpawner->GetPosition(), mProjectileManager, mPickupManager, mRenderWindow, mPlayerReference);
 		mEnemyList.push_back(newEnemy);
+		
 	}
 }
 

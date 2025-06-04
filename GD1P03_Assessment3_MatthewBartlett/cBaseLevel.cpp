@@ -89,7 +89,6 @@ void cBaseLevel::AddFullWallToList(cFullWall* _FullWall)
 
 void cBaseLevel::AddHalfWallToList(cHalfWall* _HalfWall)
 {
-    std::cout << "Added half wall to list!" << std::endl;
     // Add colider to vector list
 	mHalfWallColliders.push_back(_HalfWall);
 }

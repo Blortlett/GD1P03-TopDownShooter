@@ -15,7 +15,6 @@ cLevelManager::cLevelManager(sf::RenderWindow& _Window)
 	, mCurrentLevel(&mLevel1)
 	, mFileInterface(mCurrentLevel)
 {
-	LoadLevelByObject();
 }
 
 void cLevelManager::Draw()

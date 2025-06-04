@@ -11,9 +11,6 @@ public:
 	cEnemySpawner(sf::Vector2f _Position);
 	~cEnemySpawner() {}
 
-	// Spawn Enemy
-	void SpawnEnemy();
-
 	//Debug
 	void DebugDraw(sf::RenderWindow& _GameWindow);
 

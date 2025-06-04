@@ -14,11 +14,6 @@ cPlayerSpawnerTool::cPlayerSpawnerTool(cLevelManager& _LevelManager)
 
 void cPlayerSpawnerTool::CompleteUseTool()
 {
-	// Dont need to resize nothing
-}
-
-void cPlayerSpawnerTool::UseTool(sf::Vector2f& mousePos)
-{
 	// calculate new position to pass into collider bounds
 	sf::Vector2f newSpawnerPosition = mRectShape.getPosition();
 	// Collider is changing position and I now see why, most likely due to outline
@@ -30,4 +25,9 @@ void cPlayerSpawnerTool::UseTool(sf::Vector2f& mousePos)
 
 	// provide mLevelManager with new Collider
 	mLevelManager.AddPlayerSpawner(newPlayerSpawner);
+}
+
+void cPlayerSpawnerTool::UseTool(sf::Vector2f& mousePos)
+{
+	// Dont need to resize nothing
 }

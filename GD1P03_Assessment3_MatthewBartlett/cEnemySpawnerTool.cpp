@@ -14,11 +14,6 @@ cEnemySpawnerTool::cEnemySpawnerTool(cLevelManager& _LevelManager)
 
 void cEnemySpawnerTool::CompleteUseTool()
 {
-	// Don't even think about doing anything
-}
-
-void cEnemySpawnerTool::UseTool(sf::Vector2f& mousePos)
-{
 	// calculate new position to pass into collider bounds
 	sf::Vector2f newSpawnerPosition = mRectShape.getPosition();
 	// Collider is changing position and I now see why, most likely due to outline
@@ -30,4 +25,10 @@ void cEnemySpawnerTool::UseTool(sf::Vector2f& mousePos)
 
 	// provide mLevelManager with new Collider
 	mLevelManager.AddEnemySpawner(newEnemySpawner);
+	std::cout << "Added enemy spawner :)" << std::endl;
+}
+
+void cEnemySpawnerTool::UseTool(sf::Vector2f& mousePos)
+{
+	// Don't even think about doing anything
 }

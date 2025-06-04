@@ -9,7 +9,6 @@ class cPickupManager;
 class cEnemyCharacter : public cCharacter
 {
 private:
-
 	bool mAlive = true;
 
 	// Calculate enemy movement direction

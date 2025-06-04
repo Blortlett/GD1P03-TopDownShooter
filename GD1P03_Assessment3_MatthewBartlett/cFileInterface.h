@@ -42,13 +42,23 @@ private:
 	void SaveLevelToFile(const std::wstring& filePath);
 	void LoadLevelFromFile(const std::wstring& filePath);
 
-	// JSON saving helpers
+	// -= JSON saving helpers =-
+	// Lists of objects
 	void SaveFullWallCollidersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
 	void SaveHalfWallCollidersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
-	//void SavePlayerSpawnToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
+	void SaveEnemySpawnersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
+	// Single Objects
+	void SavePlayerSpawnToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
+	void SaveExitDoorToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
+	void SaveExitTriggerToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
 
-	// JSON loading helpers
+	// -= JSON loading helpers =-
+	// Multiple Objects
 	void LoadFullWallColidersFromJson(const rapidjson::Document& doc);
 	void LoadHalfWallColidersFromJson(const rapidjson::Document& doc);
-	//void LoadPlayerSpawnFromJson(const rapidjson::Document& doc);
+	void LoadEnemySpawnersFromJson(const rapidjson::Document& doc);
+	// Single Objects
+	void LoadPlayerSpawnFromJson(const rapidjson::Document& doc);
+	void LoadExitDoorFromJson(const rapidjson::Document& doc);
+	void LoadExitTriggerFromJson(const rapidjson::Document& doc);
 };

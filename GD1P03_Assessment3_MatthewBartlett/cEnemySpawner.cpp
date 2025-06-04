@@ -14,3 +14,8 @@ void cEnemySpawner::DebugDraw(sf::RenderWindow& _GameWindow)
 {
 	_GameWindow.draw(mSpawnerGraphic);
 }
+
+sf::Vector2f cEnemySpawner::GetPosition()
+{
+	return mSpawnerGraphic.getPosition();
+}

@@ -10,6 +10,8 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cFileInterface.h"
+// Extra includes for level stuff
+#include "cEnemySpawner.h"
 
 cFileInterface::cFileInterface(cBaseLevel* _CurrentLevel)
 {
@@ -156,6 +158,8 @@ void cFileInterface::SaveLevelToFile(const std::wstring& filePath) {
 
     // Save all platforms
     SaveFullWallCollidersToJson(doc, allocator);
+    SaveHalfWallCollidersToJson(doc, allocator);
+    SaveEnemySpawnersToJson(doc, allocator);
 
     // Save player spawn
     //SavePlayerSpawnToJson(doc, allocator);
@@ -201,6 +205,8 @@ void cFileInterface::LoadLevelFromFile(const std::wstring& filePath) {
 
     // Load all platforms
     LoadFullWallColidersFromJson(doc);
+    LoadHalfWallColidersFromJson(doc);
+    LoadEnemySpawnersFromJson(doc);
 
     // Load player spawn
     //LoadPlayerSpawnFromJson(doc);
@@ -212,10 +218,10 @@ void cFileInterface::LoadLevelFromFile(const std::wstring& filePath) {
 
 // Multi item saving function // Save lists
 void cFileInterface::SaveFullWallCollidersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator) {
-    // Create platforms array
+    // Create wall array
     rapidjson::Value ColliderArray(rapidjson::kArrayType);
 
-    // Add each platform to json list
+    // Add each wall to json list
     for (auto* collider : mCurrentLevel->GetFullWallColliderList()) {
         if (!collider) {
             std::cerr << "Error: Null collider in FullWallColliders" << std::endl;
@@ -238,11 +244,11 @@ void cFileInterface::SaveFullWallCollidersToJson(rapidjson::Document& doc, rapid
 
 void cFileInterface::SaveHalfWallCollidersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator)
 {
-    // Create platforms array
+    // Create wall array
     rapidjson::Value ColliderArray(rapidjson::kArrayType);
 
-    // Add each platform to json list
-    for (auto* collider : mCurrentLevel->GetFullWallColliderList()) {
+    // Add each wall to json list
+    for (auto* collider : mCurrentLevel->GetHalfWallColliderList()) {
         if (!collider) {
             std::cerr << "Error: Null collider in HalfWallColliders" << std::endl;
             continue;
@@ -259,7 +265,31 @@ void cFileInterface::SaveHalfWallCollidersToJson(rapidjson::Document& doc, rapid
         ColliderArray.PushBack(halfWallColliderObj, allocator);
     }
 
-    doc.AddMember("halfWallColliders", ColliderArray, allocator);
+    doc.AddMember("HalfWallColliders", ColliderArray, allocator);
+}
+
+void cFileInterface::SaveEnemySpawnersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator)
+{
+    // Create wall array
+    rapidjson::Value spawnerArray(rapidjson::kArrayType);
+
+    // Add each wall to json list
+    for (auto* collider : mCurrentLevel->GetEnemySpawnerList()) {
+        if (!collider) {
+            std::cerr << "Error: Null EnemySpawner in EnemySpawnerList" << std::endl;
+            continue;
+        }
+
+        rapidjson::Value enemySpawnerObj(rapidjson::kObjectType);
+        sf::Vector2f position = collider->GetPosition();
+
+        enemySpawnerObj.AddMember("x", position.x, allocator);
+        enemySpawnerObj.AddMember("y", position.y, allocator);
+
+        spawnerArray.PushBack(enemySpawnerObj, allocator);
+    }
+
+    doc.AddMember("EnemySpawnerList", spawnerArray, allocator);
 }
 
 /*      // Single item saving function
@@ -311,18 +341,18 @@ void cFileInterface::LoadFullWallColidersFromJson(const rapidjson::Document& doc
         }
     }
 
-    std::cout << "Loaded " << ColliderArray.Size() << " platforms" << std::endl;
+    std::cout << "Loaded " << ColliderArray.Size() << " FullWalls" << std::endl;
 }
 
 void cFileInterface::LoadHalfWallColidersFromJson(const rapidjson::Document& doc)
 {
     // Check for platforms array
-    if (!doc.HasMember("FullWallColliders") || !doc["FullWallColliders"].IsArray()) {
-        std::cerr << "No valid FullWall array in JSON" << std::endl;
+    if (!doc.HasMember("HalfWallColliders") || !doc["HalfWallColliders"].IsArray()) {
+        std::cerr << "No valid HalfWall array in JSON" << std::endl;
         return;
     }
 
-    const rapidjson::Value& ColliderArray = doc["FullWallColliders"];
+    const rapidjson::Value& ColliderArray = doc["HalfWallColliders"];
     for (rapidjson::SizeType i = 0; i < ColliderArray.Size(); ++i) {
         const rapidjson::Value& halfWallColliderObj = ColliderArray[i];
         if (halfWallColliderObj.IsObject() &&
@@ -348,7 +378,39 @@ void cFileInterface::LoadHalfWallColidersFromJson(const rapidjson::Document& doc
         }
     }
 
-    std::cout << "Loaded " << ColliderArray.Size() << " platforms" << std::endl;
+    std::cout << "Loaded " << ColliderArray.Size() << " HalfWalls" << std::endl;
+}
+
+void cFileInterface::LoadEnemySpawnersFromJson(const rapidjson::Document& doc)
+{
+    // Check for platforms array
+    if (!doc.HasMember("EnemySpawnerList") || !doc["EnemySpawnerList"].IsArray()) {
+        std::cerr << "No valid EnemySpawnerList array in JSON" << std::endl;
+        return;
+    }
+
+    const rapidjson::Value& SpawnerArray = doc["EnemySpawnerList"];
+    for (rapidjson::SizeType i = 0; i < SpawnerArray.Size(); ++i) {
+        const rapidjson::Value& enemySpawnerListObj = SpawnerArray[i];
+        if (enemySpawnerListObj.IsObject() &&
+            enemySpawnerListObj.HasMember("x") && enemySpawnerListObj["x"].IsFloat() &&
+            enemySpawnerListObj.HasMember("y") && enemySpawnerListObj["y"].IsFloat()) 
+        {
+            // Extract platform data
+            float x = enemySpawnerListObj["x"].GetFloat();
+            float y = enemySpawnerListObj["y"].GetFloat();
+
+            // Create new platform
+            sf::Vector2f position(x, y);
+            cEnemySpawner* enemySpawner = new cEnemySpawner(position);
+            mCurrentLevel->AddEnemySpawnerToList(enemySpawner);
+        }
+        else {
+            std::cerr << "Invalid spawener object at index " << i << std::endl;
+        }
+    }
+
+    std::cout << "Loaded " << SpawnerArray.Size() << " EnemySpawners" << std::endl;
 }
 
 /*

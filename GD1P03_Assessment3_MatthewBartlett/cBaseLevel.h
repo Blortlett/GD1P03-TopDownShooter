@@ -65,7 +65,10 @@ public:
 	// Get level objects
 	std::vector<cFullWall*>& GetFullWallColliderList();
 	std::vector<cHalfWall*>& GetHalfWallColliderList();
+	std::vector<cEnemySpawner*>& GetEnemySpawnerList();
+	cPlayerSpawner* GetPlayerSpawner();
 	cExitDoor* GetExitDoor();
+	cExitTrigger* GetExitTrigger();
 
 	// Save/load functions
 	void SaveLevel(cFileInterface& _FileInterface);

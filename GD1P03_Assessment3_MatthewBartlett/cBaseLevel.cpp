@@ -144,9 +144,24 @@ std::vector<cHalfWall*>& cBaseLevel::GetHalfWallColliderList()
     return mHalfWallColliders;
 }
 
+std::vector<cEnemySpawner*>& cBaseLevel::GetEnemySpawnerList()
+{
+    return mEnemySpawnerList;
+}
+
+cPlayerSpawner* cBaseLevel::GetPlayerSpawner()
+{
+    return mPlayerSpawner;
+}
+
 cExitDoor* cBaseLevel::GetExitDoor()
 {
     return mExitDoor;
+}
+
+cExitTrigger* cBaseLevel::GetExitTrigger()
+{
+    return mExitZone;
 }
 
 void cBaseLevel::SaveLevel(cFileInterface& _FileInterface)

@@ -85,6 +85,16 @@ bool cPlayerInput::IsExitZoneKeyPressed() const
     return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad4);
 }
 
+bool cPlayerInput::IsEnemySpawnerKeyPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad5);
+}
+
+bool cPlayerInput::IsPlayerSpawnerKeyPressed() const
+{
+    return sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Numpad6);
+}
+
 
 // -= Meta keybinds =-
 bool cPlayerInput::IsDebugButtonPressed() const

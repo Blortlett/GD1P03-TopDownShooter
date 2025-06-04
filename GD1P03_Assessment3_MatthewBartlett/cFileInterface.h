@@ -44,9 +44,11 @@ private:
 
 	// JSON saving helpers
 	void SaveFullWallCollidersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
+	void SaveHalfWallCollidersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
 	//void SavePlayerSpawnToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator);
 
 	// JSON loading helpers
 	void LoadFullWallColidersFromJson(const rapidjson::Document& doc);
+	void LoadHalfWallColidersFromJson(const rapidjson::Document& doc);
 	//void LoadPlayerSpawnFromJson(const rapidjson::Document& doc);
 };

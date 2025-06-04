@@ -3,11 +3,14 @@
 #include "cFileInterface.h"
 #include "cFullWall.h"
 #include "cHalfWall.h"
+#include <string>
 
 // forward declarations
 class cEnemyManager;
 class cPlayerCharacter;
 class cExitTrigger;
+class cPlayerSpawner;
+class cEnemySpawner;
 
 
 class cLevelManager
@@ -17,12 +20,14 @@ private:
 
 	// Level List
 	cLevel1 mLevel1;
-	
+
 	//Current Level
 	cBaseLevel* mCurrentLevel;
-	
+
 	// Loading/Saving object
 	cFileInterface mFileInterface;
+
+	std::string LevelNames[3] = { "Level1", "Level2", "Level3" };
 
 public:
 	// 'Structaz
@@ -43,7 +48,11 @@ public:
 	// Add wall
 	void AddFullWall(cFullWall* _FullWallCollider);
 	void AddHalfWall(cHalfWall* _HalfWallCollider);
-	void AddExitDoor(cExitDoor* _ExitDoorObject);
+	void AddExitDoor(cExitDoor* _ExitDoorObject); // Exit blocker
+	// Spawners
+	void AddPlayerSpawner(cPlayerSpawner* _PlayerSpawner);
+	void AddEnemySpawner(cEnemySpawner* _EnemySpawner);
+	// Player exit
 	void AddExitZone(cExitTrigger* _ExitZoneObject);
 	// Delete wall
 	void TryDeleteWall(sf::Vector2f pointCollision);

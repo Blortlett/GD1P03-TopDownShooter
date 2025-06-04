@@ -1,5 +1,6 @@
 #include "cEnemyCharacter.h"
 #include "cPickupManager.h"
+#include "cLevelProgressTracker.h"
 
 cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, cPickupManager& _PickupManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter)
 	: cCharacter(_Position, _ProjectileManager, _GameWindow)
@@ -78,4 +79,7 @@ void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)
 	mPickupManager.CreateNewWeaponDrop(mPosition, mCharacterAnimator->GetRotation(), 12);
 	// Swap current animation to death animation
 	mAnimator.SwapToEnemyDeath();
+
+	// Track enemy death
+	cLevelProgressTracker::GetInstance().ReduceEnemyCount();
 }

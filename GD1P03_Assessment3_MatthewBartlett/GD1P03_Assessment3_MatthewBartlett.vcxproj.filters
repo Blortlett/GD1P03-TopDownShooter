@@ -164,6 +164,24 @@
     <Filter Include="Level\Levels\Level2">
       <UniqueIdentifier>{7f9916d9-ada6-47a8-8d2f-a9fab8c4e2c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\Levels\Level3">
+      <UniqueIdentifier>{03739336-369a-4edb-adda-26d28c890893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelTracker">
+      <UniqueIdentifier>{27305b9f-d8b1-455e-9ac8-71a1cc7018ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\PlayerSpawner">
+      <UniqueIdentifier>{63c27231-a149-4608-aa7b-87dc2ba80d26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\EnemySpawner">
+      <UniqueIdentifier>{137e9ad7-5b06-44e6-8875-cab28a06ed26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelEditor\Tools\PlayerSpawnerTool">
+      <UniqueIdentifier>{89262f79-d02a-4ac3-8999-aa05999ac198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\LevelEditor\Tools\EnemySpawnerTool">
+      <UniqueIdentifier>{0d6fcfc8-a7be-45a8-8b19-bdb711243508}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -285,6 +303,24 @@
     </ClCompile>
     <ClCompile Include="cLevel2.cpp">
       <Filter>Level\Levels\Level2</Filter>
+    </ClCompile>
+    <ClCompile Include="cLevel3.cpp">
+      <Filter>Level\Levels\Level3</Filter>
+    </ClCompile>
+    <ClCompile Include="cLevelProgressTracker.cpp">
+      <Filter>Level\LevelTracker</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerSpawner.cpp">
+      <Filter>GameObjects\PlayerSpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemySpawner.cpp">
+      <Filter>GameObjects\EnemySpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerSpawnerTool.cpp">
+      <Filter>Level\LevelEditor\Tools\PlayerSpawnerTool</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemySpawnerTool.cpp">
+      <Filter>Level\LevelEditor\Tools\EnemySpawnerTool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +449,24 @@
     </ClInclude>
     <ClInclude Include="cLevel2.h">
       <Filter>Level\Levels\Level2</Filter>
+    </ClInclude>
+    <ClInclude Include="cLevel3.h">
+      <Filter>Level\Levels\Level3</Filter>
+    </ClInclude>
+    <ClInclude Include="cLevelProgressTracker.h">
+      <Filter>Level\LevelTracker</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerSpawner.h">
+      <Filter>GameObjects\PlayerSpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemySpawner.h">
+      <Filter>GameObjects\EnemySpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerSpawnerTool.h">
+      <Filter>Level\LevelEditor\Tools\PlayerSpawnerTool</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemySpawnerTool.h">
+      <Filter>Level\LevelEditor\Tools\EnemySpawnerTool</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

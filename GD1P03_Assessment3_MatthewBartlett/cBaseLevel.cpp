@@ -1,6 +1,8 @@
 #include "cBaseLevel.h"
 #include "cDebugWidget.h"
 #include "cFileInterface.h"
+#include "cPlayerSpawner.h"
+#include "cEnemySpawner.h"
 
 cBaseLevel::cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFilepath)
 	: mRenderWindow(_Window)
@@ -20,7 +22,9 @@ cBaseLevel::cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFile
 cBaseLevel::~cBaseLevel()
 {
     CleanupColliders();
-    delete mBackgroundSprite;
+    // Delete the background sprite
+    //if (mBackgroundSprite != nullptr)
+    //    delete mBackgroundSprite;    // <<< Memory leak here on destructor
 }
 
 void cBaseLevel::Update(float _DeltaTime)
@@ -56,7 +60,13 @@ void cBaseLevel::DebugDraw()
     {
         halfWall->DebugDraw(mRenderWindow);
     }
-    // Only draw door if it exists
+    // Draw all enemy spawners
+    for (cEnemySpawner* enemySpawner : mEnemySpawnerList)
+    {
+        enemySpawner->DebugDraw(mRenderWindow);
+    }
+
+    // Only draw single object if it exists
     if (mExitDoor != nullptr)
     {
         mExitDoor->DebugDraw(mRenderWindow);
@@ -64,6 +74,10 @@ void cBaseLevel::DebugDraw()
     if (mExitZone != nullptr)
     {
         mExitZone->DebugDraw(mRenderWindow);
+    }
+    if (mPlayerSpawner != nullptr)
+    {
+        mPlayerSpawner->DebugDraw(mRenderWindow);
     }
 }
 
@@ -78,6 +92,17 @@ void cBaseLevel::AddHalfWallToList(cHalfWall* _HalfWall)
     std::cout << "Added half wall to list!" << std::endl;
     // Add colider to vector list
 	mHalfWallColliders.push_back(_HalfWall);
+}
+
+void cBaseLevel::AddEnemySpawnerToList(cEnemySpawner* _EnemySpawner)
+{
+    mEnemySpawnerList.push_back(_EnemySpawner);
+}
+
+void cBaseLevel::AddPlayerSpawnerToLevel(cPlayerSpawner* _PlayerSpawner)
+{
+    delete mPlayerSpawner;
+    mPlayerSpawner = _PlayerSpawner;
 }
 
 void cBaseLevel::AddExitDoorToLevel(cExitDoor* _ExitDoor)
@@ -107,9 +132,6 @@ void cBaseLevel::CleanupColliders()
         delete collider;
     }
     mHalfWallColliders.clear();
-
-    // Delete the background sprite
-    delete mBackgroundSprite;
 }
 
 std::vector<cFullWall*>& cBaseLevel::GetFullWallColliderList()

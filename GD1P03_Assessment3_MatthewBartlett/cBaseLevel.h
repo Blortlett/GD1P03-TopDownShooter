@@ -9,6 +9,8 @@
 
 class cFileInterface;
 class cDebugWidget;
+class cPlayerSpawner;
+class cEnemySpawner;
 
 class cBaseLevel
 {
@@ -22,6 +24,11 @@ protected:
 	std::vector<cFullWall*> mFullWallColliders;
 	// Half wall Collider List - things such as chairs player can shoot over but can't walk over
 	std::vector<cHalfWall*> mHalfWallColliders;
+	// Enemy Spawner List
+	std::vector<cEnemySpawner*> mEnemySpawnerList;
+	// Player Spawner
+	cPlayerSpawner* mPlayerSpawner;
+
 	// Exit Blocking Door
 	cExitDoor* mExitDoor;
 	// Exit Zone behind ExitDoor
@@ -43,6 +50,10 @@ public:
 	// Walls
 	void AddFullWallToList(cFullWall* _FullWall);
 	void AddHalfWallToList(cHalfWall* _HalfWall);
+	// Enemy Spawner
+	void AddEnemySpawnerToList(cEnemySpawner* _EnemySpawner);
+	// PlayerSpawner
+	void AddPlayerSpawnerToLevel(cPlayerSpawner* _PlayerSpawner);
 	// Exit door // Blocks access to exit zone
 	void AddExitDoorToLevel(cExitDoor* _ExitDoor);
 	// Exit zone collider

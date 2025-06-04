@@ -18,6 +18,8 @@ cEditorManager::cEditorManager(sf::RenderWindow& _GameWindow, cLevelManager& _Le
 	, mHalfWallTool(_LevelManager)
 	, mExitDoorDrawTool(_LevelManager)
 	, mExitZoneDrawTool(_LevelManager)
+	, mEnemySpawnerTool(_LevelManager)
+	, mPlayerSpawnerTool(_LevelManager)
 	, mCameraView(_PlayerCameraView)
 	, mLevelManager(_LevelManager)
 {
@@ -40,6 +42,12 @@ void cEditorManager::SetTool(ToolType type)
 	case cEditorManager::ToolType::ToolMode_ExitZone:
 		mCurrentTool = &mExitZoneDrawTool;
 		break;
+	case cEditorManager::ToolType::ToolMode_EnemySpawner:
+		mCurrentTool = &mEnemySpawnerTool;
+		break;
+	case cEditorManager::ToolType::ToolMode_PlayerSpawner:
+		mCurrentTool = &mPlayerSpawnerTool;
+		break;
 	}
 }
 
@@ -60,6 +68,14 @@ void cEditorManager::UpdateToolMode()
 	if (mPlayerInput.IsExitZoneKeyPressed())
 	{ // Numpad 4
 		SetTool(cEditorManager::ToolType::ToolMode_ExitZone);
+	}
+	if (mPlayerInput.IsEnemySpawnerKeyPressed())
+	{// Numpad 5
+		SetTool(cEditorManager::ToolType::ToolMode_EnemySpawner);
+	}
+	if (mPlayerInput.IsPlayerSpawnerKeyPressed())
+	{// Numpad 6
+		SetTool(cEditorManager::ToolType::ToolMode_PlayerSpawner);
 	}
 }
 

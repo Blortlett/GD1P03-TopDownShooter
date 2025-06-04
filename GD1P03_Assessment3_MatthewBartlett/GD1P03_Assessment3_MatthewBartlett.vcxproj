@@ -160,6 +160,8 @@
     <ClCompile Include="cEnemyDeathAnimation.cpp" />
     <ClCompile Include="cEnemyIdleAnimation.cpp" />
     <ClCompile Include="cEnemyManager.cpp" />
+    <ClCompile Include="cEnemySpawner.cpp" />
+    <ClCompile Include="cEnemySpawnerTool.cpp" />
     <ClCompile Include="cExitDoor.cpp" />
     <ClCompile Include="cExitDoorDrawTool.cpp" />
     <ClCompile Include="cExitTrigger.cpp" />
@@ -171,13 +173,17 @@
     <ClCompile Include="cHalfWallDrawTool.cpp" />
     <ClCompile Include="cLevel1.cpp" />
     <ClCompile Include="cLevel2.cpp" />
+    <ClCompile Include="cLevel3.cpp" />
     <ClCompile Include="cLevelManager.cpp" />
+    <ClCompile Include="cLevelProgressTracker.cpp" />
     <ClCompile Include="cPickupManager.cpp" />
     <ClCompile Include="cPistol.cpp" />
     <ClCompile Include="cPistolDropable.cpp" />
     <ClCompile Include="cPlayerAnimator.cpp" />
     <ClCompile Include="cPlayerCharacter.cpp" />
     <ClCompile Include="cPlayerInput.cpp" />
+    <ClCompile Include="cPlayerSpawner.cpp" />
+    <ClCompile Include="cPlayerSpawnerTool.cpp" />
     <ClCompile Include="cPlayerUtils.cpp" />
     <ClCompile Include="cProjectileManager.cpp" />
     <ClCompile Include="cSharedUtils.cpp" />
@@ -202,6 +208,8 @@
     <ClInclude Include="cEnemyDeathAnimation.h" />
     <ClInclude Include="cEnemyIdleAnimation.h" />
     <ClInclude Include="cEnemyManager.h" />
+    <ClInclude Include="cEnemySpawner.h" />
+    <ClInclude Include="cEnemySpawnerTool.h" />
     <ClInclude Include="cExitDoor.h" />
     <ClInclude Include="cExitDoorDrawTool.h" />
     <ClInclude Include="cExitTrigger.h" />
@@ -215,7 +223,9 @@
     <ClInclude Include="cHalfWallDrawTool.h" />
     <ClInclude Include="cLevel1.h" />
     <ClInclude Include="cLevel2.h" />
+    <ClInclude Include="cLevel3.h" />
     <ClInclude Include="cLevelManager.h" />
+    <ClInclude Include="cLevelProgressTracker.h" />
     <ClInclude Include="cPickupManager.h" />
     <ClInclude Include="cPistol.h" />
     <ClInclude Include="cPistolDropable.h" />
@@ -223,6 +233,8 @@
     <ClInclude Include="cPlayerAnimationBase.h" />
     <ClInclude Include="cPlayerCharacter.h" />
     <ClInclude Include="cPlayerInput.h" />
+    <ClInclude Include="cPlayerSpawner.h" />
+    <ClInclude Include="cPlayerSpawnerTool.h" />
     <ClInclude Include="cPlayerUtils.h" />
     <ClInclude Include="cProjectileManager.h" />
     <ClInclude Include="cSharedUtils.h" />

@@ -19,6 +19,8 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cHalfWallDrawTool.h"
 #include "cExitDoorDrawTool.h"
 #include "cExitZoneDrawTool.h"
+#include "cPlayerSpawnerTool.h"
+#include "cEnemySpawnerTool.h"
 
 
 class cLevelManager;
@@ -32,7 +34,9 @@ public:
         ToolMode_FullWall,
         ToolMode_HalfWall,
         ToolMode_ExitDoor,
-        ToolMode_ExitZone
+        ToolMode_ExitZone,
+        ToolMode_EnemySpawner,
+        ToolMode_PlayerSpawner
     };
     void SetTool(ToolType type);
 
@@ -62,6 +66,8 @@ private:
     cHalfWallDrawTool mHalfWallTool;
     cExitDoorDrawTool mExitDoorDrawTool;
     cExitZoneDrawTool mExitZoneDrawTool;
+    cEnemySpawnerTool mEnemySpawnerTool;
+    cPlayerSpawnerTool mPlayerSpawnerTool;
 
     // Draw tool helpers
     bool mIsDrawing = false;

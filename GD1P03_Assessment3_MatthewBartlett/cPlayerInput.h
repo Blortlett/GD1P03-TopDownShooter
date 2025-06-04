@@ -32,6 +32,8 @@ public:
     bool IsHalfWallKeyPressed() const;
     bool IsExitDoorKeyPressed() const;
     bool IsExitZoneKeyPressed() const;
+    bool IsEnemySpawnerKeyPressed() const;
+    bool IsPlayerSpawnerKeyPressed() const;
 
     // Meta Inputs
     bool IsDebugButtonPressed() const;

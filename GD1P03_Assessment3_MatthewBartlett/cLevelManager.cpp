@@ -3,6 +3,8 @@
 #include "cProjectileManager.h"
 #include "cEnemyManager.h"
 #include "cExitTrigger.h"
+#include "cPlayerSpawner.h"
+#include "cEnemySpawner.h"
 
 
 
@@ -38,6 +40,7 @@ void cLevelManager::TrackLevelComplete(cEnemyManager& _EnemyManager)
 
 	if (AllEnemiesDeadCheck)
 	{
+		std::cout << "All enemies defeated. You may now exit the level." << std::endl;
 		mLevelComplete = true;
 	}
 }
@@ -103,6 +106,18 @@ void cLevelManager::AddExitDoor(cExitDoor* _ExitDoorObject)
 {
 	if (!mCurrentLevel) return; // Error check
 	mCurrentLevel->AddExitDoorToLevel(_ExitDoorObject);
+}
+
+void cLevelManager::AddPlayerSpawner(cPlayerSpawner* _PlayerSpawner)
+{
+	if (!mCurrentLevel) return; // Error check
+	mCurrentLevel->AddPlayerSpawnerToLevel(_PlayerSpawner);
+}
+
+void cLevelManager::AddEnemySpawner(cEnemySpawner* _EnemySpawner)
+{
+	if (!mCurrentLevel) return; // Error check
+	mCurrentLevel->AddEnemySpawnerToList(_EnemySpawner);
 }
 
 void cLevelManager::AddExitZone(cExitTrigger* _ExitZoneObject)

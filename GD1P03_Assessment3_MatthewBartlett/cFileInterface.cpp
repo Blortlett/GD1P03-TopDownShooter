@@ -236,6 +236,32 @@ void cFileInterface::SaveFullWallCollidersToJson(rapidjson::Document& doc, rapid
     doc.AddMember("FullWallColliders", ColliderArray, allocator);
 }
 
+void cFileInterface::SaveHalfWallCollidersToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator)
+{
+    // Create platforms array
+    rapidjson::Value ColliderArray(rapidjson::kArrayType);
+
+    // Add each platform to json list
+    for (auto* collider : mCurrentLevel->GetFullWallColliderList()) {
+        if (!collider) {
+            std::cerr << "Error: Null collider in HalfWallColliders" << std::endl;
+            continue;
+        }
+
+        rapidjson::Value halfWallColliderObj(rapidjson::kObjectType);
+        sf::FloatRect bounds = collider->GetBounds();
+
+        halfWallColliderObj.AddMember("x", bounds.position.x, allocator);
+        halfWallColliderObj.AddMember("y", bounds.position.y, allocator);
+        halfWallColliderObj.AddMember("width", bounds.size.x, allocator);
+        halfWallColliderObj.AddMember("height", bounds.size.y, allocator);
+
+        ColliderArray.PushBack(halfWallColliderObj, allocator);
+    }
+
+    doc.AddMember("halfWallColliders", ColliderArray, allocator);
+}
+
 /*      // Single item saving function
 void cFileInterface::SavePlayerSpawnToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator) {
     if (mLevelPlatformList.mPlayerSpawn) {
@@ -279,6 +305,43 @@ void cFileInterface::LoadFullWallColidersFromJson(const rapidjson::Document& doc
             sf::FloatRect bounds(position, size);
             cFullWall* fullWall = new cFullWall(bounds);
             mCurrentLevel->AddFullWallToList(fullWall);
+        }
+        else {
+            std::cerr << "Invalid platform object at index " << i << std::endl;
+        }
+    }
+
+    std::cout << "Loaded " << ColliderArray.Size() << " platforms" << std::endl;
+}
+
+void cFileInterface::LoadHalfWallColidersFromJson(const rapidjson::Document& doc)
+{
+    // Check for platforms array
+    if (!doc.HasMember("FullWallColliders") || !doc["FullWallColliders"].IsArray()) {
+        std::cerr << "No valid FullWall array in JSON" << std::endl;
+        return;
+    }
+
+    const rapidjson::Value& ColliderArray = doc["FullWallColliders"];
+    for (rapidjson::SizeType i = 0; i < ColliderArray.Size(); ++i) {
+        const rapidjson::Value& halfWallColliderObj = ColliderArray[i];
+        if (halfWallColliderObj.IsObject() &&
+            halfWallColliderObj.HasMember("x") && halfWallColliderObj["x"].IsFloat() &&
+            halfWallColliderObj.HasMember("y") && halfWallColliderObj["y"].IsFloat() &&
+            halfWallColliderObj.HasMember("width") && halfWallColliderObj["width"].IsFloat() &&
+            halfWallColliderObj.HasMember("height") && halfWallColliderObj["height"].IsFloat()) {
+            // Extract platform data
+            float x = halfWallColliderObj["x"].GetFloat();
+            float y = halfWallColliderObj["y"].GetFloat();
+            float width = halfWallColliderObj["width"].GetFloat();
+            float height = halfWallColliderObj["height"].GetFloat();
+
+            // Create new platform
+            sf::Vector2f position(x, y);
+            sf::Vector2f size(width, height);
+            sf::FloatRect bounds(position, size);
+            cHalfWall* halfWall = new cHalfWall(bounds);
+            mCurrentLevel->AddHalfWallToList(halfWall);
         }
         else {
             std::cerr << "Invalid platform object at index " << i << std::endl;

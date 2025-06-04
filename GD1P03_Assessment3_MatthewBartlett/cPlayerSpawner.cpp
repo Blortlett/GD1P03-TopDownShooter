@@ -14,3 +14,8 @@ void cPlayerSpawner::DebugDraw(sf::RenderWindow& _GameWindow)
 {
 	_GameWindow.draw(mSpawnerGraphic);
 }
+
+sf::Vector2f cPlayerSpawner::GetPosition()
+{
+	return mSpawnerGraphic.getPosition();
+}

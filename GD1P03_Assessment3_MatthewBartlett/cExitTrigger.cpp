@@ -31,3 +31,8 @@ bool cExitTrigger::CheckCollideWithPoint(sf::Vector2f point)
 	newPoint += mCollider.GetHalfSize();
 	return mCollider.CheckCollisionPoint(newPoint);
 }
+
+sf::Vector2f cExitTrigger::GetPosition()
+{
+	return mCollider.GetPosition();
+}

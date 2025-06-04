@@ -38,3 +38,8 @@ void cExitDoor::Draw(sf::RenderWindow& _Window)
 	// Draw door sprite
 	_Window.draw(mDoorSprite);
 }
+
+sf::Vector2f cExitDoor::GetPosition()
+{
+	return mCollider.GetPosition();
+}

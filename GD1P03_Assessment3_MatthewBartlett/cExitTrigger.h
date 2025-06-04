@@ -21,4 +21,7 @@ public:
 
 	// Delete function
 	bool CheckCollideWithPoint(sf::Vector2f point);
+
+	// getters
+	sf::Vector2f GetPosition();
 };

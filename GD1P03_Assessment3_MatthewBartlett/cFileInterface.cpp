@@ -12,6 +12,9 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cFileInterface.h"
 // Extra includes for level stuff
 #include "cEnemySpawner.h"
+#include "cPlayerSpawner.h"
+#include "cExitDoor.h"
+#include "cExitTrigger.h"
 
 cFileInterface::cFileInterface(cBaseLevel* _CurrentLevel)
 {
@@ -160,9 +163,9 @@ void cFileInterface::SaveLevelToFile(const std::wstring& filePath) {
     SaveFullWallCollidersToJson(doc, allocator);
     SaveHalfWallCollidersToJson(doc, allocator);
     SaveEnemySpawnersToJson(doc, allocator);
-
-    // Save player spawn
-    //SavePlayerSpawnToJson(doc, allocator);
+    SavePlayerSpawnToJson(doc, allocator);
+    SaveExitDoorToJson(doc, allocator);
+    SaveExitTriggerToJson(doc, allocator);
 
     // Write to JSON string
     rapidjson::StringBuffer buffer;
@@ -207,9 +210,9 @@ void cFileInterface::LoadLevelFromFile(const std::wstring& filePath) {
     LoadFullWallColidersFromJson(doc);
     LoadHalfWallColidersFromJson(doc);
     LoadEnemySpawnersFromJson(doc);
-
-    // Load player spawn
-    //LoadPlayerSpawnFromJson(doc);
+    LoadPlayerSpawnFromJson(doc);
+    LoadExitDoorFromJson(doc);
+    LoadExitTriggerFromJson(doc);
 
     std::cout << "Level loaded successfully from " << std::string(filePath.begin(), filePath.end()) << std::endl;
 }
@@ -290,6 +293,45 @@ void cFileInterface::SaveEnemySpawnersToJson(rapidjson::Document& doc, rapidjson
     }
 
     doc.AddMember("EnemySpawnerList", spawnerArray, allocator);
+}
+
+void cFileInterface::SavePlayerSpawnToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator)
+{
+    if (mCurrentLevel->GetPlayerSpawner()) {
+        rapidjson::Value spawnObj(rapidjson::kObjectType);
+        sf::Vector2f position = mCurrentLevel->GetPlayerSpawner()->GetPosition();
+
+        spawnObj.AddMember("x", position.x, allocator);
+        spawnObj.AddMember("y", position.y, allocator);
+
+        doc.AddMember("PlayerSpawn", spawnObj, allocator);
+    }
+}
+
+void cFileInterface::SaveExitDoorToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator)
+{
+    if (mCurrentLevel->GetExitDoor()) {
+        rapidjson::Value spawnObj(rapidjson::kObjectType);
+        sf::Vector2f position = mCurrentLevel->GetExitDoor()->GetPosition();
+
+        spawnObj.AddMember("x", position.x, allocator);
+        spawnObj.AddMember("y", position.y, allocator);
+
+        doc.AddMember("ExitDoor", spawnObj, allocator);
+    }
+}
+
+void cFileInterface::SaveExitTriggerToJson(rapidjson::Document& doc, rapidjson::Document::AllocatorType& allocator)
+{
+    if (mCurrentLevel->GetExitTrigger()) {
+        rapidjson::Value spawnObj(rapidjson::kObjectType);
+        sf::Vector2f position = mCurrentLevel->GetExitTrigger()->GetPosition();
+
+        spawnObj.AddMember("x", position.x, allocator);
+        spawnObj.AddMember("y", position.y, allocator);
+
+        doc.AddMember("ExitTrigger", spawnObj, allocator);
+    }
 }
 
 /*      // Single item saving function
@@ -411,6 +453,57 @@ void cFileInterface::LoadEnemySpawnersFromJson(const rapidjson::Document& doc)
     }
 
     std::cout << "Loaded " << SpawnerArray.Size() << " EnemySpawners" << std::endl;
+}
+
+void cFileInterface::LoadPlayerSpawnFromJson(const rapidjson::Document& doc)
+{
+    if (doc.HasMember("PlayerSpawn") && doc["PlayerSpawn"].IsObject()) {
+        const rapidjson::Value& spawnObj = doc["PlayerSpawn"];
+        if (spawnObj.HasMember("x") && spawnObj["x"].IsFloat() &&
+            spawnObj.HasMember("y") && spawnObj["y"].IsFloat()) {
+
+            float x = spawnObj["x"].GetFloat();
+            float y = spawnObj["y"].GetFloat();
+
+            cPlayerSpawner* playerSpawn = new cPlayerSpawner(sf::Vector2f(x, y));
+            mCurrentLevel->AddPlayerSpawnerToLevel(playerSpawn);
+            std::cout << "Loaded player spawn point" << std::endl;
+        }
+    }
+}
+
+void cFileInterface::LoadExitDoorFromJson(const rapidjson::Document& doc)
+{
+    if (doc.HasMember("ExitDoor") && doc["ExitDoor"].IsObject()) {
+        const rapidjson::Value& doorObj = doc["ExitDoor"];
+        if (doorObj.HasMember("x") && doorObj["x"].IsFloat() &&
+            doorObj.HasMember("y") && doorObj["y"].IsFloat()) {
+
+            float x = doorObj["x"].GetFloat();
+            float y = doorObj["y"].GetFloat();
+
+            cExitDoor* exitDoor = new cExitDoor(sf::Vector2f(x, y));
+            mCurrentLevel->AddExitDoorToLevel(exitDoor);
+            std::cout << "Loaded Exit Door" << std::endl;
+        }
+    }
+}
+
+void cFileInterface::LoadExitTriggerFromJson(const rapidjson::Document& doc)
+{
+    if (doc.HasMember("ExitTrigger") && doc["ExitTrigger"].IsObject()) {
+        const rapidjson::Value& exitObj = doc["ExitTrigger"];
+        if (exitObj.HasMember("x") && exitObj["x"].IsFloat() &&
+            exitObj.HasMember("y") && exitObj["y"].IsFloat()) {
+
+            float x = exitObj["x"].GetFloat();
+            float y = exitObj["y"].GetFloat();
+
+            cExitTrigger* exitTrigger = new cExitTrigger(sf::Vector2f(x, y));
+            mCurrentLevel->AddExitZoneToLevel(exitTrigger);
+            std::cout << "Loaded Exit Trigger point" << std::endl;
+        }
+    }
 }
 
 /*

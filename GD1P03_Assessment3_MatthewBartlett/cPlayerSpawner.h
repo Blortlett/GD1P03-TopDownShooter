@@ -11,4 +11,5 @@ public:
 	~cPlayerSpawner() {}
 
 	void DebugDraw(sf::RenderWindow& _GameWindow);
+	sf::Vector2f GetPosition();
 };

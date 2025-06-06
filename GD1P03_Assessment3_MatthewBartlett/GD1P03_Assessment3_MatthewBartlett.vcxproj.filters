@@ -185,6 +185,18 @@
     <Filter Include="GameSystems\GameStateManager">
       <UniqueIdentifier>{e4f720ed-1e68-48a3-974e-1a768ca900c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character\Enemy\Types">
+      <UniqueIdentifier>{3902ff9f-2430-4a3a-8cb5-7dc531508dc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Enemy\Types\Gunman">
+      <UniqueIdentifier>{8dadc732-f063-4d5a-b79b-8bc55cf7a3ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Enemy\Types\Monster">
+      <UniqueIdentifier>{4dab4122-7414-43fc-a90b-3cad2ee56079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Enemy\Behaviors">
+      <UniqueIdentifier>{b2705e56-c640-4986-8ba4-7c3642315736}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -259,9 +271,6 @@
     <ClCompile Include="cCharacter.cpp">
       <Filter>Character</Filter>
     </ClCompile>
-    <ClCompile Include="cEnemyCharacter.cpp">
-      <Filter>Character\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="cPlayerAnimator.cpp">
       <Filter>Animator\Animators\PlayerAnimator</Filter>
     </ClCompile>
@@ -327,6 +336,12 @@
     </ClCompile>
     <ClCompile Include="cGameStateManager.cpp">
       <Filter>GameSystems\GameStateManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyCharacter.cpp">
+      <Filter>Character\Enemy\Types\Gunman</Filter>
+    </ClCompile>
+    <ClCompile Include="cBehaviorPatrol.cpp">
+      <Filter>Character\Enemy\Behaviors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -408,9 +423,6 @@
     <ClInclude Include="cCharacter.h">
       <Filter>Character</Filter>
     </ClInclude>
-    <ClInclude Include="cEnemyCharacter.h">
-      <Filter>Character\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="cPlayerAnimator.h">
       <Filter>Animator\Animators\PlayerAnimator</Filter>
     </ClInclude>
@@ -476,6 +488,12 @@
     </ClInclude>
     <ClInclude Include="cGameStateManager.h">
       <Filter>GameSystems\GameStateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyCharacter.h">
+      <Filter>Character\Enemy\Types\Gunman</Filter>
+    </ClInclude>
+    <ClInclude Include="cBehaviorPatrol.h">
+      <Filter>Character\Enemy\Behaviors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -30,7 +30,6 @@ void cEnemyCharacter::GetMovementDirection(float _DeltaSeconds)
 			mIsEnemyWaiting = true;
 			mPatrolTimer = mPatrolWaitTimerMax;
 		}
-
 	}
 }
 

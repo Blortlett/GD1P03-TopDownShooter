@@ -149,6 +149,7 @@
     <ClCompile Include="cApplicationManager.cpp" />
     <ClCompile Include="cBaseDrawTool.cpp" />
     <ClCompile Include="cBaseLevel.cpp" />
+    <ClCompile Include="cBehaviorPatrol.cpp" />
     <ClCompile Include="cBoxCollider.cpp" />
     <ClCompile Include="cBullet.cpp" />
     <ClCompile Include="cCameraManager.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="cApplicationManager.h" />
     <ClInclude Include="cBaseDrawTool.h" />
     <ClInclude Include="cBaseLevel.h" />
+    <ClInclude Include="cBehaviorPatrol.h" />
     <ClInclude Include="cBoxCollider.h" />
     <ClInclude Include="cBullet.h" />
     <ClInclude Include="cCameraManager.h" />

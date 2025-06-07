@@ -31,11 +31,9 @@ private:
 
 	std::string LevelNames[3] = { "Level1", "Level2", "Level3" };
 
-	cEnemyManager& mEnemyManager;
-
 public:
 	// 'Structaz
-	cLevelManager(sf::RenderWindow& _Window, cEnemyManager& _EnemyManager);
+	cLevelManager(sf::RenderWindow& _Window);
 	~cLevelManager() {}
 
 	// Updateables

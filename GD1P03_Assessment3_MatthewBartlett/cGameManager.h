@@ -18,6 +18,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cLevelManager.h"
 #include "cPickupManager.h"
 #include "cGameStateManager.h"
+#include "cEnemyManager.h"
 
 class cGameManager
 {

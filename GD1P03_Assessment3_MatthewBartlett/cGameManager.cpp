@@ -12,6 +12,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cGameManager.h"
 #include "cGameSettings.h"
 
+
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
 	, mCameraManager(mPlayerCharacter, _GameWindow)
@@ -19,7 +20,7 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
-	, mPickupManager(_GameWindow, mLevelManager)
+	, mPickupManager(_GameWindow)
 	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
 	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager)
 {

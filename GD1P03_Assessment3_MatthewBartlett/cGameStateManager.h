@@ -1,8 +1,9 @@
 #pragma once
-#include "cEnemyManager.h"
 #include "cProjectileManager.h"
 #include "cLevelProgressTracker.h"
-#include "cLevelManager.h"
+
+class cLevelManager;
+class cEnemyManager;
 
 class cGameStateManager {
 private:
@@ -14,7 +15,7 @@ private:
 
 public:
     cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager);
-    void TrackLevelComplete();
     void CheckBulletCollision();
+    void InitializeLevelEnemies();
     bool IsLevelComplete() const { return mLevelComplete; }
 };

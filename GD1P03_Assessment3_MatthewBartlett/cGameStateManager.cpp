@@ -1,24 +1,12 @@
 #include "cGameStateManager.h"
+#include "cEnemyManager.h"
+#include "cLevelManager.h"
 
 cGameStateManager::cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager)
     : mEnemyManager(_EnemyManager)
     , mProjectileManager(_ProjectileManager) 
     , mLevelManager(_LevelManager)
 {
-}
-
-void cGameStateManager::TrackLevelComplete() {
-    /// !!! We can probably tick enemies down one by one on kill instead of checking every frame !!!
-    // Check will be changed to false if any Enemies remain alive
-    bool AllEnemiesDeadCheck = true;
-    for (cEnemyCharacter* enemy : mEnemyManager.GetEnemyList()) {
-        if (enemy->IsAlive())
-            AllEnemiesDeadCheck = false;
-    }
-    if (AllEnemiesDeadCheck) {
-        std::cout << "All enemies defeated. You may now exit the level." << std::endl;
-        mLevelComplete = true;
-    }
 }
 
 // Sorry bout the birds nest
@@ -60,4 +48,16 @@ void cGameStateManager::CheckBulletCollision()
             }
         }
     }
+}
+
+void cGameStateManager::InitializeLevelEnemies()
+{
+    // Get enemy spawner object list
+    std::vector<cEnemySpawner*>& enemySpawnerList = mLevelManager.GetEnemySpawnerList();
+
+    // Spawn Enemies
+    mEnemyManager.SetupEnemyList(enemySpawnerList);
+
+    // Set enemy count in level progress tracker singleton
+    cLevelProgressTracker::GetInstance().OnLoadSetEnemyCount(enemySpawnerList.size());
 }

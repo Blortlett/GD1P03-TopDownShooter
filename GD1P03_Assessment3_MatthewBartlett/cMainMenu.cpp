@@ -18,22 +18,18 @@ cMainMenu::cMainMenu(sf::RenderWindow& renderWindow, cGameStateManager& _GameSta
 	, mSubTitleText(cSharedUtils::GetInstance().mSubTitleFont, "MIAMI", 6U)
 	, mRenderWindow(renderWindow)
 	// Play Button
-	, mPlayButtonUI(
-		mPlayButtonPosition,
-		mButtonSize,
-		_GameStateManager
-	)
+	, mPlayButtonUI(mPlayButtonPosition, mButtonSize, *this)
 {
 	// Set Title Text
-	mTitleText.setFillColor(sf::Color::Black);
-	mTitleText.setCharacterSize(300);
+	mTitleText.setFillColor(sf::Color::Magenta);
+	mTitleText.setCharacterSize(300U);
 	mTitleText.setPosition(mTitlePosition);
 	mTitleText.setOrigin(mTitleText.getGlobalBounds().size / 2.0f);
 
 	// Set SubTitle Text
-	mSubTitleText.setFillColor(sf::Color::Black);
-	mTitleText.setCharacterSize(300);
-	mTitleText.setPosition(mTitlePosition);
+	mSubTitleText.setFillColor(sf::Color::White);
+	mTitleText.setCharacterSize(150U);
+	mTitleText.setPosition(mTitlePosition + sf::Vector2f(0, 150));
 	mTitleText.setOrigin(mTitleText.getGlobalBounds().size / 2.0f);
 }
 
@@ -44,9 +40,10 @@ cMainMenu::~cMainMenu()
 
 void cMainMenu::Update()
 {
+	mPlayButtonUI.Update(mRenderWindow);
+
 	mRenderWindow.draw(mTitleText);
 	mRenderWindow.draw(mSubTitleText);
-	mPlayButtonUI.Update(mRenderWindow);
 	mPlayButtonUI.Draw(mRenderWindow);
 }
 

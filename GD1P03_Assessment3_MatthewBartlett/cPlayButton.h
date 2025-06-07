@@ -11,22 +11,18 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
 #include "cButtonUI.h"
-#include "cAudioManager.h"
-#include "cGameStateManager.h"
-
 
 class cMainMenu;
 
 class cPlayButton : public cButtonUI
 {
 public:
-	cPlayButton(sf::Vector2f position, sf::Vector2f size, cGameStateManager& _GameStateManager);
+	cPlayButton(sf::Vector2f position, sf::Vector2f size, cMainMenu& _MainMenu);
 	~cPlayButton() = default;
 	void OnButtonClick() override;
 	void Draw(sf::RenderWindow& window) override;
 private:
-	cGameStateManager& mGameStateManager;
-
+	cMainMenu& mMainMenu;
 	sf::Font& mBodyFont;
 	sf::Text mText;
 };

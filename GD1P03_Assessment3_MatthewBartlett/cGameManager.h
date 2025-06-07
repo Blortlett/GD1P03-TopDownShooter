@@ -72,4 +72,6 @@ public:
 
 	// Update Method
 	void GameTick();
+
+	cGameStateManager& GetGameStateManager() { return mGameStateManager; }
 };

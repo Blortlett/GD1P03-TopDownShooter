@@ -3,6 +3,8 @@
 cApplicationManager::cApplicationManager()
     : mGameWindow(sf::VideoMode({ 1920, 1080 }), "Starline Whammy ", sf::Style::None)
     , mGameManager(mGameWindow)
+    , mMainMenu(mGameWindow, mGameManager.GetGameStateManager())
+    , mCurrentState(EGameState::MainMenu) // Start in main menu
 {
 
 }
@@ -22,13 +24,21 @@ void cApplicationManager::Run()
             // Optional: Add escape key to exit fullscreen
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
                 mGameWindow.close();
+
+            switch (mCurrentState)
+            {
+                case EGameState::MainMenu:
+                    // Handle Main Menu
+                    mMainMenu.Update();
+                    break;
+                case EGameState::Gameplay:
+                    // Game Tick runs all the gameplay
+                    mGameManager.GameTick();
+                    break;
+            }
         }
-
+        // Clear last frame & display new frame
         mGameWindow.clear();
-        
-        // Game Tick runs all the gameplay
-        mGameManager.GameTick();
-
         mGameWindow.display();
     }
 }

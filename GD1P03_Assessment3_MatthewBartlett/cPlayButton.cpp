@@ -11,15 +11,15 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cPlayButton.h"
 #include "cSharedUtils.h"
+#include "cMainMenu.h"
 
-cPlayButton::cPlayButton(sf::Vector2f position, sf::Vector2f size, cGameStateManager& _GameStateManager)
+cPlayButton::cPlayButton(sf::Vector2f position, sf::Vector2f size, cMainMenu& _MainMenu)
 	: cButtonUI(position, size)
-	, mText(mBodyFont, "PLAY", 6U)
+	, mText(mBodyFont, "PLAY", 4U)
 	, mBodyFont(cSharedUtils::GetInstance().mButtonFont)
-	, mGameStateManager(_GameStateManager)
+	, mMainMenu(_MainMenu)
 {
 	// get font
-	mText.setString("PLAY");
 	mText.setCharacterSize(20);
 	mText.setFillColor(sf::Color::Black);
 	// Center text
@@ -29,7 +29,8 @@ cPlayButton::cPlayButton(sf::Vector2f position, sf::Vector2f size, cGameStateMan
 
 void cPlayButton::OnButtonClick()
 {
-	
+	// Deactivate menu
+	mMainMenu.mIsActive = false;
 }
 
 void cPlayButton::Draw(sf::RenderWindow& window)

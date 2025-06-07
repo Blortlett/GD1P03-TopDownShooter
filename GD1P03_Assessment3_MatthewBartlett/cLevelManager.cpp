@@ -135,6 +135,8 @@ void cLevelManager::LoadLevel()
 
 void cLevelManager::LoadLevelByObject()
 {
+	// clear level
+
 	// Load level
 	mCurrentLevel->LoadLevelByName(mFileInterface);
 	// Get enemy count

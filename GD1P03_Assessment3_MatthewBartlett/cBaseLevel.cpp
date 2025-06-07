@@ -166,11 +166,11 @@ cExitTrigger* cBaseLevel::GetExitTrigger()
 void cBaseLevel::SaveLevel(cFileInterface& _FileInterface)
 {
     // Get file interface to save level here
-    _FileInterface.SaveLevelDialog();
+    _FileInterface.SaveLevelDialog(this);
 }
 
 void cBaseLevel::LoadLevel(cFileInterface& _FileInterface)
 {
     // Get file interface to load level here
-    _FileInterface.LoadLevelDialog();
+    _FileInterface.LoadLevelDialog(this);
 }

@@ -27,9 +27,9 @@ class cFileInterface
 public:
 	cFileInterface(cBaseLevel* _CurrentLevel);
 	~cFileInterface();
-	void SaveLevelDialog();
-	void LoadLevelDialog();
-	void LoadLevelByName(const std::string& levelName);
+	void SaveLevelDialog(cBaseLevel* _CurrentLevel);
+	void LoadLevelDialog(cBaseLevel* _CurrentLevel);
+	void LoadLevelByName(cBaseLevel* _CurrentLevel, const std::string& levelName);
 
 private:
 	cBaseLevel* mCurrentLevel;

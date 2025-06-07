@@ -12,5 +12,5 @@ cLevel1::~cLevel1()
 
 void cLevel1::LoadLevelByName(cFileInterface& _FileInterface)
 {
-	_FileInterface.LoadLevelByName(LevelName);
+	_FileInterface.LoadLevelByName(this, LevelName);
 }

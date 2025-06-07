@@ -41,25 +41,54 @@ cFileInterface::~cFileInterface()
     CoUninitialize();
 }
 
-void cFileInterface::SaveLevelDialog() {
+void cFileInterface::SaveLevelDialog(cBaseLevel* _CurrentLevel) 
+{
+    // Set current level
+    mCurrentLevel = _CurrentLevel;
+    // Check Current Level
+    if (!mCurrentLevel) {
+        std::cerr << "Error: mCurrentLevel is null" << std::endl;
+        return;
+    }
+    
     std::wstring filePath;
-    if (!ShowFileSaveDialog(filePath, L"JSON files", L"*.json")) {
+    if (!ShowFileSaveDialog(filePath, L"JSON files", L"*.json")) 
+    {
         return;
     }
 
     SaveLevelToFile(filePath);
 }
 
-void cFileInterface::LoadLevelDialog() {
+void cFileInterface::LoadLevelDialog(cBaseLevel* _CurrentLevel) 
+{
+    // Set current level
+    mCurrentLevel = _CurrentLevel;
+    // Check Current Level
+    if (!mCurrentLevel) {
+        std::cerr << "Error: mCurrentLevel is null" << std::endl;
+        return;
+    }
+
     std::wstring filePath;
-    if (!ShowFileOpenDialog(filePath, L"JSON files", L"*.json")) {
+    if (!ShowFileOpenDialog(filePath, L"JSON files", L"*.json")) 
+    {
         return;
     }
 
     LoadLevelFromFile(filePath);
 }
 
-void cFileInterface::LoadLevelByName(const std::string& levelName) {
+void cFileInterface::LoadLevelByName(cBaseLevel* _CurrentLevel, const std::string& levelName) 
+{
+    // Set current level
+    mCurrentLevel = _CurrentLevel;
+    // Check Current Level
+    if (!mCurrentLevel) {
+        std::cerr << "Error: mCurrentLevel is null" << std::endl;
+        return;
+    }
+
     // Construct file path (e.g., "Levels/levelName.json")
     std::filesystem::path filePath = "Assets/Levels/" + levelName + ".json";
     LoadLevelFromFile(filePath.wstring());

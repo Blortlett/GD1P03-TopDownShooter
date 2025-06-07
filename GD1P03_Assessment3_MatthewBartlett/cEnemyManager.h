@@ -18,11 +18,16 @@ private:
 	cProjectileManager& mProjectileManager;
 	cPickupManager& mPickupManager;
 
+	// Clears list of enemies
+	void ClearEnemyList();
 public:
 	cEnemyManager(cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, cPickupManager& _PickupManager, cPlayerCharacter& _PlayerCharacter);
 	~cEnemyManager();
 
+	// Sets up a new list of enemies
 	void SetupEnemyList(std::vector<cEnemySpawner*>& _EnemySpawnPositions);
+	
+	// resets all enemies in list
 	void RespawnEnemies();
 
 	void Update(float _DeltaTime);

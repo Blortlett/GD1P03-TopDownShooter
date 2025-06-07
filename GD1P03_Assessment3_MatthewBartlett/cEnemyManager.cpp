@@ -32,9 +32,23 @@ std::vector<cEnemyCharacter*>& cEnemyManager::GetEnemyList()
 	return mEnemyList;
 }
 
+void cEnemyManager::ClearEnemyList()
+{
+	// Delete each enemy
+	for (cEnemyCharacter* enemy : mEnemyList)
+	{
+		delete enemy;
+	}
+	// Clear the vector
+	mEnemyList.clear();
+}
+
 void cEnemyManager::SetupEnemyList(std::vector<cEnemySpawner*>& _EnemySpawnPositions)
 {
-	std::cout << "Spawning Enemies! :)" << std::endl;
+	// Clear List
+	ClearEnemyList();
+
+	// Repopulate enemies
 	for (cEnemySpawner* enemySpawner : _EnemySpawnPositions)
 	{
 		cEnemyCharacter* newEnemy = new cEnemyCharacter(enemySpawner->GetPosition(), mProjectileManager, mPickupManager, mRenderWindow, mPlayerReference);

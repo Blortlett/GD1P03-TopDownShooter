@@ -6,7 +6,7 @@ cCharacter::cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileMa
 	, mPistol(_ProjectileManager)
 	, mPosition(_Position)
 	, mSpawnPoint(_Position)
-	, mBoxCollider(sf::FloatRect(_Position, { 24.f, 24.f }))
+	, mBoxCollider(sf::FloatRect(_Position, { 16.f, 16.f }))
 	, mDebugWidget(mBoxCollider)
 {
 }

@@ -66,4 +66,5 @@ public:
 
 	// Getters
 	std::vector<cEnemySpawner*>& GetEnemySpawnerList();
+	std::vector<cFullWall*>& GetFullWallList() { return mCurrentLevel->GetFullWallColliderList(); }
 };

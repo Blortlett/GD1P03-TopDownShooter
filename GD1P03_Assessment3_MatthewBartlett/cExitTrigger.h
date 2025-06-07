@@ -15,7 +15,7 @@ public:
 	~cExitTrigger() {}
 
 	// Complete level on collision w/ player
-	void CheckCollideWithPlayer(cPlayerCharacter& character);
+	bool CheckCollideWithPlayer(cPlayerCharacter& character);
 
 	void DebugDraw(sf::RenderWindow& _Window);
 

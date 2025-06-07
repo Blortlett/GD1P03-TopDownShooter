@@ -38,16 +38,34 @@ void cLevelManager::CheckPlayerWallCollisions(cPlayerCharacter& _Player)
 	sf::Vector2f CollisionDirection;
 	// Get all full walls in level
 	std::vector<cFullWall*>& FullWallColliderList = mCurrentLevel->GetFullWallColliderList();
+	std::vector<cHalfWall*>& HalfWallColliderList = mCurrentLevel->GetHalfWallColliderList();
 
 	// Check full wall collisions
 	for (size_t i = 0; i < FullWallColliderList.size(); ++i) {
 		FullWallColliderList[i]->CheckCollideWithPlayer(_Player, CollisionDirection);
 	}
+	// Check half wall collisions
+	for (size_t i = 0; i < HalfWallColliderList.size(); ++i) {
+		HalfWallColliderList[i]->CheckCollideWithPlayer(_Player, CollisionDirection);
+	}
 
+	// Check exit door collision seperately
 	cExitDoor* ExitDoor = mCurrentLevel->GetExitDoor();
 	if (ExitDoor)
 	{
 		ExitDoor->CheckCollideWithPlayer(_Player, CollisionDirection);
+	}
+
+	// Check player reached end of level zone / exit zone collider
+	cExitTrigger* ExitZone = mCurrentLevel->GetExitTrigger();
+
+	// If exit zone does not exist, don't worry about rest of function
+	if (!ExitZone) return;
+	// Check exit zone collision with player
+	if (ExitZone->CheckCollideWithPlayer(_Player))
+	{
+		mCurrentLevel = &mLevel2;
+		mCurrentLevel->LoadLevelByName(mFileInterface);
 	}
 }
 

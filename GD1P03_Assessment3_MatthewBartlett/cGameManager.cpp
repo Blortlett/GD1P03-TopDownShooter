@@ -21,7 +21,7 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
 	, mPickupManager(_GameWindow)
 	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
-	, mGameStateManager(mEnemyManager, mProjectileManager)
+	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager)
 {
 	mLevelManager.LoadLevelByObject();
 	mEnemyManager.SetupEnemyList(mLevelManager.GetEnemySpawnerList());
@@ -39,7 +39,7 @@ void cGameManager::GameTick()
 	mLevelManager.Update(mDeltaSeconds);
 	mLevelManager.Draw();
 	mLevelManager.CheckPlayerWallCollisions(mPlayerCharacter);
-	mGameStateManager.CheckBulletToEnemyCollision();
+	mGameStateManager.CheckBulletCollision();
 
 	// Update Enemies
 	mEnemyManager.Update(mDeltaSeconds);

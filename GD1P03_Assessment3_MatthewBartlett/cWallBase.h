@@ -23,4 +23,5 @@ public:
 
 	// Getters
 	sf::FloatRect GetBounds();
+	cBoxCollider& GetCollider() { return mCollider; }
 };

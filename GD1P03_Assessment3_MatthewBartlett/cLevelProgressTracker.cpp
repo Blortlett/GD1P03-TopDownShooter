@@ -13,10 +13,10 @@ void cLevelProgressTracker::OnLoadSetEnemyCount(int _EnemyCount)
 void cLevelProgressTracker::ReduceEnemyCount()
 {
 	mEnemyCount--;
-	std::cout << "TotalEnemies: " << mLevelMaxEnemies << "  Enemies Remaining: " << mEnemyCount << std::endl;
+	//std::cout << "TotalEnemies: " << mLevelMaxEnemies << "  Enemies Remaining: " << mEnemyCount << std::endl;
 }
 
 bool cLevelProgressTracker::CheckLevelComplete()
 {
-	return mLevelMaxEnemies <= mEnemyCount;
+	return mEnemyCount <= 0;
 }

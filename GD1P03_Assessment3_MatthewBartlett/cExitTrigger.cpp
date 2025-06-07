@@ -8,7 +8,7 @@ cExitTrigger::cExitTrigger(sf::Vector2f _Position)
 
 }
 
-void cExitTrigger::CheckCollideWithPlayer(cPlayerCharacter& character)
+bool cExitTrigger::CheckCollideWithPlayer(cPlayerCharacter& character)
 {
 	sf::Vector2f collisionDirection; // Dont care about this but my ugly function will
 
@@ -16,7 +16,7 @@ void cExitTrigger::CheckCollideWithPlayer(cPlayerCharacter& character)
 	if (mCollider.CheckCollision(character.GetCollider(), collisionDirection, 0.f))
 	{
 		// If collision, Win level:
-		
+		return true;
 	}
 }
 

@@ -44,11 +44,11 @@ private:
 	// Enemy Manager
 	cEnemyManager mEnemyManager;
 
-	// Level Won & Bullet Collision checks
-	cGameStateManager mGameStateManager;
-
 	// Level Manager
 	cLevelManager mLevelManager;
+
+	// Level Won & Bullet Collision checks
+	cGameStateManager mGameStateManager;
 
 	// Draw tool
 	cEditorManager mEditorManager;

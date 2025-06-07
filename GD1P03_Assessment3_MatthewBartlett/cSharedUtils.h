@@ -15,6 +15,11 @@ public:
 	// Doors
 	sf::Texture mExitDoorTex;
 
+	// Fonts
+	sf::Font mTitleFont;
+	sf::Font mSubTitleFont;
+	sf::Font mButtonFont;
+
 
 	// Static Functions
 	static void NormalizeVector(sf::Vector2f& _VectorToNormalize)

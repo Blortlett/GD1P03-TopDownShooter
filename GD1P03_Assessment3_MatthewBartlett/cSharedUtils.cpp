@@ -3,6 +3,7 @@
 
 cSharedUtils::cSharedUtils()
 {
+	// -= Load Textures =-
 	// Load projectile texture
 	if (!mBulletTex.loadFromFile("Assets/SpritePack/Projectiles/bullet.png"))
 	{
@@ -17,5 +18,19 @@ cSharedUtils::cSharedUtils()
 	if (!mExitDoorTex.loadFromFile("Assets/SpritePack/Objects/doorHeavy.png"))
 	{
 		std::cout << "Failed to load doorHeavy.png";
+	}
+
+	// -= Load Fonts =-
+	if (!mTitleFont.openFromFile("Assets/Fonts/Beyond.ttf"))
+	{
+		std::cout << "Failed to load Title Font: Beyond.ttf";
+	}
+	if (!mSubTitleFont.openFromFile("Assets/Fonts/PinkBeach.otf"))
+	{
+		std::cout << "Failed to load Title Font: PinkBeach.otf";
+	}
+	if (!mButtonFont.openFromFile("Assets/Fonts/WIDEAWAKE.TTF"))
+	{
+		std::cout << "Failed to load Title Font: WIDEAWAKE.TTF";
 	}
 }

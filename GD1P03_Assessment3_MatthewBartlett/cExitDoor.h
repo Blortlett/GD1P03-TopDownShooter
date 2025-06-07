@@ -11,14 +11,11 @@ private:
 
 	// How far the door should open (to the left)
 	float mDoorOpenAmount = 84.f;
-	float const mOpenSpeedModifier = .3f;
+	float const mOpenSpeedModifier = 30.f;
 
 public:
 	cExitDoor(sf::Vector2f _StartPosition);
 	~cExitDoor() {}
-
-	// Set to true to trigger door openeing
-	bool mIsDoorOpening = false;
 
 	// I guess we gotta call something every frame
 	void Update(float _DeltaTime);

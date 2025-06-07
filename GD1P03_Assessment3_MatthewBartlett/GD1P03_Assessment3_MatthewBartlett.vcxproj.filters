@@ -197,6 +197,9 @@
     <Filter Include="Character\Enemy\Behaviors">
       <UniqueIdentifier>{b2705e56-c640-4986-8ba4-7c3642315736}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameSystems\EventSystem">
+      <UniqueIdentifier>{c8960e7b-8cb6-4970-a727-c89ee2c46153}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -494,6 +497,12 @@
     </ClInclude>
     <ClInclude Include="cBehaviorPatrol.h">
       <Filter>Character\Enemy\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="iEntity.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="cEventSystem.h">
+      <Filter>GameSystems\EventSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

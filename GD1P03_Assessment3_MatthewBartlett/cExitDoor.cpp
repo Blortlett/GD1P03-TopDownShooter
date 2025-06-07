@@ -1,5 +1,6 @@
 #include "cExitDoor.h"
 #include "cSharedUtils.h"
+#include "cLevelProgressTracker.h"
 
 cExitDoor::cExitDoor(sf::Vector2f _StartPosition)
 	: cWallBase(sf::FloatRect(_StartPosition, { 96.f, 30.f }), sf::Color::Blue)
@@ -13,8 +14,13 @@ cExitDoor::cExitDoor(sf::Vector2f _StartPosition)
 
 void cExitDoor::Update(float _DeltaTime)
 {
-	// Return from function if level not complete or door fully open
-	if (mIsDoorOpenFull || !mIsDoorOpening) return;
+	// Return from function if level not complete
+	if (!cLevelProgressTracker::GetInstance().CheckLevelComplete())
+		return;
+	// Return from function if door fully open
+	if (mIsDoorOpenFull)
+		return;
+
 	if (mDoorOpenAmount <= 0.f)
 	{
 		mIsDoorOpenFull = true;

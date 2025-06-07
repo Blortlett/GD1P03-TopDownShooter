@@ -5,6 +5,7 @@
 #include "cFileInterface.h"
 #include "cFullWall.h"
 #include "cHalfWall.h"
+#include "cLevelProgressTracker.h"
 #include <string>
 
 // forward declarations
@@ -37,6 +38,7 @@ public:
 	~cLevelManager() {}
 
 	// Updateables
+	void Update(float _DeltaTime);
 	void Draw();
 	void DebugDraw();
 

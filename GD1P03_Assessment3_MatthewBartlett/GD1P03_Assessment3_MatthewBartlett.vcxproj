@@ -213,6 +213,7 @@
     <ClInclude Include="cEnemyManager.h" />
     <ClInclude Include="cEnemySpawner.h" />
     <ClInclude Include="cEnemySpawnerTool.h" />
+    <ClInclude Include="cEventSystem.h" />
     <ClInclude Include="cExitDoor.h" />
     <ClInclude Include="cExitDoorDrawTool.h" />
     <ClInclude Include="cExitTrigger.h" />
@@ -243,6 +244,7 @@
     <ClInclude Include="cProjectileManager.h" />
     <ClInclude Include="cSharedUtils.h" />
     <ClInclude Include="cWallBase.h" />
+    <ClInclude Include="iEntity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

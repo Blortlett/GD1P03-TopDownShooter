@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class cLevelProgressTracker
 {
@@ -11,8 +12,10 @@ private:
 	int mEnemyCount;
 
 public:
-	void OnLoadSetEnemyCount();
+	void OnLoadSetEnemyCount(int _EnemyCount);
 	void ReduceEnemyCount();
+	bool CheckLevelComplete();
+
 
 
 

@@ -36,6 +36,7 @@ void cGameManager::GameTick()
 	mCameraManager.Update(mDeltaSeconds);
 
 	// Update Level
+	mLevelManager.Update(mDeltaSeconds);
 	mLevelManager.Draw();
 	mLevelManager.CheckPlayerWallCollisions(mPlayerCharacter);
 	mGameStateManager.CheckBulletToEnemyCollision();

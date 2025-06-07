@@ -35,6 +35,8 @@ void cGameStateManager::CheckBulletToEnemyCollision()
 
         // Check collision with each enemy
         for (cEnemyCharacter* enemy : EnemyList) {
+            // Don't check collision if enemy is dead
+            if (!enemy->IsAlive()) continue; //
             // check collision
             if (bullet.CheckCollisionWithEnemy(*enemy, CollisionDirection)) {
                 // If bullet hit enemy, deactivate bullet

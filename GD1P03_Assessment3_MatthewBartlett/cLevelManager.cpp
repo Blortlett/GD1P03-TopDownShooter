@@ -17,6 +17,11 @@ cLevelManager::cLevelManager(sf::RenderWindow& _Window)
 {
 }
 
+void cLevelManager::Update(float _DeltaTime)
+{
+	mCurrentLevel->Update(_DeltaTime);
+}
+
 void cLevelManager::Draw()
 {
 	mCurrentLevel->Draw();
@@ -112,7 +117,12 @@ void cLevelManager::LoadLevel()
 
 void cLevelManager::LoadLevelByObject()
 {
+	// Load level
 	mCurrentLevel->LoadLevelByName(mFileInterface);
+	// Get enemy count
+	int enemyCount = mCurrentLevel->GetEnemySpawnerList().size();
+	// Set enemy count in level progress tracker singleton
+	cLevelProgressTracker::GetInstance().OnLoadSetEnemyCount(enemyCount);
 }
 
 std::vector<cEnemySpawner*>& cLevelManager::GetEnemySpawnerList()

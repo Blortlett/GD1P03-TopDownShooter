@@ -24,7 +24,7 @@ cBaseLevel::~cBaseLevel()
     CleanupColliders();
     // Delete the background sprite
     //if (mBackgroundSprite != nullptr)
-    //    delete mBackgroundSprite;    // <<< Memory leak here on destructor
+    //    delete mBackgroundSprite;    // <<< Memory leak here on destructor?
 }
 
 void cBaseLevel::Update(float _DeltaTime)

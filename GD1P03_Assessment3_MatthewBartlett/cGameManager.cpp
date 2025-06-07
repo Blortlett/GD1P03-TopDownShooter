@@ -11,6 +11,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cGameManager.h"
 #include "cGameSettings.h"
+#include "cPlayerSpawner.h"
 
 
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
@@ -22,10 +23,19 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
 	, mPickupManager(_GameWindow)
 	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
-	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager)
+	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager, mPlayerCharacter)
 {
-	mLevelManager.LoadLevelByObject();
-	mEnemyManager.SetupEnemyList(mLevelManager.GetEnemySpawnerList());
+	mGameStateManager.TransitionToNextLevel();
+	//// Load first level
+	//mLevelManager.LoadLevelByObject();
+	//// Setup first level enemies
+	//mEnemyManager.SetupEnemyList(mLevelManager.GetEnemySpawnerList());
+	//// Set player position to spawner position
+	//cPlayerSpawner* playerSpawner = mLevelManager.GetCurrentLevel()->GetPlayerSpawner();
+	//if (playerSpawner)
+	//{
+	//	mPlayerCharacter.SetPosition(playerSpawner->GetPosition());
+	//}
 }
 
 void cGameManager::GameTick()
@@ -41,6 +51,13 @@ void cGameManager::GameTick()
 	mLevelManager.Draw();
 	mLevelManager.CheckPlayerWallCollisions(mPlayerCharacter);
 	mGameStateManager.CheckBulletCollision();
+
+	// Check if player has reached level exit
+	if (mLevelManager.CheckLevelExit(mPlayerCharacter))
+	{
+		// If so - move on to next level
+		mGameStateManager.TransitionToNextLevel();
+	}
 
 	// Update Enemies
 	mEnemyManager.Update(mDeltaSeconds);

@@ -29,6 +29,9 @@ private:
 	// Loading/Saving object
 	cFileInterface mFileInterface;
 
+	// Level index
+	int mCurrentLevelIndex = -1;
+	// Level names
 	std::string LevelNames[3] = { "Level1", "Level2", "Level3" };
 
 public:
@@ -43,6 +46,7 @@ public:
 
 	// -= Collisions =-
 	void CheckPlayerWallCollisions(cPlayerCharacter& _Player);
+	bool CheckLevelExit(cPlayerCharacter& _Player);
 
 	// -= Level Editing =-
 	// Add wall
@@ -60,10 +64,13 @@ public:
 	// Save / Load level data
 	void SaveLevel();
 	void LoadLevel();
-
 	void LoadLevelByObject();
+
+	// In game level progression
+	void AdvanceToNextLevel();
 
 	// Getters
 	std::vector<cEnemySpawner*>& GetEnemySpawnerList();
 	std::vector<cFullWall*>& GetFullWallList() { return mCurrentLevel->GetFullWallColliderList(); }
+	cBaseLevel* GetCurrentLevel() { return mCurrentLevel; }
 };

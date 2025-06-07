@@ -54,18 +54,19 @@ void cLevelManager::CheckPlayerWallCollisions(cPlayerCharacter& _Player)
 	{
 		ExitDoor->CheckCollideWithPlayer(_Player, CollisionDirection);
 	}
+}
 
+bool cLevelManager::CheckLevelExit(cPlayerCharacter& _Player)
+{
 	// Check player reached end of level zone / exit zone collider
 	cExitTrigger* ExitZone = mCurrentLevel->GetExitTrigger();
 
 	// If exit zone does not exist, don't worry about rest of function
-	if (!ExitZone) return;
-	// Check exit zone collision with player
-	if (ExitZone->CheckCollideWithPlayer(_Player))
+	if (ExitZone && ExitZone->CheckCollideWithPlayer(_Player))
 	{
-		mCurrentLevel = &mLevel2;
-		mCurrentLevel->LoadLevelByName(mFileInterface);
+		return true; // Player has reached the level exit
 	}
+	return false; // Player not @ exit yet
 }
 
 void cLevelManager::AddFullWall(cFullWall* _FullWallCollider)
@@ -133,8 +134,25 @@ void cLevelManager::LoadLevel()
 }
 
 void cLevelManager::LoadLevelByObject()
+
 {
 	// Load level
+	mCurrentLevel->LoadLevelByName(mFileInterface);
+}
+
+
+void cLevelManager::AdvanceToNextLevel()
+{
+	// Increment level index and select the next level
+	mCurrentLevelIndex = (mCurrentLevelIndex + 1) % 3; // Cycle through levels (0, 1, 2)
+	if (mCurrentLevelIndex == 0)
+		mCurrentLevel = &mLevel1;
+	else if (mCurrentLevelIndex == 1)
+		mCurrentLevel = &mLevel2;
+	else
+		mCurrentLevel = &mLevel3;
+
+	// Load the new level
 	mCurrentLevel->LoadLevelByName(mFileInterface);
 }
 

@@ -138,3 +138,8 @@ void cPlayerCharacter::Draw()
 	if (cGameSettings::GetInstance().IsDebugActive())
 		mDebugWidget.DrawWidget(mRenderWindow);
 }
+
+void cPlayerCharacter::SetPosition(sf::Vector2f _Position)
+{
+	mBoxCollider.MoveColliderPosition(_Position);
+}

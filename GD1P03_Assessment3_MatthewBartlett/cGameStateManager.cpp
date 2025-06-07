@@ -1,11 +1,14 @@
 #include "cGameStateManager.h"
 #include "cEnemyManager.h"
 #include "cLevelManager.h"
+#include "cPlayerCharacter.h"
+#include "cPlayerSpawner.h"
 
-cGameStateManager::cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager)
+cGameStateManager::cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager, cPlayerCharacter& _PlayerCharacter)
     : mEnemyManager(_EnemyManager)
     , mProjectileManager(_ProjectileManager) 
     , mLevelManager(_LevelManager)
+    , mPlayerCharacter(_PlayerCharacter)
 {
 }
 
@@ -60,4 +63,23 @@ void cGameStateManager::InitializeLevelEnemies()
 
     // Set enemy count in level progress tracker singleton
     cLevelProgressTracker::GetInstance().OnLoadSetEnemyCount(enemySpawnerList.size());
+}
+
+void cGameStateManager::TransitionToNextLevel()
+{
+    // Load the next level
+    mLevelManager.AdvanceToNextLevel();
+
+    // Set up enemies for level
+    InitializeLevelEnemies();
+
+    // Reset level complete flag
+    mLevelComplete = false;
+
+    // Reset player position
+    cPlayerSpawner* playerSpawner = mLevelManager.GetCurrentLevel()->GetPlayerSpawner();
+    if (playerSpawner)
+    {
+        mPlayerCharacter.SetPosition(playerSpawner->GetPosition());
+    }
 }

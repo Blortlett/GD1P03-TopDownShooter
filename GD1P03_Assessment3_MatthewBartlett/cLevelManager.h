@@ -8,12 +8,11 @@
 #include "cLevelProgressTracker.h"
 #include <string>
 
-// forward declarations
+// forward declarations of level objects
 class cPlayerCharacter;
 class cExitTrigger;
 class cPlayerSpawner;
 class cEnemySpawner;
-
 
 class cLevelManager
 {
@@ -32,9 +31,11 @@ private:
 
 	std::string LevelNames[3] = { "Level1", "Level2", "Level3" };
 
+	cEnemyManager& mEnemyManager;
+
 public:
 	// 'Structaz
-	cLevelManager(sf::RenderWindow& _Window);
+	cLevelManager(sf::RenderWindow& _Window, cEnemyManager& _EnemyManager);
 	~cLevelManager() {}
 
 	// Updateables

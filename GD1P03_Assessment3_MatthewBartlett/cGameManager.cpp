@@ -19,7 +19,7 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
-	, mPickupManager(_GameWindow)
+	, mPickupManager(_GameWindow, mLevelManager)
 	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
 	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager)
 {

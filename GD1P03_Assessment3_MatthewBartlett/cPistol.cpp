@@ -1,5 +1,6 @@
 #include "cPistol.h"
 #include "cProjectileManager.h"
+#include "cAudioManager.h"
 
 cPistol::cPistol(cProjectileManager& _ProjectileManager)
 	: mProjectileManager(_ProjectileManager)
@@ -21,7 +22,12 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 {
 	// Returns for if gun is not in fire state
 	if (!mCanShoot) return; // Don't bother if weapon is on cooldown 
-	if (mCurrentBulletIndex < 0) return; // return for now, add empty clip sound here later tho
+	if (mCurrentBulletIndex < 0)
+	{
+		// empty clip sound
+		cAudioManager::GetInstance().SFXPlayDryFire();
+		return; // do not fire!
+	}
 
 	// Fire Bullet here
 	sf::Vector2f ShootTrajectory = GetShootTrajectory(_FirePosition, _AimPosition);
@@ -31,6 +37,9 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 	mCurrentBulletIndex--;
 	mCanShoot = false;
 	mCooldownTimer = mShootCooldownMax;
+
+	// Play audio sound
+	cAudioManager::GetInstance().SFXPlayShoot();
 }
 
 sf::Vector2f cPistol::GetShootTrajectory(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)

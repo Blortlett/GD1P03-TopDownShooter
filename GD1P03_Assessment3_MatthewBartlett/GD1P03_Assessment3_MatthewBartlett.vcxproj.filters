@@ -379,6 +379,9 @@
     <ClCompile Include="cPlayButton.cpp">
       <Filter>UI\MainMenu\Buttons</Filter>
     </ClCompile>
+    <ClCompile Include="cExitButton.cpp">
+      <Filter>UI\MainMenu\Buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h">
@@ -550,6 +553,9 @@
       <Filter>UI\MainMenu</Filter>
     </ClInclude>
     <ClInclude Include="cPlayButton.h">
+      <Filter>UI\MainMenu\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="cExitButton.h">
       <Filter>UI\MainMenu\Buttons</Filter>
     </ClInclude>
   </ItemGroup>

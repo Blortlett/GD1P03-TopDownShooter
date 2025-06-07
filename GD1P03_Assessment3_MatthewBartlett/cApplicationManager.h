@@ -16,6 +16,7 @@ private:
 
 	cMainMenu mMainMenu;
 	EGameState mCurrentState;
+	sf::View mDefaultView;
 public:
 	cApplicationManager();
 	~cApplicationManager();

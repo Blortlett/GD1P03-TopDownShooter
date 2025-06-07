@@ -14,6 +14,8 @@ public:
 	sf::Texture mPistolTex;
 	// Doors
 	sf::Texture mExitDoorTex;
+	// Menu Background
+	sf::Texture mStarBackground;
 
 	// Fonts
 	sf::Font mTitleFont;

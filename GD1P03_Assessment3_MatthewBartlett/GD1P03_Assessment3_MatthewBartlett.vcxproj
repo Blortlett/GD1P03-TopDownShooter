@@ -165,6 +165,7 @@
     <ClCompile Include="cEnemyManager.cpp" />
     <ClCompile Include="cEnemySpawner.cpp" />
     <ClCompile Include="cEnemySpawnerTool.cpp" />
+    <ClCompile Include="cExitButton.cpp" />
     <ClCompile Include="cExitDoor.cpp" />
     <ClCompile Include="cExitDoorDrawTool.cpp" />
     <ClCompile Include="cExitTrigger.cpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="cEnemySpawner.h" />
     <ClInclude Include="cEnemySpawnerTool.h" />
     <ClInclude Include="cEventSystem.h" />
+    <ClInclude Include="cExitButton.h" />
     <ClInclude Include="cExitDoor.h" />
     <ClInclude Include="cExitDoorDrawTool.h" />
     <ClInclude Include="cExitTrigger.h" />

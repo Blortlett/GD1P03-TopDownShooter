@@ -13,52 +13,67 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 cAudioManager::cAudioManager()
 	: CurrentMusic(nullptr)
-	, JumpSound(nullptr)
+	, mShootSound(nullptr)
 {
+	// -= SFX =-
 	// Buffers
-	JumpBuffer.loadFromFile("Assets/Audio/SFX/jump.wav");
-
+	mShootSFXBuffer.loadFromFile("Assets/Audio/SFX/Gun/9mm Single.wav");
+	mDryFireSFXBuffer.loadFromFile("Assets/Audio/SFX/Gun/9mm Pistol Dry Fire.wav");
 	// Sounds
-	JumpSound = new sf::Sound(JumpBuffer);
+	mShootSound = new sf::Sound(mShootSFXBuffer);
+	mDryFireSound = new sf::Sound(mDryFireSFXBuffer);
+	// SFX Volume
+	mShootSound->setVolume(60.f);
+	mDryFireSound->setVolume(60.f);
 
-	JumpSound->setVolume(35.f);
 
-
-	// Music
+	// -= Music =-
+	// Load Music
 	MenuMusic.openFromFile("Assets/Audio/Music/admiralbob77_-_Laying_Low_6.mp3");
-	MusicLevel.openFromFile("Slumlord-Chillin-Waiting.ogg");
-
+	MusicLevel.openFromFile("Assets/Audio/Music/Slumlord-Chillin-Waiting.ogg");
+	// Set Looping
 	MenuMusic.setLooping(true);
 	MusicLevel.setLooping(true);
-
-	PlayMenuMusic();
 }
 
 cAudioManager::~cAudioManager()
 {
-	delete JumpSound;
+	delete mShootSound;
+	delete mDryFireSound;
 }
 
-void cAudioManager::SFXPlayJump()
+void cAudioManager::SFXPlayShoot()
 {
-	JumpSound->play();
+	mShootSound->play();
+}
+
+void cAudioManager::SFXPlayDryFire()
+{
+	mDryFireSound->play();
 }
 
 void cAudioManager::PlayMenuMusic()
 {
+	if (mIsMenuMusicPlaying) return; // if menu music playing, return. dont worry bout it
 	if (IsMusicMuted) return; // Dont bother if music is muted
 	StopMusic();
 	CurrentMusic = &MenuMusic;
 	CurrentMusic->setVolume(MusicVolume);
 	CurrentMusic->play();
+	mIsMenuMusicPlaying = true;
+	mIsGameMusicPlaying = false;
 }
 
 void cAudioManager::PlayLevelMusic()
 {
+	if (mIsGameMusicPlaying) return; // if menu music playing, return. dont worry bout it
+	if (IsMusicMuted) return; // Dont bother if music is muted
 	StopMusic();
 	CurrentMusic = &MusicLevel;
-	CurrentMusic->setVolume(MusicVolume);
+	CurrentMusic->setVolume(MusicVolume + 40.f);
 	CurrentMusic->play();
+	mIsGameMusicPlaying = true;
+	mIsMenuMusicPlaying = false;
 }
 
 void cAudioManager::StopMusic()

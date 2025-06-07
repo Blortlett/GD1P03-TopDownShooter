@@ -1,12 +1,15 @@
 #include "cApplicationManager.h"
+#include "cAudioManager.h"
 
 cApplicationManager::cApplicationManager()
-    : mGameWindow(sf::VideoMode({ 1920, 1080 }), "Starline Whammy ", sf::Style::None)
+    : mGameWindow(sf::VideoMode({ 1920, 1080 }), "Starline Miami ", sf::Style::None)
     , mGameManager(mGameWindow)
     , mMainMenu(mGameWindow, mGameManager.GetGameStateManager())
     , mCurrentState(EGameState::MainMenu) // Start in main menu
+    , mDefaultView(sf::FloatRect(sf::Vector2f(683.f, 500.f), { 1920.f, 1080.f }))
 {
-
+    mDefaultView.setSize(sf::Vector2f(1920.f, 1080.f));
+    mDefaultView.setCenter(sf::Vector2f(683.f, 500.f));
 }
 
 cApplicationManager::~cApplicationManager()
@@ -21,24 +24,33 @@ void cApplicationManager::Run()
         {
             if (event->is<sf::Event::Closed>())
                 mGameWindow.close();
-            // Optional: Add escape key to exit fullscreen
+            // Press Escape to exit fullscreen
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
                 mGameWindow.close();
+        }
+
+        mGameWindow.clear();
 
             switch (mCurrentState)
             {
                 case EGameState::MainMenu:
+                    cAudioManager::GetInstance().PlayMenuMusic();
                     // Handle Main Menu
+                    mGameWindow.setView(mDefaultView);
                     mMainMenu.Update();
+                    // Transition when Play is clicked
+                    if (!mMainMenu.mIsActive)
+                    {
+                        mCurrentState = EGameState::Gameplay;
+                    }
                     break;
                 case EGameState::Gameplay:
+                    cAudioManager::GetInstance().PlayLevelMusic();
                     // Game Tick runs all the gameplay
                     mGameManager.GameTick();
                     break;
             }
-        }
         // Clear last frame & display new frame
-        mGameWindow.clear();
         mGameWindow.display();
     }
 }

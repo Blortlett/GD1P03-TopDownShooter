@@ -27,10 +27,12 @@ private:
 	
 	// Sound Effects
 	//Buffers
-	sf::SoundBuffer JumpBuffer;
+	sf::SoundBuffer mShootSFXBuffer;
+	sf::SoundBuffer mDryFireSFXBuffer;
 
 	// Sounds
-	sf::Sound* JumpSound;
+	sf::Sound* mShootSound;
+	sf::Sound* mDryFireSound;
 
 	// Volumes / mutes
 	float MusicVolume = 30.f;
@@ -40,6 +42,10 @@ private:
 
 	//Level Count
 	int LevelCount = 1;
+
+	// music tracker bools
+	bool mIsMenuMusicPlaying = false;
+	bool mIsGameMusicPlaying = false;
 
 public:
 	// Get the single instance of the class
@@ -51,7 +57,8 @@ public:
 
 	//   -= SFX FUNCTIONS =-
 	// Play Sound Effects functions
-	void SFXPlayJump();
+	void SFXPlayShoot();
+	void SFXPlayDryFire();
 
 
 	//   -= MUSIC FUNCTIONS =-

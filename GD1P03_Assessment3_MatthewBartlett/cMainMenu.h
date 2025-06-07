@@ -12,6 +12,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "cPlayButton.h"
+#include "cExitButton.h"
 #include "cGameStateManager.h"
 #include <iostream>
 
@@ -28,12 +29,17 @@ private:
 	sf::RenderWindow& mRenderWindow;
 
 	// Title
+	sf::RectangleShape mTitleBackdrop;
 	sf::Text mTitleText;
 	sf::Text mSubTitleText;
 	sf::Vector2f mTitlePosition = sf::Vector2f(1366 / 2, (768 / 2) - 280);
 
 	// Buttons
 	sf::Vector2f mButtonSize = sf::Vector2f(300, 100);
-	sf::Vector2f mPlayButtonPosition = sf::Vector2f(1366 / 2, 450);
+	sf::Vector2f mPlayButtonPosition = sf::Vector2f(1366 / 2, 600);
 	cPlayButton mPlayButtonUI;
+	cExitButton mExitButtonUI;
+
+	// Background sprite
+	sf::Sprite mStarBackground;
 };

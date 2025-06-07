@@ -29,16 +29,18 @@ cButtonUI::cButtonUI(sf::Vector2f position, sf::Vector2f size)
 
 // Is button hovered?
 bool cButtonUI::IsMouseOver(sf::RenderWindow& window) {
-    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-    if (mousePos.x < mPosition.x - (mSize.x / 2) || mousePos.x > mPosition.x + (mSize.x / 2)) // mouse outside horizontal bounds
-    {
+    // Get mouse position in window coordinates
+    sf::Vector2i mousePixelPos = sf::Mouse::getPosition(window);
+    // Convert to view coordinates
+    sf::Vector2f mouseViewPos = window.mapPixelToCoords(mousePixelPos);
+
+    if (mouseViewPos.x < mPosition.x - (mSize.x / 2) || mouseViewPos.x > mPosition.x + (mSize.x / 2)) {
         return false;
     }
-    if (mousePos.y < mPosition.y - (mSize.y / 2) || mousePos.y > mPosition.y + (mSize.y / 2)) // mouse outside vertical bounds
-    {
+    if (mouseViewPos.y < mPosition.y - (mSize.y / 2) || mouseViewPos.y > mPosition.y + (mSize.y / 2)) {
         return false;
     }
-    return true; // mouse must be inside bounds
+    return true;
 }
 
 // Is button clicked?

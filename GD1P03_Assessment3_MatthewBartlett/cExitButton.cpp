@@ -9,15 +9,15 @@ Description : [cPlayButton provides a button for the player to push to start the
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
-#include "cPlayButton.h"
+#include "cExitButton.h"
 #include "cSharedUtils.h"
 #include "cMainMenu.h"
 
-cPlayButton::cPlayButton(sf::Vector2f position, sf::Vector2f size, cMainMenu& _MainMenu)
+cExitButton::cExitButton(sf::Vector2f position, sf::Vector2f size, sf::RenderWindow& _RenderWindow)
 	: cButtonUI(position, size)
-	, mText(mBodyFont, "PLAY", 4U)
+	, mText(mBodyFont, "EXIT", 4U)
 	, mBodyFont(cSharedUtils::GetInstance().mButtonFont)
-	, mMainMenu(_MainMenu)
+	, mRenderWindow(_RenderWindow)
 {
 	// get font
 	mText.setCharacterSize(60);
@@ -27,13 +27,13 @@ cPlayButton::cPlayButton(sf::Vector2f position, sf::Vector2f size, cMainMenu& _M
 	mText.setOrigin(mText.getGlobalBounds().size / 2.0f);
 }
 
-void cPlayButton::OnButtonClick()
+void cExitButton::OnButtonClick()
 {
-	// Deactivate menu
-	mMainMenu.mIsActive = false;
+	// Exit game
+	mRenderWindow.close();
 }
 
-void cPlayButton::Draw(sf::RenderWindow& window)
+void cExitButton::Draw(sf::RenderWindow& window)
 {
 	cButtonUI::Draw(window);
 	window.draw(mText);

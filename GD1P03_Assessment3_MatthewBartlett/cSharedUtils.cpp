@@ -19,6 +19,11 @@ cSharedUtils::cSharedUtils()
 	{
 		std::cout << "Failed to load doorHeavy.png";
 	}
+	// Menu Background Texture
+	if (!mStarBackground.loadFromFile("Assets/SpritePack/Background/SpaceBackground.png"))
+	{
+		std::cout << "Failed to load doorHeavy.png";
+	}
 
 	// -= Load Fonts =-
 	if (!mTitleFont.openFromFile("Assets/Fonts/Beyond.ttf"))

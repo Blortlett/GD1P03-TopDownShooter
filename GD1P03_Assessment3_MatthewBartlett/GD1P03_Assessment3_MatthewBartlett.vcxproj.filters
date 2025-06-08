@@ -221,6 +221,9 @@
     <Filter Include="Character\Enemy\Behaviors\Patrol">
       <UniqueIdentifier>{a8c91d3e-e4eb-4def-a8f6-7818a22a42ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character\Enemy\Behaviors\Attack">
+      <UniqueIdentifier>{60d2e95b-9b7b-4026-b2fb-12414e96c7dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -384,6 +387,9 @@
     </ClCompile>
     <ClCompile Include="cBehaviorPatrol.cpp">
       <Filter>Character\Enemy\Behaviors\Patrol</Filter>
+    </ClCompile>
+    <ClCompile Include="cBehaviorAttack.cpp">
+      <Filter>Character\Enemy\Behaviors\Attack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -563,6 +569,9 @@
     </ClInclude>
     <ClInclude Include="iBehavior.h">
       <Filter>Character\Enemy\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="cBehaviorAttack.h">
+      <Filter>Character\Enemy\Behaviors\Attack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

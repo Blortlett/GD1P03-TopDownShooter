@@ -150,6 +150,7 @@
     <ClCompile Include="cAudioManager.cpp" />
     <ClCompile Include="cBaseDrawTool.cpp" />
     <ClCompile Include="cBaseLevel.cpp" />
+    <ClCompile Include="cBehaviorAttack.cpp" />
     <ClCompile Include="cBehaviorPatrol.cpp" />
     <ClCompile Include="cBoxCollider.cpp" />
     <ClCompile Include="cBullet.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="cAudioManager.h" />
     <ClInclude Include="cBaseDrawTool.h" />
     <ClInclude Include="cBaseLevel.h" />
+    <ClInclude Include="cBehaviorAttack.h" />
     <ClInclude Include="cBehaviorPatrol.h" />
     <ClInclude Include="cBoxCollider.h" />
     <ClInclude Include="cBullet.h" />

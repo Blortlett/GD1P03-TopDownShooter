@@ -12,6 +12,9 @@ class cPickupManager;
 class cEnemyCharacter : public cCharacter
 {
 private:
+	// Enemy view cone
+	const float CONE_HALF_ANGLE = 1.5708f; // 90 degree
+
 	// Is enemy alive?
 	bool mAlive = true;
 
@@ -23,9 +26,12 @@ private:
 	cBehaviorPatrol mBehaviorPatrol;
 	iBehavior* mCurrentBehavior;
 
+	// Detect player code
+	bool IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad);
+	void DetectPlayer();
+
 	// Calculate if enemy should fire weapon here
 	bool mShouldShoot = false;
-	void DetectPlayer();
 	void UpdateWeapon(float _DeltaSeconds) override;
 
 	// Enemy Raycaster

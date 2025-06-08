@@ -38,6 +38,13 @@ public:
 		}
 	}
 
+	static float NormalizeAngle(float angle) {
+		const float TWO_PI = 6.28318530718f;
+		angle = fmod(angle, TWO_PI); // Wrap angle to [0, 2pi)
+		if (angle < 0) angle += TWO_PI; // Handle negative angles
+		return angle;
+	}
+
 	static sf::Vector2f calculatePointFromOrigin(sf::Vector2f _Origin, float _Distance, sf::Angle& _Angle) {
 		// Trig to calculate new position
 		float x = _Origin.x + _Distance * std::cos(_Angle.asRadians());
@@ -56,6 +63,17 @@ public:
 
 		return angle;
 	}
+
+	static float ShortestAngleDiff(float angle1, float angle2) {
+		const float TWO_PI = 6.28318530718f;
+		float diff = angle1 - angle2;
+		// Normalize difference to [-pi, pi]
+		diff = fmod(diff + 3.1415926535f, TWO_PI) - 3.1415926535f;
+		return diff;
+	}
+
+
+
 
 
 	// Singleton crap....

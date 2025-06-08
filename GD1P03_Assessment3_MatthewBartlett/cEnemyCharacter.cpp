@@ -12,15 +12,34 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 	mCharacterAnimator = &mAnimator;
 }
 
+bool cEnemyCharacter::IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad)
+{
+	// Normalize angles
+	float angleToPlayerRad = cSharedUtils::GetInstance().NormalizeAngle(_AngleToPlayer.asRadians());
+	float enemyAngleRad = cSharedUtils::GetInstance().NormalizeAngle(_EnemyAngleRad.asRadians());
+
+	// Get the shortest angular difference
+	float angleDiff = cSharedUtils::GetInstance().ShortestAngleDiff(angleToPlayerRad, enemyAngleRad);
+
+	// Check if the absolute difference is within the cone (90 Degree || 1.5708 radians)
+	return std::abs(angleDiff) <= CONE_HALF_ANGLE;
+}
+
 void cEnemyCharacter::DetectPlayer()
 {
-	// Get angle from enemy to player as radians	
+	/*
+	// Get angle from enemy to player
 	sf::Angle AngleToPlayer = cSharedUtils::GetInstance().GetLookTowardsAngle(mPosition, mPlayerReference.GetPosition());
 	float angleToPlayerRad = AngleToPlayer.asRadians() + 1.5708; // adjusted value by 1.5708 to offset rad loop back from 6.28319 to 0 on the x axis
 	// Current enemy look direction angle
 	float enemyAngleRad = mAnimator.GetRotation().asRadians() + 1.5708; // adjusted value by 1.5708 to offset rad loop back from 6.28319 to 0 on the x axis
 	// Calculate if player in enemy view cone
 	if (angleToPlayerRad > enemyAngleRad - 0.785398 && angleToPlayerRad < enemyAngleRad + 0.785398)
+	*/
+	// Get angle from enemy position to player position
+	sf::Angle AngleToPlayer = cSharedUtils::GetInstance().GetLookTowardsAngle(mPosition, mPlayerReference.GetPosition());
+
+	if (IsPlayerInCone(AngleToPlayer, mAnimator.GetRotation()))
 	{
 		// Raycast to player
 		if (mRaycaster.Cast(mPosition, AngleToPlayer))

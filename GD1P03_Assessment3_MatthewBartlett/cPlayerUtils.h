@@ -9,15 +9,21 @@ private:
 	~cPlayerUtils();
 
 public:
-	// Player Textures
+	// -= Player Textures =-
+	// Upper body
 	sf::Texture* mPlayerIdleSheetTex;
-	sf::Texture* mPlayerPunchSheetTex;
 	sf::Texture* mPlayerShootSheetTex;
+	// Lower body
+	sf::Texture* mPlayerLegsIdleTex;
+	sf::Texture* mPlayerLegsRunTex;
 
-	// Enemy Textures
+	// -= Enemy Textures =-
+	// Upper body
 	sf::Texture* mEnemyIdleSheetTex;
 	sf::Texture* mEnemyDeathSheetTex;
-
+	// Lower body
+	sf::Texture* mEnemyLegsIdle;
+	sf::Texture* mEnemyLegsRun;
 
 
 

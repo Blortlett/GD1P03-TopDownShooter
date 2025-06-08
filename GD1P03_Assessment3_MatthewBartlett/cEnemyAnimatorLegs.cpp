@@ -9,24 +9,28 @@ Description : [Any object that would like to have animations should have a cAnim
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
-#pragma once
-#include "cAnimatorBase.h"
-#include "cAnimationPistolIdle.h"
-#include "cAnimationPistolFire.h"
+#include "cEnemyAnimatorLegs.h"
 
-
-class cPlayerAnimator : public cAnimatorBase
+cEnemyAnimatorLegs::cEnemyAnimatorLegs()
+    : cAnimatorBase(mLowerLegsIdle)
 {
-private:
-	// Animations
-	cAnimationPistolIdle mUpperPistolIdle;
-	cAnimationPistolFire mUpperPistolFire;
+}
 
-public:
-	 // Constructors
-	cPlayerAnimator();
-	~cPlayerAnimator();
+cEnemyAnimatorLegs::~cEnemyAnimatorLegs()
+{
+}
 
-	void SwapToPistolFire();
-	void SwapToPistolIdle();
-};
+void cEnemyAnimatorLegs::SwapToIdle()
+{
+    mCurrentAnimation = &mLowerLegsIdle;
+}
+
+void cEnemyAnimatorLegs::SwapToRun()
+{
+    mCurrentAnimation = &mLowerLegsRun;
+}
+
+void cEnemyAnimatorLegs::ClearAnimation()
+{
+    mCurrentAnimation = nullptr;
+}

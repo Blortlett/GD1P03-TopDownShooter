@@ -11,22 +11,23 @@ Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
 #include "cAnimatorBase.h"
-#include "cAnimationPistolIdle.h"
-#include "cAnimationPistolFire.h"
+#include "cAnimationLegsIdle.h"
+#include "cAnimationLegsRun.h"
 
 
-class cPlayerAnimator : public cAnimatorBase
+class cPlayerAnimatorLegs : public cAnimatorBase
 {
 private:
 	// Animations
-	cAnimationPistolIdle mUpperPistolIdle;
-	cAnimationPistolFire mUpperPistolFire;
+	cAnimationLegsIdle mLowerLegsIdle;
+	cAnimationLegsRun mLowerLegsRun;
 
 public:
-	 // Constructors
-	cPlayerAnimator();
-	~cPlayerAnimator();
+	// Constructors
+	cPlayerAnimatorLegs();
+	~cPlayerAnimatorLegs();
 
-	void SwapToPistolFire();
-	void SwapToPistolIdle();
+	// Swap Animations
+	void SwapToIdle();
+	void SwapToRun();
 };

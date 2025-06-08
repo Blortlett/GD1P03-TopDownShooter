@@ -20,6 +20,7 @@ cPlayerCharacter::cPlayerCharacter(sf::Vector2f _StartPosition, cProjectileManag
 	, mPlayerInput(_PlayerInput)
 {
 	mCharacterAnimator = &mPlayerUpperBodyAnimator;
+	mCharacterAnimatorBottom = &mPlayerLegsAnimator;
 }
 
 void cPlayerCharacter::HandleInput()
@@ -45,6 +46,36 @@ void cPlayerCharacter::HandleInput()
 	if (magnitude > 0.f) 
 	{
 		mPlayerInputNormalized /= magnitude;
+	}
+
+	// Set animation depending on move input
+	if (mPlayerInputNormalized == sf::Vector2f(0.f, 0.f))
+	{
+		// Set idle animation
+		mPlayerLegsAnimator.SwapToIdle();
+	}
+	else
+	{
+		// Set Run animation
+		mPlayerLegsAnimator.SwapToRun();
+		
+		// Rotate legs depending on input
+		// Diagonals first
+		// Left & Up  or  Right & Down
+		if (mPlayerInputNormalized.x < 0.f && mPlayerInputNormalized.y < 0.f
+			|| mPlayerInputNormalized.x > 0.f && mPlayerInputNormalized.y > 0.f)
+			mPlayerLegsAnimator.SetRotation(sf::degrees(225));
+		// Right & Up  or  Left & Down
+		else if (mPlayerInputNormalized.x > 0.f && mPlayerInputNormalized.y < 0.f
+			|| mPlayerInputNormalized.x < 0.f && mPlayerInputNormalized.y > 0.f)
+			mPlayerLegsAnimator.SetRotation(sf::degrees(135));
+		// 4 Cardinal directions next
+		// Left or Right	// yInput == 0 becasue value is in left/right input
+		else if (mPlayerInputNormalized.y == 0.f)
+			mPlayerLegsAnimator.SetRotation(sf::degrees(0));
+		// Up or Down	// xInput == 0 becasue all the value is in up/down input
+		else if (mPlayerInputNormalized.x == 0.f)
+			mPlayerLegsAnimator.SetRotation(sf::degrees(90));
 	}
 }
 
@@ -79,6 +110,7 @@ void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 		sf::Vector2f worldMousePosition = mRenderWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);
 		mPistol.FireWeapon(mPosition, worldMousePosition); // fire weapon at mouse position
 		mIsShooting = true;
+		mPlayerUpperBodyAnimator.SwapToPistolFire();
 	}
 	if (!mPlayerInput.IsLeftClickPressed())
 		mIsShooting = false;
@@ -127,11 +159,13 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 	// Player animations
 	//mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
 	mCharacterAnimator->Animate(mPosition, _DeltaSeconds);
+	mCharacterAnimatorBottom->Animate(mPosition, _DeltaSeconds);
 }
 
 void cPlayerCharacter::Draw()
 {
 	// Draw Player graphics
+	mPlayerLegsAnimator.Draw(mRenderWindow);
 	mPlayerUpperBodyAnimator.Draw(mRenderWindow);
 
 	// Draw debug objects if debug is active

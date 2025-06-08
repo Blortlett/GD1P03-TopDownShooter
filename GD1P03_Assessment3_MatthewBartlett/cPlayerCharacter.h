@@ -14,6 +14,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include <SFML/Graphics.hpp>
 #include "cPlayerInput.h"
 #include "cPlayerAnimator.h"
+#include "cPlayerAnimatorLegs.h"
 #include "cCharacter.h"
 
 class cProjectileManager;
@@ -39,6 +40,7 @@ private:
 
 	// Animator
 	cPlayerAnimator mPlayerUpperBodyAnimator;
+	cPlayerAnimatorLegs mPlayerLegsAnimator;
 
 	// Camera Reference
 	sf::View& mCameraView;

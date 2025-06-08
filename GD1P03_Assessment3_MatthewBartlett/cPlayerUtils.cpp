@@ -9,19 +9,24 @@ cPlayerUtils::cPlayerUtils()
 	{
 		std::cout << "Failed to load player_idle_pistol_Sheet.png" << std::endl;
 	}
-	// Load Player pistol punch animation sheet
-	mPlayerPunchSheetTex = new sf::Texture();
-	if (!mPlayerPunchSheetTex->loadFromFile("Assets/SpritePack/Player/Punch/player_punch_pistol_Sheet.png"))
-	{
-		std::cout << "Failed to load player_punch_pistol_Sheet.png" << std::endl;
-	}
 	// Load Player pistol shoot animation sheet
 	mPlayerShootSheetTex = new sf::Texture();
 	if (!mPlayerShootSheetTex->loadFromFile("Assets/SpritePack/Player/Shoot/player_shoot_pistol_Sheet.png"))
 	{
 		std::cout << "Failed to load player_shoot_pistol_Sheet.png" << std::endl;
 	}
-
+	// Load Player Legs idle animation sheet
+	mPlayerLegsIdleTex = new sf::Texture();
+	if (!mPlayerLegsIdleTex->loadFromFile("Assets/SpritePack/Legs/Player/player_legs_idle_Sheet.png"))
+	{
+		std::cout << "Failed to load player_legs_idle_Sheet.png" << std::endl;
+	}
+	// Load Player Legs Run animation sheet
+	mPlayerLegsRunTex = new sf::Texture();
+	if (!mPlayerLegsRunTex->loadFromFile("Assets/SpritePack/Legs/Player/player_legs_run_Sheet.png"))
+	{
+		std::cout << "Failed to load player_legs_run_Sheet.png" << std::endl;
+	}
 
 	// -= Enemy Sprite Sheets =-
 	// Load Enemy pistol idle animation sheet
@@ -36,6 +41,19 @@ cPlayerUtils::cPlayerUtils()
 	{
 		std::cout << "Failed to load NPC_Gunman_death_Sheet.png" << std::endl;
 	}
+	// Load Enemy idle legs sheet
+	mEnemyLegsIdle = new sf::Texture();
+	if (!mEnemyLegsIdle->loadFromFile("Assets/SpritePack/Legs/NPC_Gunman/NPC_Gunman_legs_idle_Sheet.png"))
+	{
+		std::cout << "Failed to load NPC_Gunman_legs_idle_Sheet.png" << std::endl;
+	}
+	// Load Enemy run legs sheet
+	mEnemyLegsRun = new sf::Texture();
+	if (!mEnemyLegsRun->loadFromFile("Assets/SpritePack/Legs/NPC_Gunman/NPC_Gunman_legs_run_Sheet.png"))
+	{
+		std::cout << "Failed to load NPC_Gunman_legs_run_Sheet.png" << std::endl;
+	}
+
 }
 
 cPlayerUtils::~cPlayerUtils()

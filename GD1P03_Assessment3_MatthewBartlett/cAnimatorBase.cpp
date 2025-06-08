@@ -7,11 +7,13 @@ cAnimatorBase::cAnimatorBase(cAnimationBase& _StartAnimation)
 
 void cAnimatorBase::Animate(sf::Vector2f CharacterPosition, float DeltaSeconds)
 {
+	if (mCurrentAnimation)
 	mCurrentAnimation->Animate(CharacterPosition, DeltaSeconds);
 }
 
 void cAnimatorBase::Draw(sf::RenderWindow& renderWindow)
 {
+	if (mCurrentAnimation)
 	mCurrentAnimation->Draw(renderWindow);
 }
 

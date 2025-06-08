@@ -84,6 +84,7 @@ void cCharacter::OnCollision(sf::Vector2f direction)
 void cCharacter::Draw()
 {
 	// Draw character graphics
+	mCharacterAnimatorBottom->Draw(mRenderWindow);
 	mCharacterAnimator->Draw(mRenderWindow);
 	// Draw debug objects if debug is active
 	if (cGameSettings::GetInstance().IsDebugActive())

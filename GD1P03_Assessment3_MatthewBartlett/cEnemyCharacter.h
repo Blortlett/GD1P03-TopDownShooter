@@ -2,6 +2,7 @@
 #include "cCharacter.h"
 #include "cPlayerCharacter.h"
 #include "cEnemyAnimator.h"
+#include "cEnemyAnimatorLegs.h"
 #include "cGameSettings.h"
 #include "iBehavior.h"
 #include "cBehaviorPatrol.h"
@@ -44,6 +45,7 @@ private:
 	cRaycaster mRaycaster;
 	// Enemy Animator
 	cEnemyAnimator mAnimator;
+	cEnemyAnimatorLegs mAnimatorLegs;
 
 	// Game Manager References
 	cPickupManager& mPickupManager;

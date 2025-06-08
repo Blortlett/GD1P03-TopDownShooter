@@ -125,9 +125,6 @@
     <Filter Include="Animator\Animations\EnemyAnimations">
       <UniqueIdentifier>{7b04778a-2755-4032-a068-b6c3c464249c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Animator\Animations\EnemyAnimations\Idle">
-      <UniqueIdentifier>{c5ebec79-ca56-47a0-9840-7e65b822fc98}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameSystems\GameSettings">
       <UniqueIdentifier>{02799ec2-7d74-458a-b04c-7379078ad322}</UniqueIdentifier>
     </Filter>
@@ -142,9 +139,6 @@
     </Filter>
     <Filter Include="GameObjects\Weaponry\Weapons\Pistol\Droppable">
       <UniqueIdentifier>{ffe025ad-515e-4181-841b-ae80579a018d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Animator\Animations\EnemyAnimations\DeathAnimation">
-      <UniqueIdentifier>{02bbde18-6de9-4f92-90e5-396281a2ae90}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameSystems\PickupManager">
       <UniqueIdentifier>{a9bfbb45-48c1-411b-bdf6-95c2cdc4d081}</UniqueIdentifier>
@@ -233,6 +227,54 @@
     <Filter Include="Character\Enemy\Behaviors\ReturnToSpawn">
       <UniqueIdentifier>{e1d5c2fe-7167-4140-830b-1aebc56b138e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\UpperBody">
+      <UniqueIdentifier>{99b927a2-2cdb-4a08-bec8-3d05f2366d91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\UpperBody\Idle">
+      <UniqueIdentifier>{c5ebec79-ca56-47a0-9840-7e65b822fc98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\FullBody">
+      <UniqueIdentifier>{6257879a-7ba0-4967-ba66-071a76f41434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\FullBody\DeathAnimation">
+      <UniqueIdentifier>{02bbde18-6de9-4f92-90e5-396281a2ae90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\LowerBody">
+      <UniqueIdentifier>{4b89e69d-ae08-42e0-b8af-ae9d27c8102f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations\LowerBody\Idle">
+      <UniqueIdentifier>{9b8b7bf7-a781-4665-a5a3-d8b36c849dfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations\LowerBody\Run">
+      <UniqueIdentifier>{a4d80011-242d-485d-9605-3f66d06c181b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\UpperBody\FirePistol">
+      <UniqueIdentifier>{c658eb42-5719-4ffd-8fa5-7baed7eab8a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations\UpperBody\Idle">
+      <UniqueIdentifier>{ebd28afd-dfe0-42e3-9f1e-108d445875e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations\UpperBody\FirePistol">
+      <UniqueIdentifier>{93e1bfe3-0c21-4856-9024-acaa45de9955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animators\PlayerAnimator\UpperBody">
+      <UniqueIdentifier>{710d0321-eb3e-46c4-ba86-c16c0fe93779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animators\PlayerAnimator\LowerBody">
+      <UniqueIdentifier>{a5bb9cc3-1c78-49aa-bd8a-bf7607e1e247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animators\EnemyAnimator\LowerBody">
+      <UniqueIdentifier>{5e2d7809-c803-4cf1-9c36-1194206c8b09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animators\EnemyAnimator\UpperBody">
+      <UniqueIdentifier>{1912e94c-cbd7-45ea-9afb-3d36d27f74a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\LowerBody\Idle">
+      <UniqueIdentifier>{40183f23-1c9d-4cb3-9447-04bf911378bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animator\Animations\EnemyAnimations\LowerBody\Run">
+      <UniqueIdentifier>{6516ccfb-c0eb-4b86-9fc2-71fb352a0270}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -240,9 +282,6 @@
     </ClCompile>
     <ClCompile Include="cAnimationBase.cpp">
       <Filter>Animator\Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="cAnimationPistolIdle.cpp">
-      <Filter>Animator\Animations\PlayerAnimations\UpperBody</Filter>
     </ClCompile>
     <ClCompile Include="cGameManager.cpp">
       <Filter>GameSystems\GameManager</Filter>
@@ -307,17 +346,11 @@
     <ClCompile Include="cCharacter.cpp">
       <Filter>Character</Filter>
     </ClCompile>
-    <ClCompile Include="cPlayerAnimator.cpp">
-      <Filter>Animator\Animators\PlayerAnimator</Filter>
-    </ClCompile>
-    <ClCompile Include="cEnemyAnimator.cpp">
-      <Filter>Animator\Animators\EnemyAnimator</Filter>
-    </ClCompile>
     <ClCompile Include="cAnimatorBase.cpp">
       <Filter>Animator\Animators</Filter>
     </ClCompile>
     <ClCompile Include="cEnemyIdleAnimation.cpp">
-      <Filter>Animator\Animations\EnemyAnimations\Idle</Filter>
+      <Filter>Animator\Animations\EnemyAnimations\UpperBody\Idle</Filter>
     </ClCompile>
     <ClCompile Include="cGameSettings.cpp">
       <Filter>GameSystems\GameSettings</Filter>
@@ -329,7 +362,7 @@
       <Filter>GameObjects\Weaponry\Weapons\Pistol\Droppable</Filter>
     </ClCompile>
     <ClCompile Include="cEnemyDeathAnimation.cpp">
-      <Filter>Animator\Animations\EnemyAnimations\DeathAnimation</Filter>
+      <Filter>Animator\Animations\EnemyAnimations\FullBody\DeathAnimation</Filter>
     </ClCompile>
     <ClCompile Include="cPickupManager.cpp">
       <Filter>GameSystems\PickupManager</Filter>
@@ -409,13 +442,40 @@
     <ClCompile Include="cBehaviorReturnSpawn.cpp">
       <Filter>Character\Enemy\Behaviors\ReturnToSpawn</Filter>
     </ClCompile>
+    <ClCompile Include="cAnimationLegsIdle.cpp">
+      <Filter>Animator\Animations\PlayerAnimations\LowerBody\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimationLegsRun.cpp">
+      <Filter>Animator\Animations\PlayerAnimations\LowerBody\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimationPistolIdle.cpp">
+      <Filter>Animator\Animations\PlayerAnimations\UpperBody\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimationPistolFire.cpp">
+      <Filter>Animator\Animations\PlayerAnimations\UpperBody\FirePistol</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerAnimator.cpp">
+      <Filter>Animator\Animators\PlayerAnimator\UpperBody</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerAnimatorLegs.cpp">
+      <Filter>Animator\Animators\PlayerAnimator\LowerBody</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyAnimator.cpp">
+      <Filter>Animator\Animators\EnemyAnimator\UpperBody</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyAnimatorLegs.cpp">
+      <Filter>Animator\Animators\EnemyAnimator\LowerBody</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimationLegsEnemyIdle.cpp">
+      <Filter>Animator\Animations\EnemyAnimations\LowerBody\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimationLegsEnemyRun.cpp">
+      <Filter>Animator\Animations\EnemyAnimations\LowerBody\Run</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h">
       <Filter>Animator\Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="cAnimationPistolIdle.h">
-      <Filter>Animator\Animations\PlayerAnimations\UpperBody</Filter>
     </ClInclude>
     <ClInclude Include="cPlayerAnimationBase.h">
       <Filter>Animator\Animations\PlayerAnimations</Filter>
@@ -489,17 +549,11 @@
     <ClInclude Include="cCharacter.h">
       <Filter>Character</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayerAnimator.h">
-      <Filter>Animator\Animators\PlayerAnimator</Filter>
-    </ClInclude>
-    <ClInclude Include="cEnemyAnimator.h">
-      <Filter>Animator\Animators\EnemyAnimator</Filter>
-    </ClInclude>
     <ClInclude Include="cAnimatorBase.h">
       <Filter>Animator\Animators</Filter>
     </ClInclude>
     <ClInclude Include="cEnemyIdleAnimation.h">
-      <Filter>Animator\Animations\EnemyAnimations\Idle</Filter>
+      <Filter>Animator\Animations\EnemyAnimations\UpperBody\Idle</Filter>
     </ClInclude>
     <ClInclude Include="cGameSettings.h">
       <Filter>GameSystems\GameSettings</Filter>
@@ -511,7 +565,7 @@
       <Filter>GameObjects\Weaponry\Weapons\Pistol\Droppable</Filter>
     </ClInclude>
     <ClInclude Include="cEnemyDeathAnimation.h">
-      <Filter>Animator\Animations\EnemyAnimations\DeathAnimation</Filter>
+      <Filter>Animator\Animations\EnemyAnimations\FullBody\DeathAnimation</Filter>
     </ClInclude>
     <ClInclude Include="cPickupManager.h">
       <Filter>GameSystems\PickupManager</Filter>
@@ -599,6 +653,36 @@
     </ClInclude>
     <ClInclude Include="cBehaviorReturnSpawn.h">
       <Filter>Character\Enemy\Behaviors\ReturnToSpawn</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationLegsIdle.h">
+      <Filter>Animator\Animations\PlayerAnimations\LowerBody\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationLegsRun.h">
+      <Filter>Animator\Animations\PlayerAnimations\LowerBody\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationPistolIdle.h">
+      <Filter>Animator\Animations\PlayerAnimations\UpperBody\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationPistolFire.h">
+      <Filter>Animator\Animations\PlayerAnimations\UpperBody\FirePistol</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerAnimator.h">
+      <Filter>Animator\Animators\PlayerAnimator\UpperBody</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerAnimatorLegs.h">
+      <Filter>Animator\Animators\PlayerAnimator\LowerBody</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyAnimator.h">
+      <Filter>Animator\Animators\EnemyAnimator\UpperBody</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyAnimatorLegs.h">
+      <Filter>Animator\Animators\EnemyAnimator\LowerBody</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationLegsEnemyIdle.h">
+      <Filter>Animator\Animations\EnemyAnimations\LowerBody\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationLegsEnemyRun.h">
+      <Filter>Animator\Animations\EnemyAnimations\LowerBody\Run</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

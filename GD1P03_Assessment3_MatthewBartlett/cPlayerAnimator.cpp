@@ -19,3 +19,13 @@ cPlayerAnimator::cPlayerAnimator()
 cPlayerAnimator::~cPlayerAnimator()
 {
 }
+
+void cPlayerAnimator::SwapToPistolFire()
+{
+    mCurrentAnimation = &mUpperPistolFire;
+}
+
+void cPlayerAnimator::SwapToPistolIdle()
+{
+    mCurrentAnimation = &mUpperPistolIdle;
+}

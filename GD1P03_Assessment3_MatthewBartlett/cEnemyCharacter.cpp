@@ -10,6 +10,7 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 	, mBehaviorReturnToSpawn(_Position)
 {
 	mCharacterAnimator = &mAnimator;
+	mCharacterAnimatorBottom = &mAnimatorLegs;
 	mCurrentBehavior = &mBehaviorPatrol;
 }
 
@@ -88,6 +89,7 @@ void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 void cEnemyCharacter::Update(float _DeltaSeconds)
 {
 	// Animate
+	mAnimatorLegs.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
 	mAnimator.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
 
 	// Only perform the rest of the updates if Enemy is alive
@@ -105,8 +107,14 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 	{
 		// Move Enemy
 		Move(mEnemyMovementNormalized, _DeltaSeconds);
+		// Character moving - legs should run
+		mAnimatorLegs.SwapToRun();
 	}
+	else
+		// Character idle - legs should idle too
+		mAnimatorLegs.SwapToIdle();
 
+	// Decide to shoot or not
 	UpdateWeapon(_DeltaSeconds);
 }
 
@@ -121,6 +129,7 @@ void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)
 	mPickupManager.CreateNewWeaponDrop(mPosition, mCharacterAnimator->GetRotation(), 12);
 	// Swap current animation to death animation
 	mAnimator.SwapToEnemyDeath();
+	mAnimatorLegs.ClearAnimation();
 
 	// Track enemy death
 	cLevelProgressTracker::GetInstance().ReduceEnemyCount();

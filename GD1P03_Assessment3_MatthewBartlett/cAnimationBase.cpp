@@ -13,6 +13,9 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
     // Set sprite position
     mSprite.setPosition(_ObjectPosition);
 
+    // No need to animate 0 frames - Division by 0 anywayz
+    if (mTotalFrames.x == 0) return;
+
     // Check if it's time to switch frames
     if (mAnimationTime >= mFrameDuration)
     {

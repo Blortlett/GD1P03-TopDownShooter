@@ -144,6 +144,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cAnimationBase.cpp" />
+    <ClCompile Include="cAnimationLegsEnemyIdle.cpp" />
+    <ClCompile Include="cAnimationLegsEnemyRun.cpp" />
+    <ClCompile Include="cAnimationLegsIdle.cpp" />
+    <ClCompile Include="cAnimationLegsRun.cpp" />
+    <ClCompile Include="cAnimationPistolFire.cpp" />
     <ClCompile Include="cAnimationPistolIdle.cpp" />
     <ClCompile Include="cAnimatorBase.cpp" />
     <ClCompile Include="cApplicationManager.cpp" />
@@ -162,6 +167,7 @@
     <ClCompile Include="cDebugWidget.cpp" />
     <ClCompile Include="cEditorManager.cpp" />
     <ClCompile Include="cEnemyAnimator.cpp" />
+    <ClCompile Include="cEnemyAnimatorLegs.cpp" />
     <ClCompile Include="cEnemyCharacter.cpp" />
     <ClCompile Include="cEnemyDeathAnimation.cpp" />
     <ClCompile Include="cEnemyIdleAnimation.cpp" />
@@ -191,6 +197,7 @@
     <ClCompile Include="cPistolDropable.cpp" />
     <ClCompile Include="cPlayButton.cpp" />
     <ClCompile Include="cPlayerAnimator.cpp" />
+    <ClCompile Include="cPlayerAnimatorLegs.cpp" />
     <ClCompile Include="cPlayerCharacter.cpp" />
     <ClCompile Include="cPlayerInput.cpp" />
     <ClCompile Include="cPlayerSpawner.cpp" />
@@ -204,6 +211,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h" />
+    <ClInclude Include="cAnimationLegsEnemyIdle.h" />
+    <ClInclude Include="cAnimationLegsEnemyRun.h" />
+    <ClInclude Include="cAnimationLegsIdle.h" />
+    <ClInclude Include="cAnimationLegsRun.h" />
+    <ClInclude Include="cAnimationPistolFire.h" />
     <ClInclude Include="cAnimationPistolIdle.h" />
     <ClInclude Include="cAnimatorBase.h" />
     <ClInclude Include="cApplicationManager.h" />
@@ -222,6 +234,7 @@
     <ClInclude Include="cDebugWidget.h" />
     <ClInclude Include="cEditorManager.h" />
     <ClInclude Include="cEnemyAnimator.h" />
+    <ClInclude Include="cEnemyAnimatorLegs.h" />
     <ClInclude Include="cEnemyCharacter.h" />
     <ClInclude Include="cEnemyDeathAnimation.h" />
     <ClInclude Include="cEnemyIdleAnimation.h" />
@@ -255,6 +268,7 @@
     <ClInclude Include="cPlayButton.h" />
     <ClInclude Include="cPlayerAnimator.h" />
     <ClInclude Include="cPlayerAnimationBase.h" />
+    <ClInclude Include="cPlayerAnimatorLegs.h" />
     <ClInclude Include="cPlayerCharacter.h" />
     <ClInclude Include="cPlayerInput.h" />
     <ClInclude Include="cPlayerSpawner.h" />

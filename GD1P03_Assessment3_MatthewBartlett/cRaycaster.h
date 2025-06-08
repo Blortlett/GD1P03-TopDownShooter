@@ -17,7 +17,6 @@ private:
 
 	// Player Character Reference - Detectable
 	cCharacter& mCharacter;
-
 	// Walls to check against - Detectable
 	std::vector<cFullWall*>* mLevelWalls;
 

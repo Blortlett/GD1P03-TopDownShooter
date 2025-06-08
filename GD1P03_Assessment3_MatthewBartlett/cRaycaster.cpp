@@ -26,20 +26,27 @@ bool cRaycaster::Cast(sf::Vector2f _Origin, sf::Angle _Angle)
 	mCurrentCastDist = 30.f;		// Start a bit away from character to save some calculation
 	while (mCurrentCastDist <= mCastDistance)
 	{
+		sf::Vector2f castPoint = cSharedUtils::GetInstance().calculatePointFromOrigin(_Origin, mCurrentCastDist, _Angle);
+		
 		// Check against each wall
 		for (cFullWall* Wall : *mLevelWalls)
 		{
-			sf::Vector2f castPoint = cSharedUtils::GetInstance().calculatePointFromOrigin(_Origin, mCurrentCastDist, _Angle);
 			hit = Wall->CheckCollideWithPoint(castPoint);
-			// If wall found, return true
-			if (hit) return true;
+			// If wall found, return false early
+			if (hit) return false;
 		}
-		// increment cast distance
+
+		// If no wall collision, check against player
+		hit = mCharacter.GetCollider().CheckCollisionPoint(castPoint);
+		// If player found - Return true for successful detection
+		if (hit) return true;
+
+		// If nothing found - increment cast distance
 		mCurrentCastDist += mCastIncremement;
 	}
 
 	
-	// No wall found
+	// No wall found return false
 	return false;
 }
 

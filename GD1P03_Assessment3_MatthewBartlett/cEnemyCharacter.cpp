@@ -15,7 +15,7 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 {
 	if (mRaycaster.Cast(mPosition, mAnimator.GetRotation()))
-		std::cout << "Caster Hit a fuggin wall YOO" << std::endl;
+		std::cout << "Caster found the player YOO" << std::endl;
 	mRaycaster.DebugDraw(mRenderWindow);
 
 	if (mShouldShoot && !mIsShooting)

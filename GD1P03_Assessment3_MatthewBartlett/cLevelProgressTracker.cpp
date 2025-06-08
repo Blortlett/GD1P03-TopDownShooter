@@ -1,6 +1,7 @@
 #include "cLevelProgressTracker.h"
 
 cLevelProgressTracker::cLevelProgressTracker()
+	: mLevelWalls(nullptr) // DODGY!! but just might work >:)
 {
 }
 
@@ -13,7 +14,6 @@ void cLevelProgressTracker::OnLoadSetEnemyCount(int _EnemyCount)
 void cLevelProgressTracker::ReduceEnemyCount()
 {
 	mEnemyCount--;
-	//std::cout << "TotalEnemies: " << mLevelMaxEnemies << "  Enemies Remaining: " << mEnemyCount << std::endl;
 }
 
 bool cLevelProgressTracker::CheckLevelComplete()

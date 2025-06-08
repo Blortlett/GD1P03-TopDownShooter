@@ -224,6 +224,9 @@
     <Filter Include="Character\Enemy\Behaviors\Attack">
       <UniqueIdentifier>{60d2e95b-9b7b-4026-b2fb-12414e96c7dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameSystems\Ractaster">
+      <UniqueIdentifier>{1d120189-bbdc-443e-9f4a-ec346ad4749d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -390,6 +393,9 @@
     </ClCompile>
     <ClCompile Include="cBehaviorAttack.cpp">
       <Filter>Character\Enemy\Behaviors\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="cRaycaster.cpp">
+      <Filter>GameSystems\Ractaster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -572,6 +578,9 @@
     </ClInclude>
     <ClInclude Include="cBehaviorAttack.h">
       <Filter>Character\Enemy\Behaviors\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="cRaycaster.h">
+      <Filter>GameSystems\Ractaster</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

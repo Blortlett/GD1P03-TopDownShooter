@@ -1,6 +1,7 @@
 #pragma once
 #include "cEnemyCharacter.h"
 #include "cPickupManager.h"
+
 #include <vector>
 
 class cEnemySpawner;
@@ -11,7 +12,8 @@ private:
 	// List of enemies to update
 	std::vector<cEnemyCharacter*> mEnemyList;
 
-	sf::RenderWindow& mRenderWindow; // Game window
+	// Game window
+	sf::RenderWindow& mRenderWindow; 
 
 	// Game Managers
 	cPlayerCharacter& mPlayerReference;

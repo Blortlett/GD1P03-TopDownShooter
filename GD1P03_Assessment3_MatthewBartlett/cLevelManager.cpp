@@ -4,6 +4,7 @@
 #include "cExitTrigger.h"
 #include "cPlayerSpawner.h"
 #include "cEnemySpawner.h"
+#include "cLevelProgressTracker.h"
 
 
 
@@ -133,14 +134,6 @@ void cLevelManager::LoadLevel()
 	mCurrentLevel->LoadLevel(mFileInterface);
 }
 
-void cLevelManager::LoadLevelByObject()
-
-{
-	// Load level
-	mCurrentLevel->LoadLevelByName(mFileInterface);
-}
-
-
 void cLevelManager::AdvanceToNextLevel()
 {
 	// Increment level index and select the next level
@@ -154,6 +147,8 @@ void cLevelManager::AdvanceToNextLevel()
 
 	// Load the new level
 	mCurrentLevel->LoadLevelByName(mFileInterface);
+	cLevelProgressTracker::GetInstance().SetWallVector(mCurrentLevel->GetFullWallColliderList());
+
 }
 
 std::vector<cEnemySpawner*>& cLevelManager::GetEnemySpawnerList()

@@ -1,5 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 
 class cSharedUtils
 {
@@ -23,7 +26,7 @@ public:
 	sf::Font mButtonFont;
 
 
-	// Static Functions
+	// Static Util Functions
 	static void NormalizeVector(sf::Vector2f& _VectorToNormalize)
 	{
 		float magnitude = std::sqrt(_VectorToNormalize.x * _VectorToNormalize.x +
@@ -34,9 +37,16 @@ public:
 		}
 	}
 
+	static sf::Vector2f calculatePointFromOrigin(sf::Vector2f _Origin, float _Distance, sf::Angle& _Angle) {
+		// Convert angle from degrees to radians
+		//float angleRadians = angleDegrees * (M_PI / 180.0f);
 
+		// Trig to calculate new position
+		float x = _Origin.x + _Distance * std::cos(_Angle.asRadians());
+		float y = _Origin.y + _Distance * std::sin(_Angle.asRadians());
 
-
+		return sf::Vector2f(x, y);
+	}
 
 
 	// Singleton crap....

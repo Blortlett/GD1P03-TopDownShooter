@@ -195,6 +195,7 @@
     <ClCompile Include="cPlayerSpawnerTool.cpp" />
     <ClCompile Include="cPlayerUtils.cpp" />
     <ClCompile Include="cProjectileManager.cpp" />
+    <ClCompile Include="cRaycaster.cpp" />
     <ClCompile Include="cSharedUtils.cpp" />
     <ClCompile Include="cWallBase.cpp" />
     <ClCompile Include="main.cpp" />
@@ -256,6 +257,7 @@
     <ClInclude Include="cPlayerSpawnerTool.h" />
     <ClInclude Include="cPlayerUtils.h" />
     <ClInclude Include="cProjectileManager.h" />
+    <ClInclude Include="cRaycaster.h" />
     <ClInclude Include="cSharedUtils.h" />
     <ClInclude Include="cWallBase.h" />
     <ClInclude Include="iBehavior.h" />

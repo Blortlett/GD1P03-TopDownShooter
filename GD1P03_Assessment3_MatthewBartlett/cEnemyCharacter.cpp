@@ -7,20 +7,24 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 	, mPlayerReference(_PlayerCharacter)
 	, mPickupManager(_PickupManager)
 	, mCurrentBehavior(&mBehaviorPatrol)
+	, mRaycaster(_PlayerCharacter)
 {
 	mCharacterAnimator = &mAnimator;
 }
 
 void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 {
-	if (!mIsShooting)
+	if (mRaycaster.Cast(mPosition, mAnimator.GetRotation()))
+		std::cout << "Caster Hit a fuggin wall YOO" << std::endl;
+	mRaycaster.DebugDraw(mRenderWindow);
+
+	if (mShouldShoot && !mIsShooting)
 	{
 		// Cast mouse position
 		sf::Vector2f PlayerPosition = mPlayerReference.GetPosition();
 		mPistol.FireWeapon(mPosition, PlayerPosition); // fire weapon at mouse position
 		mIsShooting = true;
 	}
-	//if (!mPlayerInput.IsLeftClickPressed())
 	mIsShooting = false;
 }
 
@@ -44,6 +48,8 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 		// Move Enemy
 		Move(mEnemyMovementNormalized, _DeltaSeconds);
 	}
+
+	UpdateWeapon(_DeltaSeconds);
 }
 
 void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)

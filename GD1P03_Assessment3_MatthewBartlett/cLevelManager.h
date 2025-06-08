@@ -61,10 +61,9 @@ public:
 	// Delete wall
 	void TryDeleteWall(sf::Vector2f pointCollision);
 
-	// Save / Load level data
+	// Save / Load Dialog (more for setting up levels)
 	void SaveLevel();
 	void LoadLevel();
-	void LoadLevelByObject();
 
 	// In game level progression
 	void AdvanceToNextLevel();

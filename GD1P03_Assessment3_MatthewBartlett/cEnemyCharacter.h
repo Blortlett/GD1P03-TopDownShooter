@@ -5,6 +5,7 @@
 #include "cGameSettings.h"
 #include "iBehavior.h"
 #include "cBehaviorPatrol.h"
+#include "cRaycaster.h"
 
 class cPickupManager;
 
@@ -23,8 +24,11 @@ private:
 	iBehavior* mCurrentBehavior;
 
 	// Calculate if enemy should fire weapon here
+	bool mShouldShoot = false;
 	void UpdateWeapon(float _DeltaSeconds) override;
 
+	// Enemy Raycaster
+	cRaycaster mRaycaster;
 	// Enemy Animator
 	cEnemyAnimator mAnimator;
 

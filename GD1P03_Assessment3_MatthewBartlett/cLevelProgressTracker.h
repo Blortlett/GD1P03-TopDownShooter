@@ -1,15 +1,20 @@
 #pragma once
 #include <iostream>
+#include <vector>
+
+class cFullWall;
 
 class cLevelProgressTracker
 {
 private:
 	cLevelProgressTracker();
 	~cLevelProgressTracker() {}
-
-
+	// Enemy count
 	int mLevelMaxEnemies;
 	int mEnemyCount;
+
+	// Wall vector reference:
+	std::vector<cFullWall*>* mLevelWalls;
 
 public:
 	void OnLoadSetEnemyCount(int _EnemyCount);
@@ -17,8 +22,11 @@ public:
 	bool CheckLevelComplete();
 
 
+	// Setters
+	void SetWallVector(std::vector<cFullWall*>& _LevelWalls) { mLevelWalls = &_LevelWalls; }
 
-
+	// Getters
+	std::vector<cFullWall*>* GetWallVector() { return mLevelWalls; }
 
 
 

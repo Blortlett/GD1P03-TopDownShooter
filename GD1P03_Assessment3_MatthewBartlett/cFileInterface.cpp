@@ -412,7 +412,7 @@ void cFileInterface::LoadFullWallColidersFromJson(const rapidjson::Document& doc
         }
     }
 
-    std::cout << "Loaded " << ColliderArray.Size() << " FullWalls" << std::endl;
+    //std::cout << "Loaded " << ColliderArray.Size() << " FullWalls" << std::endl;
 }
 
 void cFileInterface::LoadHalfWallColidersFromJson(const rapidjson::Document& doc)
@@ -449,7 +449,7 @@ void cFileInterface::LoadHalfWallColidersFromJson(const rapidjson::Document& doc
         }
     }
 
-    std::cout << "Loaded " << ColliderArray.Size() << " HalfWalls" << std::endl;
+    //std::cout << "Loaded " << ColliderArray.Size() << " HalfWalls" << std::endl;
 }
 
 void cFileInterface::LoadEnemySpawnersFromJson(const rapidjson::Document& doc)
@@ -481,7 +481,7 @@ void cFileInterface::LoadEnemySpawnersFromJson(const rapidjson::Document& doc)
         }
     }
 
-    std::cout << "Loaded " << SpawnerArray.Size() << " EnemySpawners" << std::endl;
+    //std::cout << "Loaded " << SpawnerArray.Size() << " EnemySpawners" << std::endl;
 }
 
 void cFileInterface::LoadPlayerSpawnFromJson(const rapidjson::Document& doc)
@@ -496,7 +496,7 @@ void cFileInterface::LoadPlayerSpawnFromJson(const rapidjson::Document& doc)
 
             cPlayerSpawner* playerSpawn = new cPlayerSpawner(sf::Vector2f(x, y));
             mCurrentLevel->AddPlayerSpawnerToLevel(playerSpawn);
-            std::cout << "Loaded player spawn point" << std::endl;
+            //std::cout << "Loaded player spawn point" << std::endl;
         }
     }
 }
@@ -513,7 +513,7 @@ void cFileInterface::LoadExitDoorFromJson(const rapidjson::Document& doc)
 
             cExitDoor* exitDoor = new cExitDoor(sf::Vector2f(x, y));
             mCurrentLevel->AddExitDoorToLevel(exitDoor);
-            std::cout << "Loaded Exit Door" << std::endl;
+            //std::cout << "Loaded Exit Door" << std::endl;
         }
     }
 }
@@ -530,7 +530,7 @@ void cFileInterface::LoadExitTriggerFromJson(const rapidjson::Document& doc)
 
             cExitTrigger* exitTrigger = new cExitTrigger(sf::Vector2f(x, y));
             mCurrentLevel->AddExitZoneToLevel(exitTrigger);
-            std::cout << "Loaded Exit Trigger point" << std::endl;
+            //std::cout << "Loaded Exit Trigger point" << std::endl;
         }
     }
 }

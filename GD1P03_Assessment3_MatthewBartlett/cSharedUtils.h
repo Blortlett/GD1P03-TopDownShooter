@@ -72,6 +72,10 @@ public:
 		return diff;
 	}
 
+	static void Magnitude(sf::Vector2f& _DistanceVector, float _ReturnValue)
+	{
+
+	}
 
 
 

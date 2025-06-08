@@ -6,10 +6,11 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 	: cCharacter(_Position, _ProjectileManager, _GameWindow)
 	, mPlayerReference(_PlayerCharacter)
 	, mPickupManager(_PickupManager)
-	, mCurrentBehavior(&mBehaviorPatrol)
 	, mRaycaster(_PlayerCharacter)
+	, mBehaviorReturnToSpawn(_Position)
 {
 	mCharacterAnimator = &mAnimator;
+	mCurrentBehavior = &mBehaviorPatrol;
 }
 
 bool cEnemyCharacter::IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad)
@@ -18,10 +19,10 @@ bool cEnemyCharacter::IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyA
 	float angleToPlayerRad = cSharedUtils::GetInstance().NormalizeAngle(_AngleToPlayer.asRadians());
 	float enemyAngleRad = cSharedUtils::GetInstance().NormalizeAngle(_EnemyAngleRad.asRadians());
 
-	// Get the shortest angular difference
+	// Get the shortest angle difference
 	float angleDiff = cSharedUtils::GetInstance().ShortestAngleDiff(angleToPlayerRad, enemyAngleRad);
 
-	// Check if the absolute difference is within the cone (90 Degree || 1.5708 radians)
+	// Check if the absolute difference is within the cone
 	return std::abs(angleDiff) <= CONE_HALF_ANGLE;
 }
 
@@ -41,13 +42,42 @@ void cEnemyCharacter::DetectPlayer()
 
 	if (IsPlayerInCone(AngleToPlayer, mAnimator.GetRotation()))
 	{
+		// Debug Draw Raycast line
+		mRaycaster.DebugDraw(mRenderWindow);
+
 		// Raycast to player
 		if (mRaycaster.Cast(mPosition, AngleToPlayer))
-			std::cout << "Caster found the player YOO" << std::endl;
-	}
+		{
+			// Player Detected
+			std::cout << "Caster found the player" << std::endl;
 
-	// Debug Draw Raycast line
-	mRaycaster.DebugDraw(mRenderWindow);
+			// Direction to player
+			sf::Vector2f PlayerDirection = mPlayerReference.GetPosition() - mPosition;
+
+			// Get Distance to player
+			float PlayerDistance = 0.f;
+			cSharedUtils::GetInstance().Magnitude(PlayerDirection, PlayerDistance);
+
+			// If distance too far, chase player. If close, attack player.
+			if (PlayerDistance < MIN_CHASE_DISTANCE)
+			{
+				mCurrentBehavior = &mBehaviorAttack;
+				mShouldShoot = true;
+			}
+			else
+			{
+				mBehaviorChase.UpdateUnformation(PlayerDirection);
+				mCurrentBehavior = &mBehaviorChase;
+				mShouldShoot = false;
+			}
+		}
+		else
+		{
+			mShouldShoot = false;
+			// Player not detected
+			// if I have time I will allow the enemy to go back to spawn and patrol again
+		}
+	}
 }
 
 void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
@@ -77,11 +107,12 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 	// Get Enemy "Input"
 	mCurrentBehavior->GetMovementDirection(mEnemyMovementNormalized, mIsEnemyWaiting, _DeltaSeconds);
 	
-	// If enemy not waiting, move around patrol route
+	// Face towards movement direction
+	Rotate(mPosition + mEnemyMovementNormalized);
+	
+	// If enemy not waiting, let him walk around
 	if (!mIsEnemyWaiting)
 	{
-		// Face towards movement direction
-		Rotate(mPosition + mEnemyMovementNormalized);
 		// Move Enemy
 		Move(mEnemyMovementNormalized, _DeltaSeconds);
 	}

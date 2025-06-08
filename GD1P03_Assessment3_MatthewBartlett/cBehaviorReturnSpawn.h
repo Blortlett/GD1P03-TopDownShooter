@@ -1,13 +1,13 @@
 #pragma once
 #include "iBehavior.h"
 
-class cBehaviorAttack: public iBehavior
+class cBehaviorReturnToSpawn: public iBehavior
 {
 private:
-
+	sf::Vector2f mSpawnPosition;
 public:
-	cBehaviorAttack();
-	~cBehaviorAttack() {}
+	cBehaviorReturnToSpawn(sf::Vector2f _SpawnPosition);
+	~cBehaviorReturnToSpawn() {}
 
 	void GetMovementDirection(sf::Vector2f& _MovementDirection, bool& _IsEnemyWaiting, float _DeltaSeconds) override;
 };

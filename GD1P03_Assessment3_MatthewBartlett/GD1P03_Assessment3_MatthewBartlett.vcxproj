@@ -151,7 +151,9 @@
     <ClCompile Include="cBaseDrawTool.cpp" />
     <ClCompile Include="cBaseLevel.cpp" />
     <ClCompile Include="cBehaviorAttack.cpp" />
+    <ClCompile Include="cBehaviorChase.cpp" />
     <ClCompile Include="cBehaviorPatrol.cpp" />
+    <ClCompile Include="cBehaviorReturnSpawn.cpp" />
     <ClCompile Include="cBoxCollider.cpp" />
     <ClCompile Include="cBullet.cpp" />
     <ClCompile Include="cButtonUI.cpp" />
@@ -209,7 +211,9 @@
     <ClInclude Include="cBaseDrawTool.h" />
     <ClInclude Include="cBaseLevel.h" />
     <ClInclude Include="cBehaviorAttack.h" />
+    <ClInclude Include="cBehaviorChase.h" />
     <ClInclude Include="cBehaviorPatrol.h" />
+    <ClInclude Include="cBehaviorReturnSpawn.h" />
     <ClInclude Include="cBoxCollider.h" />
     <ClInclude Include="cBullet.h" />
     <ClInclude Include="cButtonUI.h" />

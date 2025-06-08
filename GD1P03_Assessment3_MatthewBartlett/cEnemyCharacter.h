@@ -5,6 +5,9 @@
 #include "cGameSettings.h"
 #include "iBehavior.h"
 #include "cBehaviorPatrol.h"
+#include "cBehaviorAttack.h"
+#include "cBehaviorChase.h"
+#include "cBehaviorReturnSpawn.h"
 #include "cRaycaster.h"
 
 class cPickupManager;
@@ -14,6 +17,7 @@ class cEnemyCharacter : public cCharacter
 private:
 	// Enemy view cone
 	const float CONE_HALF_ANGLE = 1.5708f; // 90 degree
+	const float MIN_CHASE_DISTANCE = 175.f;
 
 	// Is enemy alive?
 	bool mAlive = true;
@@ -23,8 +27,11 @@ private:
 	sf::Vector2f mEnemyMovementNormalized = { 1.f, 0.f };
 	
 	// Behavior states
-	cBehaviorPatrol mBehaviorPatrol;
 	iBehavior* mCurrentBehavior;
+	cBehaviorPatrol mBehaviorPatrol;
+	cBehaviorAttack mBehaviorAttack;
+	cBehaviorChase mBehaviorChase;
+	cBehaviorReturnToSpawn mBehaviorReturnToSpawn;
 
 	// Detect player code
 	bool IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad);

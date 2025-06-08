@@ -227,6 +227,12 @@
     <Filter Include="GameSystems\Ractaster">
       <UniqueIdentifier>{1d120189-bbdc-443e-9f4a-ec346ad4749d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character\Enemy\Behaviors\Chase">
+      <UniqueIdentifier>{eaa7a338-343d-4908-bc36-bc7cf8fe3ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Enemy\Behaviors\ReturnToSpawn">
+      <UniqueIdentifier>{e1d5c2fe-7167-4140-830b-1aebc56b138e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -396,6 +402,12 @@
     </ClCompile>
     <ClCompile Include="cRaycaster.cpp">
       <Filter>GameSystems\Ractaster</Filter>
+    </ClCompile>
+    <ClCompile Include="cBehaviorChase.cpp">
+      <Filter>Character\Enemy\Behaviors\Chase</Filter>
+    </ClCompile>
+    <ClCompile Include="cBehaviorReturnSpawn.cpp">
+      <Filter>Character\Enemy\Behaviors\ReturnToSpawn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -581,6 +593,12 @@
     </ClInclude>
     <ClInclude Include="cRaycaster.h">
       <Filter>GameSystems\Ractaster</Filter>
+    </ClInclude>
+    <ClInclude Include="cBehaviorChase.h">
+      <Filter>Character\Enemy\Behaviors\Chase</Filter>
+    </ClInclude>
+    <ClInclude Include="cBehaviorReturnSpawn.h">
+      <Filter>Character\Enemy\Behaviors\ReturnToSpawn</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

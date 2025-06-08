@@ -1,20 +1,16 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "iBehavior.h"
 
-class cBehaviorPatrol
+class cBehaviorPatrol : public iBehavior
 {
 private:
 	float mPatrolWaitTimerMax = 3.f;
 	float mPatrolTimerMax = 3.f;
 	float mPatrolTimer = mPatrolTimerMax;
 
-	bool mIsEnemyWaiting = false;
-
-	sf::Vector2f mEnemyMovementNormalized = { 1.f, 0.f };
-
 public:
 	cBehaviorPatrol();
 	~cBehaviorPatrol() {}
 
-	void GetMovementDirection(float _DeltaSeconds);
+	void GetMovementDirection(sf::Vector2f& _MovementDirection, bool& _IsEnemyWaiting, float _DeltaSeconds) override;
 };

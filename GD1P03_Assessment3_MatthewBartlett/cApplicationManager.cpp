@@ -34,6 +34,7 @@ void cApplicationManager::Run()
             switch (mCurrentState)
             {
                 case EGameState::MainMenu:
+                    mGameManager.RefreshDeltaTime(); // got to or else level 1 enemies break
                     cAudioManager::GetInstance().PlayMenuMusic();
                     // Handle Main Menu
                     mGameWindow.setView(mDefaultView);

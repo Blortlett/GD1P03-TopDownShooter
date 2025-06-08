@@ -218,6 +218,9 @@
     <Filter Include="UI\MainMenu\Buttons">
       <UniqueIdentifier>{c38cd912-c05d-4b54-93f4-56efb111876c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character\Enemy\Behaviors\Patrol">
+      <UniqueIdentifier>{a8c91d3e-e4eb-4def-a8f6-7818a22a42ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -361,9 +364,6 @@
     <ClCompile Include="cEnemyCharacter.cpp">
       <Filter>Character\Enemy\Types\Gunman</Filter>
     </ClCompile>
-    <ClCompile Include="cBehaviorPatrol.cpp">
-      <Filter>Character\Enemy\Behaviors</Filter>
-    </ClCompile>
     <ClCompile Include="cAudioManager.cpp">
       <Filter>Utils\AudioManager</Filter>
     </ClCompile>
@@ -381,6 +381,9 @@
     </ClCompile>
     <ClCompile Include="cExitButton.cpp">
       <Filter>UI\MainMenu\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="cBehaviorPatrol.cpp">
+      <Filter>Character\Enemy\Behaviors\Patrol</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -531,9 +534,6 @@
     <ClInclude Include="cEnemyCharacter.h">
       <Filter>Character\Enemy\Types\Gunman</Filter>
     </ClInclude>
-    <ClInclude Include="cBehaviorPatrol.h">
-      <Filter>Character\Enemy\Behaviors</Filter>
-    </ClInclude>
     <ClInclude Include="iEntity.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
@@ -557,6 +557,12 @@
     </ClInclude>
     <ClInclude Include="cExitButton.h">
       <Filter>UI\MainMenu\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="cBehaviorPatrol.h">
+      <Filter>Character\Enemy\Behaviors\Patrol</Filter>
+    </ClInclude>
+    <ClInclude Include="iBehavior.h">
+      <Filter>Character\Enemy\Behaviors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

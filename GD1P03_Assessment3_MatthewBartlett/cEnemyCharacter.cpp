@@ -6,31 +6,9 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 	: cCharacter(_Position, _ProjectileManager, _GameWindow)
 	, mPlayerReference(_PlayerCharacter)
 	, mPickupManager(_PickupManager)
+	, mCurrentBehavior(&mBehaviorPatrol)
 {
 	mCharacterAnimator = &mAnimator;
-}
-
-void cEnemyCharacter::GetMovementDirection(float _DeltaSeconds)
-{
-	// Countdown timer
-	mPatrolTimer -= _DeltaSeconds;
-	// On Timer loop
-	if (mPatrolTimer <= 0.f)
-	{
-		if (mIsEnemyWaiting)
-		{ // Wait timer expired, change directions
-			mEnemyMovementNormalized.x *= -1;
-			// Set enemy to patrolling
-			mIsEnemyWaiting = false;
-			// Reset timer
-			mPatrolTimer = mPatrolTimerMax;
-		}
-		else
-		{ // Patrol timer expired, get to waiting
-			mIsEnemyWaiting = true;
-			mPatrolTimer = mPatrolWaitTimerMax;
-		}
-	}
 }
 
 void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
@@ -51,12 +29,13 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 	// Animate
 	mAnimator.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
 
-	if (!mAlive) return;
 	// Only perform the rest of the updates if Enemy is alive
+	if (!mAlive) return;
 
 	// -= Movement =-
-	// Enemy "Input"
-	GetMovementDirection(_DeltaSeconds);
+	// Get Enemy "Input"
+	mCurrentBehavior->GetMovementDirection(mEnemyMovementNormalized, mIsEnemyWaiting, _DeltaSeconds);
+	
 	// If enemy not waiting, move around patrol route
 	if (!mIsEnemyWaiting)
 	{

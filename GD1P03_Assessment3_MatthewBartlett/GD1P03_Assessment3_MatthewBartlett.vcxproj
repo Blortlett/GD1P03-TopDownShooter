@@ -256,6 +256,7 @@
     <ClInclude Include="cProjectileManager.h" />
     <ClInclude Include="cSharedUtils.h" />
     <ClInclude Include="cWallBase.h" />
+    <ClInclude Include="iBehavior.h" />
     <ClInclude Include="iEntity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,21 +3,24 @@
 #include "cPlayerCharacter.h"
 #include "cEnemyAnimator.h"
 #include "cGameSettings.h"
+#include "iBehavior.h"
+#include "cBehaviorPatrol.h"
 
 class cPickupManager;
 
 class cEnemyCharacter : public cCharacter
 {
 private:
+	// Is enemy alive?
 	bool mAlive = true;
 
-	// Calculate enemy movement direction
-	float const mPatrolTimerMax = 3.f;
-	float const mPatrolWaitTimerMax = 3.f;
-	float mPatrolTimer = mPatrolTimerMax;
+	// Enemy movement vars
 	bool mIsEnemyWaiting = false;
-	sf::Vector2f mEnemyMovementNormalized = sf::Vector2f(1.f, 0.f);
-	void GetMovementDirection(float _DeltaSeconds);
+	sf::Vector2f mEnemyMovementNormalized = { 1.f, 0.f };
+	
+	// Behavior states
+	cBehaviorPatrol mBehaviorPatrol;
+	iBehavior* mCurrentBehavior;
 
 	// Calculate if enemy should fire weapon here
 	void UpdateWeapon(float _DeltaSeconds) override;

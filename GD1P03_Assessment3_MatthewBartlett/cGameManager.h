@@ -24,7 +24,6 @@ class cGameManager
 {
 private:
 	// Time Variables
-	void RefreshDeltaTime();
 	sf::Clock mClock;
 	sf::Time mDeltaTime;
 	float mDeltaSeconds = 0.f;
@@ -66,6 +65,7 @@ public:
 	// Constructors
 	cGameManager(sf::RenderWindow& _GameWindow);
 	~cGameManager() {};
+	void RefreshDeltaTime();
 
 	// Call this on new level load
 	void SpawnEnemies();

@@ -12,12 +12,30 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 	mCharacterAnimator = &mAnimator;
 }
 
+void cEnemyCharacter::DetectPlayer()
+{
+	// Get angle from enemy to player as radians	
+	sf::Angle AngleToPlayer = cSharedUtils::GetInstance().GetLookTowardsAngle(mPosition, mPlayerReference.GetPosition());
+	float angleToPlayerRad = AngleToPlayer.asRadians() + 1.5708; // adjusted value by 1.5708 to offset rad loop back from 6.28319 to 0 on the x axis
+	// Current enemy look direction angle
+	float enemyAngleRad = mAnimator.GetRotation().asRadians() + 1.5708; // adjusted value by 1.5708 to offset rad loop back from 6.28319 to 0 on the x axis
+	// Calculate if player in enemy view cone
+	if (angleToPlayerRad > enemyAngleRad - 0.785398 && angleToPlayerRad < enemyAngleRad + 0.785398)
+	{
+		// Raycast to player
+		if (mRaycaster.Cast(mPosition, AngleToPlayer))
+			std::cout << "Caster found the player YOO" << std::endl;
+	}
+
+	// Debug Draw Raycast line
+	mRaycaster.DebugDraw(mRenderWindow);
+}
+
 void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 {
-	if (mRaycaster.Cast(mPosition, mAnimator.GetRotation()))
-		std::cout << "Caster found the player YOO" << std::endl;
-	mRaycaster.DebugDraw(mRenderWindow);
+	DetectPlayer();
 
+	// Shoot logic
 	if (mShouldShoot && !mIsShooting)
 	{
 		// Cast mouse position

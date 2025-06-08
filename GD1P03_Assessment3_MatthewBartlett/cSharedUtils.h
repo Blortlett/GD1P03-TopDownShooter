@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <cmath>
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -26,7 +27,7 @@ public:
 	sf::Font mButtonFont;
 
 
-	// Static Util Functions
+	// -= Static Util Functions =-
 	static void NormalizeVector(sf::Vector2f& _VectorToNormalize)
 	{
 		float magnitude = std::sqrt(_VectorToNormalize.x * _VectorToNormalize.x +
@@ -38,14 +39,22 @@ public:
 	}
 
 	static sf::Vector2f calculatePointFromOrigin(sf::Vector2f _Origin, float _Distance, sf::Angle& _Angle) {
-		// Convert angle from degrees to radians
-		//float angleRadians = angleDegrees * (M_PI / 180.0f);
-
 		// Trig to calculate new position
 		float x = _Origin.x + _Distance * std::cos(_Angle.asRadians());
 		float y = _Origin.y + _Distance * std::sin(_Angle.asRadians());
 
 		return sf::Vector2f(x, y);
+	}
+
+	static sf::Angle GetLookTowardsAngle(sf::Vector2f _StartPos, sf::Vector2f _EndPos) {
+		// Calculate position difference
+		float dx = _EndPos.x - _StartPos.x;
+		float dy = _EndPos.y - _StartPos.y;
+
+		// Calculate the angle
+		sf::Angle angle = sf::radians(std::atan2(dy, dx));
+
+		return angle;
 	}
 
 

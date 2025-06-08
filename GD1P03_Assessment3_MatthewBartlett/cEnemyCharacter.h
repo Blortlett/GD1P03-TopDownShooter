@@ -25,6 +25,7 @@ private:
 
 	// Calculate if enemy should fire weapon here
 	bool mShouldShoot = false;
+	void DetectPlayer();
 	void UpdateWeapon(float _DeltaSeconds) override;
 
 	// Enemy Raycaster
@@ -45,7 +46,7 @@ public:
 	// Update
 	void Update(float _DeltaSeconds) override;
 
-	// On Bullet Collision
+	// Enemy hit by bullet
 	void OnBulletCollision(sf::Vector2f _CollisionDirection);
 
 	// Getters

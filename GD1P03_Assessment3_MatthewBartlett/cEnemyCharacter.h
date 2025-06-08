@@ -38,7 +38,6 @@ private:
 	void DetectPlayer();
 
 	// Calculate if enemy should fire weapon here
-	bool mShouldShoot = false;
 	void UpdateWeapon(float _DeltaSeconds) override;
 
 	// Enemy Raycaster

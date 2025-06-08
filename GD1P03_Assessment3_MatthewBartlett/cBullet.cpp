@@ -1,5 +1,6 @@
 #include "cBullet.h"
 #include "cEnemyCharacter.h"
+#include "cSharedUtils.h"
 
 cBullet::cBullet()
 	: mBulletSprite(cSharedUtils::GetInstance().mBulletTex)
@@ -15,6 +16,14 @@ void cBullet::Fire(sf::Vector2f _StartPosition, sf::Vector2f _ShootTrajectory)
 	mCollider.MoveColliderPosition(mPosition);
 	mIsActive = true;
 	mMoveDirection = _ShootTrajectory;
+}
+
+void cBullet::Fire(sf::Vector2f _StartPosition, sf::Angle _ShootAngle)
+{
+	mPosition = _StartPosition;
+	mCollider.MoveColliderPosition(mPosition);
+	mIsActive = true;
+	mMoveDirection = cSharedUtils::GetInstance().calculatePointFromOrigin(_StartPosition, 1.f, _ShootAngle);
 }
 
 void cBullet::Move(float _DeltaTime)

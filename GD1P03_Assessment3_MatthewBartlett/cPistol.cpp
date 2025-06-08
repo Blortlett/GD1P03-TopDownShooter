@@ -2,10 +2,10 @@
 #include "cProjectileManager.h"
 #include "cAudioManager.h"
 
-cPistol::cPistol(cProjectileManager& _ProjectileManager)
+cPistol::cPistol(bool _IsPlayerWeapon, cProjectileManager& _ProjectileManager)
 	: mProjectileManager(_ProjectileManager)
+	, mIsPlayerWeapon(_IsPlayerWeapon)
 {
-	
 }
 
 void cPistol::Update(float _DeltaTime)
@@ -26,12 +26,17 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 	{
 		// empty clip sound
 		cAudioManager::GetInstance().SFXPlayDryFire();
-		return; // do not fire!
+	} 
+	else
+	{
+		// Fire Bullet here
+		cAudioManager::GetInstance().SFXPlayShoot();
+		sf::Vector2f ShootTrajectory = GetShootTrajectory(_FirePosition, _AimPosition);
+		if (mIsPlayerWeapon)
+			mProjectileManager.FirePlayerBullet(_FirePosition, ShootTrajectory);
+		else
+			mProjectileManager.FireEnemyBullet(_FirePosition, ShootTrajectory);
 	}
-
-	// Fire Bullet here
-	sf::Vector2f ShootTrajectory = GetShootTrajectory(_FirePosition, _AimPosition);
-	mProjectileManager.FirePlayerBullet(_FirePosition, ShootTrajectory);
 
 	// Set variables to just fired mode
 	mCurrentBulletIndex--;
@@ -39,7 +44,6 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 	mCooldownTimer = mShootCooldownMax;
 
 	// Play audio sound
-	cAudioManager::GetInstance().SFXPlayShoot();
 }
 
 sf::Vector2f cPistol::GetShootTrajectory(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)

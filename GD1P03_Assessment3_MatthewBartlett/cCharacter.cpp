@@ -1,9 +1,9 @@
 #include "cCharacter.h"
 #include "cGameSettings.h"
 
-cCharacter::cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow)
+cCharacter::cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, bool _IsPlayer)
 	: mRenderWindow(_GameWindow)
-	, mPistol(_ProjectileManager)
+	, mPistol(_IsPlayer, _ProjectileManager)
 	, mPosition(_Position)
 	, mSpawnPoint(_Position)
 	, mBoxCollider(sf::FloatRect(_Position, { 16.f, 16.f }))

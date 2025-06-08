@@ -6,8 +6,13 @@ class cProjectileManager
 private:
 	// Player Bullets
 	std::array<cBullet, 15> mPlayerBulletList;
+	std::array<cBullet, 20> mEnemyBulletList;
+
 	int mPlayerMaxBulletIndex = 14;
 	int mPlayerCurrentBulletIndex = mPlayerMaxBulletIndex;
+
+	int mEnemyMaxBulletIndex = 19;
+	int mEnemyCurrentBulletIndex = mEnemyMaxBulletIndex;
 
 	// Game Window
 	sf::RenderWindow& mGameWindow;
@@ -17,6 +22,7 @@ public:
 	~cProjectileManager() {}
 
 	void FirePlayerBullet(sf::Vector2f _StartPosition, sf::Vector2f _ShootTrajectory);
+	void FireEnemyBullet(sf::Vector2f _StartPosition, sf::Vector2f _ShootTrajectory);
 
 	// Updater
 	void Update(float _DeltaTime);

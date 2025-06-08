@@ -15,7 +15,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 
 cPlayerCharacter::cPlayerCharacter(sf::Vector2f _StartPosition, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput)
-	: cCharacter(_StartPosition, _ProjectileManager, _GameWindow)
+	: cCharacter(_StartPosition, _ProjectileManager, _GameWindow, true)
 	, mCameraView(_PlayerCamera)
 	, mPlayerInput(_PlayerInput)
 {

@@ -3,7 +3,7 @@
 #include "cLevelProgressTracker.h"
 
 cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, cPickupManager& _PickupManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter)
-	: cCharacter(_Position, _ProjectileManager, _GameWindow)
+	: cCharacter(_Position, _ProjectileManager, _GameWindow, false)
 	, mPlayerReference(_PlayerCharacter)
 	, mPickupManager(_PickupManager)
 	, mRaycaster(_PlayerCharacter)
@@ -62,18 +62,18 @@ void cEnemyCharacter::DetectPlayer()
 			if (PlayerDistance < MIN_CHASE_DISTANCE)
 			{
 				mCurrentBehavior = &mBehaviorAttack;
-				mShouldShoot = true;
+				mIsShooting = true;
 			}
 			else
 			{
-				mBehaviorChase.UpdateUnformation(PlayerDirection);
+				mBehaviorChase.UpdateInformation(PlayerDirection);
 				mCurrentBehavior = &mBehaviorChase;
-				mShouldShoot = false;
+				mIsShooting = false;
 			}
 		}
 		else
 		{
-			mShouldShoot = false;
+			mIsShooting = false;
 			// Player not detected
 			// if I have time I will allow the enemy to go back to spawn and patrol again
 		}
@@ -83,16 +83,17 @@ void cEnemyCharacter::DetectPlayer()
 void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 {
 	DetectPlayer();
+	mPistol.Update(_DeltaSeconds);
+	std::cout << "IsShooting: " << mIsShooting << std::endl;
 
 	// Shoot logic
-	if (mShouldShoot && !mIsShooting)
+	if (mIsShooting)
 	{
 		// Cast mouse position
 		sf::Vector2f PlayerPosition = mPlayerReference.GetPosition();
-		mPistol.FireWeapon(mPosition, PlayerPosition); // fire weapon at mouse position
+		mPistol.FireWeapon(mPosition, PlayerPosition); // fire weapon at player position
 		mIsShooting = true;
 	}
-	mIsShooting = false;
 }
 
 void cEnemyCharacter::Update(float _DeltaSeconds)

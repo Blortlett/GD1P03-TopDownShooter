@@ -16,9 +16,25 @@ void cProjectileManager::FirePlayerBullet(sf::Vector2f _StartPosition, sf::Vecto
         mPlayerCurrentBulletIndex = mPlayerMaxBulletIndex;
 }
 
+void cProjectileManager::FireEnemyBullet(sf::Vector2f _StartPosition, sf::Vector2f _ShootTrajectory)
+{
+    // Call .Fire() function on bullet in list
+    mEnemyBulletList[mPlayerCurrentBulletIndex].Fire(_StartPosition, _ShootTrajectory);
+
+    // Decrement enemy bullet index / Move to next bullet in list
+    mEnemyCurrentBulletIndex--;
+    if (mEnemyCurrentBulletIndex < 0) // Reset next active bullet to top of the list
+        mEnemyCurrentBulletIndex = mEnemyMaxBulletIndex;
+}
+
 void cProjectileManager::Update(float _DeltaTime)
 {
     for (auto& bullet : mPlayerBulletList)
+    {
+        bullet.Update(mGameWindow, _DeltaTime);
+    }
+
+    for (auto& bullet : mEnemyBulletList)
     {
         bullet.Update(mGameWindow, _DeltaTime);
     }

@@ -6,19 +6,21 @@ class cProjectileManager;
 class cPistol
 {
 private:
+	bool mIsPlayerWeapon;
+
 	// Ammo Variables
 	int mAmmoMax = 12;
 	int mCurrentBulletIndex = mAmmoMax - 1;
 
 	// Shooting & cooldown variables
 	bool mCanShoot = true;
-	float const mShootCooldownMax = .09f;
+	float const mShootCooldownMax = .5f;
 	float mCooldownTimer = mShootCooldownMax;
 
 	// Manager References
 	cProjectileManager& mProjectileManager;
 public:
-	cPistol(cProjectileManager& _ProjectileManager);
+	cPistol(bool _IsPlayerWeapon, cProjectileManager& _ProjectileManager);
 	~cPistol() {}
 
 	void Update(float _DeltaTime);

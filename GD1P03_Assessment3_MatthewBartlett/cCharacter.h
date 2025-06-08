@@ -43,7 +43,7 @@ protected:
 	cDebugWidget mDebugWidget;
 
 public:
-	cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow);
+	cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, bool _IsPlayer);
 	~cCharacter() {}
 
 	// Respawn Character

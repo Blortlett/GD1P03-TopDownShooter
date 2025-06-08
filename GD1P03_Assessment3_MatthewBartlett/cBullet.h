@@ -34,6 +34,7 @@ public:
 
 	// Fire bullet functions
 	void Fire(sf::Vector2f _StartPosition, sf::Vector2f _ShootTrajectory);
+	void Fire(sf::Vector2f _StartPosition, sf::Angle _ShootAngle);
 	void Move(float _DeltaTime);
 	void Update(sf::RenderWindow& _Window, float _DeltaTime);
 	void Draw(sf::RenderWindow& _Window);

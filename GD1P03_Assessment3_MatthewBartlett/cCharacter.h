@@ -32,6 +32,7 @@ protected:
 
 	// Animator
 	cAnimatorBase* mCharacterAnimator;
+	cAnimatorBase* mCharacterAnimatorBottom;
 
 	// Collision
 	cBoxCollider mBoxCollider;

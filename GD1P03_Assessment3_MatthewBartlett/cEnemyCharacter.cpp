@@ -28,15 +28,6 @@ bool cEnemyCharacter::IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyA
 
 void cEnemyCharacter::DetectPlayer()
 {
-	/*
-	// Get angle from enemy to player
-	sf::Angle AngleToPlayer = cSharedUtils::GetInstance().GetLookTowardsAngle(mPosition, mPlayerReference.GetPosition());
-	float angleToPlayerRad = AngleToPlayer.asRadians() + 1.5708; // adjusted value by 1.5708 to offset rad loop back from 6.28319 to 0 on the x axis
-	// Current enemy look direction angle
-	float enemyAngleRad = mAnimator.GetRotation().asRadians() + 1.5708; // adjusted value by 1.5708 to offset rad loop back from 6.28319 to 0 on the x axis
-	// Calculate if player in enemy view cone
-	if (angleToPlayerRad > enemyAngleRad - 0.785398 && angleToPlayerRad < enemyAngleRad + 0.785398)
-	*/
 	// Get angle from enemy position to player position
 	sf::Angle AngleToPlayer = cSharedUtils::GetInstance().GetLookTowardsAngle(mPosition, mPlayerReference.GetPosition());
 
@@ -48,9 +39,6 @@ void cEnemyCharacter::DetectPlayer()
 		// Raycast to player
 		if (mRaycaster.Cast(mPosition, AngleToPlayer))
 		{
-			// Player Detected
-			std::cout << "Caster found the player" << std::endl;
-
 			// Direction to player
 			sf::Vector2f PlayerDirection = mPlayerReference.GetPosition() - mPosition;
 
@@ -61,6 +49,7 @@ void cEnemyCharacter::DetectPlayer()
 			// If distance too far, chase player. If close, attack player.
 			if (PlayerDistance < MIN_CHASE_DISTANCE)
 			{
+				mBehaviorAttack.UpdateInformation(PlayerDirection);
 				mCurrentBehavior = &mBehaviorAttack;
 				mIsShooting = true;
 			}
@@ -89,7 +78,7 @@ void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 	// Shoot logic
 	if (mIsShooting)
 	{
-		// Cast mouse position
+		// get player position
 		sf::Vector2f PlayerPosition = mPlayerReference.GetPosition();
 		mPistol.FireWeapon(mPosition, PlayerPosition); // fire weapon at player position
 		mIsShooting = true;

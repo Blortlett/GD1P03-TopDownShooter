@@ -74,7 +74,7 @@ public:
 
 	static void Magnitude(sf::Vector2f& _DistanceVector, float _ReturnValue)
 	{
-
+		_ReturnValue = std::sqrt(_DistanceVector.x * _DistanceVector.x + _DistanceVector.y * _DistanceVector.y);
 	}
 
 

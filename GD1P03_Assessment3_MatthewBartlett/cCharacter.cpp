@@ -13,16 +13,14 @@ cCharacter::cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileMa
 
 void cCharacter::Rotate(sf::Vector2f _FaceTowards)
 {
-	// Calculate direction vector from character to _FaceTowards position
+	// Calculate direction from character to FaceTowards position
 	sf::Vector2f direction = _FaceTowards - mPosition;
 
 	// Calculate angle in radians and convert to degrees
 	float angleRadians = std::atan2(direction.y, direction.x);
 	float angleDegrees = angleRadians * 180.f / 3.14159265359f;
 
-	// Adjust angle if necessary (e.g., if sprite's default facing direction is not right)
-	// For example, if sprite faces up by default, add 90 degrees
-	angleDegrees += 0.f; // Adjust based on your sprite's default orientation
+	angleDegrees += 0.f;
 	sf::Angle angle = sf::degrees(angleDegrees);
 
 	// Apply rotation to animator (assumes cPlayerAnimator has a SetRotation method)
@@ -31,7 +29,6 @@ void cCharacter::Rotate(sf::Vector2f _FaceTowards)
 
 void cCharacter::Rotate(sf::Angle _FaceTowards)
 {
-	// Apply rotation to animator (assumes cPlayerAnimator has a SetRotation method)
 	mCharacterAnimator->SetRotation(_FaceTowards);
 }
 

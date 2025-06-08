@@ -17,7 +17,7 @@ class cEnemyCharacter : public cCharacter
 private:
 	// Enemy view cone
 	const float CONE_HALF_ANGLE = 1.5708f; // 90 degree
-	const float MIN_CHASE_DISTANCE = 175.f;
+	const float MIN_CHASE_DISTANCE = 75.f;
 
 	// Is enemy alive?
 	bool mAlive = true;

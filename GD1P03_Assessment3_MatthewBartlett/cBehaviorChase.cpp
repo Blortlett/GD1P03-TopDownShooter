@@ -11,6 +11,6 @@ void cBehaviorChase::GetMovementDirection(sf::Vector2f& _MovementDirection, bool
 	cSharedUtils::GetInstance().NormalizeVector(mDirectionToPlayer);
 	_MovementDirection = mDirectionToPlayer;
 
-	// Enemy should not stand still
+	// Enemy should be moving
 	_IsEnemyWaiting = false;
 }

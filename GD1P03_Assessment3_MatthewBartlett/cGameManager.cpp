@@ -71,9 +71,10 @@ void cGameManager::GameTick()
 	// Update Pickupables
 	mPickupManager.Update(mDeltaSeconds);
 
-	// Draw Player last!!
+	// Draw Player last!! Ontop of anything else (Except debug stuff)
 	mPlayerCharacter.Draw();
 
+	mGameStateManager.CheckResetLevel(mDeltaSeconds);
 
 	// Debug Mode
 	CheckToggleDebugMode();

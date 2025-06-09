@@ -116,6 +116,12 @@ void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 		mIsShooting = false;
 }
 
+void cPlayerCharacter::RevivePlayer()
+{
+	mAlive = true;
+	mPlayerUpperBodyAnimator.SwapToPistolIdle();
+}
+
 void cPlayerCharacter::OnCollision(sf::Vector2f direction)
 {
 	// Handle collision differently depending on direction

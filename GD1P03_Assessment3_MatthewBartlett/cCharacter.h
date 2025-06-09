@@ -16,8 +16,6 @@ protected:
 	sf::Vector2f mPosition;
 	sf::Vector2f mVelocity;
 
-	// Is character alive?
-	bool mAlive = true;
 
 	// Rotate Function
 	void Rotate(sf::Vector2f _FaceTowards);
@@ -50,6 +48,9 @@ public:
 	cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, bool _IsPlayer);
 	~cCharacter() {}
 
+	// Is character alive?
+	bool mAlive = true;
+	
 	// Respawn Character
 	void RespawnCharacter();
 

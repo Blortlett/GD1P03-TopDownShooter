@@ -67,6 +67,7 @@ public:
 
 	// In game level progression
 	void AdvanceToNextLevel();
+	void ReloadLevel();
 
 	// Getters
 	std::vector<cEnemySpawner*>& GetEnemySpawnerList();

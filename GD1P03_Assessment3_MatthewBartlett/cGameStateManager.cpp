@@ -110,3 +110,32 @@ void cGameStateManager::TransitionToNextLevel()
         mPlayerCharacter.SetPosition(playerSpawner->GetPosition());
     }
 }
+
+void cGameStateManager::CheckResetLevel(float _DeltaTime)
+{
+    // Only reset level if player is dead
+    if (mPlayerCharacter.mAlive) return;
+
+    // Countdown timer before level resets
+    mPlayerDeathTimer -= _DeltaTime;
+    if (mPlayerDeathTimer <= 0.f)
+    {
+        // Reset the current level
+        mEnemyManager.RespawnEnemies(); // Reset enemies
+
+        // Reset level complete flag
+        mLevelComplete = false;
+        // Revive player
+        mPlayerCharacter.RevivePlayer();
+
+        // Reset player position
+        cPlayerSpawner* playerSpawner = mLevelManager.GetCurrentLevel()->GetPlayerSpawner();
+        if (playerSpawner)
+        {
+            mPlayerCharacter.SetPosition(playerSpawner->GetPosition());
+        }
+
+        // Reset death timer
+        mPlayerDeathTimer = mPlayerDeathTimerMax;
+    }
+}

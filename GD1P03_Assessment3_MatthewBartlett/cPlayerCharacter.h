@@ -48,6 +48,9 @@ private:
 public:
 	cPlayerCharacter(sf::Vector2f _StartPosition, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput);
 	~cPlayerCharacter() {}
+	
+	// ResetPlayer after death
+	void RevivePlayer();
 
 	// Collision
 	void OnCollision(sf::Vector2f direction); // Wall collision

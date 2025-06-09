@@ -151,6 +151,13 @@ void cLevelManager::AdvanceToNextLevel()
 
 }
 
+void cLevelManager::ReloadLevel()
+{
+	// Reload the current level to reset it?
+	mCurrentLevel->LoadLevelByName(mFileInterface);
+	cLevelProgressTracker::GetInstance().SetWallVector(mCurrentLevel->GetFullWallColliderList());
+}
+
 std::vector<cEnemySpawner*>& cLevelManager::GetEnemySpawnerList()
 {
 	return mCurrentLevel->GetEnemySpawnerList();

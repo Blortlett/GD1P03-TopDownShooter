@@ -14,8 +14,9 @@ private:
 
 	// Shooting & cooldown variables
 	bool mCanShoot = true;
-	float const mShootCooldownMax = .5f;
-	float mCooldownTimer = mShootCooldownMax;
+	float const mPlayerShootCooldownMax = .1f;
+	float const mEnemyShootCooldownMax = .5f;
+	float mCooldownTimer;
 
 	// Manager References
 	cProjectileManager& mProjectileManager;

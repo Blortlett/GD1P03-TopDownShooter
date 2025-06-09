@@ -141,8 +141,21 @@ void cPlayerCharacter::OnCollision(sf::Vector2f direction)
 	}
 }
 
+void cPlayerCharacter::OnBulletCollision(sf::Vector2f direction)
+{
+	mPlayerUpperBodyAnimator.SwapToPlayerDeath();
+	mAlive = false;
+}
+
 void cPlayerCharacter::Update(float _DeltaSeconds)
 {
+	// Player animations
+	mCharacterAnimator->Animate(mPosition, _DeltaSeconds);
+	mCharacterAnimatorBottom->Animate(mPosition, _DeltaSeconds);
+	
+	// Don't update anything except animations if player is dead
+	if (!mAlive) return;
+
 	// Input
 	HandleInput();
 	GetLookTowardsDirection();
@@ -155,17 +168,13 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 	// Player Weapons
 	UpdateWeapon(_DeltaSeconds);
 	mPistol.Update(_DeltaSeconds);
-
-	// Player animations
-	//mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
-	mCharacterAnimator->Animate(mPosition, _DeltaSeconds);
-	mCharacterAnimatorBottom->Animate(mPosition, _DeltaSeconds);
 }
 
 void cPlayerCharacter::Draw()
 {
 	// Draw Player graphics
-	mPlayerLegsAnimator.Draw(mRenderWindow);
+	if (mAlive) // only draw legs if character is alive
+		mPlayerLegsAnimator.Draw(mRenderWindow);
 	mPlayerUpperBodyAnimator.Draw(mRenderWindow);
 
 	// Draw debug objects if debug is active

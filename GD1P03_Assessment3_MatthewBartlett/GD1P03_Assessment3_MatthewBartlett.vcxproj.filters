@@ -275,6 +275,9 @@
     <Filter Include="Animator\Animations\EnemyAnimations\LowerBody\Run">
       <UniqueIdentifier>{6516ccfb-c0eb-4b86-9fc2-71fb352a0270}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations\FullBody">
+      <UniqueIdentifier>{443533dc-f7b4-40a9-820a-5c3696562270}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -471,6 +474,9 @@
     </ClCompile>
     <ClCompile Include="cAnimationLegsEnemyRun.cpp">
       <Filter>Animator\Animations\EnemyAnimations\LowerBody\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerDeathAnimation.cpp">
+      <Filter>Animator\Animations\PlayerAnimations\FullBody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -683,6 +689,9 @@
     </ClInclude>
     <ClInclude Include="cAnimationLegsEnemyRun.h">
       <Filter>Animator\Animations\EnemyAnimations\LowerBody\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerDeathAnimation.h">
+      <Filter>Animator\Animations\PlayerAnimations\FullBody</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

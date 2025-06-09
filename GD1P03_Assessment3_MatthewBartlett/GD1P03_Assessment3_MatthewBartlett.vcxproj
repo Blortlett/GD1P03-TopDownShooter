@@ -199,6 +199,7 @@
     <ClCompile Include="cPlayerAnimator.cpp" />
     <ClCompile Include="cPlayerAnimatorLegs.cpp" />
     <ClCompile Include="cPlayerCharacter.cpp" />
+    <ClCompile Include="cPlayerDeathAnimation.cpp" />
     <ClCompile Include="cPlayerInput.cpp" />
     <ClCompile Include="cPlayerSpawner.cpp" />
     <ClCompile Include="cPlayerSpawnerTool.cpp" />
@@ -270,6 +271,7 @@
     <ClInclude Include="cPlayerAnimationBase.h" />
     <ClInclude Include="cPlayerAnimatorLegs.h" />
     <ClInclude Include="cPlayerCharacter.h" />
+    <ClInclude Include="cPlayerDeathAnimation.h" />
     <ClInclude Include="cPlayerInput.h" />
     <ClInclude Include="cPlayerSpawner.h" />
     <ClInclude Include="cPlayerSpawnerTool.h" />

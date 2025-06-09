@@ -13,6 +13,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cAnimatorBase.h"
 #include "cAnimationPistolIdle.h"
 #include "cAnimationPistolFire.h"
+#include "cPlayerDeathAnimation.h"
 
 
 class cPlayerAnimator : public cAnimatorBase
@@ -21,6 +22,7 @@ private:
 	// Animations
 	cAnimationPistolIdle mUpperPistolIdle;
 	cAnimationPistolFire mUpperPistolFire;
+	cPlayerDeathAnimation mPlayerDeathAnimation;
 
 public:
 	 // Constructors
@@ -29,4 +31,5 @@ public:
 
 	void SwapToPistolFire();
 	void SwapToPistolIdle();
+	void SwapToPlayerDeath();
 };

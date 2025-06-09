@@ -12,7 +12,6 @@ cGameStateManager::cGameStateManager(cEnemyManager& _EnemyManager, cProjectileMa
 {
 }
 
-// Sorry bout the birds nest
 void cGameStateManager::CheckBulletCollision() 
 {
     // Collision function will modify this
@@ -25,7 +24,7 @@ void cGameStateManager::CheckBulletCollision()
     // Get all walls
     std::vector<cFullWall*>& WallList = mLevelManager.GetFullWallList();
 
-    // Check each bullet for collision
+    // Check each player bullet for collision with each enemy & wall collisions
     for (cBullet& bullet : PlayerBulletList) {
 
         // Skip loop iteration if bullet is not active
@@ -47,6 +46,34 @@ void cGameStateManager::CheckBulletCollision()
         {
             if (bullet.GetCollider().CheckCollision(Wall->GetCollider(), CollisionDirection, 1.0f))
             {
+                // Deactivate bullet if hit fullwall
+                bullet.mIsActive = false;
+            }
+        }
+    }
+
+    // Get enemy bullet list
+    std::array<cBullet, 20>& EnemyBulletList = mProjectileManager.GetEnemyBulletList();
+    // Check each enemy bullet for collision with player & each wall
+    for (cBullet& bullet : EnemyBulletList)
+    {
+        // Skip loop iteration if bullet is not active
+        if (!bullet.mIsActive) continue;
+
+        if (bullet.CheckCollisionWithPlayer(mPlayerCharacter, CollisionDirection))
+        {
+            // if bullet hit player, deactivate bullet
+            bullet.mIsActive = false;
+            // Kill Player
+            mPlayerCharacter.OnBulletCollision(CollisionDirection);
+        }
+
+        // Check collision with each fullwall
+        for (cFullWall* Wall : WallList)
+        {
+            if (bullet.GetCollider().CheckCollision(Wall->GetCollider(), CollisionDirection, 1.0f))
+            {
+                // Deactivate bullet if hit fullwall
                 bullet.mIsActive = false;
             }
         }

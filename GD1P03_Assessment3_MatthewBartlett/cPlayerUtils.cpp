@@ -27,6 +27,13 @@ cPlayerUtils::cPlayerUtils()
 	{
 		std::cout << "Failed to load player_legs_run_Sheet.png" << std::endl;
 	}
+	// Load player death animation sheet
+	mPlayerDeathSheetTex = new sf::Texture();
+	if (!mPlayerDeathSheetTex->loadFromFile("Assets/SpritePack/Player/Death/player_death_Sheet.png"))
+	{
+		std::cout << "Failed to load player_death_Sheet.png" << std::endl;
+	}
+
 
 	// -= Enemy Sprite Sheets =-
 	// Load Enemy pistol idle animation sheet
@@ -58,7 +65,14 @@ cPlayerUtils::cPlayerUtils()
 
 cPlayerUtils::~cPlayerUtils()
 {
-	delete mEnemyDeathSheetTex;
 	delete mPlayerIdleSheetTex;
+	delete mPlayerShootSheetTex;
+	delete mPlayerLegsIdleTex;
+	delete mPlayerLegsRunTex;
+	delete mPlayerDeathSheetTex;
+
+	delete mEnemyDeathSheetTex;
 	delete mEnemyIdleSheetTex;
+	delete mEnemyLegsIdle;
+	delete mEnemyLegsRun;
 }

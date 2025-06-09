@@ -5,6 +5,7 @@
 #include "cGameSettings.h"
 
 class cEnemyCharacter;
+class cPlayerCharacter;
 
 
 class cBullet
@@ -20,7 +21,7 @@ private:
 	// Move variables
 	sf::Vector2f mPosition;
 	sf::Vector2f mMoveDirection;
-	float const BULLET_MOVESPEED = 250.f;
+	float const BULLET_MOVESPEED = 500.f;
 
 	// Active Timer
 	float const mBulletActiveMaxTime = 3.f;
@@ -41,6 +42,7 @@ public:
 
 	// Hit Function
 	bool CheckCollisionWithEnemy(cEnemyCharacter& _Character, sf::Vector2f& _CollisionDirection);
+	bool CheckCollisionWithPlayer(cPlayerCharacter& _Character, sf::Vector2f& _CollisionDirection);
 
 	// Get collider
 	cBoxCollider& GetCollider() { return mCollider; }

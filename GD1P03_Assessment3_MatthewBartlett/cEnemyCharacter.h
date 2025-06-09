@@ -20,9 +20,6 @@ private:
 	const float CONE_HALF_ANGLE = 1.5708f; // 90 degree
 	const float MIN_CHASE_DISTANCE = 75.f;
 
-	// Is enemy alive?
-	bool mAlive = true;
-
 	// Enemy movement vars
 	bool mIsEnemyWaiting = false;
 	sf::Vector2f mEnemyMovementNormalized = { 1.f, 0.f };

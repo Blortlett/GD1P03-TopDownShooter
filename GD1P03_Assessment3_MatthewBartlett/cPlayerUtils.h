@@ -16,14 +16,17 @@ public:
 	// Lower body
 	sf::Texture* mPlayerLegsIdleTex;
 	sf::Texture* mPlayerLegsRunTex;
+	// Full body
+	sf::Texture* mPlayerDeathSheetTex;
 
 	// -= Enemy Textures =-
 	// Upper body
 	sf::Texture* mEnemyIdleSheetTex;
-	sf::Texture* mEnemyDeathSheetTex;
 	// Lower body
 	sf::Texture* mEnemyLegsIdle;
 	sf::Texture* mEnemyLegsRun;
+	// Full body
+	sf::Texture* mEnemyDeathSheetTex;
 
 
 

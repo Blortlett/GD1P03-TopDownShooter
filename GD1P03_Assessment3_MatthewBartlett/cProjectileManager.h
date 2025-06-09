@@ -27,5 +27,6 @@ public:
 	// Updater
 	void Update(float _DeltaTime);
 
-	std::array<cBullet, 15>& GetPlayerBulletList();
+	std::array<cBullet, 15>& GetPlayerBulletList() { return mPlayerBulletList; }
+	std::array<cBullet, 20>& GetEnemyBulletList() { return mEnemyBulletList; }
 };

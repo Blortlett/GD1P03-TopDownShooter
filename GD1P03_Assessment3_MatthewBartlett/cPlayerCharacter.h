@@ -50,7 +50,8 @@ public:
 	~cPlayerCharacter() {}
 
 	// Collision
-	void OnCollision(sf::Vector2f direction);
+	void OnCollision(sf::Vector2f direction); // Wall collision
+	void OnBulletCollision(sf::Vector2f direction);
 
 	// Draw / Update
 	void Update(float _DeltaSeconds);

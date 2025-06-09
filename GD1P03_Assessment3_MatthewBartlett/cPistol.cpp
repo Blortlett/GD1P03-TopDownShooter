@@ -6,6 +6,11 @@ cPistol::cPistol(bool _IsPlayerWeapon, cProjectileManager& _ProjectileManager)
 	: mProjectileManager(_ProjectileManager)
 	, mIsPlayerWeapon(_IsPlayerWeapon)
 {
+	// Set initial cooldown timer per owner character
+	if (mIsPlayerWeapon)
+		mCooldownTimer = mPlayerShootCooldownMax;
+	else
+		mCooldownTimer = mEnemyShootCooldownMax;
 }
 
 void cPistol::Update(float _DeltaTime)
@@ -41,7 +46,10 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 	// Set variables to just fired mode
 	mCurrentBulletIndex--;
 	mCanShoot = false;
-	mCooldownTimer = mShootCooldownMax;
+	if (mIsPlayerWeapon)
+		mCooldownTimer = mPlayerShootCooldownMax;
+	else
+		mCooldownTimer = mEnemyShootCooldownMax;
 
 	// Play audio sound
 }

@@ -1,5 +1,6 @@
 #include "cBullet.h"
 #include "cEnemyCharacter.h"
+#include "cPlayerCharacter.h"
 #include "cSharedUtils.h"
 
 cBullet::cBullet()
@@ -68,4 +69,20 @@ bool cBullet::CheckCollisionWithEnemy(cEnemyCharacter& _Character, sf::Vector2f&
 		_Character.OnBulletCollision(_CollisionDirection);
 		return true;
 	}
+	return false;
+}
+
+bool cBullet::CheckCollisionWithPlayer(cPlayerCharacter& _Character, sf::Vector2f& _CollisionDirection)
+{
+	// Check bullet collision with enemy
+	if (mCollider.CheckCollision(_Character.GetCollider(), _CollisionDirection, 0.0f))
+	{
+		// If collision, tell player object:
+		_Character.OnBulletCollision(_CollisionDirection);
+		// Reset the level somehow
+
+
+		return true;
+	}
+	return false;
 }

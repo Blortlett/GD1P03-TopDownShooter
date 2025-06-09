@@ -39,8 +39,3 @@ void cProjectileManager::Update(float _DeltaTime)
         bullet.Update(mGameWindow, _DeltaTime);
     }
 }
-
-std::array<cBullet, 15>& cProjectileManager::GetPlayerBulletList()
-{
-    return mPlayerBulletList;
-}

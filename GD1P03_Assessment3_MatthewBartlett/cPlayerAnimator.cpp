@@ -29,3 +29,8 @@ void cPlayerAnimator::SwapToPistolIdle()
 {
     mCurrentAnimation = &mUpperPistolIdle;
 }
+
+void cPlayerAnimator::SwapToPlayerDeath()
+{
+    mCurrentAnimation = &mPlayerDeathAnimation;
+}

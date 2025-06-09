@@ -206,9 +206,6 @@
     <Filter Include="UI\MainMenu">
       <UniqueIdentifier>{851fecff-298c-4bd2-870e-da3d487f021d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\PauseMenu">
-      <UniqueIdentifier>{a5f395d9-cac7-4fc6-87a9-a6dd688b7634}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\MainMenu\Buttons">
       <UniqueIdentifier>{c38cd912-c05d-4b54-93f4-56efb111876c}</UniqueIdentifier>
     </Filter>
@@ -278,16 +275,25 @@
     <Filter Include="Animator\Animations\PlayerAnimations\FullBody">
       <UniqueIdentifier>{443533dc-f7b4-40a9-820a-5c3696562270}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\PauseMenu\MainMenuButton">
-      <UniqueIdentifier>{97d0dcfd-7ae5-48db-8f95-b1f0edfd3cd0}</UniqueIdentifier>
+    <Filter Include="UI\cGameUI">
+      <UniqueIdentifier>{82a75ba3-757d-4580-a44c-de3f1412c9c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\PauseMenu\ResumeButton">
+    <Filter Include="UI\cGameUI\AmmoUI">
+      <UniqueIdentifier>{e08448ec-c647-4066-8bf9-eeda9a14f3d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\cGameUI\PauseMenuUI">
+      <UniqueIdentifier>{a5f395d9-cac7-4fc6-87a9-a6dd688b7634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\cGameUI\PauseMenuUI\ResumeButton">
       <UniqueIdentifier>{17605d70-19f2-47e8-879d-92ba23e1b2b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\PauseMenu\OptionsButton">
+    <Filter Include="UI\cGameUI\PauseMenuUI\MainMenuButton">
+      <UniqueIdentifier>{97d0dcfd-7ae5-48db-8f95-b1f0edfd3cd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\cGameUI\PauseMenuUI\OptionsButton">
       <UniqueIdentifier>{72f684f2-0d41-42ca-bea7-2951e4586898}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\PauseMenu\DebugButton">
+    <Filter Include="UI\cGameUI\PauseMenuUI\DebugButton">
       <UniqueIdentifier>{a7266df6-3504-4c09-8cf6-9da94b3fe217}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -431,7 +437,7 @@
       <Filter>UI\Button</Filter>
     </ClCompile>
     <ClCompile Include="cPauseMenu.cpp">
-      <Filter>UI\PauseMenu</Filter>
+      <Filter>UI\cGameUI\PauseMenuUI</Filter>
     </ClCompile>
     <ClCompile Include="cMainMenu.cpp">
       <Filter>UI\MainMenu</Filter>
@@ -489,6 +495,12 @@
     </ClCompile>
     <ClCompile Include="cPlayerDeathAnimation.cpp">
       <Filter>Animator\Animations\PlayerAnimations\FullBody</Filter>
+    </ClCompile>
+    <ClCompile Include="cViewUI.cpp">
+      <Filter>UI\cGameUI</Filter>
+    </ClCompile>
+    <ClCompile Include="cAmmoUI.cpp">
+      <Filter>UI\cGameUI\AmmoUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -643,7 +655,7 @@
       <Filter>UI\Button</Filter>
     </ClInclude>
     <ClInclude Include="cPauseMenu.h">
-      <Filter>UI\PauseMenu</Filter>
+      <Filter>UI\cGameUI\PauseMenuUI</Filter>
     </ClInclude>
     <ClInclude Include="cMainMenu.h">
       <Filter>UI\MainMenu</Filter>
@@ -704,6 +716,12 @@
     </ClInclude>
     <ClInclude Include="cPlayerDeathAnimation.h">
       <Filter>Animator\Animations\PlayerAnimations\FullBody</Filter>
+    </ClInclude>
+    <ClInclude Include="cViewUI.h">
+      <Filter>UI\cGameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="cAmmoUI.h">
+      <Filter>UI\cGameUI\AmmoUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

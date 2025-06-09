@@ -64,6 +64,7 @@ public:
 	// Getters
 	sf::Vector2f GetPosition() { return mPosition; }
 	cBoxCollider& GetCollider() { return mBoxCollider; }
+	float GetAmmoCount() { return mPistol.GetAmmoCount(); }
 
 	// Setters
 	void SetPosition(sf::Vector2f _Position);

@@ -19,6 +19,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPickupManager.h"
 #include "cGameStateManager.h"
 #include "cEnemyManager.h"
+#include "cViewUI.h"
 
 class cGameManager
 {
@@ -52,6 +53,8 @@ private:
 
 	// Draw tool
 	cEditorManager mEditorManager;
+
+	cViewUI mGameplayUI;
 
 
 	

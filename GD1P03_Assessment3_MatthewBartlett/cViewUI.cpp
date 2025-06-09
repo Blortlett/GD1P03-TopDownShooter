@@ -1,0 +1,31 @@
+#include "cViewUI.h"
+#include "cPlayerCharacter.h"
+
+cViewUI::cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter)
+	: mPlayerCharacter(_PlayerCharacter)
+	, mGameWindow(_GameWindow)
+	, mAmmoUI(_GameWindow)
+{
+	// Set Size
+	mUICanvas.setSize(sf::Vector2f(_GameWindow.getSize().x, _GameWindow.getSize().y));
+	// Set Position to center screen
+	mUICanvas.setCenter(sf::Vector2f(_GameWindow.getSize().x / 2.0f, _GameWindow.getSize().y / 2.0f));
+	// Init ammo UI with player ammo count
+	mAmmoUI.SetBulletCount(mPlayerCharacter.GetAmmoCount());
+}
+
+void cViewUI::Draw()
+{
+	// Set UI view
+	mGameWindow.setView(mUICanvas);
+	// Draw UI elements
+	mAmmoUI.Draw();
+}
+
+void cViewUI::Update()
+{
+	// Get ammo count from player
+	int AmmoCount = mPlayerCharacter.GetAmmoCount();
+	// Set UI Ammo count
+	mAmmoUI.SetBulletCount(AmmoCount);
+}

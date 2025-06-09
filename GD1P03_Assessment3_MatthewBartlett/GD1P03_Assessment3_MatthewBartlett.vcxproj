@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cAmmoUI.cpp" />
     <ClCompile Include="cAnimationBase.cpp" />
     <ClCompile Include="cAnimationLegsEnemyIdle.cpp" />
     <ClCompile Include="cAnimationLegsEnemyRun.cpp" />
@@ -207,10 +208,12 @@
     <ClCompile Include="cProjectileManager.cpp" />
     <ClCompile Include="cRaycaster.cpp" />
     <ClCompile Include="cSharedUtils.cpp" />
+    <ClCompile Include="cViewUI.cpp" />
     <ClCompile Include="cWallBase.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cAmmoUI.h" />
     <ClInclude Include="cAnimationBase.h" />
     <ClInclude Include="cAnimationLegsEnemyIdle.h" />
     <ClInclude Include="cAnimationLegsEnemyRun.h" />
@@ -279,6 +282,7 @@
     <ClInclude Include="cProjectileManager.h" />
     <ClInclude Include="cRaycaster.h" />
     <ClInclude Include="cSharedUtils.h" />
+    <ClInclude Include="cViewUI.h" />
     <ClInclude Include="cWallBase.h" />
     <ClInclude Include="iBehavior.h" />
     <ClInclude Include="iEntity.h" />

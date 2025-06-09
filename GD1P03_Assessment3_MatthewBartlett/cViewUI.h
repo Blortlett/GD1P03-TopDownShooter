@@ -1,15 +1,21 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "cAmmoUI.h"
+
+class cPlayerCharacter;
 
 class cViewUI
 {
 private:
-	sf::View UICanvas;
+	sf::View mUICanvas;
+	cAmmoUI mAmmoUI;
 
+	sf::RenderWindow& mGameWindow;
+	cPlayerCharacter& mPlayerCharacter;
 
 public:
-	cViewUI();
-	~cViewUI() {}
+	cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter);
 
-	void SetAmmoUIValues();
+	void Update();
+	void Draw();
 };

@@ -24,6 +24,7 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mPickupManager(mPlayerCharacter, _GameWindow)
 	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
 	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager, mPlayerCharacter)
+	, mGameplayUI(mGameWindow, mPlayerCharacter)
 {
 	mGameStateManager.TransitionToNextLevel();
 }
@@ -33,7 +34,7 @@ void cGameManager::GameTick()
 	// Get Delta seconds each while loop
 	RefreshDeltaTime();
 
-	// Update Camera // Must happen before drawing anything
+	// Set Camera View & handle Camera		// Must happen before drawing anything
 	mCameraManager.Update(mDeltaSeconds);
 
 	// Update Level
@@ -61,8 +62,9 @@ void cGameManager::GameTick()
 	// Update Pickupables
 	mPickupManager.Update(mDeltaSeconds);
 
-	// Draw Player last!! Ontop of anything else (Except debug stuff)
+	// Draw Player last!! Ontop of anything else (Except debug & UI stuff)
 	mPlayerCharacter.Draw();
+
 
 	// Debug Mode
 	CheckToggleDebugMode();
@@ -74,6 +76,10 @@ void cGameManager::GameTick()
 		mLevelManager.DebugDraw();
 	}
 
+	// Set UI View & Handle Gameplay UI
+	mGameplayUI.Update();
+	mGameplayUI.Draw();
+	
 	// Save/Load Level Detection
 	OnSaveLevel();
 	OnLoadLevel();

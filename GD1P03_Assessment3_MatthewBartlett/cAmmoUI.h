@@ -9,13 +9,13 @@ private:
 	std::vector<sf::Sprite> mBulletFullSpriteList;
 	std::vector<sf::Sprite> mBulletEmptySpriteList;
 
-	int mMaxBulletCount = 11;
-	int mActiveBulletCount;
+	int mMaxBulletCount = 12;
+	int mActiveBulletCount = 0;
 
 	// WindowRef
 	sf::RenderWindow& mGameWindow;
 public:
-	cAmmoUI(sf::RenderWindow _Window);
+	cAmmoUI(sf::RenderWindow& _Window);
 
 	void Draw();
 

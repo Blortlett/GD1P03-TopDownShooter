@@ -31,4 +31,7 @@ public:
 	sf::Vector2f GetShootTrajectory(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
 
 	void RefillAmmo();
+
+	// Getters
+	float GetAmmoCount() { return mCurrentBulletIndex; }
 };

@@ -23,7 +23,14 @@ private:
 
 public:
     cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager, cPlayerCharacter& mPlayerCharacter);
+
+    void Update(float _DeltaTime);
+
+    // Collision
     void CheckBulletCollision();
+    void CheckEnemyWallCollision();
+
+    // Level Tracking
     void TransitionToNextLevel();
     bool IsLevelComplete() const { return mLevelComplete; }
 

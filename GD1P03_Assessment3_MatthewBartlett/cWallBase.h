@@ -13,7 +13,7 @@ public:
 	~cWallBase() {}
 
 	// Check collision with player
-	void CheckCollideWithPlayer(cPlayerCharacter& character, sf::Vector2f& collisionDirection);
+	void CheckCollideWithPlayer(cCharacter& character, sf::Vector2f& collisionDirection);
 
 	// Check collide with point (used for delete wall)
 	bool CheckCollideWithPoint(sf::Vector2f point);

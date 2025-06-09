@@ -12,6 +12,13 @@ cGameStateManager::cGameStateManager(cEnemyManager& _EnemyManager, cProjectileMa
 {
 }
 
+void cGameStateManager::Update(float _DeltaTime)
+{
+    CheckBulletCollision();
+    CheckEnemyWallCollision();
+    CheckResetLevel(_DeltaTime);
+}
+
 void cGameStateManager::CheckBulletCollision() 
 {
     // Collision function will modify this
@@ -80,6 +87,29 @@ void cGameStateManager::CheckBulletCollision()
             bullet.mIsActive = false;
             // Kill Player
             mPlayerCharacter.OnBulletCollision(CollisionDirection);
+        }
+    }
+}
+
+void cGameStateManager::CheckEnemyWallCollision()
+{
+    sf::Vector2f CollisionDirection;
+
+    // Get Wall lists
+    std::vector<cFullWall*>& FullWallList = mLevelManager.GetFullWallList();
+    std::vector<cHalfWall*>& HalfWallList = mLevelManager.GetHalfWallList();
+    // Get Enemy List
+    std::vector<cEnemyCharacter*>& EnemyList = mEnemyManager.GetEnemyList();
+
+    for (cEnemyCharacter* Enemy : EnemyList)
+    {
+        // Check full wall collisions
+        for (size_t i = 0; i < FullWallList.size(); ++i) {
+            FullWallList[i]->CheckCollideWithPlayer(*Enemy, CollisionDirection);
+        }
+        // Check half wall collisions
+        for (size_t i = 0; i < HalfWallList.size(); ++i) {
+            HalfWallList[i]->CheckCollideWithPlayer(*Enemy, CollisionDirection);
         }
     }
 }

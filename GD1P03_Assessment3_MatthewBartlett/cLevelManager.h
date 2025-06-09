@@ -72,5 +72,6 @@ public:
 	// Getters
 	std::vector<cEnemySpawner*>& GetEnemySpawnerList();
 	std::vector<cFullWall*>& GetFullWallList() { return mCurrentLevel->GetFullWallColliderList(); }
+	std::vector<cHalfWall*>& GetHalfWallList() { return mCurrentLevel->GetHalfWallColliderList(); }
 	cBaseLevel* GetCurrentLevel() { return mCurrentLevel; }
 };

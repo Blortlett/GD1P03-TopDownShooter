@@ -40,7 +40,7 @@ void cGameManager::GameTick()
 	mLevelManager.Update(mDeltaSeconds);
 	mLevelManager.Draw();
 	mLevelManager.CheckPlayerWallCollisions(mPlayerCharacter);
-	mGameStateManager.CheckBulletCollision();
+	mGameStateManager.Update(mDeltaSeconds);
 
 	// Check if player has reached level exit
 	if (mLevelManager.CheckLevelExit(mPlayerCharacter))
@@ -63,8 +63,6 @@ void cGameManager::GameTick()
 
 	// Draw Player last!! Ontop of anything else (Except debug stuff)
 	mPlayerCharacter.Draw();
-
-	mGameStateManager.CheckResetLevel(mDeltaSeconds);
 
 	// Debug Mode
 	CheckToggleDebugMode();

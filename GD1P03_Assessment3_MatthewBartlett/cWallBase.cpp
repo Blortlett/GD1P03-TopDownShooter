@@ -7,7 +7,7 @@ cWallBase::cWallBase(sf::FloatRect _Bounds, sf::Color _Color)
 
 }
 
-void cWallBase::CheckCollideWithPlayer(cPlayerCharacter& character, sf::Vector2f& collisionDirection)
+void cWallBase::CheckCollideWithPlayer(cCharacter& character, sf::Vector2f& collisionDirection)
 {
 	// Check wall collision with player
 	if (mCollider.CheckCollision(character.GetCollider(), collisionDirection, 1.0f))

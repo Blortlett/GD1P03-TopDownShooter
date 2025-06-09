@@ -40,6 +40,11 @@ void cAnimationBase::RotateAnimation(sf::Angle _Rotation)
     mSprite.setRotation(_Rotation);
 }
 
+void cAnimationBase::RestartAnimation()
+{
+    mCurrentFrame = sf::Vector2u(0, 0);
+}
+
 sf::Angle cAnimationBase::GetRotation()
 {
     return mSprite.getRotation();

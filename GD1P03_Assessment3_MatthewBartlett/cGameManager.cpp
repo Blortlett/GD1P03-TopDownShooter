@@ -21,21 +21,11 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
-	, mPickupManager(_GameWindow)
+	, mPickupManager(mPlayerCharacter, _GameWindow)
 	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
 	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager, mPlayerCharacter)
 {
 	mGameStateManager.TransitionToNextLevel();
-	//// Load first level
-	//mLevelManager.LoadLevelByObject();
-	//// Setup first level enemies
-	//mEnemyManager.SetupEnemyList(mLevelManager.GetEnemySpawnerList());
-	//// Set player position to spawner position
-	//cPlayerSpawner* playerSpawner = mLevelManager.GetCurrentLevel()->GetPlayerSpawner();
-	//if (playerSpawner)
-	//{
-	//	mPlayerCharacter.SetPosition(playerSpawner->GetPosition());
-	//}
 }
 
 void cGameManager::GameTick()

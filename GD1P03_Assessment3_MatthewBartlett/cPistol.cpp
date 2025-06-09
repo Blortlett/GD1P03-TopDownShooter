@@ -61,3 +61,9 @@ sf::Vector2f cPistol::GetShootTrajectory(sf::Vector2f _FirePosition, sf::Vector2
 	cSharedUtils::NormalizeVector(ShootDirection); // normalize direction
 	return ShootDirection;
 }
+
+void cPistol::RefillAmmo()
+{
+	mCurrentBulletIndex = mAmmoMax - 1;
+	cAudioManager::GetInstance().SFXPlayPistolRack();
+}

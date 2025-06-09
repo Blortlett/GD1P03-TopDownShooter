@@ -32,5 +32,6 @@ void cPlayerAnimator::SwapToPistolIdle()
 
 void cPlayerAnimator::SwapToPlayerDeath()
 {
+    mPlayerDeathAnimation.RestartAnimation();
     mCurrentAnimation = &mPlayerDeathAnimation;
 }

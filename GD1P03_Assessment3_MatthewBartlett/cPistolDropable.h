@@ -1,12 +1,16 @@
 #pragma once
 #include "cSharedUtils.h"
 #include "cBoxCollider.h"
+#include "cDebugWidget.h"
+
+class cPlayerCharacter;
 
 class cPistolDropable
 {
 private:
 	// Collider & position
 	cBoxCollider mCollider;
+	cDebugWidget mDebugWidget;
 
 	// velocity
 	sf::Vector2f mVelocity;
@@ -23,8 +27,7 @@ public:
 	cPistolDropable(sf::Vector2f _Postion, sf::Angle _ThrowDirection, int _AmmoCount);
 	~cPistolDropable() {}
 
-	void OnCollision();
-	void OnPickup();
+	bool CheckCollisionWithPlayer(cPlayerCharacter& _Character);
 
 	void Update(float _DeltaTime);
 	void Draw(sf::RenderWindow& _GameWindow);

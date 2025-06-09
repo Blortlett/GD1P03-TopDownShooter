@@ -47,6 +47,8 @@ void cEnemyCharacter::DetectPlayer()
 			float PlayerDistance = 0.f;
 			cSharedUtils::GetInstance().Magnitude(PlayerDirection, PlayerDistance);
 
+			std::cout << "Distance to player: " << PlayerDistance << " Direction to player: x = " << PlayerDirection.x << " y = " << PlayerDirection.y << std::endl;
+
 			// If distance too far, chase player. If close, attack player.
 			if (PlayerDistance < MIN_CHASE_DISTANCE)
 			{
@@ -74,7 +76,6 @@ void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 {
 	DetectPlayer();
 	mPistol.Update(_DeltaSeconds);
-	std::cout << "IsShooting: " << mIsShooting << std::endl;
 
 	// Shoot logic
 	if (mIsShooting)
@@ -111,8 +112,10 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 		mAnimatorLegs.SwapToRun();
 	}
 	else
+	{
 		// Character idle - legs should idle too
 		mAnimatorLegs.SwapToIdle();
+	}
 
 	// Decide to shoot or not
 	UpdateWeapon(_DeltaSeconds);

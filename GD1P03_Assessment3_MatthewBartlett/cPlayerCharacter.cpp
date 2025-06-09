@@ -153,6 +153,11 @@ void cPlayerCharacter::OnBulletCollision(sf::Vector2f direction)
 	mAlive = false;
 }
 
+void cPlayerCharacter::OnPickupPistolCollision()
+{
+	mPistol.RefillAmmo();
+}
+
 void cPlayerCharacter::Update(float _DeltaSeconds)
 {
 	// Player animations

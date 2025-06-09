@@ -23,6 +23,8 @@ public:
 	void Draw(sf::RenderWindow& _RenderWindow);
 	// Rotate Animation
 	void RotateAnimation(sf::Angle _Rotation);
+	// Restart Animation
+	void RestartAnimation();
 
 	// Getters
 	sf::Angle GetRotation();

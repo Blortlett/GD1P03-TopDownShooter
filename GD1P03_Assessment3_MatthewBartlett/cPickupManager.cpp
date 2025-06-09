@@ -1,7 +1,8 @@
 #include "cPickupManager.h"
 
-cPickupManager::cPickupManager(sf::RenderWindow& _GameWindow)
+cPickupManager::cPickupManager(cPlayerCharacter& _PlayerCharacter, sf::RenderWindow& _GameWindow)
     : mGameWindow(_GameWindow)
+    , mPlayerCharacter(_PlayerCharacter)
 {
 
 }
@@ -19,6 +20,10 @@ cPickupManager::~cPickupManager()
 
 void cPickupManager::Update(float _DeltaTime)
 {
+    // Check if player picked up weapon
+    CheckPlayerPickup();
+
+    // Draw / update dropped weapon
     for (cPistolDropable* weapon : mDroppedWeaponList)
     {
         weapon->Update(_DeltaTime);
@@ -33,4 +38,17 @@ void cPickupManager::CreateNewWeaponDrop(sf::Vector2f _Postion, sf::Angle _Throw
     cPistolDropable* newWeapon = new cPistolDropable(_Postion, _ThrowDirection, _AmmoCount);
     // Add new weapon to dropped weapons list
     mDroppedWeaponList.push_back(newWeapon);
+}
+
+void cPickupManager::CheckPlayerPickup()
+{
+    for (size_t i = 0; i < mDroppedWeaponList.size(); ++i)
+    {
+        if (mDroppedWeaponList[i]->CheckCollisionWithPlayer(mPlayerCharacter))
+        {
+            delete mDroppedWeaponList[i];
+            mDroppedWeaponList.erase(mDroppedWeaponList.begin() + i);
+            return; // End it here..
+        }
+    }
 }

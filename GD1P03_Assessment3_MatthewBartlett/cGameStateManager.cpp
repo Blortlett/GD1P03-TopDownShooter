@@ -60,14 +60,6 @@ void cGameStateManager::CheckBulletCollision()
         // Skip loop iteration if bullet is not active
         if (!bullet.mIsActive) continue;
 
-        if (bullet.CheckCollisionWithPlayer(mPlayerCharacter, CollisionDirection))
-        {
-            // if bullet hit player, deactivate bullet
-            bullet.mIsActive = false;
-            // Kill Player
-            mPlayerCharacter.OnBulletCollision(CollisionDirection);
-        }
-
         // Check collision with each fullwall
         for (cFullWall* Wall : WallList)
         {
@@ -76,6 +68,18 @@ void cGameStateManager::CheckBulletCollision()
                 // Deactivate bullet if hit fullwall
                 bullet.mIsActive = false;
             }
+        }
+
+        // Don't check for player collision if player is dead
+        if (!mPlayerCharacter.mAlive) continue;
+
+        //Check Collision with player
+        if (bullet.CheckCollisionWithPlayer(mPlayerCharacter, CollisionDirection))
+        {
+            // if bullet hit player, deactivate bullet
+            bullet.mIsActive = false;
+            // Kill Player
+            mPlayerCharacter.OnBulletCollision(CollisionDirection);
         }
     }
 }
@@ -118,6 +122,8 @@ void cGameStateManager::CheckResetLevel(float _DeltaTime)
 
     // Countdown timer before level resets
     mPlayerDeathTimer -= _DeltaTime;
+
+    // -= Reset Code =-
     if (mPlayerDeathTimer <= 0.f)
     {
         // Reset the current level

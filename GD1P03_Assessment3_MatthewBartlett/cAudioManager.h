@@ -29,10 +29,12 @@ private:
 	//Buffers
 	sf::SoundBuffer mShootSFXBuffer;
 	sf::SoundBuffer mDryFireSFXBuffer;
+	sf::SoundBuffer mPistolRackSFXBuffer;
 
 	// Sounds
 	sf::Sound* mShootSound;
 	sf::Sound* mDryFireSound;
+	sf::Sound* mPistolRackSound;
 
 	// Volumes / mutes
 	float MusicVolume = 30.f;
@@ -59,6 +61,7 @@ public:
 	// Play Sound Effects functions
 	void SFXPlayShoot();
 	void SFXPlayDryFire();
+	void SFXPlayPistolRack();
 
 
 	//   -= MUSIC FUNCTIONS =-

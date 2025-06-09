@@ -78,10 +78,7 @@ bool cBullet::CheckCollisionWithPlayer(cPlayerCharacter& _Character, sf::Vector2
 	if (mCollider.CheckCollision(_Character.GetCollider(), _CollisionDirection, 0.0f))
 	{
 		// If collision, tell player object:
-		_Character.OnBulletCollision(_CollisionDirection);
-		// Reset the level somehow
-
-
+		_Character.OnPickupPistolCollision();
 		return true;
 	}
 	return false;

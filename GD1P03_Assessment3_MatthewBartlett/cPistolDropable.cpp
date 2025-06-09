@@ -1,9 +1,12 @@
 #include "cPistolDropable.h"
+#include "cPlayerCharacter.h"
+#include "cGameSettings.h"
 
 cPistolDropable::cPistolDropable(sf::Vector2f _Postion, sf::Angle _ThrowDirection, int _AmmoCount)
 	: mPistolSprite(cSharedUtils::GetInstance().mPistolTex)
 	, mCollider(sf::FloatRect(_Postion, {30, 20}))
 	, mAmmoCount(_AmmoCount)
+	, mDebugWidget(mCollider, sf::Color::Green)
 {
 	mPistolSprite.setScale(sf::Vector2f(.5f, .5f));
 
@@ -17,13 +20,19 @@ cPistolDropable::cPistolDropable(sf::Vector2f _Postion, sf::Angle _ThrowDirectio
 	);
 }
 
-void cPistolDropable::OnCollision()
+bool cPistolDropable::CheckCollisionWithPlayer(cPlayerCharacter& _Character)
 {
-}
+	// Ignorable
+	sf::Vector2f CollisionDirection;
 
-void cPistolDropable::OnPickup()
-{
-	
+	// Check bullet collision with enemy
+	if (mCollider.CheckCollision(_Character.GetCollider(), CollisionDirection, 0.0f))
+	{
+		// If collision, tell player object:
+		_Character.OnPickupPistolCollision();
+		return true;
+	}
+	return false;
 }
 
 void cPistolDropable::Update(float _DeltaTime)
@@ -39,4 +48,6 @@ void cPistolDropable::Update(float _DeltaTime)
 void cPistolDropable::Draw(sf::RenderWindow& _GameWindow)
 {
 	_GameWindow.draw(mPistolSprite);
+	if (cGameSettings::GetInstance().IsDebugActive())
+		mDebugWidget.DrawWidget(_GameWindow);
 }

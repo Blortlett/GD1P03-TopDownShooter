@@ -19,12 +19,15 @@ cAudioManager::cAudioManager()
 	// Buffers
 	mShootSFXBuffer.loadFromFile("Assets/Audio/SFX/Gun/9mm Single.wav");
 	mDryFireSFXBuffer.loadFromFile("Assets/Audio/SFX/Gun/9mm Pistol Dry Fire.wav");
+	mPistolRackSFXBuffer.loadFromFile("Assets/Audio/SFX/Gun/9mm Pistol Rack Full.wav");
 	// Sounds
 	mShootSound = new sf::Sound(mShootSFXBuffer);
 	mDryFireSound = new sf::Sound(mDryFireSFXBuffer);
+	mPistolRackSound = new sf::Sound(mPistolRackSFXBuffer);
 	// SFX Volume
 	mShootSound->setVolume(60.f);
-	mDryFireSound->setVolume(60.f);
+	mDryFireSound->setVolume(80.f);
+	mPistolRackSound->setVolume(80.f);
 
 
 	// -= Music =-
@@ -40,6 +43,7 @@ cAudioManager::~cAudioManager()
 {
 	delete mShootSound;
 	delete mDryFireSound;
+	delete mPistolRackSound;
 }
 
 void cAudioManager::SFXPlayShoot()
@@ -50,6 +54,11 @@ void cAudioManager::SFXPlayShoot()
 void cAudioManager::SFXPlayDryFire()
 {
 	mDryFireSound->play();
+}
+
+void cAudioManager::SFXPlayPistolRack()
+{
+	mPistolRackSound->play();
 }
 
 void cAudioManager::PlayMenuMusic()

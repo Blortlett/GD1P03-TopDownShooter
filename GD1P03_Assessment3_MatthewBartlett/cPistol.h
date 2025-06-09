@@ -29,4 +29,6 @@ public:
 	// Fire weapon function
 	void FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
 	sf::Vector2f GetShootTrajectory(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
+
+	void RefillAmmo();
 };

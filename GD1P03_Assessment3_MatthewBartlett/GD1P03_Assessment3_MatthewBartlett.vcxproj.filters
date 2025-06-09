@@ -278,6 +278,18 @@
     <Filter Include="Animator\Animations\PlayerAnimations\FullBody">
       <UniqueIdentifier>{443533dc-f7b4-40a9-820a-5c3696562270}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI\PauseMenu\MainMenuButton">
+      <UniqueIdentifier>{97d0dcfd-7ae5-48db-8f95-b1f0edfd3cd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\PauseMenu\ResumeButton">
+      <UniqueIdentifier>{17605d70-19f2-47e8-879d-92ba23e1b2b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\PauseMenu\OptionsButton">
+      <UniqueIdentifier>{72f684f2-0d41-42ca-bea7-2951e4586898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\PauseMenu\DebugButton">
+      <UniqueIdentifier>{a7266df6-3504-4c09-8cf6-9da94b3fe217}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

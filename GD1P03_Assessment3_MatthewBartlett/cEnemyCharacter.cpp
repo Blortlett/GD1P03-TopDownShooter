@@ -40,6 +40,7 @@ void cEnemyCharacter::DetectPlayer()
 		// Raycast to player
 		if (mRaycaster.Cast(mPosition, AngleToPlayer))
 		{
+			// Player hit by ray
 			// Direction to player
 			sf::Vector2f PlayerDirection = mPlayerReference.GetPosition() - mPosition;
 
@@ -47,34 +48,41 @@ void cEnemyCharacter::DetectPlayer()
 			float PlayerDistance = 0.f;
 			cSharedUtils::GetInstance().Magnitude(PlayerDirection, PlayerDistance);
 
-			std::cout << "Distance to player: " << PlayerDistance << " Direction to player: x = " << PlayerDirection.x << " y = " << PlayerDirection.y << std::endl;
-
 			// If distance too far, chase player. If close, attack player.
 			if (PlayerDistance < MIN_CHASE_DISTANCE)
 			{
 				mBehaviorAttack.UpdateInformation(PlayerDirection);
 				mCurrentBehavior = &mBehaviorAttack;
 				mIsShooting = true;
+				mIsPlayerDetected = true;
+				mHasAgro = true;
 			}
 			else
 			{
 				mBehaviorChase.UpdateInformation(PlayerDirection);
 				mCurrentBehavior = &mBehaviorChase;
 				mIsShooting = false;
+				mIsPlayerDetected = true;
+				mHasAgro = true;
 			}
 		}
 		else
 		{
-			mIsShooting = false;
 			// Player not detected
-			// if I have time I will allow the enemy to go back to spawn and patrol again
+			mIsShooting = false;
+			
 		}
+	}
+	else
+	{
+		// Player not in aim cone
+		mIsShooting = false;
+		mIsPlayerDetected = false;
 	}
 }
 
 void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 {
-	DetectPlayer();
 	mPistol.Update(_DeltaSeconds);
 
 	// Shoot logic
@@ -117,8 +125,29 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 		mAnimatorLegs.SwapToIdle();
 	}
 
+	// Raycast viewcone // Character sees
+	DetectPlayer();
+	// HandleAgro
+	HandleAgro(_DeltaSeconds);
 	// Decide to shoot or not
 	UpdateWeapon(_DeltaSeconds);
+}
+
+void cEnemyCharacter::HandleAgro(float _DeltaTime)
+{
+	// Enemy lost sight of player, tick down how long he will wait around
+	if (mHasAgro && !mIsPlayerDetected)
+		mReturnToSpawnTimer -= _DeltaTime;
+	// enemy has agro and sees player, reset his goldfish brain
+	else if (mHasAgro && mIsPlayerDetected)
+		mReturnToSpawnTimer = mReturnToSpawnTimerMax;
+	// Player has lost sight of player for too long, forgets about them
+	if (mHasAgro && !mIsPlayerDetected && mReturnToSpawnTimer < 0.f)
+	{
+		mCurrentBehavior = &mBehaviorReturnToSpawn;
+		mReturnToSpawnTimer = mReturnToSpawnTimerMax;
+	}
+
 }
 
 void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)

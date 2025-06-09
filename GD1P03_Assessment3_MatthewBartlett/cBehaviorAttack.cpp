@@ -3,6 +3,7 @@
 
 cBehaviorAttack::cBehaviorAttack()
 {
+
 }
 
 void cBehaviorAttack::GetMovementDirection(sf::Vector2f& _MovementDirection, bool& _IsEnemyWaiting, float _DeltaSeconds)
@@ -12,5 +13,5 @@ void cBehaviorAttack::GetMovementDirection(sf::Vector2f& _MovementDirection, boo
 	_MovementDirection = mDirectionToPlayer;
 
 	// Enemy should not move
-	_IsEnemyWaiting = true;
+	//_IsEnemyWaiting = true;
 }

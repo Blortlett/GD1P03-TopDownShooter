@@ -18,12 +18,12 @@ class cEnemyCharacter : public cCharacter
 private:
 	// Enemy view cone
 	const float CONE_HALF_ANGLE = 1.5708f; // 90 degree
-	const float MIN_CHASE_DISTANCE = 75.f;
+	const float MIN_CHASE_DISTANCE = 150.f;
 
 	// Enemy movement vars
 	bool mIsEnemyWaiting = false;
 	sf::Vector2f mEnemyMovementNormalized = { 1.f, 0.f };
-	
+
 	// Behavior states
 	iBehavior* mCurrentBehavior;
 	cBehaviorPatrol mBehaviorPatrol;
@@ -31,15 +31,9 @@ private:
 	cBehaviorChase mBehaviorChase;
 	cBehaviorReturnToSpawn mBehaviorReturnToSpawn;
 
-	// Detect player code
-	bool IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad);
-	void DetectPlayer();
-
-	// Calculate if enemy should fire weapon here
-	void UpdateWeapon(float _DeltaSeconds) override;
-
 	// Enemy Raycaster
 	cRaycaster mRaycaster;
+
 	// Enemy Animator
 	cEnemyAnimator mAnimator;
 	cEnemyAnimatorLegs mAnimatorLegs;
@@ -50,12 +44,29 @@ private:
 	// Reference to player object
 	cPlayerCharacter& mPlayerReference;
 
+	// Is the enemy agro to player?
+	bool mHasAgro = false;
+	bool mIsPlayerDetected = false;
+
+	// Time Enemy will wait before return behavior after no enemy detection
+	float const mReturnToSpawnTimerMax = 4.f;
+	float mReturnToSpawnTimer;
+
+	// Detect player code
+	bool IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad);
+	void DetectPlayer();
+
+	// Calculate if enemy should fire weapon here
+	void UpdateWeapon(float _DeltaSeconds) override;
+
 public:
 	cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, cPickupManager& _PickupManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter);
 	~cEnemyCharacter() {}
 
 	// Update
 	void Update(float _DeltaSeconds) override;
+
+	void HandleAgro(float _DeltaTime);
 
 	// Enemy hit by bullet
 	void OnBulletCollision(sf::Vector2f _CollisionDirection);

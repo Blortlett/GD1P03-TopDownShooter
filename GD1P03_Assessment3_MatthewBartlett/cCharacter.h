@@ -16,7 +16,6 @@ protected:
 	sf::Vector2f mPosition;
 	sf::Vector2f mVelocity;
 
-
 	// Rotate Function
 	void Rotate(sf::Vector2f _FaceTowards);
 	void Rotate(sf::Angle _FaceTowards);

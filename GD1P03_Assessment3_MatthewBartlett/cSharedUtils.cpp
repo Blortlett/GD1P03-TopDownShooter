@@ -4,6 +4,17 @@
 cSharedUtils::cSharedUtils()
 {
 	// -= Load Textures =-
+	// Load UI Icon Full Bullet
+	if (!mUIBulletFullTex.loadFromFile("Assets/SpritePack/Projectiles/ammo-pistol-Icon-Loaded.png"))
+	{
+		std::cout << "Failed to load ammo-pistol-Icon-Loaded.png";
+	}
+	// Load UI Icon empty bullet
+	if (!mUIBulletEmptyTex.loadFromFile("Assets/SpritePack/Projectiles/ammo-pistol-Icon-Empty.png"))
+	{
+		std::cout << "Failed to load ammo-pistol-Icon-Empty.png";
+	}
+
 	// Load projectile texture
 	if (!mBulletTex.loadFromFile("Assets/SpritePack/Projectiles/bullet.png"))
 	{

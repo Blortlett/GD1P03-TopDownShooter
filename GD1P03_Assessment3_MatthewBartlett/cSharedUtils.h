@@ -13,11 +13,17 @@ private:
 
 public:
 	// -= Textures =-
+	// UI
+	sf::Texture mUIBulletFullTex;
+	sf::Texture mUIBulletEmptyTex;
+
 	// Weapons
 	sf::Texture mBulletTex;
 	sf::Texture mPistolTex;
+
 	// Doors
 	sf::Texture mExitDoorTex;
+
 	// Menu Background
 	sf::Texture mStarBackground;
 

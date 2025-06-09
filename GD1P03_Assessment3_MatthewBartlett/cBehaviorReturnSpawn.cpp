@@ -13,9 +13,9 @@ void cBehaviorReturnToSpawn::UpdateInformation(sf::Vector2f _CurrentPosition)
 
 void cBehaviorReturnToSpawn::GetMovementDirection(sf::Vector2f& _MovementDirection, bool& _IsEnemyWaiting, float _DeltaSeconds)
 {
-	// Get Direction
+	// Get Direction to spawn
 	sf::Vector2f vectorToMove = mSpawnPosition - mCurrentPosition;
-	// Normalize Direction
+	// Normalize Direction to spawn
 	cSharedUtils::GetInstance().NormalizeVector(vectorToMove);
 
 	// Return Values

@@ -97,6 +97,7 @@ void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 
 void cEnemyCharacter::Update(float _DeltaSeconds)
 {
+	std::cout << "Enemy Rotation: " << mAnimator.GetRotation().asRadians() << std::endl;
 	// Animate
 	mAnimatorLegs.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
 	mAnimator.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
@@ -181,6 +182,7 @@ void cEnemyCharacter::RespawnEnemy()
 	mAlive = true;
 	mAnimator.SwapToEnemyIdle();
 	mCurrentBehavior = &mBehaviorPatrol;
+	mEnemyMovementNormalized = sf::Vector2f(1.f, 0.f);
 }
 
 void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)

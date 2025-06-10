@@ -33,7 +33,6 @@ void cPickupManager::Update(float _DeltaTime)
 
 void cPickupManager::CreateNewWeaponDrop(sf::Vector2f _Postion, sf::Angle _ThrowDirection, int _AmmoCount)
 {
-    std::cout << "Creating Pistol Drop" << std::endl;
     // Create new weapon
     cPistolDropable* newWeapon = new cPistolDropable(_Postion, _ThrowDirection, _AmmoCount);
     // Add new weapon to dropped weapons list

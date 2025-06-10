@@ -33,7 +33,7 @@ cInfiniteAmmo::cInfiniteAmmo(sf::Vector2f position, sf::Vector2f size, cDebugMen
 void cInfiniteAmmo::OnButtonClick()
 {
 	// Toggle Infinite Ammo
-
+	cGameSettings::GetInstance().mIsInfiniteAmmoActive = !cGameSettings::GetInstance().mIsInfiniteAmmoActive;
 }
 
 void cInfiniteAmmo::Draw(sf::RenderWindow& window)
@@ -62,7 +62,7 @@ cGodMode::cGodMode(sf::Vector2f position, sf::Vector2f size, cDebugMenuUI& _Debu
 void cGodMode::OnButtonClick()
 {
 	// Enable GodMode
-
+	cGameSettings::GetInstance().mIsGodModeActive = !cGameSettings::GetInstance().mIsGodModeActive;
 }
 
 void cGodMode::Draw(sf::RenderWindow& window)

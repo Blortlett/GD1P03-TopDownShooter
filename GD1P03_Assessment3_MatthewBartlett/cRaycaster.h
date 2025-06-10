@@ -11,7 +11,7 @@ private:
 	//sf::Vector2f mOrigin;
 	//sf::Vector2f mDirection;
 	float const mCastDistance = 250.f;
-	float mCastIncremement = 10.f;
+	float mCastIncremement = 5.f;
 	float mCurrentCastDist = 0.f;
 	sf::RectangleShape mDebugLine;
 

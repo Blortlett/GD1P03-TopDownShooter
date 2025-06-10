@@ -149,6 +149,7 @@ void cPlayerCharacter::OnCollision(sf::Vector2f direction)
 
 void cPlayerCharacter::OnBulletCollision(sf::Vector2f direction)
 {
+	if (cGameSettings::GetInstance().mIsGodModeActive) return;
 	mPlayerUpperBodyAnimator.SwapToPlayerDeath();
 	mAlive = false;
 }

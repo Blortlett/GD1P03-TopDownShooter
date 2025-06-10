@@ -26,15 +26,20 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 
 bool cEnemyCharacter::IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad)
 {
-	// Normalize angles
-	float angleToPlayerRad = cSharedUtils::GetInstance().NormalizeAngle(_AngleToPlayer.asRadians());
-	float enemyAngleRad = cSharedUtils::GetInstance().NormalizeAngle(_EnemyAngleRad.asRadians());
+	// Normalize both angles to [0, 2pi]
+	float playerAngle = cSharedUtils::GetInstance().NormalizeAngle(_AngleToPlayer.asRadians());
+	float enemyAngle = cSharedUtils::GetInstance().NormalizeAngle(_EnemyAngleRad.asRadians());
 
-	// Get the shortest angle difference
-	float angleDiff = cSharedUtils::GetInstance().ShortestAngleDiff(angleToPlayerRad, enemyAngleRad);
+	// Calculate the relative angle from enemy's facing direction to player
+	float relativeAngle = playerAngle - enemyAngle;
 
-	// Check if the absolute difference is within the cone
-	return std::abs(angleDiff) <= CONE_HALF_ANGLE;
+	// Normalize the relative angle to [-pi, pi]
+	const float PI = 3.14159265359f;
+	while (relativeAngle > PI) relativeAngle -= 2.0f * PI;
+	while (relativeAngle < -PI) relativeAngle += 2.0f * PI;
+
+	// Check if the relative angle is within the cone
+	return std::abs(relativeAngle) <= CONE_HALF_ANGLE;
 }
 
 void cEnemyCharacter::DetectPlayer()
@@ -57,6 +62,7 @@ void cEnemyCharacter::DetectPlayer()
 	{
 		// Debug Draw Raycast line
 		mRaycaster.DebugDraw(mRenderWindow);
+		std::cout << "Player Position: " << mPlayerReference.GetPosition().x << ", " << mPlayerReference.GetPosition().y << std::endl;
 
 		// Raycast to player
 		if (mRaycaster.Cast(mPosition, AngleToPlayer))
@@ -68,6 +74,8 @@ void cEnemyCharacter::DetectPlayer()
 			// Get Distance to player
 			float PlayerDistance = 0.f;
 			cSharedUtils::GetInstance().Magnitude(PlayerDirection, PlayerDistance);
+
+
 
 			// If distance too far, chase player. If close, attack player.
 			if (PlayerDistance < MIN_CHASE_DISTANCE)

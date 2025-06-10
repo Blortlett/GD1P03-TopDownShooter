@@ -1,6 +1,7 @@
 #include "cPistol.h"
 #include "cProjectileManager.h"
 #include "cAudioManager.h"
+#include "cGameSettings.h"
 
 cPistol::cPistol(bool _IsPlayerWeapon, cProjectileManager& _ProjectileManager)
 	: mProjectileManager(_ProjectileManager)
@@ -44,7 +45,8 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 	}
 
 	// Set variables to just fired mode
-	mCurrentBulletIndex--;
+	if (!cGameSettings::GetInstance().mIsInfiniteAmmoActive)
+		mCurrentBulletIndex--;
 	mCanShoot = false;
 	if (mIsPlayerWeapon)
 		mCooldownTimer = mPlayerShootCooldownMax;

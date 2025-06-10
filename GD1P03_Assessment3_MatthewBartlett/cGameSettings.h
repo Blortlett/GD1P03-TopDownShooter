@@ -25,6 +25,7 @@ private:
 	// Debug Mode
 	bool mIsDebugModeActive = false;
 
+
 public:
 	// -= Main Menu / Gameplay State=-
 	// Get / Set game state (Main menu or Gameplay)
@@ -76,6 +77,9 @@ public:
 	bool GetIsDebugMenuOpen() { return mIsDebugMenuOpen; }
 	// Open/Close Debug menu
 	void ToggleDebugMenu(bool _Toggle) { mIsDebugMenuOpen = _Toggle; }
+	// Debug Vars
+	bool mIsGodModeActive = false;
+	bool mIsInfiniteAmmoActive = false;
 
 
 

@@ -10,6 +10,7 @@ public:
 	~cEnemyAnimator() {}
 
 	// Swap animation functions
+	void SwapToEnemyIdle();
 	void SwapToEnemyDeath();
 private:
 	// Animations

@@ -185,9 +185,6 @@
     <Filter Include="Character\Enemy\Types\Gunman">
       <UniqueIdentifier>{8dadc732-f063-4d5a-b79b-8bc55cf7a3ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Character\Enemy\Types\Monster">
-      <UniqueIdentifier>{4dab4122-7414-43fc-a90b-3cad2ee56079}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Character\Enemy\Behaviors">
       <UniqueIdentifier>{b2705e56-c640-4986-8ba4-7c3642315736}</UniqueIdentifier>
     </Filter>

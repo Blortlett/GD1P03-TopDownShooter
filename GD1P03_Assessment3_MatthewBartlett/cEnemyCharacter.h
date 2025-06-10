@@ -48,9 +48,13 @@ private:
 	bool mHasAgro = false;
 	bool mIsPlayerDetected = false;
 
-	// Time Enemy will wait before return behavior after no enemy detection
-	float const mReturnToSpawnTimerMax = 4.f;
-	float mReturnToSpawnTimer;
+	// Time Enemy will wait before swap to returnToSpawn behavior after no enemy detection
+	float const mChaseNoAgroTimerMax = 4.f;
+	float mChaseNoAgroTimer;
+
+	// Time Enemy will spend returning to spawn
+	float const mReturnToSpawnTimerMax = 5.f;
+	float mReturnToSpawnTimer = mReturnToSpawnTimerMax;
 
 	// Detect player code
 	bool IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad);
@@ -66,7 +70,12 @@ public:
 	// Update
 	void Update(float _DeltaSeconds) override;
 
+	// Enemy helpers
 	void HandleAgro(float _DeltaTime);
+	void HandleReturnToSpawn(float _DeltaTime);
+
+	// Respawn logic
+	void RespawnEnemy();
 
 	// Enemy hit by bullet
 	void OnBulletCollision(sf::Vector2f _CollisionDirection);

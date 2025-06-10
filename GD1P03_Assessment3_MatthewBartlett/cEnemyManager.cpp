@@ -62,5 +62,6 @@ void cEnemyManager::RespawnEnemies()
 	for (cEnemyCharacter* Enemy : mEnemyList)
 	{
 		Enemy->RespawnCharacter();
+		Enemy->RespawnEnemy();
 	}
 }

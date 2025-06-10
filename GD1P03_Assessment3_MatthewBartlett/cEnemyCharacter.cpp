@@ -129,6 +129,8 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 	DetectPlayer();
 	// HandleAgro
 	HandleAgro(_DeltaSeconds);
+	// Returning to spawn helper
+	HandleReturnToSpawn(_DeltaSeconds);
 	// Decide to shoot or not
 	UpdateWeapon(_DeltaSeconds);
 }
@@ -137,17 +139,48 @@ void cEnemyCharacter::HandleAgro(float _DeltaTime)
 {
 	// Enemy lost sight of player, tick down how long he will wait around
 	if (mHasAgro && !mIsPlayerDetected)
-		mReturnToSpawnTimer -= _DeltaTime;
+		mChaseNoAgroTimer -= _DeltaTime;
 	// enemy has agro and sees player, reset his goldfish brain
 	else if (mHasAgro && mIsPlayerDetected)
-		mReturnToSpawnTimer = mReturnToSpawnTimerMax;
-	// Player has lost sight of player for too long, forgets about them
-	if (mHasAgro && !mIsPlayerDetected && mReturnToSpawnTimer < 0.f)
+		mChaseNoAgroTimer = mChaseNoAgroTimerMax;
+	// Enemy has lost sight of player for too long, forgets about them
+	if (mHasAgro && !mIsPlayerDetected && mChaseNoAgroTimer < 0.f)
 	{
 		mCurrentBehavior = &mBehaviorReturnToSpawn;
+		mChaseNoAgroTimer = mChaseNoAgroTimerMax;
+		mHasAgro = false;
+	}
+}
+
+void cEnemyCharacter::HandleReturnToSpawn(float _DeltaTime)
+{
+	// No need to execute function if not returning to spawn
+	if (mCurrentBehavior != &mBehaviorReturnToSpawn) return;
+
+	// Update ReturnToSpawn Behavior information
+	mBehaviorReturnToSpawn.UpdateInformation(mPosition);
+
+	// Tick timer down
+	mReturnToSpawnTimer -= _DeltaTime;
+
+	// If enemy made it back to spawn, swap to patrol state
+	if (mPosition.x < mSpawnPoint.x + 5.f && mPosition.x > mSpawnPoint.x - 5.f)
+		if (mPosition.y < mSpawnPoint.y + 5.f && mPosition.y > mSpawnPoint.y - 5.f)
+			mCurrentBehavior = &mBehaviorPatrol;
+
+	// Timer allows enemy to return to patrol state if it can't make it back to spawn on its own
+	if (mReturnToSpawnTimer <= 0.f)
+	{
+		mCurrentBehavior = &mBehaviorPatrol;
 		mReturnToSpawnTimer = mReturnToSpawnTimerMax;
 	}
+}
 
+void cEnemyCharacter::RespawnEnemy()
+{
+	mAlive = true;
+	mAnimator.SwapToEnemyIdle();
+	mCurrentBehavior = &mBehaviorPatrol;
 }
 
 void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)

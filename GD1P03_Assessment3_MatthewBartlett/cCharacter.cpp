@@ -54,6 +54,8 @@ void cCharacter::Move(sf::Vector2f _NormalizedDirection, float _DeltaSeconds)
 void cCharacter::RespawnCharacter()
 {
 	mBoxCollider.MoveColliderPosition(mSpawnPoint);
+	mPosition = mSpawnPoint;
+	mAlive = true;
 }
 
 void cCharacter::OnCollision(sf::Vector2f direction)

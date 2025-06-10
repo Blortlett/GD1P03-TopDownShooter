@@ -6,6 +6,8 @@ cBehaviorPatrol::cBehaviorPatrol()
 
 void cBehaviorPatrol::GetMovementDirection(sf::Vector2f& _MovementDirection, bool& _IsEnemyWaiting, float _DeltaSeconds)
 {
+	//std::cout << "Behavior Patrol Active" << std::endl;
+
 	// Countdown timer
 	mPatrolTimer -= _DeltaSeconds;
 	// On Timer loop
@@ -13,7 +15,7 @@ void cBehaviorPatrol::GetMovementDirection(sf::Vector2f& _MovementDirection, boo
 	{
 		if (_IsEnemyWaiting)
 		{ // Wait timer expired, change directions
-			_MovementDirection.x *= -1;
+			_MovementDirection *= -1.f;
 			// Set enemy to patrolling
 			_IsEnemyWaiting = false;
 			// Reset timer

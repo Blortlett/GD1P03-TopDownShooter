@@ -19,6 +19,10 @@ private:
 	// Enemy view cone
 	const float CONE_HALF_ANGLE = 1.5708f; // 90 degree
 	const float MIN_CHASE_DISTANCE = 150.f;
+	// -= CONE DEBUG SHAPES =-
+	sf::RectangleShape mDebugConeLeft;
+	sf::RectangleShape mDebugConeRight;
+	// -= CONE DEBUG SHAPES =-
 
 	// Enemy movement vars
 	bool mIsEnemyWaiting = false;

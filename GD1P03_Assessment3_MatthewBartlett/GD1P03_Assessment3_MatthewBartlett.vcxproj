@@ -183,7 +183,6 @@
     <ClCompile Include="cFileInterface.cpp" />
     <ClCompile Include="cFullWallDrawTool.cpp" />
     <ClCompile Include="cGameManager.cpp" />
-    <ClCompile Include="cGameSettings.cpp" />
     <ClCompile Include="cGameStateManager.cpp" />
     <ClCompile Include="cHalfWallDrawTool.cpp" />
     <ClCompile Include="cLevel1.cpp" />
@@ -211,6 +210,7 @@
     <ClCompile Include="cViewUI.cpp" />
     <ClCompile Include="cWallBase.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PauseMenuButtons.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAmmoUI.h" />
@@ -286,6 +286,7 @@
     <ClInclude Include="cWallBase.h" />
     <ClInclude Include="iBehavior.h" />
     <ClInclude Include="iEntity.h" />
+    <ClInclude Include="PauseMenuButtons.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

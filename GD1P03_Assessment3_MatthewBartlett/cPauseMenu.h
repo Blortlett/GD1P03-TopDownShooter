@@ -10,24 +10,29 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
-#include "cApplicationManager.h"
-//#include "cResumeButton.h"
-//#include "cReturnToMainMenu.h"
+#include "PauseMenuButtons.h"
 
 class cPauseMenu
 {
 private:
+	float mMidScreenPosX = 960.f;
+	float mMidScreenPosY = 540.f;
+
 	// Menu stuff
 	sf::RenderWindow& mWindow;
 	sf::Text mMenuTitleText;
 	sf::RectangleShape mMenuBackground;
+
 	// Menu Buttons
-	/*cResumeButton mResumeButton;
-	cReturnToMainMenu mMainMenuButton;*/
+	cResumeButton mResumeButton;
+	cOptionsButton mOptionsButton;
+	cQuitGameButton mQuitGameButton;
+	cDebugMenuButton mDebugMenuButton;
+
+	bool mPauseButtonPressed = false;
 
 public:
 	cPauseMenu(sf::RenderWindow& window);
-	~cPauseMenu();
 
 	bool mIsActive = false;
 	void Update();

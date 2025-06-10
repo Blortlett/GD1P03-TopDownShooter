@@ -1,10 +1,12 @@
 #include "cViewUI.h"
 #include "cPlayerCharacter.h"
+#include "cGameSettings.h"
 
 cViewUI::cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter)
 	: mPlayerCharacter(_PlayerCharacter)
 	, mGameWindow(_GameWindow)
 	, mAmmoUI(_GameWindow)
+	, mPauseMenuUI(_GameWindow)
 {
 	// Set Size
 	mUICanvas.setSize(sf::Vector2f(_GameWindow.getSize().x, _GameWindow.getSize().y));
@@ -20,6 +22,8 @@ void cViewUI::Draw()
 	mGameWindow.setView(mUICanvas);
 	// Draw UI elements
 	mAmmoUI.Draw();
+	// Update & Draw pause menu UI
+	mPauseMenuUI.Update();
 }
 
 void cViewUI::Update()

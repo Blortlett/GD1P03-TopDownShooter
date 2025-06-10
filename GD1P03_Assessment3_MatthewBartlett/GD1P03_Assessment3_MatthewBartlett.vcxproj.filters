@@ -284,17 +284,14 @@
     <Filter Include="UI\cGameUI\PauseMenuUI">
       <UniqueIdentifier>{a5f395d9-cac7-4fc6-87a9-a6dd688b7634}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\cGameUI\PauseMenuUI\ResumeButton">
-      <UniqueIdentifier>{17605d70-19f2-47e8-879d-92ba23e1b2b8}</UniqueIdentifier>
+    <Filter Include="UI\cGameUI\PauseMenuUI\PauseMenuButtons">
+      <UniqueIdentifier>{d9b3c4d8-2cad-425e-8562-5d332ad92af8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\cGameUI\PauseMenuUI\MainMenuButton">
-      <UniqueIdentifier>{97d0dcfd-7ae5-48db-8f95-b1f0edfd3cd0}</UniqueIdentifier>
+    <Filter Include="UI\MainMenu\Buttons\ExitButton">
+      <UniqueIdentifier>{b8cf3f2e-5f57-430d-b201-a480f1fcf936}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\cGameUI\PauseMenuUI\OptionsButton">
-      <UniqueIdentifier>{72f684f2-0d41-42ca-bea7-2951e4586898}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UI\cGameUI\PauseMenuUI\DebugButton">
-      <UniqueIdentifier>{a7266df6-3504-4c09-8cf6-9da94b3fe217}</UniqueIdentifier>
+    <Filter Include="UI\MainMenu\Buttons\PlayButton">
+      <UniqueIdentifier>{536ada2d-c84d-484e-b131-a4a8fb6c5f7a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -373,9 +370,6 @@
     <ClCompile Include="cEnemyIdleAnimation.cpp">
       <Filter>Animator\Animations\EnemyAnimations\UpperBody\Idle</Filter>
     </ClCompile>
-    <ClCompile Include="cGameSettings.cpp">
-      <Filter>GameSystems\GameSettings</Filter>
-    </ClCompile>
     <ClCompile Include="cEnemyManager.cpp">
       <Filter>GameSystems\EnemyManager</Filter>
     </ClCompile>
@@ -442,12 +436,6 @@
     <ClCompile Include="cMainMenu.cpp">
       <Filter>UI\MainMenu</Filter>
     </ClCompile>
-    <ClCompile Include="cPlayButton.cpp">
-      <Filter>UI\MainMenu\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="cExitButton.cpp">
-      <Filter>UI\MainMenu\Buttons</Filter>
-    </ClCompile>
     <ClCompile Include="cBehaviorPatrol.cpp">
       <Filter>Character\Enemy\Behaviors\Patrol</Filter>
     </ClCompile>
@@ -501,6 +489,15 @@
     </ClCompile>
     <ClCompile Include="cAmmoUI.cpp">
       <Filter>UI\cGameUI\AmmoUI</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayButton.cpp">
+      <Filter>UI\MainMenu\Buttons\PlayButton</Filter>
+    </ClCompile>
+    <ClCompile Include="cExitButton.cpp">
+      <Filter>UI\MainMenu\Buttons\ExitButton</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenuButtons.cpp">
+      <Filter>UI\cGameUI\PauseMenuUI\PauseMenuButtons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -660,12 +657,6 @@
     <ClInclude Include="cMainMenu.h">
       <Filter>UI\MainMenu</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayButton.h">
-      <Filter>UI\MainMenu\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="cExitButton.h">
-      <Filter>UI\MainMenu\Buttons</Filter>
-    </ClInclude>
     <ClInclude Include="cBehaviorPatrol.h">
       <Filter>Character\Enemy\Behaviors\Patrol</Filter>
     </ClInclude>
@@ -722,6 +713,15 @@
     </ClInclude>
     <ClInclude Include="cAmmoUI.h">
       <Filter>UI\cGameUI\AmmoUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenuButtons.h">
+      <Filter>UI\cGameUI\PauseMenuUI\PauseMenuButtons</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayButton.h">
+      <Filter>UI\MainMenu\Buttons\PlayButton</Filter>
+    </ClInclude>
+    <ClInclude Include="cExitButton.h">
+      <Filter>UI\MainMenu\Buttons\ExitButton</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

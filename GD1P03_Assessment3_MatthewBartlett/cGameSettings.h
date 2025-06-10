@@ -6,13 +6,21 @@ private:
 	cGameSettings() {}
 	~cGameSettings() {}
 
+	bool mIsGamePaused = false;
 	bool mIsDebugModeActive = false;
 
 public:
 
-	// Get Is Debug Active
+	// Get/Set Is Debug Active
 	bool IsDebugActive() { return mIsDebugModeActive; }
 	void ToggleDebugMode() { mIsDebugModeActive = !mIsDebugModeActive; }
+
+	// Get paused state
+	bool GetIsGamePaused() { return mIsGamePaused; }
+	// Toggle pause
+	void ToggleGamePaused() { mIsGamePaused = !mIsGamePaused; }
+	// Specifically set pause
+	void ToggleGamePaused(bool _Toggle) { mIsGamePaused = _Toggle; }
 
 
 

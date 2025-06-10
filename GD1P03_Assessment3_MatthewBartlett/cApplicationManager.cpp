@@ -24,9 +24,6 @@ void cApplicationManager::Run()
         {
             if (event->is<sf::Event::Closed>())
                 mGameWindow.close();
-            // Press Escape to exit fullscreen
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
-                mGameWindow.close();
         }
 
         mGameWindow.clear();

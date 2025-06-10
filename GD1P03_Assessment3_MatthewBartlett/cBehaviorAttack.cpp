@@ -15,5 +15,5 @@ void cBehaviorAttack::GetMovementDirection(sf::Vector2f& _MovementDirection, boo
 	_MovementDirection = mDirectionToPlayer;
 
 	// Enemy should not move
-	_IsEnemyWaiting = false;
+	_IsEnemyWaiting = true;
 }

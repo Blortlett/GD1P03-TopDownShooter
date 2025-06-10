@@ -12,16 +12,6 @@ cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _Pr
 	mCharacterAnimator = &mAnimator;
 	mCharacterAnimatorBottom = &mAnimatorLegs;
 	mCurrentBehavior = &mBehaviorPatrol;
-
-	// -= CONE DEBUG SHAPES =-
-	mDebugConeLeft.setFillColor(sf::Color(255, 0, 0, 50));  // Semi-transparent red
-	mDebugConeLeft.setSize({ 200.f, 2.f });
-	mDebugConeLeft.setOrigin({ 0.f, 1.f });
-
-	mDebugConeRight.setFillColor(sf::Color(255, 0, 0, 50));
-	mDebugConeRight.setSize({ 200.f, 2.f });
-	mDebugConeRight.setOrigin({ 0.f, 1.f });
-	// -= CONE DEBUG SHAPES =-
 }
 
 bool cEnemyCharacter::IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyAngleRad)
@@ -47,22 +37,11 @@ void cEnemyCharacter::DetectPlayer()
 	// Get angle from enemy position to player position
 	sf::Angle AngleToPlayer = cSharedUtils::GetInstance().GetLookTowardsAngle(mPosition, mPlayerReference.GetPosition());
 
-	// -= CONE DEBUG SHAPES =-
-	sf::Angle enemyAngle = mAnimator.GetRotation();
-	mDebugConeLeft.setPosition(mPosition);
-	mDebugConeLeft.setRotation(enemyAngle - sf::radians(CONE_HALF_ANGLE));
-	mRenderWindow.draw(mDebugConeLeft);
-
-	mDebugConeRight.setPosition(mPosition);
-	mDebugConeRight.setRotation(enemyAngle + sf::radians(CONE_HALF_ANGLE));
-	mRenderWindow.draw(mDebugConeRight);
-	// -= CONE DEBUG SHAPES =-
-
 	if (IsPlayerInCone(AngleToPlayer, mAnimator.GetRotation()))
 	{
 		// Debug Draw Raycast line
-		mRaycaster.DebugDraw(mRenderWindow);
-		//std::cout << "Player Position: " << mPlayerReference.GetPosition().x << ", " << mPlayerReference.GetPosition().y << std::endl;
+		if (cGameSettings::GetInstance().IsDebugActive())
+			mRaycaster.DebugDraw(mRenderWindow);
 
 		// Raycast to player
 		if (mRaycaster.Cast(mPosition, AngleToPlayer))
@@ -90,7 +69,7 @@ void cEnemyCharacter::DetectPlayer()
 			{
 				mBehaviorChase.UpdateInformation(PlayerDirection);
 				mCurrentBehavior = &mBehaviorChase;
-				mIsShooting = false;
+				mIsShooting = true;
 				mIsPlayerDetected = true;
 				mHasAgro = true;
 			}

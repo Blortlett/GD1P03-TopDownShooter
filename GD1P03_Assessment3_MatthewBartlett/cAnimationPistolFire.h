@@ -23,6 +23,5 @@ private:
 public:
 	cAnimationPistolFire(cCharacter& _OwnerCharacter);
 	~cAnimationPistolFire() {}
-	void Animate(sf::Vector2f _PlayerPosition, float _DeltaSeconds) override;
-	bool AnimationCallback();
+	
 };

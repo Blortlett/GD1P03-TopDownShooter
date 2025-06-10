@@ -25,12 +25,14 @@ private:
 	cAnimationPistolFire mUpperPistolFire;
 	cPlayerDeathAnimation mPlayerDeathAnimation;
 
+	bool mAnimationComplete = false;
+
 public:
 	 // Constructors
 	cPlayerAnimator(cCharacter* _OwnerCharacter);
 	~cPlayerAnimator();
 
-	void AnimationCallback();
+	void Animate(sf::Vector2f PlayerPosition, float DeltaSeconds);
 
 	void SwapToPistolFire();
 	void SwapToPistolIdle();

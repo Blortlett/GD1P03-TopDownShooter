@@ -88,13 +88,14 @@ bool cBoxCollider::CheckCollision(cBoxCollider& other, sf::Vector2f& direction, 
 
 bool cBoxCollider::CheckCollisionPoint(sf::Vector2f pointCollision)
 {
-	// Get the collider's bounds
-	float left = mBounds.position.x;
-	float right = mBounds.position.x + mBounds.size.x;
-	float top = mBounds.position.y;
-	float bottom = mBounds.position.y + mBounds.size.y;
+	sf::Vector2f center = GetPosition();
+	sf::Vector2f halfSize = GetHalfSize();
 
-	// Check if the point is within the bounds
+	float left = center.x - halfSize.x;
+	float right = center.x + halfSize.x;
+	float top = center.y - halfSize.y;
+	float bottom = center.y + halfSize.y;
+
 	return (pointCollision.x >= left && pointCollision.x <= right &&
 		pointCollision.y >= top && pointCollision.y <= bottom);
 }

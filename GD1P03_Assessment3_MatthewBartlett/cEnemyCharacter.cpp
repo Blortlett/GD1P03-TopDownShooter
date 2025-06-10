@@ -62,7 +62,7 @@ void cEnemyCharacter::DetectPlayer()
 	{
 		// Debug Draw Raycast line
 		mRaycaster.DebugDraw(mRenderWindow);
-		std::cout << "Player Position: " << mPlayerReference.GetPosition().x << ", " << mPlayerReference.GetPosition().y << std::endl;
+		//std::cout << "Player Position: " << mPlayerReference.GetPosition().x << ", " << mPlayerReference.GetPosition().y << std::endl;
 
 		// Raycast to player
 		if (mRaycaster.Cast(mPosition, AngleToPlayer))

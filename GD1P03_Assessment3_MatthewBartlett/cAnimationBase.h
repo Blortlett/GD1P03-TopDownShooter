@@ -18,8 +18,11 @@ class cAnimationBase
 public:
 	// Constructor
 	cAnimationBase(sf::Texture* _SpriteSheetTex);
-	// Draw & Animate
-	virtual void Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds) = 0;
+	// Animate sprite
+	virtual void Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds);
+	// Send in false, function will return true on complete animation
+	virtual void Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds, bool &_AnimationComplete);
+	// Draw animation to window
 	void Draw(sf::RenderWindow& _RenderWindow);
 	// Rotate Animation
 	void RotateAnimation(sf::Angle _Rotation);
@@ -41,4 +44,7 @@ protected:
 	sf::IntRect mSpriteRect;
 	// Variables to edit outside of class
 	sf::Vector2f mScale;
+
+	// Play till complete animtations:
+	bool mIsAnimationComplete = false;
 };

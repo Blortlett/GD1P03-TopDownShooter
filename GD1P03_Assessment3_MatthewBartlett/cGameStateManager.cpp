@@ -3,12 +3,14 @@
 #include "cLevelManager.h"
 #include "cPlayerCharacter.h"
 #include "cPlayerSpawner.h"
+#include "cPickupManager.h"
 
-cGameStateManager::cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager, cPlayerCharacter& _PlayerCharacter)
+cGameStateManager::cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager, cPlayerCharacter& _PlayerCharacter, cPickupManager& _PickupManager)
     : mEnemyManager(_EnemyManager)
     , mProjectileManager(_ProjectileManager) 
     , mLevelManager(_LevelManager)
     , mPlayerCharacter(_PlayerCharacter)
+    , mPickupManager(_PickupManager)
 {
 }
 
@@ -51,7 +53,7 @@ void cGameStateManager::CheckBulletCollision()
         // Check collision with each fullwall
         for (cFullWall* Wall : WallList)
         {
-            if (bullet.GetCollider().CheckCollision(Wall->GetCollider(), CollisionDirection, 1.0f))
+            if (bullet.GetCollider().CheckCollision(Wall->GetCollider(), CollisionDirection, 0.0f))
             {
                 // Deactivate bullet if hit fullwall
                 bullet.mIsActive = false;
@@ -70,7 +72,7 @@ void cGameStateManager::CheckBulletCollision()
         // Check collision with each fullwall
         for (cFullWall* Wall : WallList)
         {
-            if (bullet.GetCollider().CheckCollision(Wall->GetCollider(), CollisionDirection, 1.0f))
+            if (bullet.GetCollider().CheckCollision(Wall->GetCollider(), CollisionDirection, 0.0f))
             {
                 // Deactivate bullet if hit fullwall
                 bullet.mIsActive = false;
@@ -128,6 +130,9 @@ void cGameStateManager::InitializeLevelEnemies()
 
 void cGameStateManager::TransitionToNextLevel()
 {
+    // Clear dropped weapons
+    mPickupManager.ClearDrops();
+
     // Load the next level
     mLevelManager.AdvanceToNextLevel();
 

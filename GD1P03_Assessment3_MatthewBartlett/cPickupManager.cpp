@@ -51,3 +51,14 @@ void cPickupManager::CheckPlayerPickup()
         }
     }
 }
+
+void cPickupManager::ClearDrops()
+{
+    // Delete each weapon
+    for (cPistolDropable* weapon : mDroppedWeaponList)
+    {
+        delete weapon;
+    }
+    // Clear vector list
+    mDroppedWeaponList.clear();
+}

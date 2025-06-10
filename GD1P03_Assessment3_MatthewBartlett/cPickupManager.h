@@ -23,4 +23,6 @@ public:
 	void CreateNewWeaponDrop(sf::Vector2f _Postion, sf::Angle _ThrowDirection, int _AmmoCount);
 
 	void CheckPlayerPickup();
+
+	void ClearDrops();
 };

@@ -5,6 +5,7 @@
 class cLevelManager;
 class cEnemyManager;
 class cPlayerCharacter;
+class cPickupManager;
 
 class cGameStateManager {
 private:
@@ -12,6 +13,7 @@ private:
     cProjectileManager& mProjectileManager;
     cLevelManager& mLevelManager;
     cPlayerCharacter& mPlayerCharacter;
+    cPickupManager& mPickupManager;
 
     bool mLevelComplete = false;
 
@@ -22,7 +24,7 @@ private:
     float mPlayerDeathTimer = mPlayerDeathTimerMax;
 
 public:
-    cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager, cPlayerCharacter& mPlayerCharacter);
+    cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager, cPlayerCharacter& mPlayerCharacter, cPickupManager& _PickupManager);
 
     void Update(float _DeltaTime);
 

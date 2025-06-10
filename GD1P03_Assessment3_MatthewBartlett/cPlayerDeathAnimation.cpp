@@ -9,11 +9,6 @@ cPlayerDeathAnimation::cPlayerDeathAnimation()
     mFrameDuration = 0.2f;
     sf::Vector2f newOrigin = sf::Vector2f(mFrameSize.x / 2, mFrameSize.y / 2);
     mSprite.setOrigin(newOrigin);
-
-    // Init sprite rect at first frame
-    mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (1 + mCurrentFrame.x), 0));
-    mSpriteRect.size = mFrameSize;
-    mSprite.setTextureRect(mSpriteRect);
 }
 
 void cPlayerDeathAnimation::Animate(sf::Vector2f _EnemyPosition, float _DeltaSeconds)

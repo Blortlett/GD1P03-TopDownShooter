@@ -12,10 +12,17 @@ Mail : [matthewbartlett@mds.ac.nz]
 #pragma once
 #include "cPlayerAnimationBase.h"
 
+class cCharacter;
+
 class cAnimationPistolFire: public cPlayerAnimationBase
 {
+private:
+	cCharacter& mOwnerCharacter;
+	bool mAnimationComplete;
+
 public:
-	cAnimationPistolFire();
+	cAnimationPistolFire(cCharacter& _OwnerCharacter);
 	~cAnimationPistolFire() {}
 	void Animate(sf::Vector2f _PlayerPosition, float _DeltaSeconds) override;
+	bool AnimationCallback();
 };

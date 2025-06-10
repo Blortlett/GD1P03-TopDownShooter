@@ -18,6 +18,7 @@ cPlayerCharacter::cPlayerCharacter(sf::Vector2f _StartPosition, cProjectileManag
 	: cCharacter(_StartPosition, _ProjectileManager, _GameWindow, true)
 	, mCameraView(_PlayerCamera)
 	, mPlayerInput(_PlayerInput)
+	, mPlayerUpperBodyAnimator(this)
 {
 	mCharacterAnimator = &mPlayerUpperBodyAnimator;
 	mCharacterAnimatorBottom = &mPlayerLegsAnimator;

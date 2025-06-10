@@ -10,9 +10,11 @@ Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #include "cPlayerAnimator.h"
+#include "cCharacter.h"
 
-cPlayerAnimator::cPlayerAnimator()
+cPlayerAnimator::cPlayerAnimator(cCharacter* _OwnerCharacter)
     : cAnimatorBase(mUpperPistolIdle)
+    , mUpperPistolFire(*_OwnerCharacter)
 {
 }
 

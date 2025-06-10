@@ -15,6 +15,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cAnimationPistolFire.h"
 #include "cPlayerDeathAnimation.h"
 
+class cCharacter;
 
 class cPlayerAnimator : public cAnimatorBase
 {
@@ -26,8 +27,10 @@ private:
 
 public:
 	 // Constructors
-	cPlayerAnimator();
+	cPlayerAnimator(cCharacter* _OwnerCharacter);
 	~cPlayerAnimator();
+
+	void AnimationCallback();
 
 	void SwapToPistolFire();
 	void SwapToPistolIdle();

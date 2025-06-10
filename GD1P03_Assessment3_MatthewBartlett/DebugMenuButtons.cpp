@@ -74,11 +74,12 @@ void cGodMode::Draw(sf::RenderWindow& window)
 
 
 //	-= Skips current Level =-
-cSkipLevel::cSkipLevel(sf::Vector2f position, sf::Vector2f size, cDebugMenuUI& _DebugMenu)
+cSkipLevel::cSkipLevel(sf::Vector2f position, sf::Vector2f size, cDebugMenuUI& _DebugMenu, cGameStateManager& _GameStateManager)
 	: cButtonUI(position, size)
 	, mText(mBodyFont, "SKIP LEVEL", 10U)
 	, mBodyFont(cSharedUtils::GetInstance().mButtonFont)
 	, mDebugMenu(_DebugMenu)
+	, mGameStateManager(_GameStateManager)
 {
 	// get font
 	mText.setCharacterSize(60);
@@ -91,7 +92,7 @@ cSkipLevel::cSkipLevel(sf::Vector2f position, sf::Vector2f size, cDebugMenuUI& _
 void cSkipLevel::OnButtonClick()
 {
 	// Skips the current level
-
+	mGameStateManager.TransitionToNextLevel();
 }
 
 void cSkipLevel::Draw(sf::RenderWindow& window)

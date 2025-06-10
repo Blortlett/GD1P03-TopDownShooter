@@ -13,12 +13,12 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cGameSettings.h"
 #include "cSharedUtils.h"
 
-cDebugMenuUI::cDebugMenuUI(sf::RenderWindow& window)
+cDebugMenuUI::cDebugMenuUI(sf::RenderWindow& window, cGameStateManager& _GameStateManager)
 	: mMenuTitleText(cSharedUtils::GetInstance().mTitleFont, "DEBUG", 7U)
 	, mWindow(window)
 	, mInfiniteAmmo({ mMidScreenPosX, 400.f }, { 320.f, 80.f }, * this)
 	, mGodMode({ mMidScreenPosX, 510.f }, { 320.f, 80.f }, * this)
-	, mSkipLevel({ mMidScreenPosX, 620.f }, { 320.f, 80.f }, * this)
+	, mSkipLevel({ mMidScreenPosX, 620.f }, { 320.f, 80.f }, * this, _GameStateManager)
 	, mBackButton({ mMidScreenPosX, 730.f }, { 320.f, 80.f }, * this)
 {
 	mMenuTitleText.setCharacterSize(70);

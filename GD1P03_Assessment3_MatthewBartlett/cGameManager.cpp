@@ -24,7 +24,7 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mPickupManager(mPlayerCharacter, _GameWindow)
 	, mEnemyManager(mProjectileManager, mGameWindow, mPickupManager, mPlayerCharacter)
 	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager, mPlayerCharacter)
-	, mGameplayUI(mGameWindow, mPlayerCharacter)
+	, mGameplayUI(mGameWindow, mPlayerCharacter, mGameStateManager)
 {
 	mGameStateManager.TransitionToNextLevel();
 }

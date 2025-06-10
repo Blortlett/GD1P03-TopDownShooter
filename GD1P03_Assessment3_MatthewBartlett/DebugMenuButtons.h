@@ -1,5 +1,6 @@
 #pragma once
 #include "cButtonUI.h"
+#include "cGameStateManager.h"
 
 class cDebugMenuUI;
 
@@ -35,11 +36,12 @@ private:
 class cSkipLevel : public cButtonUI
 {
 public:
-	cSkipLevel(sf::Vector2f position, sf::Vector2f size, cDebugMenuUI& _DebugMenu);
+	cSkipLevel(sf::Vector2f position, sf::Vector2f size, cDebugMenuUI& _DebugMenu, cGameStateManager& _GameStateManager);
 
 	void OnButtonClick() override;
 	void Draw(sf::RenderWindow& window) override;
 private:
+	cGameStateManager& mGameStateManager;
 	cDebugMenuUI& mDebugMenu;
 	sf::Font& mBodyFont;
 	sf::Text mText;

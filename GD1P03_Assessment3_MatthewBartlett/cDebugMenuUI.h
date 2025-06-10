@@ -31,7 +31,7 @@ private:
 
 
 public:
-	cDebugMenuUI(sf::RenderWindow& window);
+	cDebugMenuUI(sf::RenderWindow& window, cGameStateManager& _GameStateManager);
 
 	bool mIsActive = false;
 	void Update();

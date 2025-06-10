@@ -2,13 +2,13 @@
 #include "cPlayerCharacter.h"
 #include "cGameSettings.h"
 
-cViewUI::cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter)
+cViewUI::cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter, cGameStateManager& _GameStateManager)
 	: mPlayerCharacter(_PlayerCharacter)
 	, mGameWindow(_GameWindow)
 	, mAmmoUI(_GameWindow)
 	, mPauseMenuUI(_GameWindow)
 	, mOptionsMenuUI(_GameWindow)
-	, mDebugMenuUI(_GameWindow)
+	, mDebugMenuUI(_GameWindow, _GameStateManager)
 {
 	// Set Size
 	mUICanvas.setSize(sf::Vector2f(_GameWindow.getSize().x, _GameWindow.getSize().y));

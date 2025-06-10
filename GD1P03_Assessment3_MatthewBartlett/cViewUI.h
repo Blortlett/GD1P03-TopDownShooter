@@ -20,7 +20,7 @@ private:
 	cPlayerCharacter& mPlayerCharacter;
 
 public:
-	cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter);
+	cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter, cGameStateManager& _GameStateManager);
 
 	void Update();
 	void Draw();

@@ -9,18 +9,19 @@ Description : [PauseMenuButtons provides buttons for the player to push for paus
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
-#include "PauseMenuButtons.h"
+#include "OptionsMenuButtons.h"
 #include "cSharedUtils.h"
-#include "cPauseMenu.h"
+#include "cOptionsMenuUI.h"
+#include "cAudioManager.h"
 #include "cGameSettings.h"
 
 
-//	-= Resume Button =-
-cResumeButton::cResumeButton(sf::Vector2f position, sf::Vector2f size, cPauseMenu& _PauseMenu)
+//	-= Toggle Mute In Game SFX =-
+cMuteSFX::cMuteSFX(sf::Vector2f position, sf::Vector2f size, cOptionsMenuUI& _OptionsMenu)
 	: cButtonUI(position, size)
-	, mText(mBodyFont, "RESUME", 6U)
+	, mText(mBodyFont, "MUTE SFX", 8U)
 	, mBodyFont(cSharedUtils::GetInstance().mButtonFont)
-	, mPauseMenu(_PauseMenu)
+	, mOptionsMenu(_OptionsMenu)
 {
 	// get font
 	mText.setCharacterSize(60);
@@ -30,13 +31,13 @@ cResumeButton::cResumeButton(sf::Vector2f position, sf::Vector2f size, cPauseMen
 	mText.setOrigin(mText.getGlobalBounds().size / 2.0f);
 }
 
-void cResumeButton::OnButtonClick()
+void cMuteSFX::OnButtonClick()
 {
-	// Deactivate menu
-	cGameSettings::GetInstance().ToggleGamePaused(false);
+	// Mute SFX
+	cAudioManager::GetInstance().MuteSFX();
 }
 
-void cResumeButton::Draw(sf::RenderWindow& window)
+void cMuteSFX::Draw(sf::RenderWindow& window)
 {
 	cButtonUI::Draw(window);
 	window.draw(mText);
@@ -44,12 +45,12 @@ void cResumeButton::Draw(sf::RenderWindow& window)
 
 
 
-//	-= Open Options Menu Button =-
-cOptionsButton::cOptionsButton(sf::Vector2f position, sf::Vector2f size, cPauseMenu& _PauseMenu)
+//	-= Toggle Mute In Game Music =-
+cMuteMusic::cMuteMusic(sf::Vector2f position, sf::Vector2f size, cOptionsMenuUI& _OptionsMenu)
 	: cButtonUI(position, size)
-	, mText(mBodyFont, "OPTIONS", 7U)
+	, mText(mBodyFont, "MUTE MUSIC", 10U)
 	, mBodyFont(cSharedUtils::GetInstance().mButtonFont)
-	, mPauseMenu(_PauseMenu)
+	, mOptionsMenu(_OptionsMenu)
 {
 	// get font
 	mText.setCharacterSize(60);
@@ -59,13 +60,13 @@ cOptionsButton::cOptionsButton(sf::Vector2f position, sf::Vector2f size, cPauseM
 	mText.setOrigin(mText.getGlobalBounds().size / 2.0f);
 }
 
-void cOptionsButton::OnButtonClick()
+void cMuteMusic::OnButtonClick()
 {
-	// Open Options Menu
-	cGameSettings::GetInstance().ToggleOptionsMenu(true);
+	// Mute Music
+	cAudioManager::GetInstance().MuteMusic();
 }
 
-void cOptionsButton::Draw(sf::RenderWindow& window)
+void cMuteMusic::Draw(sf::RenderWindow& window)
 {
 	cButtonUI::Draw(window);
 	window.draw(mText);
@@ -73,12 +74,12 @@ void cOptionsButton::Draw(sf::RenderWindow& window)
 
 
 
-//	-= Quit Game Button =-
-cQuitGameButton::cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPauseMenu& _PauseMenu)
+//	-= Toggle VSync Button =-
+cVSyncButton::cVSyncButton(sf::Vector2f position, sf::Vector2f size, cOptionsMenuUI& _OptionsMenu)
 	: cButtonUI(position, size)
-	, mText(mBodyFont, "QUIT", 4U)
+	, mText(mBodyFont, "VSYNC", 5U)
 	, mBodyFont(cSharedUtils::GetInstance().mButtonFont)
-	, mPauseMenu(_PauseMenu)
+	, mOptionsMenu(_OptionsMenu)
 {
 	// get font
 	mText.setCharacterSize(60);
@@ -88,13 +89,13 @@ cQuitGameButton::cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPaus
 	mText.setOrigin(mText.getGlobalBounds().size / 2.0f);
 }
 
-void cQuitGameButton::OnButtonClick()
+void cVSyncButton::OnButtonClick()
 {
-	// Quit to destop
-	mPauseMenu.QuitGame();
+	// Enable VSync
+	mOptionsMenu.ToggleVsync();
 }
 
-void cQuitGameButton::Draw(sf::RenderWindow& window)
+void cVSyncButton::Draw(sf::RenderWindow& window)
 {
 	cButtonUI::Draw(window);
 	window.draw(mText);
@@ -102,12 +103,12 @@ void cQuitGameButton::Draw(sf::RenderWindow& window)
 
 
 
-//	-= Open Debug Menu Button =-
-cDebugMenuButton::cDebugMenuButton(sf::Vector2f position, sf::Vector2f size, cPauseMenu& _PauseMenu)
+//	-= Back to pause menu Button =-
+cBackButton::cBackButton(sf::Vector2f position, sf::Vector2f size, cOptionsMenuUI& _OptionsMenu)
 	: cButtonUI(position, size)
-	, mText(mBodyFont, "DEBUG", 5U)
+	, mText(mBodyFont, "BACK", 4U)
 	, mBodyFont(cSharedUtils::GetInstance().mButtonFont)
-	, mPauseMenu(_PauseMenu)
+	, mOptionsMenu(_OptionsMenu)
 {
 	// get font
 	mText.setCharacterSize(60);
@@ -117,13 +118,13 @@ cDebugMenuButton::cDebugMenuButton(sf::Vector2f position, sf::Vector2f size, cPa
 	mText.setOrigin(mText.getGlobalBounds().size / 2.0f);
 }
 
-void cDebugMenuButton::OnButtonClick()
+void cBackButton::OnButtonClick()
 {
-	// Open Options Menu
-	mPauseMenu.mIsActive = false;
+	// Return to pause menu
+	cGameSettings::GetInstance().ToggleOptionsMenu(false);
 }
 
-void cDebugMenuButton::Draw(sf::RenderWindow& window)
+void cBackButton::Draw(sf::RenderWindow& window)
 {
 	cButtonUI::Draw(window);
 	window.draw(mText);

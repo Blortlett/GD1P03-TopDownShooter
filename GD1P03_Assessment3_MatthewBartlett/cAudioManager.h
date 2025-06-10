@@ -74,6 +74,8 @@ public:
 	void ResumeMusic();
 
 	// Mute sounds
-	void MuteMusic(bool mute);
-	void MuteSFX(bool mute);
+	void MuteMusic(); // Toggle
+	void MuteMusic(bool mute); // specific set
+	void MuteSFX(); // Toggle
+	void MuteSFX(bool mute); // Specific set
 };

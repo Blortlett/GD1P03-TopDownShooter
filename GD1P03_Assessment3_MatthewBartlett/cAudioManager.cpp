@@ -99,6 +99,12 @@ void cAudioManager::ResumeMusic()
 	}
 }
 
+void cAudioManager::MuteMusic()
+{
+	IsMusicMuted = !IsMusicMuted;
+	MuteMusic(IsMusicMuted);
+}
+
 void cAudioManager::MuteMusic(bool mute)
 {
 	IsMusicMuted = mute;
@@ -114,7 +120,26 @@ void cAudioManager::MuteMusic(bool mute)
 	}
 }
 
+void cAudioManager::MuteSFX()
+{
+	IsSFXMuted = !IsSFXMuted;
+	MuteSFX(IsSFXMuted);
+}
+
 void cAudioManager::MuteSFX(bool mute)
 {
 	IsSFXMuted = mute;
+
+	if (IsSFXMuted)
+	{
+		mShootSound->setVolume(0.f);
+		mDryFireSound->setVolume(0.f);
+		mPistolRackSound->setVolume(0.f);
+	}
+	else
+	{
+		mShootSound->setVolume(60.f);
+		mDryFireSound->setVolume(80.f);
+		mPistolRackSound->setVolume(80.f);
+	}
 }

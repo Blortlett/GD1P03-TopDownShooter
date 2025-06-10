@@ -165,6 +165,7 @@
     <ClCompile Include="cButtonUI.cpp" />
     <ClCompile Include="cCameraManager.cpp" />
     <ClCompile Include="cCharacter.cpp" />
+    <ClCompile Include="cDebugMenuUI.cpp" />
     <ClCompile Include="cDebugWidget.cpp" />
     <ClCompile Include="cEditorManager.cpp" />
     <ClCompile Include="cEnemyAnimator.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="cLevelManager.cpp" />
     <ClCompile Include="cLevelProgressTracker.cpp" />
     <ClCompile Include="cMainMenu.cpp" />
+    <ClCompile Include="cOptionsMenuUI.cpp" />
     <ClCompile Include="cPauseMenu.cpp" />
     <ClCompile Include="cPickupManager.cpp" />
     <ClCompile Include="cPistol.cpp" />
@@ -209,7 +211,9 @@
     <ClCompile Include="cSharedUtils.cpp" />
     <ClCompile Include="cViewUI.cpp" />
     <ClCompile Include="cWallBase.cpp" />
+    <ClCompile Include="DebugMenuButtons.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OptionsMenuButtons.cpp" />
     <ClCompile Include="PauseMenuButtons.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +239,7 @@
     <ClInclude Include="cButtonUI.h" />
     <ClInclude Include="cCameraManager.h" />
     <ClInclude Include="cCharacter.h" />
+    <ClInclude Include="cDebugMenuUI.h" />
     <ClInclude Include="cDebugWidget.h" />
     <ClInclude Include="cEditorManager.h" />
     <ClInclude Include="cEnemyAnimator.h" />
@@ -265,6 +270,7 @@
     <ClInclude Include="cLevelManager.h" />
     <ClInclude Include="cLevelProgressTracker.h" />
     <ClInclude Include="cMainMenu.h" />
+    <ClInclude Include="cOptionsMenuUI.h" />
     <ClInclude Include="cPauseMenu.h" />
     <ClInclude Include="cPickupManager.h" />
     <ClInclude Include="cPistol.h" />
@@ -284,8 +290,10 @@
     <ClInclude Include="cSharedUtils.h" />
     <ClInclude Include="cViewUI.h" />
     <ClInclude Include="cWallBase.h" />
+    <ClInclude Include="DebugMenuButtons.h" />
     <ClInclude Include="iBehavior.h" />
     <ClInclude Include="iEntity.h" />
+    <ClInclude Include="OptionsMenuButtons.h" />
     <ClInclude Include="PauseMenuButtons.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

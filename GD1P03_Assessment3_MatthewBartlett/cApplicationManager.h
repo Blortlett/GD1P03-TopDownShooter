@@ -5,17 +5,12 @@
 class cApplicationManager
 {
 private:
-	enum class EGameState
-	{
-		MainMenu,
-		Gameplay
-	};
+	
 
 	sf::RenderWindow mGameWindow;
 	cGameManager mGameManager;
 
 	cMainMenu mMainMenu;
-	EGameState mCurrentState;
 	sf::View mDefaultView;
 public:
 	cApplicationManager();

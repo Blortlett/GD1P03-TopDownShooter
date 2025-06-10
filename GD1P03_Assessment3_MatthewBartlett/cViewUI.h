@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "cAmmoUI.h"
 #include "cPauseMenu.h"
+#include "cOptionsMenuUI.h"
+#include "cDebugMenuUI.h"
 
 class cPlayerCharacter;
 
@@ -11,6 +13,7 @@ private:
 	sf::View mUICanvas;
 	cAmmoUI mAmmoUI;
 	cPauseMenu mPauseMenuUI;
+	cOptionsMenuUI mOptionsMenuUI;
 
 	sf::RenderWindow& mGameWindow;
 	cPlayerCharacter& mPlayerCharacter;

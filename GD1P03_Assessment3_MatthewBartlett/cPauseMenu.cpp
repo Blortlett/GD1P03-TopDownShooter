@@ -48,7 +48,7 @@ void cPauseMenu::Update()
 	}
 
 	// If game not paused, return early dont display pause menu
-	if (cGameSettings::GetInstance().GetIsGamePaused()) return;
+	if (!cGameSettings::GetInstance().GetIsGamePaused() || cGameSettings::GetInstance().GetIsOptionsMenuOpen()) return;
 
 	// Draw Menu background
 	mWindow.draw(mMenuBackground);

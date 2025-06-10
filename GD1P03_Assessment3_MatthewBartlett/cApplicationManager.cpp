@@ -1,11 +1,11 @@
 #include "cApplicationManager.h"
 #include "cAudioManager.h"
+#include "cGameSettings.h"
 
 cApplicationManager::cApplicationManager()
     : mGameWindow(sf::VideoMode({ 1920, 1080 }), "Starline Miami ", sf::Style::None)
     , mGameManager(mGameWindow)
     , mMainMenu(mGameWindow, mGameManager.GetGameStateManager())
-    , mCurrentState(EGameState::MainMenu) // Start in main menu
     , mDefaultView(sf::FloatRect(sf::Vector2f(683.f, 500.f), { 1920.f, 1080.f }))
 {
     mDefaultView.setSize(sf::Vector2f(1920.f, 1080.f));
@@ -28,7 +28,7 @@ void cApplicationManager::Run()
 
         mGameWindow.clear();
 
-            switch (mCurrentState)
+            switch (cGameSettings::GetInstance().GetGameState())
             {
                 case EGameState::MainMenu:
                     mGameManager.RefreshDeltaTime(); // got to or else level 1 enemies break
@@ -39,7 +39,7 @@ void cApplicationManager::Run()
                     // Transition when Play is clicked
                     if (!mMainMenu.mIsActive)
                     {
-                        mCurrentState = EGameState::Gameplay;
+                        cGameSettings::GetInstance().SetGameState(EGameState::Gameplay);
                     }
                     break;
                 case EGameState::Gameplay:

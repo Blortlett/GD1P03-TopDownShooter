@@ -4,15 +4,15 @@ Media Design School
 Auckland
 New Zealand
 (c) [2025] Media Design School
-File Name : [cPauseMenu]
-Description : [cPauseMenu encapsulates the pause menu UI to be displayed while game is paused]
+File Name : [cOptionsMenuUI]
+Description : [cOptionsMenuUI encapsulates the options UI to provide in game options to player]
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
 #pragma once
-#include "PauseMenuButtons.h"
+#include "OptionsMenuButtons.h"
 
-class cPauseMenu
+class cOptionsMenuUI
 {
 private:
 	float mMidScreenPosX = 960.f;
@@ -24,18 +24,19 @@ private:
 	sf::RectangleShape mMenuBackground;
 
 	// Menu Buttons
-	cResumeButton mResumeButton;
-	cOptionsButton mOptionsButton;
-	cQuitGameButton mQuitGameButton;
-	cDebugMenuButton mDebugMenuButton;
+	cMuteSFX mMuteSFXButton;
+	cMuteMusic mMuteMusicButton;
+	cVSyncButton mVSyncButton;
+	cBackButton mBackButton;
 
-	bool mPauseButtonPressed = false;
 
 public:
-	cPauseMenu(sf::RenderWindow& window);
+	cOptionsMenuUI(sf::RenderWindow& window);
 
 	bool mIsActive = false;
 	void Update();
 
-	void QuitGame() { mWindow.close(); }
+	// vsync enabled
+	bool mIsVsyncEnabled = false;
+	void ToggleVsync();
 };

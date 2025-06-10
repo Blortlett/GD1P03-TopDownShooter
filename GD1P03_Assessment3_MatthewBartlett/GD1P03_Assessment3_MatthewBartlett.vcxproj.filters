@@ -293,6 +293,18 @@
     <Filter Include="UI\MainMenu\Buttons\PlayButton">
       <UniqueIdentifier>{536ada2d-c84d-484e-b131-a4a8fb6c5f7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI\cGameUI\DebugMenuUI">
+      <UniqueIdentifier>{ac4a7c80-376d-412a-8b38-59d37c9231ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\cGameUI\OptionsMenuUI">
+      <UniqueIdentifier>{bcd5a428-69e2-476e-bdc0-a84f794ce860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\cGameUI\DebugMenuUI\DebugMenuButtons">
+      <UniqueIdentifier>{4a5074fd-2b91-49e2-946a-29b5cdef33cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\cGameUI\OptionsMenuUI\OptionsMenuButtons">
+      <UniqueIdentifier>{c6befaf9-83ec-4810-a6c9-b44c10c161ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -498,6 +510,18 @@
     </ClCompile>
     <ClCompile Include="PauseMenuButtons.cpp">
       <Filter>UI\cGameUI\PauseMenuUI\PauseMenuButtons</Filter>
+    </ClCompile>
+    <ClCompile Include="cDebugMenuUI.cpp">
+      <Filter>UI\cGameUI\DebugMenuUI</Filter>
+    </ClCompile>
+    <ClCompile Include="cOptionsMenuUI.cpp">
+      <Filter>UI\cGameUI\OptionsMenuUI</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsMenuButtons.cpp">
+      <Filter>UI\cGameUI\OptionsMenuUI\OptionsMenuButtons</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugMenuButtons.cpp">
+      <Filter>UI\cGameUI\DebugMenuUI\DebugMenuButtons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -722,6 +746,18 @@
     </ClInclude>
     <ClInclude Include="cExitButton.h">
       <Filter>UI\MainMenu\Buttons\ExitButton</Filter>
+    </ClInclude>
+    <ClInclude Include="cDebugMenuUI.h">
+      <Filter>UI\cGameUI\DebugMenuUI</Filter>
+    </ClInclude>
+    <ClInclude Include="cOptionsMenuUI.h">
+      <Filter>UI\cGameUI\OptionsMenuUI</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsMenuButtons.h">
+      <Filter>UI\cGameUI\OptionsMenuUI\OptionsMenuButtons</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugMenuButtons.h">
+      <Filter>UI\cGameUI\DebugMenuUI\DebugMenuButtons</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

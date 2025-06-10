@@ -18,8 +18,8 @@ cPauseMenu::cPauseMenu(sf::RenderWindow& window)
 	, mWindow(window)
 	, mResumeButton({ mMidScreenPosX, 400.f }, { 250.f, 80.f }, *this)
 	, mOptionsButton({ mMidScreenPosX, 510.f }, { 250.f, 80.f }, *this)
-	, mQuitGameButton({ mMidScreenPosX, 620.f }, { 250.f, 80.f }, *this)
-	, mDebugMenuButton({ mMidScreenPosX, 730.f }, { 250.f, 80.f }, *this)
+	, mDebugMenuButton({ mMidScreenPosX, 620.f }, { 250.f, 80.f }, *this)
+	, mQuitGameButton({ mMidScreenPosX, 730.f }, { 250.f, 80.f }, *this)
 {
 	mMenuTitleText.setCharacterSize(70);
 	sf::Vector2f titlePosition = sf::Vector2f(sf::Vector2f(mMidScreenPosX, 260.f));
@@ -31,7 +31,7 @@ cPauseMenu::cPauseMenu(sf::RenderWindow& window)
 	mMenuBackground.setPosition(sf::Vector2f(mMidScreenPosX, mMidScreenPosY));
 	mMenuBackground.setOrigin(mMenuBackground.getSize() / 2.0f);
 	mMenuBackground.setOutlineColor(sf::Color::Black);
-	mMenuBackground.setFillColor(sf::Color(50, 50, 50, 178));
+	mMenuBackground.setFillColor(sf::Color(11, 11, 11, 178));
 }
 
 void cPauseMenu::Update()
@@ -47,8 +47,9 @@ void cPauseMenu::Update()
 		mPauseButtonPressed = false;
 	}
 
-	// If game not paused, return early dont display pause menu
-	if (!cGameSettings::GetInstance().GetIsGamePaused() || cGameSettings::GetInstance().GetIsOptionsMenuOpen()) return;
+	// If game not paused or options menu open or debug menu open -
+	// return early dont display pause menu
+	if (!cGameSettings::GetInstance().GetIsGamePaused() || cGameSettings::GetInstance().GetIsOptionsMenuOpen() || cGameSettings::GetInstance().GetIsDebugMenuOpen()) return;
 
 	// Draw Menu background
 	mWindow.draw(mMenuBackground);

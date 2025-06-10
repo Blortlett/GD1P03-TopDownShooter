@@ -14,6 +14,7 @@ private:
 	cAmmoUI mAmmoUI;
 	cPauseMenu mPauseMenuUI;
 	cOptionsMenuUI mOptionsMenuUI;
+	cDebugMenuUI mDebugMenuUI;
 
 	sf::RenderWindow& mGameWindow;
 	cPlayerCharacter& mPlayerCharacter;

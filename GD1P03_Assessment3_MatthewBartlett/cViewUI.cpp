@@ -8,6 +8,7 @@ cViewUI::cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharact
 	, mAmmoUI(_GameWindow)
 	, mPauseMenuUI(_GameWindow)
 	, mOptionsMenuUI(_GameWindow)
+	, mDebugMenuUI(_GameWindow)
 {
 	// Set Size
 	mUICanvas.setSize(sf::Vector2f(_GameWindow.getSize().x, _GameWindow.getSize().y));
@@ -21,12 +22,16 @@ void cViewUI::Draw()
 {
 	// Set UI view
 	mGameWindow.setView(mUICanvas);
+
 	// Draw UI elements
 	mAmmoUI.Draw();
+
 	// Update & Draw pause menu UI
 	mPauseMenuUI.Update(); 
 	// Update & Draw options menu UI
 	mOptionsMenuUI.Update();
+	// Update & Draw Debug menu UI
+	mDebugMenuUI.Update();
 }
 
 void cViewUI::Update()

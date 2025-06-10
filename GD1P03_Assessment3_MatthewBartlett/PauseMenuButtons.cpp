@@ -120,7 +120,7 @@ cDebugMenuButton::cDebugMenuButton(sf::Vector2f position, sf::Vector2f size, cPa
 void cDebugMenuButton::OnButtonClick()
 {
 	// Open Options Menu
-	mPauseMenu.mIsActive = false;
+	cGameSettings::GetInstance().ToggleDebugMenu(true);
 }
 
 void cDebugMenuButton::Draw(sf::RenderWindow& window)

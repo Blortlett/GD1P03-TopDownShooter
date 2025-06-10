@@ -31,7 +31,7 @@ cOptionsMenuUI::cOptionsMenuUI(sf::RenderWindow& window)
 	mMenuBackground.setPosition(sf::Vector2f(mMidScreenPosX, mMidScreenPosY));
 	mMenuBackground.setOrigin(mMenuBackground.getSize() / 2.0f);
 	mMenuBackground.setOutlineColor(sf::Color::Black);
-	mMenuBackground.setFillColor(sf::Color(50, 50, 50, 178));
+	mMenuBackground.setFillColor(sf::Color(11, 11, 11, 178));
 }
 
 void cOptionsMenuUI::Update()

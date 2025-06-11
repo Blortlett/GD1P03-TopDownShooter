@@ -26,7 +26,29 @@ void cGameStateManager::Update(float _DeltaTime)
         if (!mIsGameRunning)
         {   // Game just started from main menu
             std::cout << "Loading & Starting game from MainMenu" << std::endl;
+
+            // Clear enemies
+            mEnemyManager.ClearEnemyList();
+
+            // Load first level
             mLevelManager.BeginGame();
+            // Reset enemy death counter so door doesnt open early
+            cLevelProgressTracker::GetInstance().ResetEnemyCount();
+
+            // Reset player position
+            cPlayerSpawner* playerSpawner = mLevelManager.GetCurrentLevel()->GetPlayerSpawner();
+            if (playerSpawner)
+            {
+                mPlayerCharacter.SetPosition(playerSpawner->GetPosition());
+            }
+
+            // Set up enemies for level
+            InitializeLevelEnemies();
+
+
+
+            // Reset death timer
+            mPlayerDeathTimer = mPlayerDeathTimerMax;
             mIsGameRunning = true;
         }
     }
@@ -181,6 +203,10 @@ void cGameStateManager::CheckResetLevel(float _DeltaTime)
     {
         // Reset the current level
         mEnemyManager.RespawnEnemies(); // Reset enemies
+
+        // Clear weapon drops
+        // Clear dropped weapons
+        mPickupManager.ClearDrops();
 
         // Reset level complete flag
         mLevelComplete = false;

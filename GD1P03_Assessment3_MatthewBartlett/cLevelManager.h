@@ -73,6 +73,9 @@ public:
 	void BeginGame();
 	void AdvanceToNextLevel();
 
+	// Reset Exit Door on reload level
+	void ResetExitDoor();
+
 	// Getters
 	std::vector<cEnemySpawner*>& GetEnemySpawnerList();
 	std::vector<cFullWall*>& GetFullWallList() { return mCurrentLevel->GetFullWallColliderList(); }

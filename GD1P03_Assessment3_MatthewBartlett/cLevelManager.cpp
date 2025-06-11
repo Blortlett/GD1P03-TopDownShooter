@@ -180,6 +180,11 @@ void cLevelManager::AdvanceToNextLevel()
 
 }
 
+void cLevelManager::ResetExitDoor()
+{
+	if (mCurrentLevel->GetExitDoor())
+}
+
 std::vector<cEnemySpawner*>& cLevelManager::GetEnemySpawnerList()
 {
 	return mCurrentLevel->GetEnemySpawnerList();

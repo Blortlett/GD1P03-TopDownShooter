@@ -7,10 +7,10 @@ cLevel1::cLevel1(sf::RenderWindow& _Window)
 
 cLevel1::~cLevel1()
 {
-	delete mBackgroundSprite;
 }
 
 void cLevel1::LoadLevelByName(cFileInterface& _FileInterface)
 {
 	_FileInterface.LoadLevelByName(this, LevelName);
+	mLevelLoaded = true;
 }

@@ -12,6 +12,8 @@ Mail : [matthewbartlett@mds.ac.nz]
 #pragma once
 #include "PauseMenuButtons.h"
 
+class cGameStateManager;
+
 class cPauseMenu
 {
 private:
@@ -29,10 +31,14 @@ private:
 	cQuitGameButton mQuitGameButton;
 	cDebugMenuButton mDebugMenuButton;
 
+	// references
+	cGameStateManager& mGameStateManager;
+
 	bool mPauseButtonPressed = false;
+	
 
 public:
-	cPauseMenu(sf::RenderWindow& window);
+	cPauseMenu(sf::RenderWindow& window, cGameStateManager& _GameStateManager);
 
 	bool mIsActive = false;
 	void Update();

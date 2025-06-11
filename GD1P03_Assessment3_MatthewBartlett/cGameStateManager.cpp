@@ -1,6 +1,6 @@
 #include "cGameStateManager.h"
 #include "cEnemyManager.h"
-
+#include "cGameSettings.h"
 #include "cPlayerCharacter.h"
 #include "cPlayerSpawner.h"
 #include "cPickupManager.h"
@@ -19,6 +19,23 @@ void cGameStateManager::Update(float _DeltaTime)
     CheckBulletCollision();
     CheckEnemyWallCollision();
     CheckResetLevel(_DeltaTime);
+
+    // Load/Unload game based on main menu active
+    if (cGameSettings::GetInstance().GetGameState() == EGameState::Gameplay)
+    {
+        if (!mIsGameRunning)
+        {   // Game just started from main menu
+            std::cout << "Loading & Starting game from MainMenu" << std::endl;
+            mLevelManager.BeginGame();
+            mIsGameRunning = true;
+        }
+    }
+}
+
+void cGameStateManager::UnloadLevels()
+{
+    mIsGameRunning = false;
+    mLevelManager.UnloadAllLevels();
 }
 
 void cGameStateManager::CheckBulletCollision() 

@@ -13,6 +13,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cSharedUtils.h"
 #include "cPauseMenu.h"
 #include "cGameSettings.h"
+#include "cGameManager.h"
 
 
 //	-= Resume Button =-
@@ -74,11 +75,12 @@ void cOptionsButton::Draw(sf::RenderWindow& window)
 
 
 //	-= Quit Game Button =-
-cQuitGameButton::cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPauseMenu& _PauseMenu)
+cQuitGameButton::cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPauseMenu& _PauseMenu, cGameStateManager& _GameStateManager)
 	: cButtonUI(position, size)
 	, mText(mBodyFont, "QUIT", 4U)
 	, mBodyFont(cSharedUtils::GetInstance().mButtonFont)
 	, mPauseMenu(_PauseMenu)
+	, mGameStateManager(_GameStateManager)
 {
 	// get font
 	mText.setCharacterSize(60);
@@ -91,6 +93,7 @@ cQuitGameButton::cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPaus
 void cQuitGameButton::OnButtonClick()
 {
 	// Quit to main menu
+	mGameStateManager.UnloadLevels();
 	cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
 }
 

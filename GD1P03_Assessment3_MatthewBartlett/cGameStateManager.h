@@ -24,10 +24,16 @@ private:
     float const mPlayerDeathTimerMax = 2.f;
     float mPlayerDeathTimer = mPlayerDeathTimerMax;
 
+    // Application manager stuff
+    bool mIsGameRunning = false;
+
 public:
     cGameStateManager(cEnemyManager& _EnemyManager, cProjectileManager& _ProjectileManager, cLevelManager& _LevelManager, cPlayerCharacter& mPlayerCharacter, cPickupManager& _PickupManager);
 
     void Update(float _DeltaTime);
+
+    // Unload levels
+    void UnloadLevels();
 
     // Collision
     void CheckBulletCollision();

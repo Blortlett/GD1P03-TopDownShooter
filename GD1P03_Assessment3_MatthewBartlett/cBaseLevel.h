@@ -43,6 +43,8 @@ public:
 	cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFilepath);
 	~cBaseLevel();
 
+	bool mLevelLoaded = false;
+
 	// Updateables
 	void Update(float _DeltaTime);
 	void Draw();

@@ -5,7 +5,7 @@
 
 cBullet::cBullet()
 	: mBulletSprite(cSharedUtils::GetInstance().mBulletTex)
-	, mCollider(sf::FloatRect({0,0}, {16, 16}))
+	, mCollider(sf::FloatRect({0,0}, {12, 12}))
 	, mDebugWidget(mCollider)
 {
 	mBulletSprite.setOrigin(mBulletSprite.getLocalBounds().size / 2.f);

@@ -21,11 +21,6 @@ void cLevelManager::Update(float _DeltaTime)
 {
 	// Update levels exit door
 	mCurrentLevel->Update(_DeltaTime);
-	// Watch for gamestate swap - Return to main menu
-	if (cGameSettings::GetInstance().GetGameState() == EGameState::MainMenu)
-	{
-		UnloadAllLevels();
-	}
 }
 
 void cLevelManager::Draw()
@@ -137,9 +132,13 @@ void cLevelManager::UnloadLevel()
 
 void cLevelManager::UnloadAllLevels()
 {
-	mLevel1.UnloadCurrentLevel();
-	mLevel2.UnloadCurrentLevel();
-	mLevel3.UnloadCurrentLevel();
+	mCurrentLevelIndex = 0;
+	/*if (mLevel1.mLevelLoaded)
+		mLevel1.UnloadCurrentLevel();
+	if (mLevel2.mLevelLoaded)
+		mLevel2.UnloadCurrentLevel();
+	if (mLevel3.mLevelLoaded)
+		mLevel3.UnloadCurrentLevel();*/
 }
 
 
@@ -153,8 +152,19 @@ void cLevelManager::LoadLevel()
 	mCurrentLevel->LoadLevel(mFileInterface);
 }
 
+void cLevelManager::BeginGame()
+{
+	mCurrentLevel = &mLevel1;
+	// Load the new level
+	//mCurrentLevel->LoadLevelByName(mFileInterface);
+	cLevelProgressTracker::GetInstance().SetWallVector(mCurrentLevel->GetFullWallColliderList());
+}
+
 void cLevelManager::AdvanceToNextLevel()
 {
+	if (mCurrentLevel == &mLevel3)
+		cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
+
 	// Increment level index and select the next level
 	mCurrentLevelIndex = (mCurrentLevelIndex + 1) % 3; // Cycle through levels (0, 1, 2)
 	if (mCurrentLevelIndex == 0)
@@ -163,18 +173,11 @@ void cLevelManager::AdvanceToNextLevel()
 		mCurrentLevel = &mLevel2;
 	else
 		mCurrentLevel = &mLevel3;
-
 	// Load the new level
-	mCurrentLevel->LoadLevelByName(mFileInterface);
+	if (!mCurrentLevel->mLevelLoaded)
+		mCurrentLevel->LoadLevelByName(mFileInterface);
 	cLevelProgressTracker::GetInstance().SetWallVector(mCurrentLevel->GetFullWallColliderList());
 
-}
-
-void cLevelManager::ReloadLevel()
-{
-	// Reload the current level to reset it?
-	mCurrentLevel->LoadLevelByName(mFileInterface);
-	cLevelProgressTracker::GetInstance().SetWallVector(mCurrentLevel->GetFullWallColliderList());
 }
 
 std::vector<cEnemySpawner*>& cLevelManager::GetEnemySpawnerList()

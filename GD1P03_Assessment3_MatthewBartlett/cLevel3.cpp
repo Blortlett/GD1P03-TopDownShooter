@@ -13,4 +13,5 @@ cLevel3::~cLevel3()
 void cLevel3::LoadLevelByName(cFileInterface& _FileInterface)
 {
 	_FileInterface.LoadLevelByName(this, LevelName);
+	mLevelLoaded = true;
 }

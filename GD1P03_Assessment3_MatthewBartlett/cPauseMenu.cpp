@@ -13,13 +13,14 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cGameSettings.h"
 #include "cSharedUtils.h"
 
-cPauseMenu::cPauseMenu(sf::RenderWindow& window)
+cPauseMenu::cPauseMenu(sf::RenderWindow& window, cGameStateManager& _GameStateManager)
 	: mMenuTitleText(cSharedUtils::GetInstance().mTitleFont, "PAUSED", 7U)
 	, mWindow(window)
 	, mResumeButton({ mMidScreenPosX, 400.f }, { 250.f, 80.f }, *this)
 	, mOptionsButton({ mMidScreenPosX, 510.f }, { 250.f, 80.f }, *this)
 	, mDebugMenuButton({ mMidScreenPosX, 620.f }, { 250.f, 80.f }, *this)
-	, mQuitGameButton({ mMidScreenPosX, 730.f }, { 250.f, 80.f }, *this)
+	, mQuitGameButton({ mMidScreenPosX, 730.f }, { 250.f, 80.f }, *this, _GameStateManager)
+	, mGameStateManager(_GameStateManager)
 {
 	mMenuTitleText.setCharacterSize(70);
 	sf::Vector2f titlePosition = sf::Vector2f(sf::Vector2f(mMidScreenPosX, 260.f));

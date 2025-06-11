@@ -11,11 +11,9 @@ void cEnemyAnimator::Animate(sf::Vector2f PlayerPosition, float DeltaSeconds)
     // We need to wait for callback on fire
     if (mCurrentAnimation == &mEnemyPistolFire)
     {
-        std::cout << "Pistol fire frame" << std::endl;
         mEnemyPistolFire.Animate(PlayerPosition, DeltaSeconds, mAnimationComplete);
         if (mAnimationComplete)
         {
-            std::cout << "Pistol Fire Animation Completed" << std::endl;
             mAnimationComplete = false;
             SwapToEnemyIdle(PlayerPosition);
         }

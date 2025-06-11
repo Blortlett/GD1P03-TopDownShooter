@@ -70,8 +70,8 @@ public:
 	void LoadLevel();
 
 	// In game level progression
+	void BeginGame();
 	void AdvanceToNextLevel();
-	void ReloadLevel();
 
 	// Getters
 	std::vector<cEnemySpawner*>& GetEnemySpawnerList();

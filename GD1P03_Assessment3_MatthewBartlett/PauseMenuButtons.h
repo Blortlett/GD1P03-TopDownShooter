@@ -1,6 +1,7 @@
 #pragma once
 #include "cButtonUI.h"
 
+class cGameStateManager;
 class cPauseMenu;
 
 class cResumeButton : public cButtonUI
@@ -33,12 +34,14 @@ private:
 class cQuitGameButton : public cButtonUI
 {
 public:
-	cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPauseMenu& _PauseMenu);
+	cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPauseMenu& _PauseMenu, cGameStateManager& _GameStateManager);
 
 	void OnButtonClick() override;
 	void Draw(sf::RenderWindow& window) override;
 private:
 	cPauseMenu& mPauseMenu;
+	cGameStateManager& mGameStateManager;
+
 	sf::Font& mBodyFont;
 	sf::Text mText;
 };

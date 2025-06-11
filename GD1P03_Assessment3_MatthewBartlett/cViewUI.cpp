@@ -7,7 +7,7 @@ cViewUI::cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharact
 	: mPlayerCharacter(_PlayerCharacter)
 	, mGameWindow(_GameWindow)
 	, mAmmoUI(_GameWindow)
-	, mPauseMenuUI(_GameWindow)
+	, mPauseMenuUI(_GameWindow, _GameStateManager)
 	, mOptionsMenuUI(_GameWindow)
 	, mDebugMenuUI(_GameWindow, _GameStateManager)
 	, mLevelCompleteUI(_GameWindow)

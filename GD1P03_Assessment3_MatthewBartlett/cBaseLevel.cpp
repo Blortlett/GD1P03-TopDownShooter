@@ -14,19 +14,17 @@ cBaseLevel::cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFile
 
     mBackgroundSprite = new sf::Sprite(mBackgroundTex); /// !!!!
     mBackgroundSprite->setOrigin(mBackgroundSprite->getLocalBounds().size / 2.f);
-
-    // Set ExitDoor to null at the start
-    mExitDoor = nullptr;
 }
 
 cBaseLevel::~cBaseLevel()
 {
-    CleanupColliders();
+    if (!mLevelLoaded)
+        UnloadCurrentLevel();
 }
 
 void cBaseLevel::Update(float _DeltaTime)
 {
-    if (mExitDoor != nullptr)
+    if (mExitDoor)
     {
         mExitDoor->Update(_DeltaTime);
     }
@@ -39,7 +37,7 @@ void cBaseLevel::Draw()
     mRenderWindow.draw(*mBackgroundSprite);
 
     // Only draw door if it exists
-    if (mExitDoor != nullptr)
+    if (mExitDoor)
     {
         mExitDoor->Draw(mRenderWindow);
     }
@@ -181,8 +179,14 @@ void cBaseLevel::UnloadCurrentLevel()
         delete collider;
     }
     mEnemySpawnerList.clear();
+
     //Delete player spawner
-    delete mPlayerSpawner;
-    delete mExitDoor;
-    delete mExitZone;
+    if (mPlayerSpawner)
+        delete mPlayerSpawner;
+    if (mPlayerSpawner)
+        delete mExitDoor;
+    if (mPlayerSpawner)
+        delete mExitZone;
+
+    mLevelLoaded = false;
 }

@@ -23,8 +23,8 @@ class cPlayerCharacter : public cCharacter
 {
 private:
 	// Constant Movement Values
-	const float PLAYER_ACCELERATION = 700.f;
-	const float PLAYER_MAX_VELOCITY = 200.f;
+	const float PLAYER_ACCELERATION = 800.f;
+	const float PLAYER_MAX_VELOCITY = 400.f;
 	const float PLAYER_FRICTION = .005f;
 
 	// Input stuff

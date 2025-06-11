@@ -190,6 +190,7 @@
     <ClCompile Include="cLevel1.cpp" />
     <ClCompile Include="cLevel2.cpp" />
     <ClCompile Include="cLevel3.cpp" />
+    <ClCompile Include="cLevelCompleteUI.cpp" />
     <ClCompile Include="cLevelManager.cpp" />
     <ClCompile Include="cLevelProgressTracker.cpp" />
     <ClCompile Include="cMainMenu.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="cLevel1.h" />
     <ClInclude Include="cLevel2.h" />
     <ClInclude Include="cLevel3.h" />
+    <ClInclude Include="cLevelCompleteUI.h" />
     <ClInclude Include="cLevelManager.h" />
     <ClInclude Include="cLevelProgressTracker.h" />
     <ClInclude Include="cMainMenu.h" />

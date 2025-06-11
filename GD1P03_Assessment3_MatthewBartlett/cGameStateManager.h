@@ -1,8 +1,9 @@
 #pragma once
 #include "cProjectileManager.h"
 #include "cLevelProgressTracker.h"
+#include "cLevelManager.h"
 
-class cLevelManager;
+//class cLevelManager;
 class cEnemyManager;
 class cPlayerCharacter;
 class cPickupManager;
@@ -38,4 +39,7 @@ public:
 
     // Reset level function
     void CheckResetLevel(float _DeltaTime);
+
+    // Getters
+    sf::Vector2f GetLevelExitPosition() { return mLevelManager.GetLevelExitPosition(); }
 };

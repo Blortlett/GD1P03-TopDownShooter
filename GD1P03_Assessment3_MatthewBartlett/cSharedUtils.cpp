@@ -15,7 +15,7 @@ cSharedUtils::cSharedUtils()
 		std::cout << "Failed to load ammo-pistol-Icon-Empty.png";
 	}
 	// Load UI Icon empty bullet
-	if (!mUIBulletEmptyTex.loadFromFile("Assets/SpritePack/UI/Arrow.png"))
+	if (!mUIArrow.loadFromFile("Assets/SpritePack/UI/Arrow.png"))
 	{
 		std::cout << "Failed to load Arrow.png";
 	}

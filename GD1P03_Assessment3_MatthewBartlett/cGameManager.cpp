@@ -77,7 +77,7 @@ void cGameManager::GameTick()
 	}
 
 	// Set UI View & Handle Gameplay UI
-	mGameplayUI.Update();
+	mGameplayUI.Update(mDeltaSeconds);
 	mGameplayUI.Draw();
 	
 	// Save/Load Level Detection

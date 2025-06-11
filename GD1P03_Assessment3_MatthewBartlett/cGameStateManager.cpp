@@ -1,6 +1,6 @@
 #include "cGameStateManager.h"
 #include "cEnemyManager.h"
-#include "cLevelManager.h"
+
 #include "cPlayerCharacter.h"
 #include "cPlayerSpawner.h"
 #include "cPickupManager.h"

@@ -1,6 +1,7 @@
 #include "cViewUI.h"
 #include "cPlayerCharacter.h"
 #include "cGameSettings.h"
+#include "cCameraManager.h"
 
 cViewUI::cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter, cGameStateManager& _GameStateManager)
 	: mPlayerCharacter(_PlayerCharacter)
@@ -9,6 +10,8 @@ cViewUI::cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharact
 	, mPauseMenuUI(_GameWindow)
 	, mOptionsMenuUI(_GameWindow)
 	, mDebugMenuUI(_GameWindow, _GameStateManager)
+	, mLevelCompleteUI(_GameWindow)
+	, mGameStateManager(_GameStateManager)
 {
 	// Set Size
 	mUICanvas.setSize(sf::Vector2f(_GameWindow.getSize().x, _GameWindow.getSize().y));
@@ -25,6 +28,7 @@ void cViewUI::Draw()
 
 	// Draw UI elements
 	mAmmoUI.Draw();
+	mLevelCompleteUI.Draw();
 
 	// Update & Draw pause menu UI
 	mPauseMenuUI.Update(); 
@@ -34,8 +38,9 @@ void cViewUI::Draw()
 	mDebugMenuUI.Update();
 }
 
-void cViewUI::Update()
+void cViewUI::Update(float _DeltaTime)
 {
+	mLevelCompleteUI.Update(_DeltaTime, mGameStateManager.GetLevelExitPosition(), mPlayerCharacter.GetPosition());
 	// Get ammo count from player
 	int AmmoCount = mPlayerCharacter.GetAmmoCount();
 	// Set UI Ammo count

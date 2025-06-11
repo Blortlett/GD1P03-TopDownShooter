@@ -74,4 +74,5 @@ public:
 	std::vector<cFullWall*>& GetFullWallList() { return mCurrentLevel->GetFullWallColliderList(); }
 	std::vector<cHalfWall*>& GetHalfWallList() { return mCurrentLevel->GetHalfWallColliderList(); }
 	cBaseLevel* GetCurrentLevel() { return mCurrentLevel; }
+	sf::Vector2f GetLevelExitPosition() { return mCurrentLevel->GetExitTrigger()->GetPosition(); }
 };

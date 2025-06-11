@@ -15,7 +15,7 @@ private:
 	// Shooting & cooldown variables
 	bool mCanShoot = true;
 	float const mPlayerShootCooldownMax = .1f;
-	float const mEnemyShootCooldownMax = .5f;
+	float const mEnemyShootCooldownMax = .3f;
 	float mCooldownTimer;
 
 	// Manager References
@@ -27,7 +27,7 @@ public:
 	void Update(float _DeltaTime);
 
 	// Fire weapon function
-	void FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
+	bool FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
 	sf::Vector2f GetShootTrajectory(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition);
 
 	void RefillAmmo();

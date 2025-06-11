@@ -98,8 +98,9 @@ void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 	{
 		// get player position
 		sf::Vector2f PlayerPosition = mPlayerReference.GetPosition();
-		mPistol.FireWeapon(mPosition, PlayerPosition); // fire weapon at player position
 		mIsShooting = true;
+		if (mPistol.FireWeapon(mPosition, PlayerPosition))	// fire weapon at player position
+			mAnimator.SwapToEnemyFire(mPosition);			// If gun has bullet to fire, animate character
 	}
 }
 
@@ -114,6 +115,7 @@ void cEnemyCharacter::Update(float _DeltaSeconds)
 
 		// Face towards movement direction
 		Rotate(mPosition + mEnemyMovementNormalized);
+		mAnimator.SetRotation(cSharedUtils::GetLookTowardsAngle(mPosition, mPosition + mEnemyMovementNormalized)); // JANK!
 
 		// If enemy not waiting, let him walk around
 		if (!mIsEnemyWaiting)

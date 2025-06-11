@@ -147,6 +147,7 @@ void cGameStateManager::TransitionToNextLevel()
     if (playerSpawner)
     {
         mPlayerCharacter.SetPosition(playerSpawner->GetPosition());
+        mPlayerCharacter.RevivePlayer();
     }
 }
 

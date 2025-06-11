@@ -24,14 +24,15 @@ void cPistol::Update(float _DeltaTime)
 		mCanShoot = true;
 }
 
-void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
+bool cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 {
 	// Returns for if gun is not in fire state
-	if (!mCanShoot) return; // Don't bother if weapon is on cooldown 
+	if (!mCanShoot) return false; // Don't bother if weapon is on cooldown 
 	if (mCurrentBulletIndex < 0)
 	{
 		// empty clip sound
 		cAudioManager::GetInstance().SFXPlayDryFire();
+		return false;
 	} 
 	else
 	{
@@ -54,7 +55,7 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 	else
 		mCooldownTimer = mEnemyShootCooldownMax;
 
-	// Play audio sound
+	return true;
 }
 
 sf::Vector2f cPistol::GetShootTrajectory(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)

@@ -42,6 +42,12 @@ cPlayerUtils::cPlayerUtils()
 	{
 		std::cout << "Failed to load NPC_Gunman_idle_pistol_Sheet.png" << std::endl;
 	}
+	// Load Enemy pistol fire animation sheet
+	mEnemyShootSheetTex = new sf::Texture();
+	if (!mEnemyShootSheetTex->loadFromFile("Assets/SpritePack/NPCs/NPC_Gunman/NPC_Gunman_shoot_pistol_Sheet.png"))
+	{
+		std::cout << "Failed to load NPC_Gunman_shoot_pistol_Sheet.png" << std::endl;
+	}
 	// Load Enemy death animation sheet
 	mEnemyDeathSheetTex = new sf::Texture();
 	if (!mEnemyDeathSheetTex->loadFromFile("Assets/SpritePack/NPCs/NPC_Gunman/NPC_Gunman_death_Sheet.png"))

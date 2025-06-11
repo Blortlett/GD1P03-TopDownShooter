@@ -109,9 +109,9 @@ void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 		// Cast mouse position
 		sf::Vector2i mouseScreenPosition = mPlayerInput.GetMousePosition(mRenderWindow);
 		sf::Vector2f worldMousePosition = mRenderWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);
-		mPistol.FireWeapon(mPosition, worldMousePosition); // fire weapon at mouse position
+		if (mPistol.FireWeapon(mPosition, worldMousePosition)) // fire weapon at mouse position
+			mPlayerUpperBodyAnimator.SwapToPistolFire(mPosition);
 		mIsShooting = true;
-		mPlayerUpperBodyAnimator.SwapToPistolFire(mPosition);
 	}
 	if (!mPlayerInput.IsLeftClickPressed())
 		mIsShooting = false;
@@ -121,6 +121,7 @@ void cPlayerCharacter::RevivePlayer()
 {
 	mAlive = true;
 	mPlayerUpperBodyAnimator.SwapToPistolIdle(mPosition);
+	mPistol.RefillAmmo();
 }
 
 void cPlayerCharacter::OnCollision(sf::Vector2f direction)
@@ -173,6 +174,7 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 		Move(mPlayerInputNormalized, _DeltaSeconds);
 		// Player Rotation
 		Rotate(mPlayerLookDirection);
+		mPlayerUpperBodyAnimator.SetRotation(mPlayerLookDirection);
 
 		// Player Weapons
 		UpdateWeapon(_DeltaSeconds);

@@ -16,6 +16,7 @@ public:
 	// UI
 	sf::Texture mUIBulletFullTex;
 	sf::Texture mUIBulletEmptyTex;
+	sf::Texture mUIArrow;
 
 	// Weapons
 	sf::Texture mBulletTex;

@@ -32,7 +32,9 @@ public:
 	cPlayerAnimator(cCharacter* _OwnerCharacter);
 	~cPlayerAnimator();
 
+	// Hide base functions
 	void Animate(sf::Vector2f PlayerPosition, float DeltaSeconds);
+	void SetRotation(sf::Angle _AngleToRotate);
 
 	void SwapToPistolFire(sf::Vector2f _PlayerPosition);
 	void SwapToPistolIdle(sf::Vector2f _PlayerPosition);

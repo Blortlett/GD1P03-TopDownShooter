@@ -22,6 +22,7 @@ public:
 	// -= Enemy Textures =-
 	// Upper body
 	sf::Texture* mEnemyIdleSheetTex;
+	sf::Texture* mEnemyShootSheetTex;
 	// Lower body
 	sf::Texture* mEnemyLegsIdle;
 	sf::Texture* mEnemyLegsRun;

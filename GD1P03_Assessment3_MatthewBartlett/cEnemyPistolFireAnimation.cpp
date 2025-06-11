@@ -1,11 +1,11 @@
-#include "cAnimationPistolFire.h"
+#include "cEnemyPistolFireAnimation.h"
 
-cAnimationPistolFire::cAnimationPistolFire()
-	: cPlayerAnimationBase(cPlayerUtils::GetInstance().mPlayerShootSheetTex)
+cEnemyPistolFireAnimation::cEnemyPistolFireAnimation()
+	: cPlayerAnimationBase(cPlayerUtils::GetInstance().mEnemyShootSheetTex)
 {
 	mTotalFrames = sf::Vector2u(1, 1);
 	mFrameSize = sf::Vector2i(48, 48);
-	mFrameDuration = 0.05f;
+	mFrameDuration = 0.15f;
 	sf::Vector2f newOrigin = sf::Vector2f(mFrameSize.x / 2, mFrameSize.y / 2);
 	mSprite.setOrigin(newOrigin);
 

@@ -12,13 +12,13 @@ Mail : [matthewbartlett@mds.ac.nz]
 #pragma once
 #include "cPlayerAnimationBase.h"
 
-class cAnimationPistolFire: public cPlayerAnimationBase
+class cEnemyPistolFireAnimation : public cPlayerAnimationBase
 {
 private:
 	bool mAnimationComplete;
 
 public:
-	cAnimationPistolFire();
-	~cAnimationPistolFire() {}
-	
+	cEnemyPistolFireAnimation();
+	~cEnemyPistolFireAnimation() {}
+
 };

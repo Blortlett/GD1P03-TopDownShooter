@@ -520,6 +520,9 @@
     <ClCompile Include="DebugMenuButtons.cpp">
       <Filter>UI\cGameUI\DebugMenuUI\DebugMenuButtons</Filter>
     </ClCompile>
+    <ClCompile Include="cEnemyPistolFireAnimation.cpp">
+      <Filter>Animator\Animations\EnemyAnimations\UpperBody\FirePistol</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAnimationBase.h">
@@ -755,6 +758,9 @@
     </ClInclude>
     <ClInclude Include="DebugMenuButtons.h">
       <Filter>UI\cGameUI\DebugMenuUI\DebugMenuButtons</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyPistolFireAnimation.h">
+      <Filter>Animator\Animations\EnemyAnimations\UpperBody\FirePistol</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -37,7 +37,7 @@ void cGameStateManager::CheckBulletCollision()
     for (cBullet& bullet : PlayerBulletList) {
 
         // Skip loop iteration if bullet is not active
-        if (!bullet.mIsActive) continue;
+        if (!bullet.GetIsActive()) continue;
 
         // Check collision with each enemy
         for (cEnemyCharacter* enemy : EnemyList) {
@@ -46,7 +46,7 @@ void cGameStateManager::CheckBulletCollision()
             // check collision
             if (bullet.CheckCollisionWithEnemy(*enemy, CollisionDirection)) {
                 // If bullet hit enemy, deactivate bullet
-                bullet.mIsActive = false;
+                bullet.DisableBullet();
             }
         }
 
@@ -56,7 +56,7 @@ void cGameStateManager::CheckBulletCollision()
             if (bullet.GetCollider().CheckCollision(Wall->GetCollider(), CollisionDirection, 0.0f))
             {
                 // Deactivate bullet if hit fullwall
-                bullet.mIsActive = false;
+                bullet.DisableBullet();
             }
         }
     }
@@ -67,7 +67,7 @@ void cGameStateManager::CheckBulletCollision()
     for (cBullet& bullet : EnemyBulletList)
     {
         // Skip loop iteration if bullet is not active
-        if (!bullet.mIsActive) continue;
+        if (!bullet.GetIsActive()) continue;
 
         // Check collision with each fullwall
         for (cFullWall* Wall : WallList)
@@ -75,7 +75,7 @@ void cGameStateManager::CheckBulletCollision()
             if (bullet.GetCollider().CheckCollision(Wall->GetCollider(), CollisionDirection, 0.0f))
             {
                 // Deactivate bullet if hit fullwall
-                bullet.mIsActive = false;
+                bullet.DisableBullet();
             }
         }
 
@@ -86,7 +86,7 @@ void cGameStateManager::CheckBulletCollision()
         if (bullet.CheckCollisionWithPlayer(mPlayerCharacter, CollisionDirection))
         {
             // if bullet hit player, deactivate bullet
-            bullet.mIsActive = false;
+            bullet.DisableBullet();
             // Kill Player
             mPlayerCharacter.OnBulletCollision(CollisionDirection);
         }
@@ -168,6 +168,9 @@ void cGameStateManager::CheckResetLevel(float _DeltaTime)
         mLevelComplete = false;
         // Revive player
         mPlayerCharacter.RevivePlayer();
+
+        // Reset enemy death counter so door doesnt open early
+        cLevelProgressTracker::GetInstance().ResetEnemyCount();
 
         // Reset player position
         cPlayerSpawner* playerSpawner = mLevelManager.GetCurrentLevel()->GetPlayerSpawner();

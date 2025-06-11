@@ -47,7 +47,7 @@ void cBullet::Update(sf::RenderWindow& _Window, float _DeltaTime)
 	mBulletActiveTimer -= _DeltaTime;
 	if (mBulletActiveTimer < 0.f)
 	{
-		mIsActive = false;
+		DisableBullet();
 	}
 }
 
@@ -82,4 +82,12 @@ bool cBullet::CheckCollisionWithPlayer(cPlayerCharacter& _Character, sf::Vector2
 		return true;
 	}
 	return false;
+}
+
+void cBullet::DisableBullet()
+{
+	// Disable bullet
+	mIsActive = false;
+	// Reset active timer to max for next activation
+	mBulletActiveTimer = mBulletActiveMaxTime;
 }

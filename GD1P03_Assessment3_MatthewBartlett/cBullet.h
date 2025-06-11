@@ -27,11 +27,12 @@ private:
 	float const mBulletActiveMaxTime = 3.f;
 	float mBulletActiveTimer = mBulletActiveMaxTime;
 	
+	// Bullet will not draw/update unless this is true
+	bool mIsActive = false;
 public:
 	cBullet();
 	~cBullet() {}
 
-	bool mIsActive = false;
 
 	// Fire bullet functions
 	void Fire(sf::Vector2f _StartPosition, sf::Vector2f _ShootTrajectory);
@@ -46,4 +47,10 @@ public:
 
 	// Get collider
 	cBoxCollider& GetCollider() { return mCollider; }
+
+	// Disable bullet on collision
+	void DisableBullet();
+
+	// Check if bullet is active
+	bool GetIsActive() { return mIsActive; }
 };

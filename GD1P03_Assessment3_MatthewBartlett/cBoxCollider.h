@@ -23,6 +23,7 @@ public:
 	void MoveColliderPosition(sf::Vector2f position);
 	bool CheckCollision(cBoxCollider& other, sf::Vector2f& direction, float push);
 	bool CheckCollisionPoint(sf::Vector2f pointCollision);
+	bool CheckCollisionPointWall(sf::Vector2f pointCollision);
 	sf::FloatRect GetBounds() { return mBounds; }
 	sf::Vector2f GetPosition() { return mBounds.position; }
 	sf::Vector2f GetHalfSize() { return mBounds.size / 2.0f; }

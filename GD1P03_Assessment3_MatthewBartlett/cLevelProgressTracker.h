@@ -21,6 +21,9 @@ public:
 	void ReduceEnemyCount();
 	bool CheckLevelComplete();
 
+	// Reset enemy count on player death
+	void ResetEnemyCount();
+
 
 	// Setters
 	void SetWallVector(std::vector<cFullWall*>& _LevelWalls) { mLevelWalls = &_LevelWalls; }

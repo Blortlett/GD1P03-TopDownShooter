@@ -31,5 +31,5 @@ bool cWallBase::CheckCollideWithPoint(sf::Vector2f point)
 {
 	sf::Vector2f newPoint = point;
 	newPoint += mCollider.GetHalfSize();
-	return mCollider.CheckCollisionPoint(newPoint);
+	return mCollider.CheckCollisionPointWall(newPoint);
 }

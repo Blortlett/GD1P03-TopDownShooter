@@ -20,3 +20,8 @@ bool cLevelProgressTracker::CheckLevelComplete()
 {
 	return mEnemyCount <= 0;
 }
+
+void cLevelProgressTracker::ResetEnemyCount()
+{
+	mEnemyCount = mLevelMaxEnemies;
+}

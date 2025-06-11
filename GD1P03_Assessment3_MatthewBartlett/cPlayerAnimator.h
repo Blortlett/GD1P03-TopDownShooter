@@ -34,7 +34,7 @@ public:
 
 	void Animate(sf::Vector2f PlayerPosition, float DeltaSeconds);
 
-	void SwapToPistolFire();
-	void SwapToPistolIdle();
-	void SwapToPlayerDeath();
+	void SwapToPistolFire(sf::Vector2f _PlayerPosition);
+	void SwapToPistolIdle(sf::Vector2f _PlayerPosition);
+	void SwapToPlayerDeath(sf::Vector2f _PlayerPosition);
 };

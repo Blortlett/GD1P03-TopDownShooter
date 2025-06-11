@@ -12,11 +12,12 @@ cAnimationBase::cAnimationBase(sf::Texture* _SpriteSheetTex)
 
 void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
 {
+    // Set sprite position
+    mSprite.setPosition(_ObjectPosition);
+    
     // Accumulate time
     mAnimationTime += _DeltaSeconds;
 
-    // Set sprite position
-    mSprite.setPosition(_ObjectPosition);
 
     // No need to animate 0 frames - Division by 0 anywayz
     if (mTotalFrames.x == 0) return;
@@ -29,7 +30,6 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
 
         mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (mCurrentFrame.x), 0));
         mSpriteRect.size = mFrameSize;
-
         // Update sprite rectangle
         mSprite.setTextureRect(mSpriteRect);
     }
@@ -37,8 +37,11 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
 
 void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds, bool& _AnimationComplete)
 {
-    mAnimationTime += _DeltaSeconds;
+    // Set sprite position to object position
     mSprite.setPosition(_ObjectPosition);
+
+    // Tick up animation timer
+    mAnimationTime += _DeltaSeconds;
 
     // Check if it's time to switch frames
     if (mAnimationTime >= mFrameDuration)

@@ -32,6 +32,9 @@ public:
 	// Getters
 	sf::Angle GetRotation();
 
+	// Setters
+	void SetPosition(sf::Vector2f _ObjectPosition) { mSprite.setPosition(_ObjectPosition); }
+
 protected:
 	// Time Variables
 	float mAnimationTime = 0.f;

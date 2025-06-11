@@ -10,8 +10,8 @@ public:
 	~cEnemyAnimator() {}
 
 	// Swap animation functions
-	void SwapToEnemyIdle();
-	void SwapToEnemyDeath();
+	void SwapToEnemyIdle(sf::Vector2f _CharacterPosition);
+	void SwapToEnemyDeath(sf::Vector2f _CharacterPosition);
 private:
 	// Animations
 	cEnemyIdleAnimation mEnemyPistolIdle;

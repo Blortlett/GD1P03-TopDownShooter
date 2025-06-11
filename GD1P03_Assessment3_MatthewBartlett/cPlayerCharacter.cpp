@@ -111,7 +111,7 @@ void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 		sf::Vector2f worldMousePosition = mRenderWindow.mapPixelToCoords(mouseScreenPosition, mCameraView);
 		mPistol.FireWeapon(mPosition, worldMousePosition); // fire weapon at mouse position
 		mIsShooting = true;
-		mPlayerUpperBodyAnimator.SwapToPistolFire();
+		mPlayerUpperBodyAnimator.SwapToPistolFire(mPosition);
 	}
 	if (!mPlayerInput.IsLeftClickPressed())
 		mIsShooting = false;
@@ -120,7 +120,7 @@ void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 void cPlayerCharacter::RevivePlayer()
 {
 	mAlive = true;
-	mPlayerUpperBodyAnimator.SwapToPistolIdle();
+	mPlayerUpperBodyAnimator.SwapToPistolIdle(mPosition);
 }
 
 void cPlayerCharacter::OnCollision(sf::Vector2f direction)
@@ -151,7 +151,7 @@ void cPlayerCharacter::OnCollision(sf::Vector2f direction)
 void cPlayerCharacter::OnBulletCollision(sf::Vector2f direction)
 {
 	if (cGameSettings::GetInstance().mIsGodModeActive) return;
-	mPlayerUpperBodyAnimator.SwapToPlayerDeath();
+	mPlayerUpperBodyAnimator.SwapToPlayerDeath(mPosition);
 	mAlive = false;
 }
 

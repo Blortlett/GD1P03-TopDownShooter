@@ -40,18 +40,24 @@ void cPlayerAnimator::Animate(sf::Vector2f PlayerPosition, float DeltaSeconds)
     }
 }
 
-void cPlayerAnimator::SwapToPistolFire()
+void cPlayerAnimator::SwapToPistolFire(sf::Vector2f _PlayerPosition)
 {
     mCurrentAnimation = &mUpperPistolFire;
+    mUpperPistolFire.RestartAnimation(); // Reset to first frame
+    mAnimationComplete = false;
+    mUpperPistolFire.SetPosition(_PlayerPosition); // Set current position
 }
 
-void cPlayerAnimator::SwapToPistolIdle()
+void cPlayerAnimator::SwapToPistolIdle(sf::Vector2f _PlayerPosition)
 {
     mCurrentAnimation = &mUpperPistolIdle;
+    mUpperPistolIdle.RestartAnimation(); // Reset to first frame
+    mUpperPistolIdle.SetPosition(_PlayerPosition); // Set current position
 }
 
-void cPlayerAnimator::SwapToPlayerDeath()
+void cPlayerAnimator::SwapToPlayerDeath(sf::Vector2f _PlayerPosition)
 {
-    mPlayerDeathAnimation.RestartAnimation();
     mCurrentAnimation = &mPlayerDeathAnimation;
+    mPlayerDeathAnimation.RestartAnimation();
+    mPlayerDeathAnimation.SetPosition(_PlayerPosition); // Set current position
 }

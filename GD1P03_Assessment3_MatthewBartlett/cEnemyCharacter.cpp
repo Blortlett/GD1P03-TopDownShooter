@@ -187,7 +187,7 @@ void cEnemyCharacter::HandleReturnToSpawn(float _DeltaTime)
 void cEnemyCharacter::RespawnEnemy()
 {
 	mAlive = true;
-	mAnimator.SwapToEnemyIdle();
+	mAnimator.SwapToEnemyIdle(mPosition);
 	mCurrentBehavior = &mBehaviorPatrol;
 	mEnemyMovementNormalized = sf::Vector2f(1.f, 0.f);
 }
@@ -202,7 +202,7 @@ void cEnemyCharacter::OnBulletCollision(sf::Vector2f _CollisionDirection)
 	// Drop weapon
 	mPickupManager.CreateNewWeaponDrop(mPosition, mCharacterAnimator->GetRotation(), 12);
 	// Swap current animation to death animation
-	mAnimator.SwapToEnemyDeath();
+	mAnimator.SwapToEnemyDeath(mPosition);
 	mAnimatorLegs.ClearAnimation();
 
 	// Track enemy death

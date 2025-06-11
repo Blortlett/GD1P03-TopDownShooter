@@ -163,7 +163,7 @@ void cPlayerCharacter::OnPickupPistolCollision()
 void cPlayerCharacter::Update(float _DeltaSeconds)
 {
 	// Player animations
-	mCharacterAnimator->Animate(mPosition, _DeltaSeconds);
+	mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
 	mCharacterAnimatorBottom->Animate(mPosition, _DeltaSeconds);
 	
 	// Don't update anything except animations if player is dead

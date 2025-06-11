@@ -17,5 +17,5 @@ class cAnimationLegsIdle : public cPlayerAnimationBase
 public:
 	cAnimationLegsIdle();
 	~cAnimationLegsIdle() {}
-	void Animate(sf::Vector2f _PlayerPosition, float _DeltaSeconds) override;
+	//void Animate(sf::Vector2f _PlayerPosition, float _DeltaSeconds) override;
 };

@@ -1,12 +1,13 @@
 #include "cAnimationBase.h"
+#include <iostream>
 
 cAnimationBase::cAnimationBase(sf::Texture* _SpriteSheetTex)
 	: mSprite(*_SpriteSheetTex)
 {
     // Init sprite rect at first frame
-    mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (1 + mCurrentFrame.x), 0));
+    /*mSpriteRect.position = (sf::Vector2i(0, 0));
     mSpriteRect.size = mFrameSize;
-    mSprite.setTextureRect(mSpriteRect);
+    mSprite.setTextureRect(mSpriteRect);*/
 }
 
 void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
@@ -36,22 +37,34 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
 
 void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds, bool& _AnimationComplete)
 {
+    mAnimationTime += _DeltaSeconds;
+    mSprite.setPosition(_ObjectPosition);
+
     // Check if it's time to switch frames
     if (mAnimationTime >= mFrameDuration)
     {
-        if (mCurrentFrame.x >= mTotalFrames.x)
-        {
-            _AnimationComplete = true;
-        }
+        std::cout << "PistolFireFrame" << std::endl;
 
-        mAnimationTime -= mFrameDuration;  // Reset timer
-        mCurrentFrame.x = (mCurrentFrame.x + 1) % mTotalFrames.x;  // Cycle through frames
-
+        // calc new sprite rectangle
         mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (1 + mCurrentFrame.x), 0));
         mSpriteRect.size = mFrameSize;
-
         // Update sprite rectangle
         mSprite.setTextureRect(mSpriteRect);
+
+        mAnimationTime -= mFrameDuration;  // Reset timer
+        
+        // check for animation complete
+        if (mCurrentFrame.x >= mTotalFrames.x)
+        {
+            std::cout << "PistolFireComplete!" << std::endl;
+            mCurrentFrame.x = 0;
+            _AnimationComplete = true;
+        }
+        else 
+        {
+            // Increment frame
+            mCurrentFrame.x += 1;
+        }
     }
 }
 

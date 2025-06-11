@@ -11,7 +11,7 @@ cEnemyIdleAnimation::cEnemyIdleAnimation()
 	mSprite.setOrigin(newOrigin);
 
 	// Init sprite rect at first frame
-	mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (1 + mCurrentFrame.x), 0));
+	mSpriteRect.position = (sf::Vector2i(0, 0));
 	mSpriteRect.size = mFrameSize;
 	mSprite.setTextureRect(mSpriteRect);
 }

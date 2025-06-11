@@ -48,7 +48,8 @@ bool cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 
 	// Set variables to just fired mode
 	if (!cGameSettings::GetInstance().mIsInfiniteAmmoActive)
-		mCurrentBulletIndex--;
+		if (mIsPlayerWeapon)
+			mCurrentBulletIndex--;
 	mCanShoot = false;
 	if (mIsPlayerWeapon)
 		mCooldownTimer = mPlayerShootCooldownMax;

@@ -20,6 +20,7 @@ cLevelCompleteUI::cLevelCompleteUI(sf::RenderWindow& renderWindow)
 	mSubTitleText.setOrigin(mTitleText.getGlobalBounds().size / 2.0f);
 
 	// Setup exit arrow UI to have center origin
+	mExitArrowUI.setScale({2.f, 2.f});
 	mExitArrowUI.setOrigin(mExitArrowUI.getGlobalBounds().size / 2.f);
 }
 

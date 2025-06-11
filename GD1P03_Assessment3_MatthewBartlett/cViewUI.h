@@ -7,6 +7,7 @@
 #include "cLevelCompleteUI.h"
 
 class cPlayerCharacter;
+class cCameraManager;
 
 class cViewUI
 {
@@ -23,9 +24,10 @@ private:
 	sf::RenderWindow& mGameWindow;
 	cPlayerCharacter& mPlayerCharacter;
 	cGameStateManager& mGameStateManager;
+	cCameraManager& mCameraManager;
 
 public:
-	cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter, cGameStateManager& _GameStateManager);
+	cViewUI(sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter, cGameStateManager& _GameStateManager, cCameraManager& mCameraManager);
 
 	void Update(float _DeltaTime);
 	void Draw();

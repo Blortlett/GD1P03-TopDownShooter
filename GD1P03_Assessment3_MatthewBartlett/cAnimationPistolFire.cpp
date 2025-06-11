@@ -5,7 +5,7 @@ cAnimationPistolFire::cAnimationPistolFire(cCharacter& _OwnerCharacter)
 	: cPlayerAnimationBase(cPlayerUtils::GetInstance().mPlayerShootSheetTex)
 	, mOwnerCharacter(_OwnerCharacter)
 {
-	mTotalFrames = sf::Vector2u(0, 1);
+	mTotalFrames = sf::Vector2u(1, 1);
 	mFrameSize = sf::Vector2i(48, 48);
 	mFrameDuration = 0.13f;
 	sf::Vector2f newOrigin = sf::Vector2f(mFrameSize.x / 2, mFrameSize.y / 2);

@@ -46,7 +46,17 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds, 
     // Check if it's time to switch frames
     if (mAnimationTime >= mFrameDuration)
     {
-        std::cout << "PistolFireFrame" << std::endl;
+        // check for animation complete
+        if (mCurrentFrame.x >= mTotalFrames.x)
+        {
+            mCurrentFrame.x = 0;
+            _AnimationComplete = true;
+        }
+        else 
+        {
+            // Increment frame
+            mCurrentFrame.x += 1;
+        }
 
         // calc new sprite rectangle
         mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (mCurrentFrame.x), 0));
@@ -56,18 +66,6 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds, 
 
         mAnimationTime -= mFrameDuration;  // Reset timer
         
-        // check for animation complete
-        if (mCurrentFrame.x >= mTotalFrames.x)
-        {
-            std::cout << "PistolFireComplete!" << std::endl;
-            mCurrentFrame.x = 0;
-            _AnimationComplete = true;
-        }
-        else 
-        {
-            // Increment frame
-            mCurrentFrame.x += 1;
-        }
     }
 }
 

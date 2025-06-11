@@ -105,42 +105,42 @@ void cEnemyCharacter::UpdateWeapon(float _DeltaSeconds)
 
 void cEnemyCharacter::Update(float _DeltaSeconds)
 {
+	// Only perform the rest of the updates if Enemy is alive
+	if (mAlive)
+	{
+		// -= Movement =-
+		// Get Enemy "Input"
+		mCurrentBehavior->GetMovementDirection(mEnemyMovementNormalized, mIsEnemyWaiting, _DeltaSeconds);
+
+		// Face towards movement direction
+		Rotate(mPosition + mEnemyMovementNormalized);
+
+		// If enemy not waiting, let him walk around
+		if (!mIsEnemyWaiting)
+		{
+			// Move Enemy
+			Move(mEnemyMovementNormalized, _DeltaSeconds);
+			// Character moving - legs should run
+			mAnimatorLegs.SwapToRun();
+		}
+		else
+		{
+			// Character idle - legs should idle too
+			mAnimatorLegs.SwapToIdle();
+		}
+
+		// Raycast viewcone // Character sees
+		DetectPlayer();
+		// HandleAgro
+		HandleAgro(_DeltaSeconds);
+		// Returning to spawn helper
+		HandleReturnToSpawn(_DeltaSeconds);
+		// Decide to shoot or not
+		UpdateWeapon(_DeltaSeconds);
+	}
 	// Animate
 	mAnimatorLegs.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
 	mAnimator.Animate(mBoxCollider.GetPosition(), _DeltaSeconds);
-
-	// Only perform the rest of the updates if Enemy is alive
-	if (!mAlive) return;
-
-	// -= Movement =-
-	// Get Enemy "Input"
-	mCurrentBehavior->GetMovementDirection(mEnemyMovementNormalized, mIsEnemyWaiting, _DeltaSeconds);
-	
-	// Face towards movement direction
-	Rotate(mPosition + mEnemyMovementNormalized);
-	
-	// If enemy not waiting, let him walk around
-	if (!mIsEnemyWaiting)
-	{
-		// Move Enemy
-		Move(mEnemyMovementNormalized, _DeltaSeconds);
-		// Character moving - legs should run
-		mAnimatorLegs.SwapToRun();
-	}
-	else
-	{
-		// Character idle - legs should idle too
-		mAnimatorLegs.SwapToIdle();
-	}
-
-	// Raycast viewcone // Character sees
-	DetectPlayer();
-	// HandleAgro
-	HandleAgro(_DeltaSeconds);
-	// Returning to spawn helper
-	HandleReturnToSpawn(_DeltaSeconds);
-	// Decide to shoot or not
-	UpdateWeapon(_DeltaSeconds);
 }
 
 void cEnemyCharacter::HandleAgro(float _DeltaTime)

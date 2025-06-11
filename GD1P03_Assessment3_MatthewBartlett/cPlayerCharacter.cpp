@@ -162,25 +162,26 @@ void cPlayerCharacter::OnPickupPistolCollision()
 
 void cPlayerCharacter::Update(float _DeltaSeconds)
 {
+	// Don't update anything except animations if player is dead
+	if (mAlive)
+	{
+		// Input
+		HandleInput();
+		GetLookTowardsDirection();
+
+		// Player Movement
+		Move(mPlayerInputNormalized, _DeltaSeconds);
+		// Player Rotation
+		Rotate(mPlayerLookDirection);
+
+		// Player Weapons
+		UpdateWeapon(_DeltaSeconds);
+		mPistol.Update(_DeltaSeconds);
+	}
+
 	// Player animations
 	mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
 	mCharacterAnimatorBottom->Animate(mPosition, _DeltaSeconds);
-
-	// Don't update anything except animations if player is dead
-	if (!mAlive) return;
-
-	// Input
-	HandleInput();
-	GetLookTowardsDirection();
-
-	// Player Movement
-	Move(mPlayerInputNormalized, _DeltaSeconds);
-	// Player Rotation
-	Rotate(mPlayerLookDirection);
-
-	// Player Weapons
-	UpdateWeapon(_DeltaSeconds);
-	mPistol.Update(_DeltaSeconds);
 }
 
 void cPlayerCharacter::Draw()

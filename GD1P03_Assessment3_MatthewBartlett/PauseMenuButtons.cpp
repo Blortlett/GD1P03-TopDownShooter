@@ -90,8 +90,8 @@ cQuitGameButton::cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPaus
 
 void cQuitGameButton::OnButtonClick()
 {
-	// Quit to destop
-	mPauseMenu.QuitGame();
+	// Quit to main menu
+	cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
 }
 
 void cQuitGameButton::Draw(sf::RenderWindow& window)

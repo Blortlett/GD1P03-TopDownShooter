@@ -60,6 +60,10 @@ public:
 	void AddExitZone(cExitTrigger* _ExitZoneObject);
 	// Delete wall
 	void TryDeleteWall(sf::Vector2f pointCollision);
+	
+	// Unload level when exiting
+	void UnloadLevel();
+	void UnloadAllLevels();
 
 	// Save / Load Dialog (more for setting up levels)
 	void SaveLevel();

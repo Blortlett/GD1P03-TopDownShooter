@@ -2,11 +2,11 @@
 #include "cGameManager.h"
 #include "cMainMenu.h"
 
+
+
 class cApplicationManager
 {
 private:
-	
-
 	sf::RenderWindow mGameWindow;
 	cGameManager mGameManager;
 

@@ -36,13 +36,9 @@ void cApplicationManager::Run()
                     // Handle Main Menu
                     mGameWindow.setView(mDefaultView);
                     mMainMenu.Update();
-                    // Transition when Play is clicked
-                    if (!mMainMenu.mIsActive)
-                    {
-                        cGameSettings::GetInstance().SetGameState(EGameState::Gameplay);
-                    }
                     break;
                 case EGameState::Gameplay:
+                    // Play level music
                     cAudioManager::GetInstance().PlayLevelMusic();
                     // Game Tick runs all the gameplay
                     mGameManager.GameTick();
@@ -51,4 +47,6 @@ void cApplicationManager::Run()
         // Clear last frame & display new frame
         mGameWindow.display();
     }
+
+    
 }

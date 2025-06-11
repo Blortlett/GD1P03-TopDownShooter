@@ -19,7 +19,13 @@ cLevelManager::cLevelManager(sf::RenderWindow& _Window)
 
 void cLevelManager::Update(float _DeltaTime)
 {
+	// Update levels exit door
 	mCurrentLevel->Update(_DeltaTime);
+	// Watch for gamestate swap - Return to main menu
+	if (cGameSettings::GetInstance().GetGameState() == EGameState::MainMenu)
+	{
+		UnloadAllLevels();
+	}
 }
 
 void cLevelManager::Draw()
@@ -123,6 +129,19 @@ void cLevelManager::TryDeleteWall(sf::Vector2f pointCollision)
 		}
 	}
 }
+
+void cLevelManager::UnloadLevel()
+{
+	mCurrentLevel->UnloadCurrentLevel();
+}
+
+void cLevelManager::UnloadAllLevels()
+{
+	mLevel1.UnloadCurrentLevel();
+	mLevel2.UnloadCurrentLevel();
+	mLevel3.UnloadCurrentLevel();
+}
+
 
 void cLevelManager::SaveLevel()
 {

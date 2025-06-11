@@ -185,6 +185,7 @@
     <ClCompile Include="cFileInterface.cpp" />
     <ClCompile Include="cFullWallDrawTool.cpp" />
     <ClCompile Include="cGameManager.cpp" />
+    <ClCompile Include="cGameSettings.cpp" />
     <ClCompile Include="cGameStateManager.cpp" />
     <ClCompile Include="cHalfWallDrawTool.cpp" />
     <ClCompile Include="cLevel1.cpp" />

@@ -30,7 +30,7 @@ public:
 	// -= Main Menu / Gameplay State=-
 	// Get / Set game state (Main menu or Gameplay)
 	EGameState GetGameState() { return mCurrentGameState; }
-	void SetGameState(EGameState _GameState) { mCurrentGameState = _GameState; }
+	void SetGameState(EGameState _GameState);// 
 
 
 	// -= Debug Mode =-

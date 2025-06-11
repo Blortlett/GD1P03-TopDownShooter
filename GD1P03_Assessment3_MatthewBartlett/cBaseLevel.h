@@ -76,4 +76,7 @@ public:
 	void SaveLevel(cFileInterface& _FileInterface);
 	void LoadLevel(cFileInterface& _FileInterface);
 	virtual void LoadLevelByName(cFileInterface& _FileInterface) = 0;
+
+	// Unload level after play
+	void UnloadCurrentLevel();
 };

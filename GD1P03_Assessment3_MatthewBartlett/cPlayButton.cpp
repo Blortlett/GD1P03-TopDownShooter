@@ -12,6 +12,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cPlayButton.h"
 #include "cSharedUtils.h"
 #include "cMainMenu.h"
+#include "cGameSettings.h"
 
 cPlayButton::cPlayButton(sf::Vector2f position, sf::Vector2f size, cMainMenu& _MainMenu)
 	: cButtonUI(position, size)
@@ -29,8 +30,7 @@ cPlayButton::cPlayButton(sf::Vector2f position, sf::Vector2f size, cMainMenu& _M
 
 void cPlayButton::OnButtonClick()
 {
-	// Deactivate menu
-	mMainMenu.mIsActive = false;
+	cGameSettings::GetInstance().SetGameState(EGameState::Gameplay);
 }
 
 void cPlayButton::Draw(sf::RenderWindow& window)

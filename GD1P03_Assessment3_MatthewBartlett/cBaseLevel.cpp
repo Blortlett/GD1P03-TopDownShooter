@@ -9,10 +9,10 @@ cBaseLevel::cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFile
 {
     if (!mBackgroundTex.loadFromFile(_BackgroundPNGFilepath))
     {
-        std::cout << "Failed to load background @ " << _BackgroundPNGFilepath << std::endl;
+        std::cout << "Failed to load background @ " << _BackgroundPNGFilepath << std::endl; 
     }
 
-    mBackgroundSprite = new sf::Sprite(mBackgroundTex);
+    mBackgroundSprite = new sf::Sprite(mBackgroundTex); /// !!!!
     mBackgroundSprite->setOrigin(mBackgroundSprite->getLocalBounds().size / 2.f);
 
     // Set ExitDoor to null at the start
@@ -22,9 +22,6 @@ cBaseLevel::cBaseLevel(sf::RenderWindow& _Window, std::string _BackgroundPNGFile
 cBaseLevel::~cBaseLevel()
 {
     CleanupColliders();
-    // Delete the background sprite
-    //if (mBackgroundSprite != nullptr)
-    //    delete mBackgroundSprite;    // <<< Memory leak here on destructor?
 }
 
 void cBaseLevel::Update(float _DeltaTime)
@@ -118,19 +115,7 @@ void cBaseLevel::AddExitZoneToLevel(cExitTrigger* _ExitZone)
 
 void cBaseLevel::CleanupColliders()
 {
-    // Delete all full wall colliders
-    for (cFullWall* collider : mFullWallColliders)
-    {
-        delete collider;
-    }
-    mFullWallColliders.clear();
-
-    // Delete all half wall colliders
-    for (cHalfWall* collider : mHalfWallColliders)
-    {
-        delete collider;
-    }
-    mHalfWallColliders.clear();
+    
 }
 
 std::vector<cFullWall*>& cBaseLevel::GetFullWallColliderList()
@@ -173,4 +158,31 @@ void cBaseLevel::LoadLevel(cFileInterface& _FileInterface)
 {
     // Get file interface to load level here
     _FileInterface.LoadLevelDialog(this);
+}
+
+void cBaseLevel::UnloadCurrentLevel()
+{
+    // Cleanup all loaded object types
+    // Delete all full wall colliders
+    for (cFullWall* collider : mFullWallColliders)
+    {
+        delete collider;
+    }
+    mFullWallColliders.clear();
+    // Delete all half wall colliders
+    for (cHalfWall* collider : mHalfWallColliders)
+    {
+        delete collider;
+    }
+    mHalfWallColliders.clear();
+    //Delete all Enemy Spawners
+    for (cEnemySpawner* collider : mEnemySpawnerList)
+    {
+        delete collider;
+    }
+    mEnemySpawnerList.clear();
+    //Delete player spawner
+    delete mPlayerSpawner;
+    delete mExitDoor;
+    delete mExitZone;
 }

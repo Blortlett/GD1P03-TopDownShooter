@@ -27,7 +27,7 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)
         mAnimationTime -= mFrameDuration;  // Reset timer
         mCurrentFrame.x = (mCurrentFrame.x + 1) % mTotalFrames.x;  // Cycle through frames
 
-        mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (1 + mCurrentFrame.x), 0));
+        mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (mCurrentFrame.x), 0));
         mSpriteRect.size = mFrameSize;
 
         // Update sprite rectangle
@@ -46,7 +46,7 @@ void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds, 
         std::cout << "PistolFireFrame" << std::endl;
 
         // calc new sprite rectangle
-        mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (1 + mCurrentFrame.x), 0));
+        mSpriteRect.position = (sf::Vector2i(mFrameSize.x * (mCurrentFrame.x), 0));
         mSpriteRect.size = mFrameSize;
         // Update sprite rectangle
         mSprite.setTextureRect(mSpriteRect);

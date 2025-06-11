@@ -165,7 +165,7 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 	// Player animations
 	mPlayerUpperBodyAnimator.Animate(mPosition, _DeltaSeconds);
 	mCharacterAnimatorBottom->Animate(mPosition, _DeltaSeconds);
-	
+
 	// Don't update anything except animations if player is dead
 	if (!mAlive) return;
 

@@ -1,6 +1,8 @@
 #include "cEnemyCharacter.h"
 #include "cPickupManager.h"
 #include "cLevelProgressTracker.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 cEnemyCharacter::cEnemyCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, cPickupManager& _PickupManager, sf::RenderWindow& _GameWindow, cPlayerCharacter& _PlayerCharacter)
 	: cCharacter(_Position, _ProjectileManager, _GameWindow, false)
@@ -24,9 +26,8 @@ bool cEnemyCharacter::IsPlayerInCone(sf::Angle _AngleToPlayer, sf::Angle _EnemyA
 	float relativeAngle = playerAngle - enemyAngle;
 
 	// Normalize the relative angle to [-pi, pi]
-	const float PI = 3.14159265359f;
-	while (relativeAngle > PI) relativeAngle -= 2.0f * PI;
-	while (relativeAngle < -PI) relativeAngle += 2.0f * PI;
+	while (relativeAngle > M_PI) relativeAngle -= 2.0f * M_PI;
+	while (relativeAngle < -M_PI) relativeAngle += 2.0f * M_PI;
 
 	// Check if the relative angle is within the cone
 	return std::abs(relativeAngle) <= CONE_HALF_ANGLE;

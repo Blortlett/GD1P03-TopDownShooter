@@ -22,7 +22,7 @@ bool cRaycaster::Cast(sf::Vector2f _Origin, sf::Angle _Angle)
 
 	// Begin cast
 	bool hit = false;
-	mCurrentCastDist = 30.f;		// Start a bit away from character to save some calculation
+	mCurrentCastDist = 12.f;		// Start a bit away from character center
 	while (mCurrentCastDist <= mCastDistance)
 	{
 		sf::Vector2f castPoint = cSharedUtils::GetInstance().calculatePointFromOrigin(_Origin, mCurrentCastDist, _Angle);

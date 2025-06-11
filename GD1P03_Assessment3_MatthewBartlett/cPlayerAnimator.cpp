@@ -27,9 +27,11 @@ void cPlayerAnimator::Animate(sf::Vector2f PlayerPosition, float DeltaSeconds)
     // We need to wait for callback on fire
     if (mCurrentAnimation == &mUpperPistolFire)
     {
+        std::cout << "Pistol fire frame" << std::endl;
         mUpperPistolFire.Animate(PlayerPosition, DeltaSeconds, mAnimationComplete);
         if (mAnimationComplete)
         {
+            std::cout << "Pistol Fire Animation Completed" << std::endl;
             mAnimationComplete = false;
             SwapToPistolIdle(PlayerPosition);
         }

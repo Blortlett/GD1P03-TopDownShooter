@@ -38,10 +38,11 @@ void cPistol::FireWeapon(sf::Vector2f _FirePosition, sf::Vector2f _AimPosition)
 		// Fire Bullet here
 		cAudioManager::GetInstance().SFXPlayShoot();
 		sf::Vector2f ShootTrajectory = GetShootTrajectory(_FirePosition, _AimPosition);
+		sf::Vector2f correctFirePosition = _FirePosition + (ShootTrajectory * 15.f);
 		if (mIsPlayerWeapon)
-			mProjectileManager.FirePlayerBullet(_FirePosition, ShootTrajectory);
+			mProjectileManager.FirePlayerBullet(correctFirePosition, ShootTrajectory);
 		else
-			mProjectileManager.FireEnemyBullet(_FirePosition, ShootTrajectory);
+			mProjectileManager.FireEnemyBullet(correctFirePosition, ShootTrajectory);
 	}
 
 	// Set variables to just fired mode

@@ -31,7 +31,7 @@ void cPlayerAnimator::Animate(sf::Vector2f PlayerPosition, float DeltaSeconds)
         if (mAnimationComplete)
         {
             mAnimationComplete = false;
-            mCurrentAnimation = &mUpperPistolIdle;
+            SwapToPistolIdle(PlayerPosition);
         }
     }
     else

@@ -4,10 +4,6 @@
 cAnimationBase::cAnimationBase(sf::Texture* _SpriteSheetTex)
 	: mSprite(*_SpriteSheetTex)
 {
-    // Init sprite rect at first frame
-    /*mSpriteRect.position = (sf::Vector2i(0, 0));
-    mSpriteRect.size = mFrameSize;
-    mSprite.setTextureRect(mSpriteRect);*/
 }
 
 void cAnimationBase::Animate(sf::Vector2f _ObjectPosition, float _DeltaSeconds)

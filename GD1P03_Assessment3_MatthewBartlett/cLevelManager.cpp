@@ -175,7 +175,11 @@ void cLevelManager::BeginGame()
 void cLevelManager::AdvanceToNextLevel()
 {
 	if (mCurrentLevel == &mLevel3)
+	{
+		UnloadAllLevels();
+		std::cout << "GameOver.. Returning to main menu" << std::endl;
 		cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
+	}
 
 	// Increment level index and select the next level
 	mCurrentLevelIndex = (mCurrentLevelIndex + 1) % 3; // Cycle through levels (0, 1, 2)
@@ -185,9 +189,10 @@ void cLevelManager::AdvanceToNextLevel()
 		mCurrentLevel = &mLevel2;
 	else if (mCurrentLevelIndex == 2)
 		mCurrentLevel = &mLevel3;
-	else
-	{	// Game complete, return to main menu
+	else if (mCurrentLevel == &mLevel3)
+	{
 		UnloadAllLevels();
+		std::cout << "GameOver.. Returning to main menu" << std::endl;
 		cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
 	}
 

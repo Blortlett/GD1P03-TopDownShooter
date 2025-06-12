@@ -9,8 +9,8 @@ Description : [This class holds data and functionality to store game data such a
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
-
 #pragma once
+#include <iostream>
 
 enum class EGameState
 {
@@ -21,8 +21,11 @@ enum class EGameState
 class cGameSettings
 {
 private:
-	cGameSettings() { mCurrentGameState = EGameState::MainMenu;  }
-	~cGameSettings() {}
+	cGameSettings() 
+	{
+		std::cout << "GameSettings constructor.. Gamestate = MainMenu" << std::endl;
+		mCurrentGameState = EGameState::MainMenu; 
+	}
 
 	// Main Menu or Gameplay
 	EGameState mCurrentGameState;

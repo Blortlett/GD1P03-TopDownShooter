@@ -93,6 +93,7 @@ cQuitGameButton::cQuitGameButton(sf::Vector2f position, sf::Vector2f size, cPaus
 void cQuitGameButton::OnButtonClick()
 {
 	// Quit to main menu
+	std::cout << "Quit button pressed... returning to main menu" << std::endl;
 	mGameStateManager.UnloadLevels();
 	cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
 }

@@ -30,6 +30,7 @@ cPlayButton::cPlayButton(sf::Vector2f position, sf::Vector2f size, cMainMenu& _M
 
 void cPlayButton::OnButtonClick()
 {
+	mMainMenu.mIsActive = false;
 	cGameSettings::GetInstance().SetGameState(EGameState::Gameplay);
 }
 

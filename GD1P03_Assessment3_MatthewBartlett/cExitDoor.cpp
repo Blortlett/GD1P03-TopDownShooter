@@ -14,6 +14,8 @@ cExitDoor::cExitDoor(sf::Vector2f _StartPosition)
 
 void cExitDoor::Update(float _DeltaTime)
 {
+	mDoorSprite.setPosition(mCollider.GetPosition());
+
 	// Return from function if level not complete
 	if (!cLevelProgressTracker::GetInstance().CheckLevelComplete())
 		return;
@@ -36,7 +38,6 @@ void cExitDoor::Update(float _DeltaTime)
 	sf::Vector2f newDoorPosition = sf::Vector2f(doorPosition.x - doorSpeed, doorPosition.y);
 	// Begin opening door
 	mCollider.MoveColliderPosition(newDoorPosition);
-	mDoorSprite.setPosition(newDoorPosition);
 }
 
 void cExitDoor::Draw(sf::RenderWindow& _Window)

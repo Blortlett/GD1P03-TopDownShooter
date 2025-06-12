@@ -173,16 +173,19 @@ void cLevelManager::AdvanceToNextLevel()
 		mCurrentLevel = &mLevel2;
 	else
 		mCurrentLevel = &mLevel3;
+
+
 	// Load the new level
 	if (!mCurrentLevel->mLevelLoaded)
 		mCurrentLevel->LoadLevelByName(mFileInterface);
+	mCurrentLevel->ResetExitDoor();
 	cLevelProgressTracker::GetInstance().SetWallVector(mCurrentLevel->GetFullWallColliderList());
 
 }
 
 void cLevelManager::ResetExitDoor()
 {
-	if (mCurrentLevel->GetExitDoor())
+	mCurrentLevel->ResetExitDoor();
 }
 
 std::vector<cEnemySpawner*>& cLevelManager::GetEnemySpawnerList()

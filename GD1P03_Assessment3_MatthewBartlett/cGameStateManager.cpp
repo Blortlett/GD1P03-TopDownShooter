@@ -45,7 +45,7 @@ void cGameStateManager::Update(float _DeltaTime)
             // Set up enemies for level
             InitializeLevelEnemies();
 
-
+            mLevelManager.ResetExitDoor();
 
             // Reset death timer
             mPlayerDeathTimer = mPlayerDeathTimerMax;

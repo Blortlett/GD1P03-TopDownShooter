@@ -1,10 +1,10 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include "cFullWall.h"
-#include "cHalfWall.h"
 #include "cExitDoor.h"
 #include "cExitTrigger.h"
+#include "cFullWall.h"
+#include "cHalfWall.h"
+#include <iostream>
+#include <SFML/Graphics.hpp>
 
 
 class cFileInterface;
@@ -20,6 +20,9 @@ protected:
 	// Background Texture
 	sf::Texture mBackgroundTex;
 	sf::Sprite* mBackgroundSprite;
+
+	// Original positions
+	sf::Vector2f mExitDoorPosition = { 0,0 };
 
 	// -= Level Objects =-
 	// Full wall Collider List - things such as walls player cannot shoot nor walk over
@@ -65,6 +68,10 @@ public:
 
 	// Cleanup new objects
 	void CleanupColliders();
+
+	// Reset Exit door position
+	void ResetExitDoor() { mExitDoor->GetCollider().MoveColliderPosition(mExitDoorPosition); }
+
 
 	// Get level objects
 	std::vector<cFullWall*>& GetFullWallColliderList();

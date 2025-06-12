@@ -103,6 +103,7 @@ void cBaseLevel::AddExitDoorToLevel(cExitDoor* _ExitDoor)
 {
     delete mExitDoor;
     mExitDoor = _ExitDoor;
+    mExitDoorPosition = mExitDoor->GetPosition();
 }
 
 void cBaseLevel::AddExitZoneToLevel(cExitTrigger* _ExitZone)

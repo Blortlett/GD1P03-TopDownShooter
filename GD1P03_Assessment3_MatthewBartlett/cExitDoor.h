@@ -17,6 +17,9 @@ public:
 	cExitDoor(sf::Vector2f _StartPosition);
 	~cExitDoor() {}
 
+	// Set position
+	void SetPosition(sf::Vector2f _Position) { mCollider.MoveColliderPosition(_Position); }
+
 	// I guess we gotta call something every frame
 	void Update(float _DeltaTime);
 	void Draw(sf::RenderWindow& _Window);

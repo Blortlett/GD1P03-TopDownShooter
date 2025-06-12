@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cAnimationLegsIdle]
+Description : [This class holds data/functions for playing idle legs animation for player]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cAnimationLegsIdle.h"
 
 cAnimationLegsIdle::cAnimationLegsIdle()
@@ -14,8 +26,3 @@ cAnimationLegsIdle::cAnimationLegsIdle()
 	mSpriteRect.size = mFrameSize;
 	mSprite.setTextureRect(mSpriteRect);
 }
-
-//void cAnimationLegsIdle::Animate(sf::Vector2f _PlayerPosition, float _DeltaSeconds)
-//{
-//	cAnimationBase::Animate(_PlayerPosition, _DeltaSeconds);
-//}

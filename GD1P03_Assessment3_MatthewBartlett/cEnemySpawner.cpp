@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cEnemySpawner]
+Description : [This class can can be placed in a level to instruct enemies where to spawn]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cEnemySpawner.h"
 
 cEnemySpawner::cEnemySpawner(sf::Vector2f _Position)

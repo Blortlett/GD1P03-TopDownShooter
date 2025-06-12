@@ -1,3 +1,16 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cPickupManager]
+Description : [This class holds a vector list of all dropped weapons. Also allows functionality like cleanup for and adding to that list]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
+
 #include "cPickupManager.h"
 
 cPickupManager::cPickupManager(cPlayerCharacter& _PlayerCharacter, sf::RenderWindow& _GameWindow)

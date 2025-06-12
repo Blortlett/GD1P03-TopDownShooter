@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cAnimationPistolFire]
+Description : [This class holds data/functions for playing pistol fire animation for player chatacter]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cAnimationPistolFire.h"
 
 cAnimationPistolFire::cAnimationPistolFire()

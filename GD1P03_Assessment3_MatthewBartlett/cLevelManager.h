@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cLevelManager]
+Description : [This class holds a a level state machine, allowing ease of drawing one level at a time and swapping them out on load]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #pragma once
 #include "cLevel1.h"
 #include "cLevel2.h"

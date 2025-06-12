@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cExitTrigger]
+Description : [This class can can be placed in a level to let player collide with to leave level]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cExitTrigger.h"
 #include "cPlayerCharacter.h"
 

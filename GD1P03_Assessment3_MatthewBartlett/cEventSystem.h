@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cEventSystem]
+Description : [This class is not used, but is a nice idea and I want to implement this stuff between my game managers to decouple stuff - save my ass from circular hell]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 // cEventSystem.h
 #pragma once
 #include <functional>

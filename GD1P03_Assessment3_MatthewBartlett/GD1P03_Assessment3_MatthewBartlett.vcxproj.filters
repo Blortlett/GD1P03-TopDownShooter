@@ -212,9 +212,6 @@
     <Filter Include="Character\Enemy\Behaviors\Attack">
       <UniqueIdentifier>{60d2e95b-9b7b-4026-b2fb-12414e96c7dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameSystems\Ractaster">
-      <UniqueIdentifier>{1d120189-bbdc-443e-9f4a-ec346ad4749d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Character\Enemy\Behaviors\Chase">
       <UniqueIdentifier>{eaa7a338-343d-4908-bc36-bc7cf8fe3ca6}</UniqueIdentifier>
     </Filter>
@@ -313,6 +310,9 @@
     </Filter>
     <Filter Include="UI\cGameUI\LevelCompleteUI\LevelCompleteArrow">
       <UniqueIdentifier>{d728610e-90e8-4542-8132-bb5783905460}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameSystems\Raycaster">
+      <UniqueIdentifier>{1d120189-bbdc-443e-9f4a-ec346ad4749d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -464,7 +464,7 @@
       <Filter>Character\Enemy\Behaviors\Attack</Filter>
     </ClCompile>
     <ClCompile Include="cRaycaster.cpp">
-      <Filter>GameSystems\Ractaster</Filter>
+      <Filter>GameSystems\Raycaster</Filter>
     </ClCompile>
     <ClCompile Include="cBehaviorChase.cpp">
       <Filter>Character\Enemy\Behaviors\Chase</Filter>
@@ -709,7 +709,7 @@
       <Filter>Character\Enemy\Behaviors\Attack</Filter>
     </ClInclude>
     <ClInclude Include="cRaycaster.h">
-      <Filter>GameSystems\Ractaster</Filter>
+      <Filter>GameSystems\Raycaster</Filter>
     </ClInclude>
     <ClInclude Include="cBehaviorChase.h">
       <Filter>Character\Enemy\Behaviors\Chase</Filter>

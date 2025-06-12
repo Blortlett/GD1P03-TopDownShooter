@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cEnemyCharacter]
+Description : [This class is for enemy characters that the player must kill while avoid getting killed]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cEnemyCharacter.h"
 #include "cPickupManager.h"
 #include "cLevelProgressTracker.h"

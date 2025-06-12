@@ -1,3 +1,14 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cEnemyDeathAnimation]
+Description : [This class holds enemy Death animation data/functions]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
 #include "cEnemyDeathAnimation.h"
 
 cEnemyDeathAnimation::cEnemyDeathAnimation()

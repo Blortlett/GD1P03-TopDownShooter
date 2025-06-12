@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cLevelManager]
+Description : [This class holds a a level state machine, allowing ease of drawing one level at a time and swapping them out on load]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cLevelManager.h"
 #include "cPlayerCharacter.h"
 #include "cProjectileManager.h"
@@ -171,8 +183,13 @@ void cLevelManager::AdvanceToNextLevel()
 		mCurrentLevel = &mLevel1;
 	else if (mCurrentLevelIndex == 1)
 		mCurrentLevel = &mLevel2;
-	else
+	else if (mCurrentLevelIndex == 2)
 		mCurrentLevel = &mLevel3;
+	else
+	{	// Game complete, return to main menu
+		UnloadAllLevels();
+		cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
+	}
 
 
 	// Load the new level

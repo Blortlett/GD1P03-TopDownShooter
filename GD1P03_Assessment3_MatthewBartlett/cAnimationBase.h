@@ -4,8 +4,8 @@ Media Design School
 Auckland
 New Zealand
 (c) [2025] Media Design School
-File Name : [cAnimation]
-Description : [The cAnimation class is the base class all playable animations classes inherit from]
+File Name : [cAnimationBase]
+Description : [this class is the base class all playable animations classes inherit from]
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/

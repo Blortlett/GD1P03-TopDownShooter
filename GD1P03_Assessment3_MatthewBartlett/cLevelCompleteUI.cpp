@@ -72,6 +72,9 @@ void cLevelCompleteUI::Update(float _DeltaTime, sf::Vector2f _LevelExitPosition,
 		mFadeOutTime = mFadeOutTimeMax;
 		// Set arrow to transparent if level not complete
 		mExitArrowUI.setColor(sf::Color::Transparent);
+		// Turn Text invisible if not display time
+		mTitleText.setFillColor(sf::Color(250, 0, 250, 0));
+		mSubTitleText.setFillColor(sf::Color(250, 250, 250, 0));
 	}
 }
 

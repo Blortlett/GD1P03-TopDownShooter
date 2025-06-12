@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cWallBase]
+Description : [This class can be extended to create new wall object, or collidable that player/enemies/bullets cannot move through]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #pragma once
 #include "cBoxCollider.h"
 #include "cDebugWidget.h"

@@ -70,9 +70,10 @@ void cGameManager::GameTick()
 	CheckToggleDebugMode();
 	if (cGameSettings::GetInstance().IsDebugActive())
 	{
-		mEditorManager.UpdateToolMode();
-		mEditorManager.UpdateCursor();
-		mEditorManager.DrawCursorToScreen(mGameWindow);
+		// Editor Draw tools... removed from release because the player cannot be trusted
+		//mEditorManager.UpdateToolMode();
+		//mEditorManager.UpdateCursor();
+		//mEditorManager.DrawCursorToScreen(mGameWindow);
 		mLevelManager.DebugDraw();
 	}
 

@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cPlayerDeathAnimation]
+Description : [this class stores functions/data for animating player death animation]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cPlayerDeathAnimation.h"
 
 cPlayerDeathAnimation::cPlayerDeathAnimation()

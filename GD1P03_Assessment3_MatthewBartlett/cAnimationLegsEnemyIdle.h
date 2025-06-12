@@ -4,8 +4,8 @@ Media Design School
 Auckland
 New Zealand
 (c) [2025] Media Design School
-File Name : [cAnimationIdle]
-Description : [The cAnimationIdle class contains the data and functions necessary to and dispaly the player idle-state graphics. This should be a member of and called by a cAnimator object]
+File Name : [cAnimationLegsEnemyIdle]
+Description : [This class holds enemy legs idle animation data/functions]
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/

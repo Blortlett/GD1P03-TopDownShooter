@@ -4,8 +4,8 @@ Media Design School
 Auckland
 New Zealand
 (c) [2025] Media Design School
-File Name : [cAnimator]
-Description : [Any object that would like to have animations should have a cAnimator member object attatched to it. This class can switch, animate and display animations]
+File Name : [cPlayerAnimatorLegs]
+Description : [This class swaps between and displays animation states for the player character's legs]
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/

@@ -1,3 +1,16 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cAnimationLegsEnemyRun]
+Description : [This class holds animation data for enemy legs running state]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
+
 #include "cAnimationLegsEnemyRun.h"
 
 cAnimationLegsEnemyRun::cAnimationLegsEnemyRun()

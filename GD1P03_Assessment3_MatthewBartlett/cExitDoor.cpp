@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cExitDoor]
+Description : [This class can be placed in level to block characters moving through. Blocks the player exiting level until it is complete]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cExitDoor.h"
 #include "cSharedUtils.h"
 #include "cLevelProgressTracker.h"

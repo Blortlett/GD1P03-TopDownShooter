@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cGameStateManager]
+Description : [This class holds a bunch of different functionality that stitches other classes together. While very janky, this really saved my ass from some circulars]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cGameStateManager.h"
 #include "cEnemyManager.h"
 #include "cGameSettings.h"

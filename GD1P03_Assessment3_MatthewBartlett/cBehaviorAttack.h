@@ -1,3 +1,16 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cBehaviorAttack]
+Description : [This class holds functionality to instruct enemy to attack player]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
+
 #pragma once
 #include "iBehavior.h"
 

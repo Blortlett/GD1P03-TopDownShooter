@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cEnemyManager]
+Description : [This class manages updating, spawning, drawing and other functionality for enemy characters]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #pragma once
 #include "cEnemyCharacter.h"
 #include "cPickupManager.h"

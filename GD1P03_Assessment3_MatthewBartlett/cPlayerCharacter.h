@@ -39,8 +39,13 @@ private:
 	bool mIsPunching = false;
 	cBoxCollider mPunchCollider;
 	cDebugWidget mPunchColliderDebugWidget;
+
 	// Shooting
 	void UpdateWeapon(float _DeltaSeconds) override;
+	// Punching
+	float const mPunchTimerMax = .3f;
+	float mPunchTimer = mPunchTimerMax;
+	void UpdatePunch(float _DeltaSeconds);
 
 	// Animator
 	cPlayerAnimator mPlayerUpperBodyAnimator;
@@ -68,6 +73,8 @@ public:
 	// Getters
 	sf::Vector2f GetPosition() { return mPosition; }
 	cBoxCollider& GetCollider() { return mBoxCollider; }
+	cBoxCollider& GetPunchCollider() { return mPunchCollider; }
+	bool GetIsPunching() { return mIsPunching; }
 	float GetAmmoCount() { return mPistol.GetAmmoCount(); }
 
 	// Setters

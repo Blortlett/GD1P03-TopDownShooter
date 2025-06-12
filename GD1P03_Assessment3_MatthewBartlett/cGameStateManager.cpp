@@ -29,6 +29,7 @@ cGameStateManager::cGameStateManager(cEnemyManager& _EnemyManager, cProjectileMa
 void cGameStateManager::Update(float _DeltaTime)
 {
     CheckBulletCollision();
+    CheckPunchToEnemyCollision();
     CheckEnemyWallCollision();
     CheckResetLevel(_DeltaTime);
 
@@ -74,7 +75,33 @@ void cGameStateManager::UnloadLevels()
     mLevelManager.UnloadAllLevels();
 }
 
-void cGameStateManager::CheckBulletCollision() 
+void cGameStateManager::CheckPunchToEnemyCollision()
+{
+    if (mPlayerCharacter.GetIsPunching())
+    {
+        // Ignorable direction don't matter... for now
+        sf::Vector2f CollisionDirection;
+        // Get Player punch collider
+        cBoxCollider& PlayerPunchCollider = mPlayerCharacter.GetPunchCollider();
+        // Get Enemy List
+        std::vector<cEnemyCharacter*>& EnemyList = mEnemyManager.GetEnemyList();
+
+        for (cEnemyCharacter* Enemy : EnemyList)
+        {
+            for (cEnemyCharacter* enemy : EnemyList) {
+                // Don't check collision if enemy is dead
+                if (!enemy->IsAlive()) continue; //
+                // check collision
+                if (PlayerPunchCollider.CheckCollision(enemy->GetCollider(), CollisionDirection, 0.f)) {
+                    // If punch hit enemy, kill enemy
+                    enemy->OnBulletCollision(CollisionDirection);
+                }
+            }
+        }
+    }
+}
+
+void cGameStateManager::CheckBulletCollision()
 {
     // Collision function will modify this
     sf::Vector2f CollisionDirection;

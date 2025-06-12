@@ -48,6 +48,7 @@ public:
     void UnloadLevels();
 
     // Collision
+    void CheckPunchToEnemyCollision();
     void CheckBulletCollision();
     void CheckEnemyWallCollision();
 

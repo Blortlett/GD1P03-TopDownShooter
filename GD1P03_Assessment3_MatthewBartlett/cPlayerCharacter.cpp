@@ -124,11 +124,8 @@ void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 		mIsPunching = true;
 		// Animate punch
 		mPlayerUpperBodyAnimator.SwapToPlayerPunch(mPosition);
-
-		// Get punch zone position
-		sf::Vector2f punchLocation = cSharedUtils::GetInstance().calculatePointFromOrigin(mPosition, 16.f, mPlayerLookDirection);
-		// Box Collider check punch zone
-		mPunchCollider.MoveColliderPosition(punchLocation);
+		// Reset punch timer
+		mPunchTimer = mPunchTimerMax;
 	}
 
 	if (mPlayerInput.IsLeftClickPressed() && !mIsShooting && !mPlayerUpperBodyAnimator.IsPunching())
@@ -144,6 +141,24 @@ void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 	// Disable Shooting bool
 	if (!mPlayerInput.IsLeftClickPressed())
 		mIsShooting = false;
+}
+
+void cPlayerCharacter::UpdatePunch(float _DeltaSeconds)
+{
+	if (mIsPunching)
+	{
+		// Get punch zone position
+		sf::Vector2f punchLocation = cSharedUtils::GetInstance().calculatePointFromOrigin(mPosition, 16.f, mPlayerLookDirection);
+		// Box Collider check punch zone
+		mPunchCollider.MoveColliderPosition(punchLocation);
+
+		//Tick down timer
+		mPunchTimer -= _DeltaSeconds;
+		if (mPunchTimer < 0.f)
+		{
+			mIsPunching = false;
+		}
+	}
 }
 
 void cPlayerCharacter::RevivePlayer()
@@ -204,6 +219,9 @@ void cPlayerCharacter::Update(float _DeltaSeconds)
 		// Player Rotation
 		Rotate(mPlayerLookDirection);
 		mPlayerUpperBodyAnimator.SetRotation(mPlayerLookDirection);
+
+		// Player Punching
+		UpdatePunch(_DeltaSeconds);
 
 		// Player Weapons
 		UpdateWeapon(_DeltaSeconds);

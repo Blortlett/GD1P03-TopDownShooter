@@ -30,4 +30,7 @@ public:
 	// Swap Animations
 	void SwapToIdle();
 	void SwapToRun();
+
+	// Rotate Legs
+	void SetIdleLegRotation(sf::Angle _Angle);
 };

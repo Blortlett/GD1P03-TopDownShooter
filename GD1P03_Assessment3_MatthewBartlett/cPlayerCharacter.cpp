@@ -65,18 +65,30 @@ void cPlayerCharacter::HandleInput()
 		// Left & Up  or  Right & Down
 		if (mPlayerInputNormalized.x < 0.f && mPlayerInputNormalized.y < 0.f
 			|| mPlayerInputNormalized.x > 0.f && mPlayerInputNormalized.y > 0.f)
+		{
 			mPlayerLegsAnimator.SetRotation(sf::degrees(225));
+			mPlayerLegsAnimator.SetIdleLegRotation(sf::degrees(225));
+		}
 		// Right & Up  or  Left & Down
 		else if (mPlayerInputNormalized.x > 0.f && mPlayerInputNormalized.y < 0.f
 			|| mPlayerInputNormalized.x < 0.f && mPlayerInputNormalized.y > 0.f)
+		{
 			mPlayerLegsAnimator.SetRotation(sf::degrees(135));
+			mPlayerLegsAnimator.SetIdleLegRotation(sf::degrees(135));
+		}
 		// 4 Cardinal directions next
 		// Left or Right	// yInput == 0 becasue value is in left/right input
 		else if (mPlayerInputNormalized.y == 0.f)
+		{
 			mPlayerLegsAnimator.SetRotation(sf::degrees(0));
+			mPlayerLegsAnimator.SetIdleLegRotation(sf::degrees(0));
+		}
 		// Up or Down	// xInput == 0 becasue all the value is in up/down input
 		else if (mPlayerInputNormalized.x == 0.f)
+		{
 			mPlayerLegsAnimator.SetRotation(sf::degrees(90));
+			mPlayerLegsAnimator.SetIdleLegRotation(sf::degrees(90));
+		}
 	}
 }
 

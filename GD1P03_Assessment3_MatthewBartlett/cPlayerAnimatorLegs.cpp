@@ -29,3 +29,8 @@ void cPlayerAnimatorLegs::SwapToRun()
 {
     mCurrentAnimation = &mLowerLegsRun;
 }
+
+void cPlayerAnimatorLegs::SetIdleLegRotation(sf::Angle _Angle)
+{
+    mLowerLegsIdle.RotateAnimation(_Angle);
+}

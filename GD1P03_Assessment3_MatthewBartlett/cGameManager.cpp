@@ -17,7 +17,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	: mGameWindow(_GameWindow)
 	, mCameraManager(mPlayerCharacter, _GameWindow)
-	, mPlayerCharacter(sf::Vector2f(0.f, 0.f), mProjectileManager, _GameWindow, mCameraManager.GetCameraView(), mPlayerInput)
+	, mPlayerCharacter(sf::Vector2f(300.f, 300.f), mProjectileManager, _GameWindow, mCameraManager.GetCameraView(), mPlayerInput)
 	, mProjectileManager(_GameWindow)
 	, mLevelManager(_GameWindow)
 	, mEditorManager(_GameWindow, mLevelManager, mCameraManager.GetCameraView())
@@ -26,6 +26,7 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager, mPlayerCharacter, mPickupManager)
 	, mGameplayUI(mGameWindow, mPlayerCharacter, mGameStateManager, mCameraManager)
 {
+	std::cout << "cGameManager Constructor: Transition to next level" << std::endl;
 	mGameStateManager.TransitionToNextLevel();
 }
 
@@ -44,9 +45,10 @@ void cGameManager::GameTick()
 	mGameStateManager.Update(mDeltaSeconds);
 
 	// Check if player has reached level exit
-	if (mLevelManager.CheckLevelExit(mPlayerCharacter))
+	if (mLevelManager.CheckLevelExit(mPlayerCharacter) && cLevelProgressTracker::GetInstance().CheckLevelComplete() && mPlayerCharacter.mAlive)
 	{
 		// If so - move on to next level
+		std::cout << "Player touched level exit: Transitioning to next level" << std::endl;
 		mGameStateManager.TransitionToNextLevel();
 	}
 

@@ -76,7 +76,7 @@ bool cLevelManager::CheckLevelExit(cPlayerCharacter& _Player)
 	cExitTrigger* ExitZone = mCurrentLevel->GetExitTrigger();
 
 	// If exit zone does not exist, don't worry about rest of function
-	if (ExitZone && ExitZone->CheckCollideWithPlayer(_Player))
+	if (ExitZone && ExitZone->CheckCollideWithPlayer(_Player) && cLevelProgressTracker::GetInstance().CheckLevelComplete())
 	{
 		return true; // Player has reached the level exit
 	}

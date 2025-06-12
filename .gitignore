@@ -2,3 +2,8 @@
 GD1P03_Assessment3_MatthewBartlett/assets
 GD1P03_Assessment3_MatthewBartlett/x64
 x64
+*.pdb
+*.obj
+*.log
+GD1P03_Assessment3_MatthewBartlett/Release/GD1P03_A.fcc09704.tlog/CL.command.1.tlog
+*.tlog

@@ -12,6 +12,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 
 #include "cPlayerCharacter.h"
 #include "cGameSettings.h"
+#include "cLevelProgressTracker.h"
 
 
 cPlayerCharacter::cPlayerCharacter(sf::Vector2f _StartPosition, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, sf::View& _PlayerCamera, cPlayerInput& _PlayerInput)
@@ -163,6 +164,7 @@ void cPlayerCharacter::UpdatePunch(float _DeltaSeconds)
 
 void cPlayerCharacter::RevivePlayer()
 {
+	cLevelProgressTracker::GetInstance().ResetEnemyCount();
 	mAlive = true;
 	mPlayerUpperBodyAnimator.SwapToPistolIdle(mPosition);
 	mPistol.RefillAmmo();
@@ -196,6 +198,7 @@ void cPlayerCharacter::OnCollision(sf::Vector2f direction)
 void cPlayerCharacter::OnBulletCollision(sf::Vector2f direction)
 {
 	if (cGameSettings::GetInstance().mIsGodModeActive) return;
+	cLevelProgressTracker::GetInstance().ResetEnemyCount();
 	mPlayerUpperBodyAnimator.SwapToPlayerDeath(mPosition);
 	mAlive = false;
 }

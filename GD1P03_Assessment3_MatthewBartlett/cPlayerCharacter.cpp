@@ -19,6 +19,8 @@ cPlayerCharacter::cPlayerCharacter(sf::Vector2f _StartPosition, cProjectileManag
 	, mCameraView(_PlayerCamera)
 	, mPlayerInput(_PlayerInput)
 	, mPlayerUpperBodyAnimator(this)
+	, mPunchCollider(sf::FloatRect({ 0,0 }, { 16.f, 16.f }))
+	, mPunchColliderDebugWidget(mPunchCollider, sf::Color::Yellow)
 {
 	mCharacterAnimator = &mPlayerUpperBodyAnimator;
 	mCharacterAnimatorBottom = &mPlayerLegsAnimator;
@@ -116,7 +118,20 @@ void cPlayerCharacter::GetLookTowardsDirection()
 
 void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 {
-	if (mPlayerInput.IsLeftClickPressed() && !mIsShooting)
+	if (mPlayerInput.IsRightClickPressed() && !mIsShooting && !mIsPunching)
+	{
+		// Toggle punching bool
+		mIsPunching = true;
+		// Animate punch
+		mPlayerUpperBodyAnimator.SwapToPlayerPunch(mPosition);
+
+		// Get punch zone position
+		sf::Vector2f punchLocation = cSharedUtils::GetInstance().calculatePointFromOrigin(mPosition, 16.f, mPlayerLookDirection);
+		// Box Collider check punch zone
+		mPunchCollider.MoveColliderPosition(punchLocation);
+	}
+
+	if (mPlayerInput.IsLeftClickPressed() && !mIsShooting && !mPlayerUpperBodyAnimator.IsPunching())
 	{
 		// Cast mouse position
 		sf::Vector2i mouseScreenPosition = mPlayerInput.GetMousePosition(mRenderWindow);
@@ -125,6 +140,8 @@ void cPlayerCharacter::UpdateWeapon(float _DeltaSeconds)
 			mPlayerUpperBodyAnimator.SwapToPistolFire(mPosition);
 		mIsShooting = true;
 	}
+
+	// Disable Shooting bool
 	if (!mPlayerInput.IsLeftClickPressed())
 		mIsShooting = false;
 }
@@ -207,7 +224,10 @@ void cPlayerCharacter::Draw()
 
 	// Draw debug objects if debug is active
 	if (cGameSettings::GetInstance().IsDebugActive())
+	{
 		mDebugWidget.DrawWidget(mRenderWindow);
+		mPunchColliderDebugWidget.DrawWidget(mRenderWindow);
+	}
 }
 
 void cPlayerCharacter::SetPosition(sf::Vector2f _Position)

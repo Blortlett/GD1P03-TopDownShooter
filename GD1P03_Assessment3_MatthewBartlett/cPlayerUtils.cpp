@@ -27,6 +27,12 @@ cPlayerUtils::cPlayerUtils()
 	{
 		std::cout << "Failed to load player_shoot_pistol_Sheet.png" << std::endl;
 	}
+	// Load Player punch animation sheet
+	mPlayerPunchSheetTex = new sf::Texture();
+	if (!mPlayerPunchSheetTex->loadFromFile("Assets/SpritePack/Player/Punch/player_punch_pistol_Sheet.png"))
+	{
+		std::cout << "Failed to load player_punch_pistol_Sheet.png" << std::endl;
+	}
 	// Load Player Legs idle animation sheet
 	mPlayerLegsIdleTex = new sf::Texture();
 	if (!mPlayerLegsIdleTex->loadFromFile("Assets/SpritePack/Legs/Player/player_legs_idle_Sheet.png"))

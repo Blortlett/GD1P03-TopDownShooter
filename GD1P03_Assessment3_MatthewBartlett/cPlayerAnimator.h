@@ -14,6 +14,7 @@ Mail : [matthewbartlett@mds.ac.nz]
 #include "cAnimationPistolIdle.h"
 #include "cAnimationPistolFire.h"
 #include "cPlayerDeathAnimation.h"
+#include "cAnimationPlayerPunch.h"
 
 class cCharacter;
 
@@ -23,6 +24,7 @@ private:
 	// Animations
 	cAnimationPistolIdle mUpperPistolIdle;
 	cAnimationPistolFire mUpperPistolFire;
+	cAnimationPlayerPunch mPlayerPunchAnimation;
 	cPlayerDeathAnimation mPlayerDeathAnimation;
 
 	bool mAnimationComplete = false;
@@ -38,5 +40,8 @@ public:
 
 	void SwapToPistolFire(sf::Vector2f _PlayerPosition);
 	void SwapToPistolIdle(sf::Vector2f _PlayerPosition);
+	void SwapToPlayerPunch(sf::Vector2f _PlayerPosition);
 	void SwapToPlayerDeath(sf::Vector2f _PlayerPosition);
+
+	bool IsPunching() { return mCurrentAnimation == &mPlayerPunchAnimation; }
 };

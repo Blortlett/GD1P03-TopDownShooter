@@ -33,6 +33,16 @@ void cPlayerAnimator::Animate(sf::Vector2f PlayerPosition, float DeltaSeconds)
             SwapToPistolIdle(PlayerPosition);
         }
     }
+    // We need to wait for callback on fire
+    else if (mCurrentAnimation == &mPlayerPunchAnimation)
+    {
+        mPlayerPunchAnimation.Animate(PlayerPosition, DeltaSeconds, mAnimationComplete);
+        if (mAnimationComplete)
+        {
+            mAnimationComplete = false;
+            SwapToPistolIdle(PlayerPosition);
+        }
+    }
     else
     {
         cAnimatorBase::Animate(PlayerPosition, DeltaSeconds);
@@ -47,6 +57,7 @@ void cPlayerAnimator::SetRotation(sf::Angle _AngleToRotate)
 
 void cPlayerAnimator::SwapToPistolFire(sf::Vector2f _PlayerPosition)
 {
+    if (mCurrentAnimation == &mPlayerPunchAnimation) return;
     mCurrentAnimation = &mUpperPistolFire;
     mUpperPistolFire.RestartAnimation(); // Reset to first frame
     mAnimationComplete = false;
@@ -65,4 +76,11 @@ void cPlayerAnimator::SwapToPlayerDeath(sf::Vector2f _PlayerPosition)
     mCurrentAnimation = &mPlayerDeathAnimation;
     mPlayerDeathAnimation.RestartAnimation();
     mPlayerDeathAnimation.SetPosition(_PlayerPosition); // Set current position
+}
+
+void cPlayerAnimator::SwapToPlayerPunch(sf::Vector2f _PlayerPosition)
+{
+    mCurrentAnimation = &mPlayerPunchAnimation;
+    mPlayerPunchAnimation.RestartAnimation();
+    mPlayerPunchAnimation.SetPosition(_PlayerPosition); // Set current position
 }

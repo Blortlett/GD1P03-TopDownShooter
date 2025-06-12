@@ -25,6 +25,7 @@ public:
 	// Upper body
 	sf::Texture* mPlayerIdleSheetTex;
 	sf::Texture* mPlayerShootSheetTex;
+	sf::Texture* mPlayerPunchSheetTex;
 	// Lower body
 	sf::Texture* mPlayerLegsIdleTex;
 	sf::Texture* mPlayerLegsRunTex;

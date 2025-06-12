@@ -311,6 +311,9 @@
     <Filter Include="GameSystems\Raycaster">
       <UniqueIdentifier>{1d120189-bbdc-443e-9f4a-ec346ad4749d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animator\Animations\PlayerAnimations\UpperBody\Punch">
+      <UniqueIdentifier>{529d8643-bf23-4028-8f24-206b768dd8c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -537,6 +540,9 @@
     </ClCompile>
     <ClCompile Include="cGameSettings.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cAnimationPlayerPunch.cpp">
+      <Filter>Animator\Animations\PlayerAnimations\UpperBody\Punch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -779,6 +785,9 @@
     </ClInclude>
     <ClInclude Include="cLevelCompleteUI.h">
       <Filter>UI\cGameUI\LevelCompleteUI\LevelCompleteText</Filter>
+    </ClInclude>
+    <ClInclude Include="cAnimationPlayerPunch.h">
+      <Filter>Animator\Animations\PlayerAnimations\UpperBody\Punch</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

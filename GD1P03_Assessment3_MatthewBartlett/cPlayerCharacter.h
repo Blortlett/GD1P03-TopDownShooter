@@ -35,6 +35,10 @@ private:
 	sf::Angle mPlayerLookDirection;
 	void GetLookTowardsDirection();
 
+	//Punching
+	bool mIsPunching = false;
+	cBoxCollider mPunchCollider;
+	cDebugWidget mPunchColliderDebugWidget;
 	// Shooting
 	void UpdateWeapon(float _DeltaSeconds) override;
 

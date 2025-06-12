@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cAmmoUI.cpp" />
+    <ClCompile Include="cAnimationPlayerPunch.cpp" />
     <ClCompile Include="cAnimationBase.cpp" />
     <ClCompile Include="cAnimationLegsEnemyIdle.cpp" />
     <ClCompile Include="cAnimationLegsEnemyRun.cpp" />
@@ -221,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cAmmoUI.h" />
+    <ClInclude Include="cAnimationPlayerPunch.h" />
     <ClInclude Include="cAnimationBase.h" />
     <ClInclude Include="cAnimationLegsEnemyIdle.h" />
     <ClInclude Include="cAnimationLegsEnemyRun.h" />

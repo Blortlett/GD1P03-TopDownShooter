@@ -29,6 +29,7 @@ void cGameStateManager::Update(float _DeltaTime)
 
             // Clear enemies
             mEnemyManager.ClearEnemyList();
+            mPickupManager.ClearDrops();
 
             // Load first level
             mLevelManager.BeginGame();

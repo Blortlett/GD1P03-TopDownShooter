@@ -32,6 +32,7 @@ void cGameStateManager::Update(float _DeltaTime)
 
             // Load first level
             mLevelManager.BeginGame();
+
             // Reset enemy death counter so door doesnt open early
             cLevelProgressTracker::GetInstance().ResetEnemyCount();
 
@@ -222,6 +223,8 @@ void cGameStateManager::CheckResetLevel(float _DeltaTime)
         {
             mPlayerCharacter.SetPosition(playerSpawner->GetPosition());
         }
+
+        mLevelManager.ResetExitDoor();
 
         // Reset death timer
         mPlayerDeathTimer = mPlayerDeathTimerMax;

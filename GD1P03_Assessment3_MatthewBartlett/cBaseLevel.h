@@ -70,7 +70,7 @@ public:
 	void CleanupColliders();
 
 	// Reset Exit door position
-	void ResetExitDoor() { mExitDoor->GetCollider().MoveColliderPosition(mExitDoorPosition); }
+	void ResetExitDoor();
 
 
 	// Get level objects

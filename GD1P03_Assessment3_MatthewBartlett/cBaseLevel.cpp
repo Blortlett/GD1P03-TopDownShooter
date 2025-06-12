@@ -117,6 +117,13 @@ void cBaseLevel::CleanupColliders()
     
 }
 
+void cBaseLevel::ResetExitDoor()
+{
+    mExitDoor->GetCollider().MoveColliderPosition(mExitDoorPosition);
+    mExitDoor->mIsDoorOpenFull = false;
+    mExitDoor->mDoorOpenAmount = 84.f;
+}
+
 std::vector<cFullWall*>& cBaseLevel::GetFullWallColliderList()
 {
     return mFullWallColliders;

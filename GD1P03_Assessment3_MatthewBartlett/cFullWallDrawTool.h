@@ -4,8 +4,8 @@ Media Design School
 Auckland
 New Zealand
 (c) [2025] Media Design School
-File Name : [cRectPlatformTool]
-Description : [cRectPlatformTool allows placing ground/wall platforms in a level structure]
+File Name : [cFullWallDrawTool]
+Description : [This class allows dev to draw a cFullWall object to level data]
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/

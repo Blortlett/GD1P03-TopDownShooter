@@ -1,3 +1,16 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cHalfWallDrawTool]
+Description : [This class allows dev to draw a cHalfWall object to level data]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
+
 #include "cHalfWallDrawTool.h"
 #include "cHalfWall.h"
 #include "cLevelManager.h"

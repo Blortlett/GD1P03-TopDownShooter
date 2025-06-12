@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cLevel3]
+Description : [This class holds level 3 runtime data]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cLevel3.h"
 #include "cFileInterface.h"
 

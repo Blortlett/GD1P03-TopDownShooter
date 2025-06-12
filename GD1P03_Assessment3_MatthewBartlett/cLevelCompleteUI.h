@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cLevelCompleteUI]
+Description : [This class holds funtionality to draw/display level complete UI in game]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #pragma once
 #include <SFML/Graphics.hpp>
 

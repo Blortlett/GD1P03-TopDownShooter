@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cRaycaster]
+Description : [This class holds functionality for my shoddy raycaster functionality - probably my favorite part of this project]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cRaycaster.h"
 #include "cCharacter.h"
 #include "cLevelProgressTracker.h"

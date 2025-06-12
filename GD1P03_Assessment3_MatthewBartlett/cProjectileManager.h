@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cProjectileManager]
+Description : [This class holds an array for all bullets on screen, updates and provides functionality for dealing with them]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #pragma once
 #include "cBullet.h"
 

@@ -4,8 +4,8 @@ Media Design School
 Auckland
 New Zealand
 (c) [2025] Media Design School
-File Name : [cPlayButton]
-Description : [cPlayButton provides a button for the player to push to start the game from the main menu]
+File Name : [cExitButton]
+Description : [cExitButton provides a button for the player to push to quit the game to desktop]
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/

@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cSharedUtils]
+Description : [this singleton class loads level item textures and also provides a few math functions]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <cmath>

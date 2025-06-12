@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cPlayerUtils]
+Description : [this singleton class loads character textures]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cPlayerUtils.h"
 
 cPlayerUtils::cPlayerUtils()

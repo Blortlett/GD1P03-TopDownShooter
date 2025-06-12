@@ -1,3 +1,16 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cViewUI]
+Description : [This class holds funtionality to draw/display in game UI]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
+
 #include "cViewUI.h"
 #include "cPlayerCharacter.h"
 #include "cGameSettings.h"

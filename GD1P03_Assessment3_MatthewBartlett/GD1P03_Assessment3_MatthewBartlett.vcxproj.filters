@@ -308,9 +308,6 @@
     <Filter Include="UI\cGameUI\LevelCompleteUI\LevelCompleteText">
       <UniqueIdentifier>{d47ea8a8-29e4-4470-a6a1-a4ed25b9f3fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\cGameUI\LevelCompleteUI\LevelCompleteArrow">
-      <UniqueIdentifier>{d728610e-90e8-4542-8132-bb5783905460}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameSystems\Raycaster">
       <UniqueIdentifier>{1d120189-bbdc-443e-9f4a-ec346ad4749d}</UniqueIdentifier>
     </Filter>

@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cAmmoUI]
+Description : [This class holds funtionality to draw/display ammo count UI in game]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #include "cAmmoUI.h"
 #include "cSharedUtils.h"
 

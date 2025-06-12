@@ -1,3 +1,15 @@
+/***********************************************************************
+Bachelor of Software Engineering
+Media Design School
+Auckland
+New Zealand
+(c) [2025] Media Design School
+File Name : [cExitDoorDrawTool]
+Description : [This class allows dev to draw a cExitDoor object to level data]
+Author : [Matthew Bartlett]
+Mail : [matthewbartlett@mds.ac.nz]
+**************************************************************************/
+
 #pragma once
 #include "cBaseDrawTool.h"
 #include "cExitDoor.h"

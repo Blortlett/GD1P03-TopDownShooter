@@ -4,11 +4,13 @@ Media Design School
 Auckland
 New Zealand
 (c) [2025] Media Design School
-File Name : [PauseMenuButtons]
-Description : [PauseMenuButtons provides buttons for the player to push for pause menu functionality]
+File Name : [cDebugMenuButtons]
+Description : [PauseMenuButtons provides buttons for the player to push for debug menu functionality]
 Author : [Matthew Bartlett]
 Mail : [matthewbartlett@mds.ac.nz]
 **************************************************************************/
+
+
 #include "DebugMenuButtons.h"
 #include "cSharedUtils.h"
 #include "cDebugMenuUI.h"

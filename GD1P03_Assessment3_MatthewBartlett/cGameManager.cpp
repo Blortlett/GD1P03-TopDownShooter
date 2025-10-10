@@ -26,7 +26,7 @@ cGameManager::cGameManager(sf::RenderWindow& _GameWindow)
 	, mGameStateManager(mEnemyManager, mProjectileManager, mLevelManager, mPlayerCharacter, mPickupManager)
 	, mGameplayUI(mGameWindow, mPlayerCharacter, mGameStateManager, mCameraManager)
 {
-	std::cout << "cGameManager Constructor: Transition to next level" << std::endl;
+	//std::cout << "cGameManager Constructor: Transition to next level" << std::endl;
 	mGameStateManager.TransitionToNextLevel();
 }
 
@@ -44,12 +44,52 @@ void cGameManager::GameTick()
 	mLevelManager.CheckPlayerWallCollisions(mPlayerCharacter);
 	mGameStateManager.Update(mDeltaSeconds);
 
+
 	// Check if player has reached level exit
-	if (mLevelManager.CheckLevelExit(mPlayerCharacter) && cLevelProgressTracker::GetInstance().CheckLevelComplete() && mPlayerCharacter.mAlive)
+	bool isAtExit = mLevelManager.CheckLevelExit(mPlayerCharacter);
+	bool isLevelComplete = cLevelProgressTracker::GetInstance().CheckLevelComplete();
+	bool isPlayerAlive = mPlayerCharacter.IsAlive();
+
+	if (isAtExit && isLevelComplete && isPlayerAlive && !mLevelExitTriggered)
 	{
-		// If so - move on to next level
-		std::cout << "Player touched level exit: Transitioning to next level" << std::endl;
-		mGameStateManager.TransitionToNextLevel();
+		mLevelExitTriggered = true;
+		mLevelExitDelay = LEVEL_EXIT_COOLDOWN;
+		//std::cout << "Player touched level exit: Preparing transition..." << std::endl;
+	}
+
+	// Log when level becomes complete
+	if (isLevelComplete && !mLevelExitTriggered)
+	{
+		sf::Vector2f playerPos = mPlayerCharacter.GetPosition();
+		sf::Vector2f exitPos = mLevelManager.GetLevelExitPosition();
+
+		/*std::cout << "=== LEVEL COMPLETE ===" << std::endl;
+		std::cout << "Player Position: (" << playerPos.x << ", " << playerPos.y << ")" << std::endl;
+		std::cout << "Exit Position: (" << exitPos.x << ", " << exitPos.y << ")" << std::endl;
+		std::cout << "Is At Exit: " << (isAtExit ? "TRUE" : "FALSE") << std::endl;
+		std::cout << "Is Alive: " << (isPlayerAlive ? "TRUE" : "FALSE") << std::endl;
+		std::cout << "======================" << std::endl;*/
+	}
+
+	// Process the delayed transition
+	if (mLevelExitTriggered)
+	{
+		mLevelExitDelay -= mDeltaSeconds;
+
+		if (mLevelExitDelay <= 0.f)
+		{
+			// Final check - only transition if player is still alive
+			if (mPlayerCharacter.IsAlive())
+			{
+				//std::cout << "Transitioning to next level" << std::endl;
+				mGameStateManager.TransitionToNextLevel();
+			}
+			else
+			{
+				//std::cout << "Transition cancelled - player died" << std::endl;
+			}
+			mLevelExitTriggered = false;
+		}
 	}
 
 	// Update Enemies

@@ -76,7 +76,7 @@ bool cLevelManager::CheckLevelExit(cPlayerCharacter& _Player)
 	cExitTrigger* ExitZone = mCurrentLevel->GetExitTrigger();
 
 	// If exit zone does not exist, don't worry about rest of function
-	if (ExitZone && ExitZone->CheckCollideWithPlayer(_Player) && cLevelProgressTracker::GetInstance().CheckLevelComplete())
+	if (ExitZone && ExitZone->CheckCollideWithPlayer(_Player))
 	{
 		return true; // Player has reached the level exit
 	}
@@ -177,7 +177,7 @@ void cLevelManager::AdvanceToNextLevel()
 	if (mCurrentLevel == &mLevel3)
 	{
 		UnloadAllLevels();
-		std::cout << "GameOver.. Returning to main menu" << std::endl;
+		//std::cout << "GameOver.. Returning to main menu" << std::endl;
 		cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
 	}
 
@@ -192,7 +192,7 @@ void cLevelManager::AdvanceToNextLevel()
 	else if (mCurrentLevel == &mLevel3)
 	{
 		UnloadAllLevels();
-		std::cout << "GameOver.. Returning to main menu" << std::endl;
+		//std::cout << "GameOver.. Returning to main menu" << std::endl;
 		cGameSettings::GetInstance().SetGameState(EGameState::MainMenu);
 	}
 

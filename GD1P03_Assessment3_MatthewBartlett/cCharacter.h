@@ -28,6 +28,9 @@ protected:
 	sf::Vector2f mPosition;
 	sf::Vector2f mVelocity;
 
+	// Is character alive?
+	bool mAlive = true;
+
 	// Rotate Function
 	void Rotate(sf::Vector2f _FaceTowards);
 	void Rotate(sf::Angle _FaceTowards);
@@ -58,9 +61,6 @@ protected:
 public:
 	cCharacter(sf::Vector2f _Position, cProjectileManager& _ProjectileManager, sf::RenderWindow& _GameWindow, bool _IsPlayer);
 	~cCharacter() {}
-
-	// Is character alive?
-	bool mAlive = true;
 	
 	// Respawn Character
 	void RespawnCharacter();
@@ -75,4 +75,8 @@ public:
 	// Getters
 	sf::Vector2f GetPosition() { return mPosition; }
 	cBoxCollider& GetCollider() { return mBoxCollider; }
+	bool IsAlive() const { return mAlive; }
+
+	// Setters
+	void SetAlive(bool alive) { mAlive = alive; }
 };

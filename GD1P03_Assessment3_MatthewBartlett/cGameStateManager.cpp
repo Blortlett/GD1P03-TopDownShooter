@@ -160,7 +160,7 @@ void cGameStateManager::CheckBulletCollision()
         }
 
         // Don't check for player collision if player is dead
-        if (!mPlayerCharacter.mAlive) continue;
+        if (!mPlayerCharacter.IsAlive()) continue;
 
         //Check Collision with player
         if (bullet.CheckCollisionWithPlayer(mPlayerCharacter, CollisionDirection))
@@ -234,7 +234,7 @@ void cGameStateManager::TransitionToNextLevel()
 void cGameStateManager::CheckResetLevel(float _DeltaTime)
 {
     // Only reset level if player is dead
-    if (mPlayerCharacter.mAlive) return;
+    if (mPlayerCharacter.IsAlive()) return;
 
     // Countdown timer before level resets
     mPlayerDeathTimer -= _DeltaTime;

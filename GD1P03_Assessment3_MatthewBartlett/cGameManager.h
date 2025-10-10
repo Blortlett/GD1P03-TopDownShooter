@@ -29,6 +29,11 @@ private:
 	sf::Time mDeltaTime;
 	float mDeltaSeconds = 0.f;
 
+	// Level transition cooldown timer variables
+	bool mLevelExitTriggered = false;
+	float mLevelExitDelay = 0.f;
+	const float LEVEL_EXIT_COOLDOWN = 0.5f;
+
 	// Game Window
 	sf::RenderWindow& mGameWindow;
 
